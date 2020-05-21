@@ -1,10 +1,14 @@
 {{-- @if ($user->role == 'admin') --}}
 @extends('layouts.app')
-@section('content')
+@section('content')  
+
   <div class="container col-8">
     <div class="align-items-center mb-5 mt-5">
+    @role('admin')
       <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
+    @endrole
     </div>
+
 
     <table class="table">
       <thead>
