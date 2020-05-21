@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! <br>
+                    Go to 
+                    <a href="{{route('categories.index')}}">Categories</a>
                 </div>
             </div>
         </div>
