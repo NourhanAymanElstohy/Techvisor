@@ -43,7 +43,7 @@ class HomeController extends Controller
 
 
          //auth()->user()->assignRole('admin');
-         auth()->user()->assignRole('user');
+        //  auth()->user()->assignRole('user');
          //return  auth()->user()->can('admin');
          //auth()->user()->assignRole('professional');
 
