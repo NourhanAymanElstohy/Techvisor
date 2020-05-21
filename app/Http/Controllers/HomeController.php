@@ -28,26 +28,26 @@ class HomeController extends Controller
      */
     public function index()
     {    //Role::create(['name' => 'admin']);
-         //Role::create(['name' => 'professional']);
-         //Role::create(['name' => 'user']);
-         //Role::create(['name' => 'guest']); 
-         //Permission::create(['name' => 'admin']);
-         //Permission::create(['name' => 'professional']);
-         //Permission::create(['name' => 'user']);
-         //Permission::create(['name' => 'guest']);
+        //Role::create(['name' => 'professional']);
+        //Role::create(['name' => 'user']);
+        //Role::create(['name' => 'guest']); 
+        //Permission::create(['name' => 'admin']);
+        //Permission::create(['name' => 'professional']);
+        //Permission::create(['name' => 'user']);
+        //Permission::create(['name' => 'guest']);
 
 
-         //$role = Role::findById(4);
-         //$permission= Permission::findById(4);
-         //$role->givePermissionTo($permission);
+        //$role = Role::findById(4);
+        //$permission= Permission::findById(4);
+        //$role->givePermissionTo($permission);
 
 
-         //auth()->user()->assignRole('admin');
+        //auth()->user()->assignRole('admin');
         //  auth()->user()->assignRole('user');
-         //return  auth()->user()->can('admin');
-         //auth()->user()->assignRole('professional');
+        //  return  auth()->user()->can('admin');
+        //auth()->user()->assignRole('professional');
 
-         //return  User::role('admin')->get();
+        //return  User::role('admin')->get();
         //return  User::permission('admin')->get();
 
 
