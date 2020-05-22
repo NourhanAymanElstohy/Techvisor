@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('/questions','QuestionController@index')->name('questions.index');
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
