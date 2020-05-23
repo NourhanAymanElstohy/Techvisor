@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/questions/{question}/edit','QuestionController@edit')->name('questions.edit');
     Route::post('/questions/{question}/update','QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}','QuestionController@show')->name('questions.show');
+    Route::get('/users/edit','UserController@edit')->name('users.edit');
+    Route::post('/users/update','UserController@update')->name('users.update');
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
