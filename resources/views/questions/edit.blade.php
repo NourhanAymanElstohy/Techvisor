@@ -1,7 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-<form method="GET" action="{{route('questions.update',['question'=>$question->id])}}">
+<form method="POST" action="{{route('questions.update',['question'=>$question->id])}}">
   @csrf
     <div class="form-group">
         <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>

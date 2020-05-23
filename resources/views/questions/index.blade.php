@@ -35,7 +35,33 @@
       
       <td><a href="{{route('questions.show',['question'=> $question->id])}}" class="btn btn-primary">view</a></td>
       <td><a href="{{route('questions.edit',['question'=> $question->id])}}" class="btn btn-secondary">update</a></td>
-      
+      <td><a class="btn btn-danger" href="#" role="button" data-toggle="modal" data-target="#delete-modal-{{$question->id}}">Delete</a></td>
+      <div class="modal fade" id="delete-modal-{{$question->id}}" tobindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <form method="POST"  action="{{route('questions.destroy',$question->id)}}">
+                      @csrf
+                      @method('DELETE')
+                      <div class="modal-header">
+                        <h5 class="modal-title">Delete question #{{$question->id}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Click delete to delete the question!
+                        
+                      </div>
+                      <div class="modal-body">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                      </div>
+
+                    </form>
+                    </div>
+                  </div>
+              </div>
              
       @endforeach
     </tr>
@@ -54,7 +80,9 @@
       </div>
       <div class="modal-footer">
       
-   
+      <a href="{{route('questions.destroy',['question'=> $question->id])}}" class="btn btn-warning">yes</a>
+      <a href="{{route('questions.index')}}" class="btn btn-warning">no</a>
+       
       </div>
     </div>
    

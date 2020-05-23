@@ -61,4 +61,13 @@ class QuestionController extends Controller
         return redirect()->route('questions.index');
 
     }
+
+    public function destroy(){
+        $request = request();
+        $questionId = $request->question;
+        Question::destroy($questionId);
+
+        return redirect()->route('questions.index');
+
+    }
 }
