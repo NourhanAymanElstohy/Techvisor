@@ -14,4 +14,15 @@ class QuestionController extends Controller
             'questions'=>$questions
         ]);
     }
+
+    public function show(){
+        $request = request();
+        $questionId = $request->question;
+        $question=Question::find($questionId);
+        return view('questions/show',[
+            'question'=>$question
+        ]);   
+    }
+
+    
 }

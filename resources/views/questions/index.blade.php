@@ -26,13 +26,42 @@
       
       <td>{{$question?$question->id:""}}</td>
       <td>{{$question?$question->question:""}}</td>
-      <td>{{ $question->pharmacy ? $question->answer->answer : 'not exist'}}</td>
+      <td>{{ $question->answer ? $question->answer->answer : 'not exist'}}</td>
       <td>{{ $question->user ? $question->user->name : 'not exist'}}</td>
       <td>{{$question?$question->state:""}}</td>
       <td>{{$question?$question->created_at:""}}</td>
      
       
-      
+      <td><a href="{{route('questions.show',['question'=> $question->id])}}" class="btn btn-primary">view</a></td>
+      <td><a href="{{route('orders.edit',['order'=> $order->id])}}" class="btn btn-secondary">update</a></td>
+      <!-- <td><a data-toggle="modal" data-target="#myModal" class="btn btn-warning">delete</a></td> -->
+      <td><a class="btn btn-danger" href="#" role="button" data-toggle="modal" data-target="#delete-modal-{{$order->id}}">Delete</a></td>
+      <div class="modal fade" id="delete-modal-{{$order->id}}" tobindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <form method="POST"  action="{{route('orders.destroy',$order->id)}}">
+                      @csrf
+                      @method('DELETE')
+                      <div class="modal-header">
+                        <h5 class="modal-title">Delete order #{{$order->id}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Click delete to delete the order!
+                        
+                      </div>
+                      <div class="modal-body">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                      </div>
+
+                    </form>
+                    </div>
+                  </div>
+              </div>
              
       @endforeach
     </tr>
@@ -51,7 +80,8 @@
       </div>
       <div class="modal-footer">
       
-   
+      <a href="{{route('orders.destroy',['order'=> $order->id])}}" class="btn btn-warning">yes</a>
+      <a href="{{route('orders.index')}}" class="btn btn-warning">no</a>
        
       </div>
     </div>
