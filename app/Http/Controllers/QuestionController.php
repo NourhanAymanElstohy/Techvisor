@@ -39,7 +39,26 @@ class QuestionController extends Controller
             "user_id"=>$userId,
             "state"=>$request->state,
         ]);
-       
         return redirect()->route('questions.index');
+    }
+
+    public function edit(){
+        $request = request();
+        $questionId = $request->question;
+        $question=Question::find($questionId);
+        return view('questions/edit',[
+            'question'=>$question
+        ]);
+
+        
+    }
+    public function update(){
+        $request=request();
+        $question = Question::find($request->id);
+        $question->question = $request->question;
+        $question->state = $request->state;
+        $question->save();
+        return redirect()->route('questions.index');
+
     }
 }

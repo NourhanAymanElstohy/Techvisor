@@ -34,6 +34,7 @@
      
       
       <td><a href="{{route('questions.show',['question'=> $question->id])}}" class="btn btn-primary">view</a></td>
+      <td><a href="{{route('questions.edit',['question'=> $question->id])}}" class="btn btn-secondary">update</a></td>
       
              
       @endforeach
@@ -53,8 +54,7 @@
       </div>
       <div class="modal-footer">
       
-     
-       
+   
       </div>
     </div>
    
