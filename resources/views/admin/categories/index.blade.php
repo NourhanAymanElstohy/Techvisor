@@ -1,9 +1,20 @@
-{{-- @if ($user->role == 'admin') --}}
-@extends('layouts.app')
-@section('content')  
 
+@include('admin.layouts.header')
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  @include('admin.layouts.navbar')
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+ 
+  @include('admin.layouts.sidebar')
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
   <div class="container col-8">
-    <div class="align-items-center mb-5 mt-5">
+    <div class="align-items-center mb-2 mt-2">
       <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
     </div>
 
@@ -62,5 +73,9 @@
 
     </div>
   </div>
-  @endif --}}
-@endsection
+  @endif --}}  </div>
+  <!-- /.content-wrapper -->
+
+  @include('admin.layouts.footer')
+
+

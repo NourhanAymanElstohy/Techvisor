@@ -5,20 +5,34 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use Gate;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
     public function index()
-    {
+    {  
         $categories = Category::all();
+
+        if(auth()->user()->hasPermissionTo('adminpermission'))
+        { return view('admin/categories/index', [
+            'categories' => $categories
+        ]);
+        }
         return view('categories/index', [
             'categories' => $categories
         ]);
     }
     public function create()
     {
+        if(auth()->user()->hasPermissionTo('adminpermission'))
+        { return view('admin/categories/create');}
+        
         return view(
             'categories/create'
         );
@@ -38,6 +52,9 @@ class CategoryController extends Controller
         $categoryId = $request->category;
         $category = Category::find($categoryId);
         // find prof related to this category
+        if(auth()->user()->hasPermissionTo('adminpermission'))
+        { return view('admin/categories/show');}
+
         return view('categories/show', [
             // 'category' => $category
             // send prof instead of category
@@ -48,6 +65,11 @@ class CategoryController extends Controller
     {
         $categoryId = request()->category;
         $category = Category::find($categoryId);
+        if(auth()->user()->hasPermissionTo('adminpermission'))
+        { return view('admin/categories/edit', [
+            'category' => $category
+        ]);
+        }
 
         return view('categories/edit', [
             'category' => $category
@@ -61,7 +83,6 @@ class CategoryController extends Controller
 
         $data = $request->only(['name']);
         $category->update($data);
-
         return redirect()->route('categories.index');
     }
 
