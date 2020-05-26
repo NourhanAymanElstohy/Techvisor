@@ -37,6 +37,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('/questions','QuestionController@index')->name('questions.index');
+    Route::get('/questions/create','QuestionController@create')->name('questions.create');
+    Route::post('/questions','QuestionController@store')->name('questions.store');
+    Route::delete('/questions/{question}/destroy','QuestionController@destroy')->name('questions.destroy');
+    Route::get('/questions/{question}/edit','QuestionController@edit')->name('questions.edit');
+    Route::post('/questions/{question}/update','QuestionController@update')->name('questions.update');
+    Route::get('/questions/{question}','QuestionController@show')->name('questions.show');
+    Route::get('/users/edit','UserController@edit')->name('users.edit');
+    Route::post('/users/update','UserController@update')->name('users.update');
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
