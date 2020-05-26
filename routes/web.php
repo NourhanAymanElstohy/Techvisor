@@ -20,15 +20,11 @@ Route::get('/', function () {
 
 
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['role:super-admin'])->group(function()
-{
-    Route::resource('/users','UsersController');
-    Route::resource('/professional','ProfessionalController');
-    Route::resource('/user','UserController');
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['role:super-admin'])->group(function () {
+    Route::resource('/users', 'UsersController');
+    Route::resource('/professional', 'ProfessionalController');
+    Route::resource('/user', 'UserController');
 });
-
-
-   
 
 
 Auth::routes();

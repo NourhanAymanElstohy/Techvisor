@@ -16,23 +16,24 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index()
-    {  
+    {
         $categories = Category::all();
 
-        if(auth()->user()->hasPermissionTo('adminpermission'))
-        { return view('admin/categories/index', [
-            'categories' => $categories
-        ]);
-        }
+        // // if(auth()->user()->hasPermissionTo('adminpermission'))
+        // { return view('admin/categories/index', [
+        //     'categories' => $categories
+        // ]);
+        // }
         return view('categories/index', [
             'categories' => $categories
         ]);
     }
     public function create()
     {
-        if(auth()->user()->hasPermissionTo('adminpermission'))
-        { return view('admin/categories/create');}
-        
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/categories/create');
+        }
+
         return view(
             'categories/create'
         );
@@ -52,8 +53,9 @@ class CategoryController extends Controller
         $categoryId = $request->category;
         $category = Category::find($categoryId);
         // find prof related to this category
-        if(auth()->user()->hasPermissionTo('adminpermission'))
-        { return view('admin/categories/show');}
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/categories/show');
+        }
 
         return view('categories/show', [
             // 'category' => $category
@@ -65,10 +67,10 @@ class CategoryController extends Controller
     {
         $categoryId = request()->category;
         $category = Category::find($categoryId);
-        if(auth()->user()->hasPermissionTo('adminpermission'))
-        { return view('admin/categories/edit', [
-            'category' => $category
-        ]);
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/categories/edit', [
+                'category' => $category
+            ]);
         }
 
         return view('categories/edit', [

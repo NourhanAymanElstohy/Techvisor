@@ -1,48 +1,50 @@
-{{-- @if ($user->role == 'admin') --}}
+
 @extends('layouts.app')
-@section('content')  
+  @section('content')  
+@if (auth()->user()->hasPermissionTo('adminpermission'))
+    <div class="container col-8">
+      <div class="align-items-center mb-5 mt-5">
+        <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
+      </div>
 
-  <div class="container col-8">
-    <div class="align-items-center mb-5 mt-5">
-      <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
-    </div>
 
-
-    <table class="table">
-      <thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">created At</th> 
+            <th scope="col">Created By</th>
+            {{-- <th scope="col" colspan="2">Actions</th> --}}
+          </tr>
+        </thead>
+      <tbody>
+      @foreach ($categories as $category)
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">created At</th> 
-          {{-- <th scope="col">Created By</th> --}}
-          <th scope="col" colspan="2">Actions</th>
+          <th scope="row">{{$category->id}}</th>
+          <td>{{$category->name}}</td>
+          <td>{{$category->created_at->format('d-m-Y')}}</td>  
+          {{-- <td>Admin: {{$category->user ? $category->user->role :'not exist!'}}</td> --}}
+        
+            <td>
+              <div class="row">
+                <a href="{{route('categories.edit',['category' => $category->id])}}" class="btn btn-success btn-sm mr-2">Edit</a>
+                <form method="POST" action="{{route('categories.destroy',['category' => $category->id])}}">
+                  @csrf  
+                  @method('DELETE')
+                  <button class="btn btn-secondary btn-sm " onclick="return confirm ('are you sure?')">Delete</button>
+                </form>
+              </div>
+            </td>
         </tr>
-      </thead>
-    <tbody>
-    @foreach ($categories as $category)
-      <tr>
-        <th scope="row">{{$category->id}}</th>
-        <td>{{$category->name}}</td>
-        <td>{{$category->created_at->format('d-m-Y')}}</td>  
-        {{-- <td>Admin: {{$category->user ? $category->user->role :'not exist!'}}</td> --}}
-      
-          <td>
-            <div class="row">
-              <a href="{{route('categories.edit',['category' => $category->id])}}" class="btn btn-success btn-sm mr-2">Edit</a>
-              <form method="POST" action="{{route('categories.destroy',['category' => $category->id])}}">
-                @csrf  
-                @method('DELETE')
-                <button class="btn btn-secondary btn-sm " onclick="return confirm ('are you sure?')">Delete</button>
-              </form>
-            </div>
-          </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-  </div>
-
-{{-- @else
+        @endforeach
+      </tbody>
+    </table>
+    </div>
+  {{-- @endsection --}}
+@else
+@extends('layouts.app')
+  @section('content')
   <div class="container">
     <div class="mt-5" style="display: flex; width: 100%; align-items: stretch;">
       <nav id="sidebar">
@@ -62,5 +64,5 @@
 
     </div>
   </div>
-  @endif --}}
+  @endif
 @endsection
