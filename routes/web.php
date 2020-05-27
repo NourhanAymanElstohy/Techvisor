@@ -49,3 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+
+Route::get('/style', function () {
+    return view('style.home');
+});
