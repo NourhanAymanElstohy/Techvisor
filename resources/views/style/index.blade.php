@@ -1,0 +1,5 @@
+@include('layouts.header')
+@include('layouts.navbar')
+@include('layouts.menu')
+@include('layouts.message')
+@include('layouts.footer')
