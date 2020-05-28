@@ -76,21 +76,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              
                                 @foreach((auth()->user())->notifications as $notification)
                                     <a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-                                   
-                                        
-
-                                            {{$notification->data['question']}}
+                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
                                             <?php echo("</br>") ?>
-                                           
-                                            
-                                     
-                                        
-                                   
                                     </a>
                                 @endforeach
 
+                                
                                 </div>
                                 
                             </li>
