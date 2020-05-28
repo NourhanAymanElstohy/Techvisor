@@ -68,6 +68,31 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     <span class="caret">notify</span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @foreach((auth()->user())->notifications as $notification)
+                                    <a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                   
+                                        
+
+                                            {{$notification->data['question']}}
+                                            <?php echo("</br>") ?>
+                                           
+                                            
+                                     
+                                        
+                                   
+                                    </a>
+                                @endforeach
+
+                                </div>
+                                
                             </li>
                         @endguest
                     </ul>
