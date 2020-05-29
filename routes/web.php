@@ -18,10 +18,11 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
-//============ Auth ============================
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-
+Route::get('/style', function () {
+    return view('style.home');
+});
 //============== Admin =========================
 //
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['role:super-admin'])->group(function () {
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'is-ban'], function () {
     Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 });
+
 
 //================ Questions ====================
 Route::group(['middleware' => 'auth'], function () {
