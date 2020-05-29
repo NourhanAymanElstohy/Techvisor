@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
+use Illuminate\Http\Client\Request;
 
 class UserController extends Controller
 {
 
     public function index()
     {
-        $users=User::whereHas("roles", function($q){ $q->where("name", "user"); })->get();
+        $users = User::whereHas("roles", function ($q) {
+            $q->where("name", "user");
+        })->get();
         //dd($users);
-        return view('admin/user/index',[
-        'users' => $users
-            ]);
+        return view('admin/user/index', [
+            'users' => $users
+        ]);
     }
     //
     public function edit()
@@ -31,11 +33,16 @@ class UserController extends Controller
     }
     public function show(Request $request)
     {
-        $profId = $request->prof;
-        $prof = User::find($profId);
+        $userId = $request->prof;
+        $user = User::find($userId);
 
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin.users.show', [
+                'user' => $user
+            ]);
+        }
         return view('professionals/show', [
-            'prof' => $prof,
+            'prof' => $user,
         ]);
     }
     public function update()
