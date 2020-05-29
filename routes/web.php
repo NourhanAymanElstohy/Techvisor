@@ -65,9 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //================= Professional ===============
-Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
+//Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
 Route::get('/professionals','ProfessionalController@index')->name('professional.index');
-Route::get('/professionals/show','ProfessionalController@show')->name('professional.show');
+Route::get('/professionals/show','ProfessionalController@show')->name('professional.show2');
 Route::get('/professionals/edit','ProfessionalController@edit')->name('professionals.edit');
 Route::post('/professionals/update','ProfessionalController@update')->name('professionals.update');
 

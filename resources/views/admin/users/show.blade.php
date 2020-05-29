@@ -47,10 +47,10 @@
             <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                @if($user->status==1)
-                  <td>active</td>
-                 @elseif($user->status==0)
-                 <td>inactive</td>  
+                @if($user->status=='online')
+                  <td>Online</td>
+                 @elseif($user->status=='offline')
+                 <td>Offline</td>  
                   @endif  
                 <td><a href="{{route('professionals.edit')}}" class="btn btn-primary">change</a></td>
    

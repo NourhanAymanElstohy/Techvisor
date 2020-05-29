@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-=======
 
 use Illuminate\Support\Facades\Auth;
->>>>>>> ca148419e3d6cf16f286acdb46ec2c7b6aeb0ba2
-
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
 
@@ -51,13 +47,5 @@ class UserController extends Controller
         $user->save();
         return redirect('/');
     }
-    public function show($id)
-    {   $request = request();
-        $userId = $request->user;
-        $user = User::find($userId);
-       
-        return view('admin.users.show', [
-             'user' => $user
-                     ]);
-    }
+    
 }

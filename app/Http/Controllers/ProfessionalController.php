@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
 
-
 class ProfessionalController extends Controller
 {
     public function index()
@@ -22,12 +21,12 @@ class ProfessionalController extends Controller
 
 
        
-        public function show(Request $request)
+        public function show()
         {   $userId = Auth::id();
             $user=User::find($userId);
             return view('admin.users.show',[
                 'user' => $user
-            ]);
+            ]); 
         }    
         
         
@@ -46,8 +45,8 @@ class ProfessionalController extends Controller
             $user = User::find($request->id);
             $user->status = $request->status;
             $user->save();
-            return redirect('/');
-    
-        }
+            return redirect()->route('professional.show2');
+        }        
+        
         
 }
