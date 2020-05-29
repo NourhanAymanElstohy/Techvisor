@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
 use Illuminate\Http\Client\Request;
@@ -54,4 +54,5 @@ class UserController extends Controller
         $user->save();
         return redirect('/');
     }
+    
 }

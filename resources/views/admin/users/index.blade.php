@@ -30,46 +30,6 @@
 
                         <div class="card-header">Users</div>
 
-<<<<<<< HEAD
-                <div class="card-body">
-                
-                    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Roles</th>
-      <th scope="col">Status</th>
-      <th scope="col">Actions</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  @foreach ($users as $user)
-    <tr>
-      <th scope="row">{{$user->id}}</th>
-      <td>{{$user->name}}</td>
-      <td>{{$user->email}}</td>
-      <td>{{$user->roles->implode('name', ',')}}</td>
-      @if($user->status=='online')
-          <td>Active</td>
-        @elseif($user->status=='offline')
-           <td>Inactive</td>  
-        @endif   
-      <td>
-            
-          <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
-          <form action="{{route('admin.users.destroy', $user->id) }}" method="POST"  class="float-left">
-                @csrf  
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-warning">Delete</button>
-              </form>
-              <td><a href="{{route('admin.users.show',['user'=> $user->id])}}" class="btn btn-primary">view</a></td>
-              
-=======
-                        <div class="card-body">
->>>>>>> ca148419e3d6cf16f286acdb46ec2c7b6aeb0ba2
 
                             <table class="table">
                                 <thead>
@@ -78,6 +38,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Roles</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Banned At</th>
                                         <th scope="col" class="text-center" colspan="3">Actions</th>
                                     </tr>
@@ -89,6 +50,11 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->roles->implode('name', ',')}}</td>
+                                        @if($user->status=='online')
+                                       <td>Active</td>
+                                           @elseif($user->status=='offline')
+                                        <td>Inactive</td>  
+                                           @endif 
                                         <td>{{ $user->banned_at }}</td>
                                         <td>
                                             <a href="{{route('admin.users.edit', $user->id)}}"><button type="button"
