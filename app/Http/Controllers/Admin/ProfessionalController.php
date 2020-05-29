@@ -19,13 +19,15 @@ class ProfessionalController extends Controller
      */
     public function index()
     {
-       $users=User::whereHas("roles", function($q){ $q->where("name", "professional"); })->get();
+        $users = User::whereHas("roles", function ($q) {
+            $q->where("name", "professional");
+        })->get();
         //dd($users);
-        return view('admin/professional/index',[
-        'users' => $users
-            ]);
-        }
-    
+        return view('admin/professional/index', [
+            'users' => $users
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

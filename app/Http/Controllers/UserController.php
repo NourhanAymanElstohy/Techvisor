@@ -31,19 +31,20 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
-    public function show(Request $request)
+    public function show()
     {
-        $userId = $request->prof;
+        $userId = request()->prof;
         $user = User::find($userId);
 
-        if ($user->hasPermissionTo('adminpermission')) {
+        if ($user == auth()->user()) {
             return view('admin.users.show', [
                 'user' => $user
             ]);
+        } else {
+            return view('professionals/show', [
+                'prof' => $user,
+            ]);
         }
-        return view('professionals/show', [
-            'prof' => $user,
-        ]);
     }
     public function update()
     {
@@ -54,5 +55,4 @@ class UserController extends Controller
         $user->save();
         return redirect('/');
     }
-    
 }

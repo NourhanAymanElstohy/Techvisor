@@ -59,15 +59,13 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/edit', 'UserController@edit')->name('users.edit');
     Route::post('/users/update', 'UserController@update')->name('users.update');
-    Route::get('/users','UserController@index')->name('user.index');
-    Route::get('/users/{user}','UserController@show')->name('user.show');
-
+    Route::get('/users', 'UserController@index')->name('user.index');
+    Route::get('/users/{user}', 'UserController@show')->name('user.show');
 });
 
 //================= Professional ===============
-//Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
-Route::get('/professionals','ProfessionalController@index')->name('professional.index');
-Route::get('/professionals/show','ProfessionalController@show')->name('professional.show2');
-Route::get('/professionals/edit','ProfessionalController@edit')->name('professionals.edit');
-Route::post('/professionals/update','ProfessionalController@update')->name('professionals.update');
-
+Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
+Route::get('/professionals', 'ProfessionalController@index')->name('professional.index');
+// Route::get('/professionals/show', 'ProfessionalController@show')->name('professional.show2');
+Route::get('/professionals/edit', 'ProfessionalController@edit')->name('professionals.edit');
+Route::post('/professionals/update', 'ProfessionalController@update')->name('professionals.update');

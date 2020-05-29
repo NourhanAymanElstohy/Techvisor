@@ -21,11 +21,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::whereHas("roles", function($q){ $q->where("name", "user"); })->get();
+        $users = User::whereHas("roles", function ($q) {
+            $q->where("name", "user");
+        })->get();
         //dd($users);
-        return view('admin/user/index',[
-        'users' => $users
-            ]);
+        return view('admin/user/index', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -57,14 +59,14 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-       
+
         $request = request();
         $userId = $request->user;
         $user = User::find($userId);
-        
+
         return view('admin.users.show', [
-             'user' => $user
-                     ]);
+            'user' => $user
+        ]);
     }
 
     /**
