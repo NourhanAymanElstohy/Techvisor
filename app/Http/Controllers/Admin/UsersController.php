@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Spatie\Permission\Traits\HasRoles;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
 use App\User;
 
@@ -18,11 +20,11 @@ class UsersController extends Controller
 
 
     public function __construct()
-{
-    //$this->middleware(['role:super-admin'],['only' => ['create', 'store']]);
-    //$this->middleware(['role:user'],['only' => 'index']);
+    {
+        //$this->middleware(['role:super-admin'],['only' => ['create', 'store']]);
+        //$this->middleware(['role:user'],['only' => 'index']);
 
-}
+    }
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +32,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::all();
-        return view('admin/users/index',[
+        $users = User::all();
+        return view('admin/users/index', [
             'users' => $users
         ]);
     }
@@ -46,7 +48,7 @@ class UsersController extends Controller
         //$users  = DB::select('select * from users where role_id = ?', [2]);
         //$roles = DB::table('roles')->pluck('name','id');
         $roles = Role::all()->pluck('name', 'id');
-        return view('admin/users/create',[
+        return view('admin/users/create', [
             'roles' => $roles
         ]);
     }
@@ -57,19 +59,18 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
-       $user = new User;
-       $user->name = $request->name;
-       $user->email = $request->email;
-       $user->password =  Hash::make($request->password);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password =  Hash::make($request->password);
 
-       if ($user->save()) {
-           $user->assignRole($request->role);
+        if ($user->save()) {
+            $user->assignRole($request->role);
 
-           return redirect()->route('admin.users.index');
-       }
-
+            return redirect()->route('admin.users.index');
+        }
     }
 
     /**
@@ -79,8 +80,13 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   $request = request();
+        $userId = $request->user;
+        $user = User::find($userId);
+        
+        return view('admin.users.show', [
+             'user' => $user
+                     ]);
     }
 
     /**
@@ -91,15 +97,13 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user =User::findOrFail($id);
+        $user = User::findOrFail($id);
         $roles = Role::all()->pluck('name', 'id');
         return view('admin.users.edit', [
             'user' => $user,
-            'roles' =>$roles
+            'roles' => $roles
 
         ]);
-
-
     }
 
     /**
@@ -111,18 +115,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user =User::findOrFail($id);
+        $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
 
-       if ($request->password !=null) {
-           $user->password=$request->password;
-    }
+        if ($request->password != null) {
+            $user->password = $request->password;
+        }
         $user->syncRoles($request->role);
         $user->save();
         return redirect()->route('admin.users.index');
-
-}
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -132,19 +135,33 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user =User::findOrFail($id);
+        $user = User::findOrFail($id);
         $user->removeRole($user->roles->implode('name', ', '));
-        if($user->delete())
-        {
+        if ($user->delete()) {
             return redirect()->route('admin.users.index');
-        }
-        else
-        {
+        } else {
             return response()->json([
                 'error' =>  'error, canit delete user'
             ]);
         }
     }
 
-   
+    public function banned()
+    {
+        $userId = request()->user;
+        $user = User::find($userId);
+        if ($user->isNotBanned()) {
+            $user->ban();
+            // User::where('id', $userId)->update([
+            //     'is_banned' => true,
+
+            // ]);
+        } else {
+            $user->unban();
+            // User::where('id', $userId)->update([
+            //     'is_banned' => false,
+            // ]);
+        }
+        return redirect()->route('admin.users.index');
+    }
 }

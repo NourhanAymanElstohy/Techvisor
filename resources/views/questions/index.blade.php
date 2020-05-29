@@ -1,6 +1,9 @@
+
+
 @extends('admin.index')
 
 @section('content')
+
 
 <div class="x_content">
                         <section>

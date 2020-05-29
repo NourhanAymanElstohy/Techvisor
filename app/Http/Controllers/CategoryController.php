@@ -19,11 +19,11 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        // // if(auth()->user()->hasPermissionTo('adminpermission'))
-        // { return view('admin/categories/index', [
-        //     'categories' => $categories
-        // ]);
-        // }
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/categories/index', [
+                'categories' => $categories
+            ]);
+        }
         return view('categories/index', [
             'categories' => $categories
         ]);
@@ -53,13 +53,15 @@ class CategoryController extends Controller
         $categoryId = $request->category;
         $category = Category::find($categoryId);
         // find prof related to this category
+        $profs = User::all()->where('role', '=', '2');
+        // dd(User::all()->where('role', '=', 'professional'));
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/categories/show');
         }
 
         return view('categories/show', [
-            // 'category' => $category
-            // send prof instead of category
+            'profs' => $profs,
+            'category' => $category
         ]);
     }
 
