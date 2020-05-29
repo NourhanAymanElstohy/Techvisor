@@ -1,11 +1,11 @@
-
+@role('super-admin')
 @include('admin.layouts.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Navbar -->
-  @include('admin.layouts.navbar')
+  @include('admin.layouts.navbar') 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -18,11 +18,9 @@
 <div class="container">
     
     <div class="row justify-content-center">
-    @role('super-admin')
            <div class="col-md-8">
              <a href="{{route('admin.users.create')}}" class="btn btn-success mb-5 mt-5">Create New User</a>
            </div>
-    @endrole
 
             <div class="card">
 
@@ -72,7 +70,17 @@
 </div>
   </div>
   <!-- /.content-wrapper -->
-
   @include('admin.layouts.footer')
+  @endrole
+
+  @hasrole('professional')
+  @extends('layouts.app')
+  @section('content')
+  @foreach ($users as $user)
+  <a href="{{route('user.show', $user->id)}}"><button type="button" class="btn btn-primary float-left">profile</button></a>
+  @endforeach
+  @endrole
+  @endsection
+
 
 

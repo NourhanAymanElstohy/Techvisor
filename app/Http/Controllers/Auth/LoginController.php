@@ -42,7 +42,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
         
         public function authenticated()
         {
@@ -51,7 +50,11 @@ class LoginController extends Controller
                 return redirect()->route('admin.users.index');
             } 
         
+        
             return redirect('/home');
+
+/*             <td><a href="{{route('admin.users.show',['user'=> $user->id])}}" class="btn btn-primary">view</a></td>
+ */
         
 
     }

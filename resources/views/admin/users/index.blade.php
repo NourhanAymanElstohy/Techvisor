@@ -39,6 +39,7 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Roles</th>
+      <th scope="col">Status</th>
       <th scope="col">Actions</th>
       
     </tr>
@@ -50,6 +51,11 @@
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->roles->implode('name', ',')}}</td>
+      @if($user->status=='online')
+          <td>Active</td>
+        @elseif($user->status=='offline')
+           <td>Inactive</td>  
+        @endif   
       <td>
             
           <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
@@ -58,6 +64,7 @@
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-warning">Delete</button>
               </form>
+              <td><a href="{{route('admin.users.show',['user'=> $user->id])}}" class="btn btn-primary">view</a></td>
               
 
       </td>

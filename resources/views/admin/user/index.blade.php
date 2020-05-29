@@ -18,11 +18,9 @@
 <div class="container">
     
     <div class="row justify-content-center">
-    @role('super-admin')
            <div class="col-md-8">
              <a href="{{route('admin.users.create')}}" class="btn btn-success mb-5 mt-5">Create New User</a>
            </div>
-    @endrole
 
             <div class="card">
 
@@ -37,6 +35,7 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Roles</th>
+      <th scope="col">Status</th> 
       <th scope="col">Actions</th>
       
     </tr>
@@ -48,6 +47,12 @@
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->roles->implode('name', ',')}}</td>
+       @if($user->status=='online')
+          <td>Active</td>
+        @elseif($user->status=='offline')
+           <td>Inactive<td>
+        @endif    
+
       <td>
             
           <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
@@ -56,10 +61,7 @@
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-warning">Delete</button>
               </form>
-              
-
       </td>
-
     </tr>
     @endforeach
 
@@ -74,5 +76,6 @@
   <!-- /.content-wrapper -->
 
   @include('admin.layouts.footer')
+
 
 
