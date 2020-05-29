@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Cog\Laravel\Ban\Traits\Bannable;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,10 +12,10 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements BannableContract
 {
     use Notifiable, HasRoles;
-
+    use Bannable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -44,7 +46,7 @@ class User extends Authenticatable
 
     /* public function setPasswordAttribute($value)
     {
-        if( !empty($value)){
+        if (!empty($value)) {
             $this->attributes['password'] = bcrypt($value);
         }
     } */
@@ -60,4 +62,8 @@ class User extends Authenticatable
 
   
 
+    public function category()
+    {
+        return $this->belongsToMany('App\Category', 'category_professional')->wherePivot('role', '2');
+    }
 }

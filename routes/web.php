@@ -13,23 +13,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//========= Home ==============================
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
-
-
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/style', function () {
+    return view('style.home');
+});
+//============== Admin =========================
+//
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['role:super-admin'])->group(function () {
     Route::resource('/users', 'UsersController');
     Route::resource('/professional', 'ProfessionalController');
     Route::resource('/user', 'UserController');
+    Route::get('/users/{user}/ban', 'UsersController@banned')->name('users.banned');
 });
 
-
-Auth::routes();
-
-Route::group(['middleware' => 'auth'], function () {
+//================= Categories =================
+Route::group(['middleware' => 'is-ban'], function () {
     Route::get('/categories', 'CategoryController@index')->name('categories.index');
     Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
     Route::post('/categories', 'CategoryController@store')->name('categories.store');
@@ -37,27 +41,33 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+});
 
-    Route::get('/questions','QuestionController@index')->name('questions.index');
-    Route::get('/questions/create','QuestionController@create')->name('questions.create');
-    Route::post('/questions','QuestionController@store')->name('questions.store');
-    Route::delete('/questions/{question}/destroy','QuestionController@destroy')->name('questions.destroy');
-    Route::get('/questions/{question}/edit','QuestionController@edit')->name('questions.edit');
-    Route::post('/questions/{question}/update','QuestionController@update')->name('questions.update');
-    Route::get('/questions/{question}','QuestionController@show')->name('questions.show');
 
-    Route::get('/users/edit','UserController@edit')->name('users.edit');
-    Route::post('/users/update','UserController@update')->name('users.update');
+//================ Questions ====================
+Route::group(['middleware' => ['auth', 'is-ban']], function () {
+    Route::get('/questions', 'QuestionController@index')->name('questions.index');
+    Route::get('/questions/create', 'QuestionController@create')->name('questions.create');
+    Route::post('/questions', 'QuestionController@store')->name('questions.store');
+    Route::delete('/questions/{question}/destroy', 'QuestionController@destroy')->name('questions.destroy');
+    Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
+    Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
+    Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
+});
+
+//================== Users ======================
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/users/edit', 'UserController@edit')->name('users.edit');
+    Route::post('/users/update', 'UserController@update')->name('users.update');
     Route::get('/users','UserController@index')->name('user.index');
     Route::get('/users/{user}','UserController@show')->name('user.show');
 
-    Route::get('/professionals','ProfessionalController@index')->name('professional.index');
-    Route::get('/professionals/show','ProfessionalController@show')->name('professional.show');
-    Route::get('/professionals/edit','ProfessionalController@edit')->name('professionals.edit');
-    Route::post('/professionals/update','ProfessionalController@update')->name('professionals.update');
-
-
-
 });
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+//================= Professional ===============
+Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
+Route::get('/professionals','ProfessionalController@index')->name('professional.index');
+Route::get('/professionals/show','ProfessionalController@show')->name('professional.show');
+Route::get('/professionals/edit','ProfessionalController@edit')->name('professionals.edit');
+Route::post('/professionals/update','ProfessionalController@update')->name('professionals.update');
+

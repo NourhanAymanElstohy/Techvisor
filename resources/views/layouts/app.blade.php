@@ -71,6 +71,33 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     <span class="caret">notify</span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              
+                                @foreach((auth()->user())->unreadNotifications as $notification)
+                                    <a class="dropdown-item bg-secondary"  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+                                            {{$notification->markAsRead()}}
+                                            <?php echo("</br>") ?>
+                                    </a>
+                                @endforeach
+                                @foreach((auth()->user())->readNotifications as $notification)
+                                    <a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+                                            
+                                            <?php echo("</br>") ?>
+                                    </a>
+                                @endforeach
+
+                                
+                                </div>
+                                
                             </li>
                         @endguest
                     </ul>
