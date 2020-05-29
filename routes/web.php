@@ -54,3 +54,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/style', function () {
     return view('style.home');
 });
+Route::get('/style/profile', function () {
+    return view('style.profile');
+});
+Route::get('/style/about', function () {
+    return view('style.about');
+});

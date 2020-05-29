@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="{{ url('design/style') }}/index-2.html" title=""><img src="images/logo.png" alt=""></a>
+						<a href="{{ url('design/style') }}/index-2.html" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -15,14 +15,14 @@
 						<ul>
 							<li>
 								<a href="{{ url('design/style') }}/index-2.html" title="">
-									<span><img src="images/icon1.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
 									Home
 								</a>
 							</li>
 							<li>
-								<a href="{{ url('design/style') }}/companies.html" title="">
-									<span><img src="images/icon2.png" alt=""></span>
-									Companies
+								<a href="/style/about" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
 								</a>
 								<ul>
 									<li><a href="{{ url('design/style') }}/companies.html" title="">Companies</a></li>
@@ -31,29 +31,29 @@
 							</li>
 							<li>
 								<a href="{{ url('design/style') }}/projects.html" title="">
-									<span><img src="images/icon3.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon3.png" alt=""></span>
 									Projects
 								</a>
 							</li>
 							<li>
 								<a href="{{ url('design/style') }}/profiles.html" title="">
-									<span><img src="images/icon4.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									Profiles
 								</a>
 								<ul>
-									<li><a href="{{ url('design/style') }}/user-profile.html" title="">User Profile</a></li>
+									<li><a href="/style/profile" title="">User Profile</a></li>
 									<li><a href="{{ url('design/style') }}/my-profile-feed.html" title="">my-profile-feed</a></li>
 								</ul>
 							</li>
 							<li>
 								<a href="{{ url('design/style') }}/jobs.html" title="">
-									<span><img src="images/icon5.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon5.png" alt=""></span>
 									Jobs
 								</a>
 							</li>
 							<li>
 								<a href="#" title="" class="not-box-openm">
-									<span><img src="images/icon6.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon6.png" alt=""></span>
 									Messages
 								</a>
 								<div class="notification-box msg" id="message">
@@ -64,7 +64,7 @@
 									<div class="nott-list">
 										<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img1.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img1.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="{{ url('design/style') }}/messages.html" title="">Jassica William</a> </h3>
@@ -74,7 +74,7 @@
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img2.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="messages.html" title="">Jassica William</a></h3>
@@ -84,7 +84,7 @@
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img3.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img3.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="{{ url('design/style') }}/messages.html" title="">Jassica William</a></h3>
@@ -111,7 +111,7 @@
 									<div class="nott-list">
 										<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img1.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img1.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
@@ -120,7 +120,7 @@
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img2.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
@@ -129,7 +129,7 @@
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img3.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img3.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
@@ -138,7 +138,7 @@
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
-							  					<img src="images/resources/ny-img2.png" alt="">
+							  					<img src="{{ url('design/style') }}/images/resources/ny-img2.png" alt="">
 							  				</div>
 							  				<div class="notification-info">
 							  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
@@ -158,7 +158,7 @@
 					</div><!--menu-btn end-->
 					<div class="user-account">
 						<div class="user-info">
-							<img src="images/resources/user.png" alt="">
+							<img src="{{ url('design/style') }}/images/resources/user.png" alt="">
 							<a href="#" title="">John</a>
 							<i class="la la-sort-down"></i>
 						</div>
@@ -198,7 +198,7 @@
 								<li><a href="#" title="">Faqs</a></li>
 								<li><a href="#" title="">Terms & Conditions</a></li>
 							</ul>
-							<h3 class="tc"><a href="{{ url('design/style') }}/sign-in.html" title="">Logout</a></h3>
+							<h3 class="tc"><a href="/register" title="">Logout</a></h3>
 						</div><!--user-account-settingss end-->
 					</div>
 				</div><!--header-data end-->
