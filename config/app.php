@@ -176,6 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Cog\Laravel\Ban\Providers\BanServiceProvider::class,
+
     ],
 
     /*

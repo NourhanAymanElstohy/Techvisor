@@ -1,7 +1,7 @@
-
 @extends('layouts.app')
-  @section('content')  
+   
 @if (auth()->user()->hasPermissionTo('adminpermission'))
+@section('content') 
     <div class="container col-8">
       <div class="align-items-center mb-5 mt-5">
         <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
@@ -41,9 +41,9 @@
       </tbody>
     </table>
     </div>
-  {{-- @endsection --}}
+  @endsection
 @else
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
   @section('content')
   <div class="container">
     <div class="mt-5" style="display: flex; width: 100%; align-items: stretch;">
