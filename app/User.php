@@ -49,4 +49,8 @@ class User extends Authenticatable implements BannableContract
             $this->attributes['password'] = bcrypt($value);
         }
     }
+    public function category()
+    {
+        return $this->belongsToMany('App\Category', 'category_professional')->where('role', '=', 'professional');
+    }
 }

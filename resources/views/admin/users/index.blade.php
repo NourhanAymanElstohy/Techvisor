@@ -55,18 +55,18 @@
                                             <a href="{{route('admin.users.edit', $user->id)}}"><button type="button"
                                                     class="btn btn-primary float-left mr-2">Edit</button></a>
                                             
-                                            @if ($user->isNotBanned())                
-                                                <a  href="{{ route('admin.users.banned',['user'=>$user->id]) }}" class="btn btn-danger mr-2"  >Ban</a>
-                                            @else
-                                            <a  href="{{ route('admin.users.banned',['user'=>$user->id]) }}" class="btn btn-primary mr-2" >Unban</a>
-                                            @endif
-                                            
                                             <form action="{{route('admin.users.destroy', $user->id) }}" method="POST"
                                                 class="float-left">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-warning mr-2">Delete</button>
                                             </form>
+                                            
+                                            @if ($user->isNotBanned())                
+                                                <a  href="{{ route('admin.users.banned',['user'=>$user->id]) }}" class="btn btn-danger mr-2"  >Ban</a>
+                                            @else
+                                            <a  href="{{ route('admin.users.banned',['user'=>$user->id]) }}" class="btn btn-primary mr-2" >Unban</a>
+                                            @endif
 
                                         </td>
 

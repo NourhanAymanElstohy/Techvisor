@@ -11,13 +11,14 @@ class UserTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
+    {
         //to create users ->run on terminal(php artisan db:seed)
 
         $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'role' => 'admin'
 
         ]);
         $admin->assignRole('super-admin');
@@ -26,7 +27,8 @@ class UserTableSeeder extends Seeder
         $professional = User::create([
             'name' => 'professional',
             'email' => 'professional@professional.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'role' => 'professional'
 
         ]);
         $professional->assignRole('professional');
@@ -36,20 +38,21 @@ class UserTableSeeder extends Seeder
         $user = User::create([
             'name' => 'user',
             'email' => 'user@user.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
+            'role' => 'user'
 
         ]);
         $user->assignRole('user');
 
 
 
-        $guest = User::create([
-            'name' => 'guest User',
-            'email' => 'guest@guest.com',
-            'password' => bcrypt('12345678')
+        // $guest = User::create([
+        //     'name' => 'guest User',
+        //     'email' => 'guest@guest.com',
+        //     'password' => bcrypt('12345678')
 
-        ]);
-        $guest->assignRole('guest');
+        // ]);
+        // $guest->assignRole('guest');
 
     }
 }

@@ -19,11 +19,11 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        // // if(auth()->user()->hasPermissionTo('adminpermission'))
-        // { return view('admin/categories/index', [
-        //     'categories' => $categories
-        // ]);
-        // }
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/categories/index', [
+                'categories' => $categories
+            ]);
+        }
         return view('categories/index', [
             'categories' => $categories
         ]);
