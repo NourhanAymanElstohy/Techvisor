@@ -11,7 +11,8 @@ class Question extends Model
         'question',
         'user_id',
         'answer_id',
-        'state'
+        'state',
+        'prof_id'
     ];
     public function user()
     {
@@ -20,5 +21,9 @@ class Question extends Model
     public function answer()
     {
         return $this->belongsTo('App\Answer');
+    }
+    public function prof()
+    {
+        return $this->belongsTo('App\User', 'prof_id')->where('role', '2');
     }
 }

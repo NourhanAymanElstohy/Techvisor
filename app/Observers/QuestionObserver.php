@@ -9,10 +9,12 @@ class QuestionObserver
 {
     public function created(Question $question)
     {
-        $user = User::find(5);
+        // $user = User::find(5);
        
+    if ($question->prof){
+        $user= $question->prof;
         $user->notify(new NewQuestion($user, $question));
-        
+    }
     }
 }
 ?>

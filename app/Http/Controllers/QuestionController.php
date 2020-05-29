@@ -27,7 +27,10 @@ class QuestionController extends Controller
     }
 
     public function create(){
-        return view('questions/create');
+        $prof=request()->prof;
+        return view('questions/create',[
+            'prof'=>$prof
+        ]);
     }
     public function store(){
         $request=request();
@@ -38,6 +41,7 @@ class QuestionController extends Controller
             "question"=> $question,
             "user_id"=>$userId,
             "state"=>$request->state,
+            "prof_id"=>$request->prof
         ]);
         return redirect()->route('questions.index');
     }
