@@ -36,7 +36,7 @@ class UserController extends Controller
         $userId = $request->prof;
         $user = User::find($userId);
 
-        if (auth()->user()->hasPermissionTo('adminpermission')) {
+        if ($user->hasPermissionTo('adminpermission')) {
             return view('admin.users.show', [
                 'user' => $user
             ]);
