@@ -1,4 +1,4 @@
-@role('super-admin')
+{{-- @role('super-admin')
     @extends('admin.index')
 
     @section('content')
@@ -24,13 +24,16 @@
 
 
     @endsection    
-@endrole
+@endrole --}}
 
 
 
 @role('user')
+@extends('layouts.app')
+@section('content')
   <form method="POST" action="{{route('questions.store')}}">
       @csrf
+      <div class="container col-6">
         <div class="form-group">
             <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>
             <textarea class="form-control" name="question" rows="3"></textarea>
@@ -46,6 +49,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
-      
+      </div>
     </form> 
+@endsection
 @endrole

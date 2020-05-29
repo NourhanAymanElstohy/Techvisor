@@ -62,7 +62,6 @@ class CategoryController extends Controller
         return view('categories/show', [
             'profs' => $profs,
             'category' => $category
-            // send prof instead of category
         ]);
     }
 

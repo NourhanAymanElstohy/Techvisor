@@ -45,7 +45,7 @@ Route::group(['middleware' => 'is-ban'], function () {
 
 
 //================ Questions ====================
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions', 'QuestionController@index')->name('questions.index');
     Route::get('/questions/create', 'QuestionController@create')->name('questions.create');
     Route::post('/questions', 'QuestionController@store')->name('questions.store');
@@ -60,3 +60,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/edit', 'UserController@edit')->name('users.edit');
     Route::post('/users/update', 'UserController@update')->name('users.update');
 });
+
+//================= Professional ===============
+Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
