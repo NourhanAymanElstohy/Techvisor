@@ -51,6 +51,6 @@ class User extends Authenticatable implements BannableContract
     }
     public function category()
     {
-        return $this->belongsToMany('App\Category', 'category_professional')->wherePivot('role', 'professional');
+        return $this->belongsToMany('App\Category', 'category_professional')->wherePivot('role', '2');
     }
 }

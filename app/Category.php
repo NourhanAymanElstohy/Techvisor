@@ -10,6 +10,6 @@ class Category extends Model
 
     public function prof()
     {
-        return $this->belongsToMany('App\User', 'category_professional')->wherePivotwherePivot('role', 'professional');
+        return $this->belongsToMany('App\User', 'category_professional')->wherePivotwherePivot('role', '2');
     }
 }
