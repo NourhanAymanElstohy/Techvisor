@@ -22,9 +22,9 @@ class ProfessionalController extends Controller
 
        
         public function show()
-        {   $userId = Auth::id();
+        {   $userId = request()->prof;
             $user=User::find($userId);
-            return view('admin.users.show',[
+            return view('professionals.show',[
                 'user' => $user
             ]); 
         }    
@@ -45,7 +45,7 @@ class ProfessionalController extends Controller
             $user = User::find($request->id);
             $user->status = $request->status;
             $user->save();
-            return redirect()->route('professional.show2');
+            return redirect()->route('profs.show');
         }        
         
         
