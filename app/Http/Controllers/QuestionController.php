@@ -27,7 +27,21 @@ class QuestionController extends Controller
     }
 
     public function create(){
-        return view('questions/create');
+        $prof=request()->prof;
+        $users;
+        if(!$prof){
+            $users=User::where('role',2)->get();
+            return view('questions/create',[
+                'prof'=>$prof,
+                'users'=>$users
+            ]);
+        }else{
+            return view('questions/create',[
+                'prof'=>$prof   
+            ]);
+
+        }
+       
     }
     public function store(){
         $request=request();
@@ -38,16 +52,19 @@ class QuestionController extends Controller
             "question"=> $question,
             "user_id"=>$userId,
             "state"=>$request->state,
+            "prof_id"=>$request->prof
         ]);
         return redirect()->route('questions.index');
     }
 
     public function edit(){
         $request = request();
+        $users=User::where('role',2)->get();
         $questionId = $request->question;
         $question=Question::find($questionId);
         return view('questions/edit',[
-            'question'=>$question
+            'question'=>$question,
+            'users'=>$users
         ]);
 
         
