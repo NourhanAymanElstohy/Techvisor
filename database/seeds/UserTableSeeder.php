@@ -43,16 +43,5 @@ class UserTableSeeder extends Seeder
 
         ]);
         $user->assignRole('user');
-
-
-
-        // $guest = User::create([
-        //     'name' => 'guest User',
-        //     'email' => 'guest@guest.com',
-        //     'password' => bcrypt('12345678')
-
-        // ]);
-        // $guest->assignRole('guest');
-
     }
 }
