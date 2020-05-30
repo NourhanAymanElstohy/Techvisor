@@ -81,6 +81,6 @@ Route::get('/style/profile', function () {
 Route::get('/style/about', function () {
     return view('style.about');
 });
-Route::get('/style/questions', function () {
-    return view('style.questions');
+Route::get('/style/categories', function () {
+    return view('style.categories');
 });
