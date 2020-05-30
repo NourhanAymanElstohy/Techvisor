@@ -18,9 +18,6 @@
                     Go to 
                     <a href="{{route('categories.index')}}">Categories</a><br/>
                     <a href="{{route('users.edit')}}">edit your profile</a><br>
-                    {{-- @role('professional')
-                    <a href="{{route('profs.show')}}">go to your profile</a>
-                    @endrole --}}
                 </div>
             </div>
         </div>

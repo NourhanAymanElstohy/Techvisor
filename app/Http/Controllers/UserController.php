@@ -42,7 +42,7 @@ class UserController extends Controller
             ]);
         } else {
             return view('professionals/show', [
-                'prof' => $user,
+                'user' => $user,
             ]);
         }
     }

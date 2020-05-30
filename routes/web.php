@@ -48,6 +48,7 @@ Route::group(['middleware' => 'is-ban'], function () {
 Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions', 'QuestionController@index')->name('questions.index');
     Route::get('/questions/create', 'QuestionController@create')->name('questions.create');
+    Route::get('/questions/create/{prof}', 'QuestionController@create')->name('questions.createprof');
     Route::post('/questions', 'QuestionController@store')->name('questions.store');
     Route::delete('/questions/{question}/destroy', 'QuestionController@destroy')->name('questions.destroy');
     Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
@@ -69,3 +70,18 @@ Route::get('/professionals', 'ProfessionalController@index')->name('professional
 // Route::get('/professionals/show', 'ProfessionalController@show')->name('professional.show2');
 Route::get('/professionals/edit', 'ProfessionalController@edit')->name('professionals.edit');
 Route::post('/professionals/update', 'ProfessionalController@update')->name('professionals.update');
+
+//////////////////////////////////////style//////////////////////////////
+
+Route::get('/style', function () {
+    return view('style.home');
+});
+Route::get('/style/profile', function () {
+    return view('style.profile');
+});
+Route::get('/style/about', function () {
+    return view('style.about');
+});
+Route::get('/style/categories', function () {
+    return view('style.categories');
+});

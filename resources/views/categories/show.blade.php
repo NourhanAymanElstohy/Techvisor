@@ -11,9 +11,7 @@
                     <a href="{{route('profs.show',['prof' => $prof->id])}}" class="text-light">{{$prof->name}}</a>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><b>Name: {{$prof->name}} </b> </p>
-                    <p class="card-text"><b>Status: {{$prof->status}} </b> </p>
-                    <a href="{{route('questions.create')}}" class="btn btn-primary btn-sm">ask</a>
+                    <a href="{{route('questions.createprof',['prof'=> $prof->id])}}" class="btn btn-primary btn-sm">ask</a>
                 </div>
             </div>
         </div>
