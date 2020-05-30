@@ -13,7 +13,7 @@
 													
 													<div class="post-st">
 											<ul>
-												<li><a href="#" title="">PHP</a></li>
+												<li><a href="/style/categories" title="">PHP</a></li>
 												
 											</ul>
 										</div><!--post-st end-->
@@ -28,7 +28,7 @@
 													
 													<div class="post-st">
 											<ul>
-												<li><a href="#" title="">HTML</a></li>
+												<li><a href="/style/categories" title="">HTML</a></li>
 												
 											</ul>
 										</div><!--post-st end-->
@@ -43,7 +43,7 @@
 													
 													<div class="post-st">
 											<ul>
-												<li><a href="#" title="">PYTHON</a></li>
+												<li><a href="/style/categories" title="">PYTHON</a></li>
 												
 											</ul>
 										</div><!--post-st end-->
@@ -58,14 +58,14 @@
 													
 													<div class="post-st">
 											<ul>
-												<li><a href="#" title="">NETWORK</a></li>
+												<li><a href="/style/categories" title="">NETWORK</a></li>
 												
 											</ul>
 										</div><!--post-st end-->
 													
 												</div>
 												<div class="view-more">
-												<a href="#" title="">View More</a>
+												<a href="/style/categories" title="">View More</a>
 											</div>
 										
 												
