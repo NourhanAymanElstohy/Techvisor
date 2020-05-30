@@ -5,6 +5,14 @@
       @section('content')
       <form method="POST" action="{{route('questions.update',['question'=>$question->id])}}">
         @csrf
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Users</label>
+    <select name="prof" class="form-control " value="{{ $question->prof ? $question->prof->name : 'not exist'}}">
+        @foreach($users as $user)  
+          <option value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+        </select>
+      </div>
           <div class="form-group">
               <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>
               <input type="hidden" class="form-control" name="id" value="{{$question->id}}">

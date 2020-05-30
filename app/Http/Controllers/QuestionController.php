@@ -28,9 +28,20 @@ class QuestionController extends Controller
 
     public function create(){
         $prof=request()->prof;
-        return view('questions/create',[
-            'prof'=>$prof
-        ]);
+        $users;
+        if(!$prof){
+            $users=User::where('role',2)->get();
+            return view('questions/create',[
+                'prof'=>$prof,
+                'users'=>$users
+            ]);
+        }else{
+            return view('questions/create',[
+                'prof'=>$prof   
+            ]);
+
+        }
+       
     }
     public function store(){
         $request=request();
@@ -48,10 +59,12 @@ class QuestionController extends Controller
 
     public function edit(){
         $request = request();
+        $users=User::where('role',2)->get();
         $questionId = $request->question;
         $question=Question::find($questionId);
         return view('questions/edit',[
-            'question'=>$question
+            'question'=>$question,
+            'users'=>$users
         ]);
 
         

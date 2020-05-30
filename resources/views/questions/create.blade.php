@@ -5,7 +5,19 @@
     <form method="POST" action="{{route('questions.store')}}">
       @csrf
         <div class="form-group">
-        <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
+        @if ($prof)
+            <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
+        @else
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Users</label>
+    <select name="prof" class="form-control ">
+        @foreach($users as $user)  
+          <option value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+        </select>
+      </div>
+
+        @endif
             <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>
             <textarea class="form-control" name="question" rows="3"></textarea>
         </div>
@@ -25,7 +37,7 @@
 
 
     @endsection    
- 
+
 
 
 
