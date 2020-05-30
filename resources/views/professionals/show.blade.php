@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <p class="card-text"><b>Name: {{$prof->name}} </b> </p>
                     <p class="card-text"><b>Email: {{$prof->email}} </b> </p>
+                    <p class="card-text"><b>Status: {{$prof->status}} </b> </p>
                 </div>
             </div>
         </div>
