@@ -65,11 +65,24 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Register As') }}</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select" name="role">
+                                <select class="custom-select" name="role" id="role-option" >
                                     <option value="1">User</option>
                                     <option value="2">Professional</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group row" id="cat-section">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Categories') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select" name="categories" multiple>
+                                    @foreach($categories as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                     @endforeach
+                                </select>
+                            </div>
+
+
                         </div>
 
                         <div class="form-group row mb-0">
@@ -85,4 +98,14 @@
         </div>
     </div>
 </div>
+{{--    <script language="JavaScript">--}}
+{{--const  role=document.getElementById('role-option');--}}
+{{--const cat =document.getElementById('cat-section');--}}
+{{--if(role.value=='1'){--}}
+{{--    cat.style.visibility='hidden';--}}
+{{--}--}}
+{{--else if (role.value=='2'){--}}
+{{--    cat.style.visibility='visible';--}}
+{{--}--}}
+{{--    </script>--}}
 @endsection
