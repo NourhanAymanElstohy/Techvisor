@@ -13,6 +13,7 @@
 				<div class="container">
 					<div class="main-section-data">
 						<div class="row">
+
 							<div class="col-lg-3">
 								<div class="main-left-sidebar">
 									<div class="user_profile">
@@ -47,7 +48,9 @@
 										</ul>
 									</div><!--user_profile end-->
 									
+									
 								</div><!--main-left-sidebar end-->
+								
 							</div>
 							<div class="col-lg-6">
 								<div class="main-ws-sec">
@@ -192,6 +195,10 @@
 								
 								</div><!--main-ws-sec end-->
 							</div>
+						
+						
+						
+							@include('style.layouts.sidebar')
 						
 						</div>
 					</div><!-- main-section-data end-->
