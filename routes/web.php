@@ -43,7 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']); 
     Route::get('/professionals/{prof}', 'ProfessionalController@show')->name('professional.show');
-    // Route::get('/professionals/show', 'ProfessionalController@show')->name('professional.show2');
     Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
     Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']); 
@@ -53,12 +52,12 @@ Route::group(['middleware' => 'auth'], function () {
 //================= Categories =================
 Route::group(['middleware' => 'is-ban'], function () {
     Route::get('/categories', 'CategoryController@index')->name('categories.index');
-    Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
-    Route::post('/categories', 'CategoryController@store')->name('categories.store');
+    Route::get('/categories/create', 'CategoryController@create')->name('categories.create')->middleware(['role:super-admin']); 
+    Route::post('/categories', 'CategoryController@store')->name('categories.store')->middleware(['role:super-admin']); 
     Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
-    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
-    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
-    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')->middleware(['role:super-admin']); 
+    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update')->middleware(['role:super-admin']); 
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy')->middleware(['role:super-admin']); 
 });
 
 

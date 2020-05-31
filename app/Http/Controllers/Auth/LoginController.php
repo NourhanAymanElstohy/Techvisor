@@ -45,22 +45,21 @@ class LoginController extends Controller
         
         public function authenticated()
         {
+            
             if(auth()->user()->hasRole('super-admin'))
             {
-                $userId = Auth::id();
-                $user = User::find($userId);
-                return view('admin.index',[
-                    'user' => $user
-                ]); 
-            } 
-        
-        
-            return redirect('/home');
+                return view('admin.index'); 
+            }
 
-/*             <td><a href="{{route('admin.users.show',['user'=> $user->id])}}" class="btn btn-primary">view</a></td>
- */
+            if(auth()->user()->hasRole('user')){
+            $userId = Auth::id(); 
+            $user = User::find($userId);
+            //dd($user);
+            return view('home',[
+                'user' => $user
+            ]); 
+            }
         
-
     }
 
     

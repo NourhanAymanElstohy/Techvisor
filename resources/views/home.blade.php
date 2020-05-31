@@ -16,7 +16,9 @@
 
                     you are logedin<br>
                     Go to 
-                    <a href="{{route('categories.index')}}">Categories</a><br/>
+                    <a href="{{route('categories.index')}}">Categories</a>
+                   
+
 
                 </div>
             </div>

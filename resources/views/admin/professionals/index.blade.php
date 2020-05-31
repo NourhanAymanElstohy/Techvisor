@@ -47,8 +47,8 @@
     class="btn btn-info float-left mr-2">Show</button></a>
                                             
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
-    class="btn btn-primary float-left mr-2">Edit</button></a>
-                                            
+    class="btn btn-primary float-left mr-2  ">Edit</button></a>
+                                             
     <form action="{{route('users.destroy', $user->id) }}" method="POST"
     class="float-right">
     @csrf
@@ -59,10 +59,10 @@
                                             
     @if ($user->isNotBanned())                
     <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-dark float-right mr-2">Ban</a>
+     class="btn btn-dark">Ban</a>
     @else
     <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-success float-right mr-2">Unban</a>
+     class="btn btn-success ">Unban</a>
     @endif
     </td>
     </tr>
