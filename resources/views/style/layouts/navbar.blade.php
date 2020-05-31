@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="{{ url('design/style') }}/index-2.html" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
+						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>

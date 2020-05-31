@@ -36,66 +36,66 @@
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">ASK</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 												<div class="user-profy">
 													<img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">ASk</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 												<div class="user-profy">
 													<img src="{{ url('design/style') }}/images/resources/user3.png" alt="">
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">Ask</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 												<div class="user-profy">
 													<img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">ASk</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 												<div class="user-profy">
 													<img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">ASK</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 												<div class="user-profy">
 													<img src="{{ url('design/style') }}/images/resources/user3.png" alt="">
 													<h3>John Doe</h3>
 													<span>Graphic Designer</span>
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{{ url('design/style') }}/images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
+														<li><a href="#" title="" class="post-jb active follow">ASK</a></li>
+														
+														<li><a href="#" title="" class="hire">ZOOM</a></li>
 													</ul>
-													<a href="#" title="">View Profile</a>
+													<a href="/style/profile" title="">View Profile</a>
 												</div><!--user-profy end-->
 											</div><!--profiles-slider end-->
 										</div><!--top-profiles end-->
@@ -248,6 +248,43 @@
 
 
 	</div><!--theme-layout end-->
+<!-- add the post Q -->
+
+	<div class="post-popup job_post">
+			<div class="post-project">
+				<h3>Post a Question</h3>
+				<div class="post-project-fields">
+					<form>
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="price-br">
+								 <h1> Who Can See This ? </h1>
+									
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="inp-field">
+									<select>
+										<option>Public </option>
+										<option>Private</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<textarea name="Question" placeholder="Question"></textarea>
+							</div>
+							<div class="col-lg-12">
+								<ul>
+									<li><button class="active" type="submit" value="post">Post</button></li>
+									<li><a href="#" title="">Cancel</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div><!--post-project-fields end-->
+				<a href="#" title=""><i class="la la-times-circle-o"></i></a>
+			</div><!--post-project end-->
+		</div><!--post-project-popup end-->
 
 	@endsection
 	
