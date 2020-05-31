@@ -13,16 +13,17 @@
   @include('admin.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  <div class="container col-6">
+  <div class="container">
+  <div class="p-3" style="text-align:center">
     <form method="POST" action="{{route('categories.store')}}" class="mb-4">
         @csrf
-        <h1 class="mt-5 text-center">Create New Category</h1>
+        <h1 style="color:#3cb371"><strong>Create New categorie</strong></h1>
         <div class="form-group mt-5">
             <label >Name</label>
             <input name="name" type="text" class="form-control" aria-describedby="emailHelp">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Create</button>
     </form>
       @if ($errors->any())
       <div class="alert alert-danger">

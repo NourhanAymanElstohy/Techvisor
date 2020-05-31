@@ -27,7 +27,7 @@
                 <th>Banned At</th>
                 <th>Situation</th>
             </tr>
-            </thead>
+            </thead> 
         <tbody>
         <tr>
           <td>{{$user->name}}</td>
@@ -46,7 +46,7 @@
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-success mr-2">Unban</a>
           @endif
         </td>
-        </tr>
+        </tr> 
         </tbody>
     </table>
 

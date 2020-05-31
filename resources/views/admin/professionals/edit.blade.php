@@ -13,11 +13,10 @@
   @include('admin.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  <div class="container">
-  <div class="p-3" style="text-align:center">
-  <h1 style="color:#3cb371"><strong>{{$user->name}}</strong></h1>
 
-    <form method="POST" action="{{route('users.update',$user->id)}}" class="mb-4">
+  @section('content')
+<div class="container col-6">
+    <form method="POST" action="{{route('professionals.update',$user->id)}}" class="mb-4">
         @csrf
         @method('PUT')
         <h1 class="mt-5 text-center">Edit {{$user->name}}</h1>
@@ -49,7 +48,7 @@
             </select>
             </div>
         <div class="justify-content-end">
-           <input type="submit" value="Submit" class="btn btn-success">
+           <input type="submit" value="Create" class="btn btn-success">
            </div>
 
 
@@ -61,8 +60,6 @@
 
   </div>
   <!-- /.content-wrapper -->
-  @include('admin.layouts.footer')
-
 
 
 

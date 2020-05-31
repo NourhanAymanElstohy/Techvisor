@@ -1,22 +1,22 @@
 @include('admin.layouts.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+    <div class="wrapper">
 
-  <!-- Navbar -->
-  @include('admin.layouts.navbar')
-  <!-- /.navbar -->
+        <!-- Navbar -->
+        @include('admin.layouts.navbar')
+        <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
- 
-  @include('admin.layouts.sidebar')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-  <div class="container">
-  <div class="p-3" style="text-align:center">
-    <h1 style="color:#3cb371"><strong>Users</strong></h1>
+        <!-- Main Sidebar Container -->
 
+        @include('admin.layouts.sidebar')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+        <div class="container">
+        <div class="p-3" style="text-align:center">
+        <h1 style="color:#3cb371"><strong>Professionals</strong></h1>
 
+    
     <table id="example" class="table table-striped table-bordered" style="width:80rem%">
     <thead>
       <tr>
@@ -43,17 +43,17 @@
     @endif 
     <td>{{ $user->banned_at }}</td>
    <td>
-    <a href="{{route('user.show', $user->id)}}"><button type="button"
+    <a href="{{route('professional.show', $user->id)}}"><button type="button"
     class="btn btn-info float-left mr-2">Show</button></a>
                                             
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
     class="btn btn-primary float-left mr-2">Edit</button></a>
                                             
     <form action="{{route('users.destroy', $user->id) }}" method="POST"
-    class="float-right"> 
+    class="float-right">
     @csrf
     {{ method_field('DELETE') }}
-    <button type="submit" class="btn btn-danger  mr-2" onclick="return confirm ('are you sure?')">Delete</button>
+    <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
 
     </form>
                                             
@@ -68,15 +68,13 @@
     </tr>
     @endforeach
 
-    </tbody>
+       </tbody>
          </table>
-    </div>
-    </div>
-    </div>
-  <!-- /.content-wrapper -->
-  @include('admin.layouts.footer')
-       
-
-
+                        
+        </div>
+          </div>
+          </div>
+    <!-- /.content-wrapper -->
+    @include('admin.layouts.footer')
 
 

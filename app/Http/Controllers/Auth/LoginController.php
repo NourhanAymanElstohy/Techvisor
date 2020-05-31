@@ -47,7 +47,11 @@ class LoginController extends Controller
         {
             if(auth()->user()->hasRole('super-admin'))
             {
-                return redirect()->route('admin.users.index');
+                $userId = Auth::id();
+                $user = User::find($userId);
+                return view('admin.index',[
+                    'user' => $user
+                ]); 
             } 
         
         

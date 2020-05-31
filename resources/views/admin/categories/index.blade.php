@@ -1,4 +1,3 @@
-
 @include('admin.layouts.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -13,45 +12,49 @@
   @include('admin.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  <div class="container col-8">
-    <div class="align-items-center mb-2 mt-2">
-      <a href="{{route('categories.create')}}" class="btn btn-success btn-sm ">Create New Category</a>
-    </div>
+  <div class="container">
+  <div class="p-3" style="text-align:center">
+    <h1 style="color:#3cb371"><strong>Categories</strong></h1>
 
 
-    <table class="table">
+    <table id="example" class="table table-striped table-bordered" style="width:80rem%">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">created At</th> 
-          {{-- <th scope="col">Created By</th> --}}
-          <th scope="col" colspan="2">Actions</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>created At</th> 
+          {{-- <th>Created By</th> --}}
+          <th>Actions</th>
         </tr>
       </thead>
     <tbody>
     @foreach ($categories as $category)
       <tr>
-        <th scope="row">{{$category->id}}</th>
+        <th>{{$category->id}}</th>
         <td>{{$category->name}}</td>
         <td>{{$category->created_at->format('d-m-Y')}}</td>  
         {{-- <td>Admin: {{$category->user ? $category->user->role :'not exist!'}}</td> --}}
       
-          <td>
-            <div class="row">
-              <a href="{{route('categories.edit',['category' => $category->id])}}" class="btn btn-success btn-sm mr-2">Edit</a>
-              <form method="POST" action="{{route('categories.destroy',['category' => $category->id])}}">
+          <td> 
+              <a href="{{route('categories.edit',['category' => $category->id])}}"
+               class="btn btn-primary float-center mr-2">Edit</a>
+               <a href="{{route('categories.show',['category' => $category->id])}}"
+               class="btn btn-info float-left mr-2">Show</a>
+              <form method="POST" action="{{route('categories.destroy',['category' => $category->id])}}"
+              class="float-right">
                 @csrf  
                 @method('DELETE')
-                <button class="btn btn-secondary btn-sm " onclick="return confirm ('are you sure?')">Delete</button>
+                <button class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
               </form>
-            </div>
           </td>
       </tr>
       @endforeach
     </tbody>
   </table>
   </div>
-  {{-- @include('admin.layouts.footer') --}}
+  </div>
+    <!-- /.content-wrapper -->
+    @include('admin.layouts.footer')
+
 
 

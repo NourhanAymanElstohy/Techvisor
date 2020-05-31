@@ -13,13 +13,15 @@
   @include('admin.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+  <div class="container">
+  <div class="p-3" style="text-align:center">
+    <h1 style="color:#3cb371"><strong>Categorie</strong></h1>
 
-  <div class="container m-5">
     <div class="row">
     {{-- @foreach($profs as $prof)  --}}
         <div class="col-3">
             <div class="card ">
-                <div class="card-header text-center bg-primary text-light">
+                <div class="card-header text-center bg-success text-light">
                     Professional Data
                 </div>
                 <div class="card-body">
@@ -34,5 +36,6 @@
   <!-- /.content-wrapper -->
 
   @include('admin.layouts.footer')
+
 
 
