@@ -75,7 +75,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Categories') }}</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select" name="categories" multiple>
+                                <select class="custom-select" name="categories[]" multiple>
                                     @foreach($categories as $cat)
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                      @endforeach
