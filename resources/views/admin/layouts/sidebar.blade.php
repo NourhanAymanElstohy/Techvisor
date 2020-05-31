@@ -60,6 +60,14 @@
                   <p>Categories</p>
                 </a>
               </li>
+            
+
+          <li class="nav-item">
+                <a href="{{route('questions.index')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Questions</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -83,6 +91,13 @@
                 <a href="{{route('categories.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Categorie</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('questions.create')}}"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Question</p>
                 </a>
               </li>
             </ul>

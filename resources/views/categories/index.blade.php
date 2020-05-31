@@ -14,7 +14,7 @@
                   <a href="{{route('categories.show',['category' => $category->id])}}">{{$category->name}}</a>
               </li>
               @endforeach
-          </ul>
+          </ul> 
       </nav>
 
     </div>

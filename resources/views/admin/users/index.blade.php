@@ -53,16 +53,15 @@
     class="float-right"> 
     @csrf
     {{ method_field('DELETE') }}
-    <button type="submit" class="btn btn-danger  mr-2" onclick="return confirm ('are you sure?')">Delete</button>
-
+    <button type="submit" class="btn btn-danger   mr-2" onclick="return confirm ('are you sure?')">Delete</button>
     </form>
                                             
     @if ($user->isNotBanned())                
     <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-dark float-right mr-2">Ban</a>
+     class="btn btn-dark float-right  mr-2">Ban</a>
     @else
     <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-success float-right mr-2">Unban</a>
+     class="btn btn-success float-right  mr-2">Unban</a>
     @endif
     </td>
     </tr>
