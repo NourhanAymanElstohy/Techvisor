@@ -59,7 +59,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $user = new User;
         $user->name = $request->name;
@@ -80,13 +80,14 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $request = request();
+    {
+        $request = request();
         $userId = $request->user;
         $user = User::find($userId);
-        
+
         return view('admin.users.show', [
-             'user' => $user
-                     ]);
+            'user' => $user
+        ]);
     }
 
     /**
@@ -152,15 +153,8 @@ class UsersController extends Controller
         $user = User::find($userId);
         if ($user->isNotBanned()) {
             $user->ban();
-            // User::where('id', $userId)->update([
-            //     'is_banned' => true,
-
-            // ]);
         } else {
             $user->unban();
-            // User::where('id', $userId)->update([
-            //     'is_banned' => false,
-            // ]);
         }
         return redirect()->route('admin.users.index');
     }

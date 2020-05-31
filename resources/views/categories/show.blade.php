@@ -11,7 +11,6 @@
                     <a href="{{route('profs.show',['prof' => $prof->id])}}" class="text-light">{{$prof->name}}</a>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><b>Name: {{$prof->name}} </b> </p>
                     <a href="{{route('questions.createprof',['prof'=> $prof->id])}}" class="btn btn-primary btn-sm">ask</a>
                 </div>
             </div>
