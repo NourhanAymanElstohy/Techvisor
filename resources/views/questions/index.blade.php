@@ -16,6 +16,7 @@
       <th scope="col">question</th>
       <th scope="col">answer</th>
       <th scope="col">user</th>
+      <th scope="col">professional</th>
       <th scope="col">state</th>
       <th scope="col">created_at</th>
       <th colspan="3" scope="col-3">actions</th>
@@ -32,6 +33,7 @@
       <td>{{$question?$question->question:""}}</td>
       <td>{{ $question->answer ? $question->answer->answer : 'not exist'}}</td>
       <td>{{ $question->user ? $question->user->name : 'not exist'}}</td>
+      <td>{{ $question->prof ? $question->prof->name : 'not exist'}}</td>
       <td>{{$question?$question->state:""}}</td>
       <td>{{$question?$question->created_at:""}}</td>
      

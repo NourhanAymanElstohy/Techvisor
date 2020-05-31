@@ -1,10 +1,23 @@
-{{-- @role('super-admin')
+
     @extends('admin.index')
 
     @section('content')
     <form method="POST" action="{{route('questions.store')}}">
       @csrf
         <div class="form-group">
+        @if ($prof)
+            <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
+        @else
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Users</label>
+    <select name="prof" class="form-control ">
+        @foreach($users as $user)  
+          <option value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+        </select>
+      </div>
+
+        @endif
             <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>
             <textarea class="form-control" name="question" rows="3"></textarea>
         </div>
@@ -24,32 +37,7 @@
 
 
     @endsection    
-@endrole --}}
 
 
 
-@role('user')
-@extends('layouts.app')
-@section('content')
-  <form method="POST" action="{{route('questions.store')}}">
-      @csrf
-      <div class="container col-6">
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">ASK YOUR QUESTION</label>
-            <textarea class="form-control" name="question" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-        <label for="exampleFormControlSelect1">state</label>
-        <select name="state" class="form-control ">
-            
-              <option value="public">public</option>
-              <option value="private">private</option>
-          
-            </select>
-      </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form> 
-@endsection
-@endrole
