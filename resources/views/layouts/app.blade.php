@@ -89,6 +89,7 @@
                                 @endforeach
                                 @foreach((auth()->user())->readNotifications as $notification)
                                     <a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                            
                                             {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
                                             
                                             <?php echo("</br>") ?>
