@@ -55,10 +55,9 @@
   <!-- /.content-wrapper -->
 
   @include('admin.layouts.footer')
-  @endrole
 
 
-@role('user')
+@else
 @include('layouts.app')
   <div class="container">
   <div class="p-3" style="text-align:center">
