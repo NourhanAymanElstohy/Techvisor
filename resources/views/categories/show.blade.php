@@ -12,7 +12,8 @@
                 </div>
                 <div class="card-body">
                     <a href="{{route('questions.createprof',['prof'=> $prof->id])}}" class="btn btn-primary btn-sm">ask</a>
-                </div>
+                    <a href="/zoom/{{$prof->id}}" class="btn btn-primary btn-sm">zoom</a>
+                    </div>
             </div>
         </div>
         @endforeach

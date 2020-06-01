@@ -79,23 +79,43 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                               
-                                @foreach((auth()->user())->unreadNotifications as $notification)
-                                    <a class="dropdown-item bg-secondary"  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-                                            {{$notification->markAsRead()}}
-                                            <?php echo("</br>") ?>
-                                    </a>
-                                @endforeach
-                                @foreach((auth()->user())->readNotifications as $notification)
-                                    <a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-                                            
-                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-                                            
-                                            <?php echo("</br>") ?>
-                                    </a>
-                                @endforeach
-
+                                @foreach((auth()->user())->notifications as $notification)
                                 
+                                    @if($notification->type=='App\Notifications\NewQuestion')
+                                            @if($notification->unread())
+                                                    <a class="dropdown-item bg-secondary"  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                                        {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+                                                        {{$notification->markAsRead()}}
+                                                        <?php echo("</br>") ?>
+                                                    </a>
+                                            @else
+                                                    <a class="dropdown-item"  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+                                                            {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+                                                            {{$notification->markAsRead()}}
+                                                            <?php echo("</br>") ?>
+                                                    </a>
+
+                                            @endif  
+                                    @else
+                                            @if($notification->unread())
+                                                    <a class="dropdown-item bg-secondary"  href="#">
+                                                            {{$notification->data['user_name'] }} want to zoom meeting
+                                                            {{$notification->markAsRead()}}
+                                                            <?php echo("</br>") ?>
+                                                    </a>
+                                            @else  
+                                                     <a class="dropdown-item "  href="#">
+                                                            {{$notification->data['user_name'] }} want to zoom meeting
+                                                            {{$notification->markAsRead()}}
+                                                            <?php echo("</br>") ?>
+                                                    </a>
+
+                                            @endif        
+                                    @endif 
+                                 
+                                   
+                                @endforeach
+                           
                                 </div>
                                 
                             </li>
