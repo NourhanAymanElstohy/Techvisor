@@ -17,8 +17,8 @@
                     you are logedin<br>
                     Go to 
                     <a href="{{route('categories.index')}}">Categories</a><br/>
-                    <a href="{{route('users.edit')}}">edit your profile</a><br>
-                    
+                    <a href="{{route('questions.index')}}">Questions</a><br/>
+
                 </div>
             </div>
         </div>

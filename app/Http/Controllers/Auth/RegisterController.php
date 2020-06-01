@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+
 class RegisterController extends Controller
 {
     /*
@@ -72,6 +74,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role'=>$data['role'],
         ]);
+
+        $categories=$data['categories'];
+        $user->category()->attach($categories);
+
         $role =$data['role'];
         if ($role=='1'){
             $user->assignRole('user');
@@ -80,5 +86,10 @@ class RegisterController extends Controller
             $user->assignRole('professional');
         }
         return $user;
+    }
+    public  function  showRegistrationForm()
+    {
+        $categories= Category::all();
+        return view('auth.register', compact('categories'));
     }
 }

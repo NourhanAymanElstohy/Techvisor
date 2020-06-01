@@ -13,13 +13,12 @@
   @include('admin.layouts.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
-  @section('content')
-<div class="container col-6">
-    <form method="POST" action="{{route('admin.users.store')}}" class="mb-4">
+<div class="container">
+<div class="p-3" style="text-align:center">
+    <form method="POST" action="{{route('users.store')}}">
         @csrf
-        <h1 class="mt-5 text-center">Create New User</h1>
-        <div class="form-group mt-5">
+        <h1 style="color:#3cb371"><strong>Create New User</strong></h1>
+        <div class="form-group ">
             <label >Name</label>
             <input name="name" type="text" required class="form-control">
         </div>
@@ -54,8 +53,12 @@
 </div>
 
   </div>
+  </div>
+  </div>
   <!-- /.content-wrapper -->
-
   @include('admin.layouts.footer')
+
+
+
 
 

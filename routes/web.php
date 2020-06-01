@@ -24,23 +24,40 @@ Route::get('/style', function () {
     return view('style.home');
 });
 //============== Admin =========================
-//
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['role:super-admin'])->group(function () {
-    Route::resource('/users', 'UsersController');
-    Route::resource('/professional', 'ProfessionalController');
-    Route::resource('/user', 'UserController');
-    Route::get('/users/{user}/ban', 'UsersController@banned')->name('users.banned');
+Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
+
+//================== Users ======================
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/users', 'UserController@index')->name('users.index')->middleware(['role:super-admin']);
+    Route::get('/allusers', 'UserController@allUsers')->name('allUsers.index')->middleware(['role:super-admin']);
+    Route::get('/users/create', 'UserController@create')->name('users.create')->middleware(['role:super-admin']);
+    Route::post('/users', 'UserController@store')->name('users.store')->middleware(['role:super-admin']);
+    Route::get('/users/{user}', 'UserController@show')->name('user.show');
+    Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit')->middleware(['role:super-admin|user']);
+    Route::put('/users/{user}', 'UserController@update')->name('users.update')->middleware(['role:super-admin|user']);
+    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware(['role:super-admin|user']); 
+    Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']); 
 });
+
+//================= Professional ===============
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']); 
+    Route::get('/professionals/{prof}', 'ProfessionalController@show')->name('professional.show');
+    Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
+    Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
+    Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']); 
+
+    });
 
 //================= Categories =================
 Route::group(['middleware' => 'is-ban'], function () {
     Route::get('/categories', 'CategoryController@index')->name('categories.index');
-    Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
-    Route::post('/categories', 'CategoryController@store')->name('categories.store');
+    Route::get('/categories/create', 'CategoryController@create')->name('categories.create')->middleware(['role:super-admin']); 
+    Route::post('/categories', 'CategoryController@store')->name('categories.store')->middleware(['role:super-admin']); 
     Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
-    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
-    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
-    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')->middleware(['role:super-admin']); 
+    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update')->middleware(['role:super-admin']); 
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy')->middleware(['role:super-admin']); 
 });
 
 
@@ -56,21 +73,6 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 });
 
-//================== Users ======================
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/users/edit', 'UserController@edit')->name('users.edit');
-    Route::post('/users/update', 'UserController@update')->name('users.update');
-    Route::get('/users', 'UserController@index')->name('user.index');
-    Route::get('/users/{user}', 'UserController@show')->name('user.show');
-});
-
-//================= Professional ===============
-Route::get('/professionals/{prof}', 'UserController@show')->name('profs.show');
-Route::get('/professionals', 'ProfessionalController@index')->name('professional.index');
-// Route::get('/professionals/show', 'ProfessionalController@show')->name('professional.show2');
-Route::get('/professionals/edit', 'ProfessionalController@edit')->name('professionals.edit');
-Route::post('/professionals/update', 'ProfessionalController@update')->name('professionals.update');
-
 //////////////////////////////////////style//////////////////////////////
 
 Route::get('/style', function () {
@@ -82,6 +84,6 @@ Route::get('/style/profile', function () {
 Route::get('/style/about', function () {
     return view('style.about');
 });
-Route::get('/style/questions', function () {
-    return view('style.questions');
+Route::get('/style/categories', function () {
+    return view('style.categories');
 });

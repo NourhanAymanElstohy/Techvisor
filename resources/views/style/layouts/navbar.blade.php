@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="{{ url('design/style') }}/index-2.html" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
+						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -24,26 +24,14 @@
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
 									About Us
 								</a>
-								<ul>
-									<li><a href="{{ url('design/style') }}/companies.html" title="">Companies</a></li>
-									<li><a href="{{ url('design/style') }}/company-profile.html" title="">Company Profile</a></li>
-								</ul>
+								
 							</li>
+						
 							<li>
-								<a href="/style/questions" title="">
-									<span><img src="{{ url('design/style') }}/images/icon3.png" alt=""></span>
-									questions
-								</a>
-							</li>
-							<li>
-								<a href="{{ url('design/style') }}/profiles.html" title="">
+								<a href="/style/profile" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
-									Profiles
+									Profile
 								</a>
-								<ul>
-									<li><a href="/style/profile" title="">User Profile</a></li>
-									<li><a href="{{ url('design/style') }}/my-profile-feed.html" title="">my-profile-feed</a></li>
-								</ul>
 							</li>
 	
 							<li>
