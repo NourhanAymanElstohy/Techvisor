@@ -14,7 +14,7 @@
           <img src="{{ asset('design/AdminLTE/dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <h5 style="color:#3cb371"><strong>Admin</strong></h5>
         </div>
       </div>
 
