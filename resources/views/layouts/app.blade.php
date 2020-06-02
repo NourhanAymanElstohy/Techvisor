@@ -166,7 +166,29 @@
 								</div><!--cm-logo end-->	
 								<img src="{{ url('design/style') }}/images/cm-main-img.png" alt="">			
 							</div><!--cmp-info end-->
+                        </div>
+                        
+
+
+
+
+
+                        <div class="col-lg-6">
+                        <div class="login-sec">
+            @yield('content')
+</div>
 						</div>
+
+
+
+
+
+
+
+
+
+
+
 						
 					</div>	
 
