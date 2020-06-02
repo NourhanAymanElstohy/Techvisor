@@ -27,7 +27,7 @@
       <th>Professional</th>
       <th>State</th>
       <th>Created_at</th>
-      <th>Actions</th>
+      <th colspan="3" scope="col-3">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -44,12 +44,12 @@
       
       <td>
         <a href="{{route('questions.show',['question'=> $question->id])}}"
-         class="btn btn-info float-left mr-2">Show</a>
+         class="btn btn-info float-left mr-2">Show</a></td>
 
-        <a href="{{route('questions.edit',['question'=> $question->id])}}"
-         class="btn btn-primary float-center mr-2 ">Edit</a>
+         <td> <a href="{{route('questions.edit',['question'=> $question->id])}}"
+         class="btn btn-primary float-center mr-2 ">Edit</a></td>
 
-        <a class="btn btn-danger float-right" href="#" role="button" data-toggle="modal"
+         <td> <a class="btn btn-danger float-right" href="#" role="button" data-toggle="modal"
          data-target="#delete-modal-{{$question->id}}">Delete</a>
       <div class="modal fade" id="delete-modal-{{$question->id}}" tobindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog" role="document">

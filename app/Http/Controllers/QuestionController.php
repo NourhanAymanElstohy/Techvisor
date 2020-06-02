@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+
+use App\Notifications\NewZoom;
 use App\Question;
 use App\User;
 
@@ -86,5 +88,12 @@ class QuestionController extends Controller
 
         return redirect()->route('questions.index');
 
+    }
+    public function zoom(){
+        $request = request();
+        $user = Auth::user();
+        $userId = $request->zoom;
+        $prof=User::find($userId);
+        $prof->notify(new NewZoom($user));
     }
 }
