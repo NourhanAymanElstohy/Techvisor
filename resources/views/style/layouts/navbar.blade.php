@@ -28,7 +28,7 @@
 							</li>
 						
 							<li>
-								<a href="/style/profile" title="">
+								<a href="{{route('user.show',['user'=> $user->id])}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									Profile
 								</a>
@@ -95,10 +95,11 @@
 					<div class="user-account">
 						<div class="user-info">
 							<img src="{{ url('design/style') }}/images/resources/user.png" alt="">
-							<a href="#" title="">John</a>
+							<a href="#" title="">{{$user->name}}</a>
 							<i class="la la-sort-down"></i>
 						</div>
 						<div class="user-account-settingss" id="users">
+						@hasanyrole('professional|super-admin')
 							<h3>Online Status</h3>
 							<ul class="on-off-status">
 								<li>
@@ -120,6 +121,7 @@
 									</div>
 								</li>
 							</ul>
+							@endhasanyrole
 							<h3>Custom Status</h3>
 							<div class="search_form">
 								<form>

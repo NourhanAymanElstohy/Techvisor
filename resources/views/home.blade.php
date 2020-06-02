@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center"> 
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
@@ -18,6 +18,7 @@
                     Go to 
                     <a href="{{route('categories.index')}}">Categories</a><br/>
                     <a href="{{route('questions.index')}}">Questions</a><br/>
+
 
                 </div>
             </div>

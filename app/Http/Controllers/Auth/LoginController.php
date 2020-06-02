@@ -47,15 +47,19 @@ class LoginController extends Controller
         {
             
             if(auth()->user()->hasRole('super-admin'))
-            {
-                return view('admin.index'); 
+            {   $userId = Auth::id(); 
+                $user = User::find($userId);
+                return view('admin.index',[
+                    'user' => $user
+                ]); 
             }
 
-            if(auth()->user()->hasRole('user')){
+            else
+            {
             $userId = Auth::id(); 
             $user = User::find($userId);
             //dd($user);
-            return view('home',[
+            return view('style/home',[
                 'user' => $user
             ]); 
             }
