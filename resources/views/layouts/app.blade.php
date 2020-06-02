@@ -155,17 +155,32 @@
 		<div class="sign-in-page">
 			<div class="signin-popup">
 				<div class="signin-pop">
+
+
+                <div class="row">
+						<div class="col-lg-6">
+							<div class="cmp-info">
+								<div class="cm-logo">
+									<img src="{{ url('design/style') }}/images/cm-logo.png" alt="">
+									<p>Workwise,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+								</div><!--cm-logo end-->	
+								<img src="{{ url('design/style') }}/images/cm-main-img.png" alt="">			
+							</div><!--cmp-info end-->
+						</div>
+						
+					</div>	
+
+
+
+
 						
 				</div><!--signin-pop end-->
-			</div><!--signin-popup end-->
-			
-		</div><!--sign-in-page end-->
+            </div><!--signin-popup end-->
+            
 
 
-	</div><!--theme-layout end-->
-  
-    
-	<div class="footy-sec">
+
+            <div class="footy-sec">
 				<div class="container">
 					<ul>
 						<li><a href="help-center.html" title="">Help Center</a></li>
@@ -181,6 +196,18 @@
 					<p><img src="{{ url('design/style') }}/images/copy-icon.png" alt="">Copyright 2019</p>
 				</div>
 			</div><!--footy-sec end-->
+
+
+
+
+			
+		</div><!--sign-in-page end-->
+
+
+	</div><!--theme-layout end-->
+  
+    
+
 
 
 
