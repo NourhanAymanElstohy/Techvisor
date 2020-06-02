@@ -25,6 +25,7 @@ Route::get('/style', function () {
 });
 //============== Admin =========================
 Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
+Route::get('/dashBoard', 'UserController@dashBoard')->name('user.dashBoard');
 
 //================== Users ======================
 Route::group(['middleware' => 'auth'], function () {

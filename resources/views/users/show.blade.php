@@ -201,8 +201,7 @@
 						
 						
 						
-							@include('style.layouts.sidebar')
-						
+							@include('categories.index')
 						</div>
 					</div><!-- main-section-data end-->
 				</div> 

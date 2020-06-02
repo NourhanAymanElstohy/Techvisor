@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
+
 
 class LoginController extends Controller
 {
@@ -58,9 +60,11 @@ class LoginController extends Controller
             {
             $userId = Auth::id(); 
             $user = User::find($userId);
+            $categories = Category::all();
             //dd($user);
             return view('style/home',[
-                'user' => $user
+                'user' => $user,
+                'categories' => $categories
             ]); 
             }
         

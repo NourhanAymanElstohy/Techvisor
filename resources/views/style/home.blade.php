@@ -20,8 +20,8 @@
 				<div class="container">
 					<div class="main-section-data">
 						<div class="row">
-						@include('style.layouts.sidebar')
-							<div class="col-lg-6 col-md-8 no-pd">
+						@include('categories.index')
+					 		<div class="col-lg-6 col-md-8 no-pd">
 								<div class="main-ws-sec">
 									
 									<div class="posts-section">
