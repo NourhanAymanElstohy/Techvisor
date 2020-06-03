@@ -20,20 +20,12 @@
 								</a>
 							</li>
 							<li>
-								<a href="/style/about" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									About Us
-								</a>
-								
-							</li>
-						
-							<li>
 								<a href="{{route('user.show',['user'=> $user->id])}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									Profile
 								</a>
 							</li>
-	
+							
 							<li>
 								<a href="#" title="" class="not-box-open">
 									<span><img src="{{ url('design/style') }}/images/icon7.png" alt=""></span>
@@ -86,6 +78,13 @@
 						  				</div>
 									</div><!--nott-list end-->
 								</div><!--notification-box end-->
+							</li>
+							<li>
+								<a href="/style/about" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
+								</a>
+								
 							</li>
 						</ul>
 					</nav><!--nav end-->
