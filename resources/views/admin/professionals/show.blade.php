@@ -33,9 +33,9 @@
           <td>{{$user->name}}</td>
           <td>{{$user->email}}</td>
           <td>{{$user->roles->implode('name', ',')}}</td>
-        @if($user->status=='online')
+        @if($user->status==1)
           <td>Active</td>
-        @elseif($user->status=='offline')
+        @elseif($user->status==0)
           <td>Inactive</td>  
         @endif 
         <td>{{ $user->banned_at }}</td>

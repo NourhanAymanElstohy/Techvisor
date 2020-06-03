@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -185,16 +185,6 @@ class UserController extends Controller
             ]);
         }
 
-        public function dashBoard()
-    {
-        // admin only view all have adminspermission  
-        $categories = Category::all();           
-        $request=request();
-        $userId = Auth::id();
-        $user = User::find($userId);
-        return view('style/home', [
-            'user' => $user,
-            'categories' => $categories
-        ]);
-    }
+       
+ 
 }

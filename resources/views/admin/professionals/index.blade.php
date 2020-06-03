@@ -15,7 +15,12 @@
         <div class="container">
         <div class="p-3" style="text-align:center">
         <h1 style="color:#3cb371"><strong>Professionals</strong></h1>
-
+        <div class="p-2">
+       <a href="{{route('users.create')}}"><button type="button"
+        class="btn btn-success float-left">Create User</button></a>
+        </div>
+        
+        
     
     <table id="example" class="table table-striped table-bordered" style="width:80rem%">
     <thead>
@@ -36,9 +41,9 @@
     <td>{{$user->name}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->roles->implode('name', ',')}}</td>
-    @if($user->status=='online')
+    @if($user->status=='0')
         <td>Active</td>
-    @elseif($user->status=='offline')
+    @elseif($user->status=='1')
         <td>Inactive</td>  
     @endif 
     <td>{{ $user->banned_at }}</td>

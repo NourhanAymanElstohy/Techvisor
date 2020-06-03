@@ -82,6 +82,19 @@ class ProfessionalController extends Controller
 
       return redirect()->route('home');
       } 
-    }       
+    }      
+    
+    public function changeStatus($id)
+    {  
+      $user = User::findOrFail($id);
+      //dd($user);
+      $user->status =! $user->status;
+      if ($user->save()){
+        return redirect()->route('users.style');
+    } else {
+        return redirect()->route('professionals.changestatus');
+      } 
+         
         
+}
 }

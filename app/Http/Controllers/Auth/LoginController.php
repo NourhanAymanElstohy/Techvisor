@@ -49,23 +49,14 @@ class LoginController extends Controller
         {
             
             if(auth()->user()->hasRole('super-admin'))
-            {   $userId = Auth::id(); 
-                $user = User::find($userId);
-                return view('admin.index',[
-                    'user' => $user
-                ]); 
+            {  
+                return view('admin.index'); 
             }
 
             else
             {
-            $userId = Auth::id(); 
-            $user = User::find($userId);
-            $categories = Category::all();
-            //dd($user);
-            return view('style/home',[
-                'user' => $user,
-                'categories' => $categories
-            ]); 
+                return redirect()->route('style.home');  
+             
             }
         
     }

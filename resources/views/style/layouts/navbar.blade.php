@@ -102,24 +102,41 @@
 						@hasanyrole('professional|super-admin')
 							<h3>Online Status</h3>
 							<ul class="on-off-status">
-								<li>
+
+							<li> 										
+									<div class="fgt-sec">
+										<input type="radio" name="cc" id="c5">
+										<label for="c5">
+										</label>
+										@if($user->status==0)
+										  <small>You Are Online</small>
+                                        @elseif($user->status==1)
+										  <small>You Are Offline</small>
+                                        @endif  
+									</div>
+						    </li>
+
+							@if($user->status==0) 
+								<li> 										
 									<div class="fgt-sec">
 										<input type="radio" name="cc" id="c5">
 										<label for="c5">
 											<span></span>
 										</label>
-										<small>Online</small>
+										<small><a href="{{route('professionals.changestatus',$user->id)}}">Offline</a></small>
 									</div>
 								</li>
+								@else
 								<li>
 									<div class="fgt-sec">
 										<input type="radio" name="cc" id="c6">
 										<label for="c6">
 											<span></span>
-										</label>
-										<small>Offline</small>
+										</label> 
+										<small><a href="{{route('professionals.changestatus', $user->id)}}">Online</a></small>
 									</div>
 								</li>
+								@endif
 							</ul>
 							@endhasanyrole
 							<h3>Custom Status</h3>
