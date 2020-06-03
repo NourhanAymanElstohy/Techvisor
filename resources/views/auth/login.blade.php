@@ -4,7 +4,7 @@
 <div class="main-section">
 
 <div class="container">
-    <div class="main-section-data row">
+    <div class="justify-content-center row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
