@@ -1,5 +1,5 @@
 
-@extends('style.index')
+@extends('layouts.app')
 @section('content')
 		
 

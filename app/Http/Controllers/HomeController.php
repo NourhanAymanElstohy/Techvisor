@@ -52,7 +52,7 @@ class HomeController extends Controller
         $request=request();
         $userId = Auth::id();
         $user = User::find($userId);
-        return view('style/home', [
+        return view('home', [
             'user' => $user,
             'categories' => $categories
         ]);

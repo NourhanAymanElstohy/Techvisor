@@ -4,7 +4,7 @@
 
 <div class="search-sec">
 			<div class="container">
-				<div class="search-box">
+				<div class="search-box"> 
 					<form>
 						<input type="text" name="search" placeholder="Search keywords">
 						<button type="submit">Search</button>

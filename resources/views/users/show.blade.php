@@ -1,6 +1,6 @@
 
 
-  @extends('style.index')
+  @extends('layouts.app')
 @section('content')
 
 <div class="wrapper">

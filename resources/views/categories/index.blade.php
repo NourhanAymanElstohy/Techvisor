@@ -1,3 +1,5 @@
+
+
 <div class="col-lg-3 col-md-4 pd-left-none no-pd">
 								<div class="main-left-sidebar no-margin">
 
@@ -16,7 +18,7 @@
 													<div class="post-st">
 
 											<ul>
-                                             <li>
+                                             <li> 
                                                 <a href="{{route('categories.show',['category' => $category->id])}}">
 				                               {{$category->name}}</a>
                                              </li>

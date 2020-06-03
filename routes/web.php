@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //========= Home ==============================
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('home');
-})->middleware('auth');
+})->middleware('auth'); */
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/', 'HomeController@home')->name('home')->middleware('auth');
 
 //============== Admin =========================
 Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
