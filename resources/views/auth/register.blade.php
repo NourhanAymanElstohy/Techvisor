@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -95,9 +93,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+     
 {{--    <script language="JavaScript">--}}
 {{--const  role=document.getElementById('role-option');--}}
 {{--const cat =document.getElementById('cat-section');--}}
