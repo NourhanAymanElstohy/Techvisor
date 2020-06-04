@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 //================= Professional ===============
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']); 
-    Route::get('/professionals/{prof}', 'ProfessionalController@show')->name('professional.show');
+    Route::get('/professionals/{professional}', 'ProfessionalController@show')->name('professional.show');
     Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
     Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']); 
