@@ -9,7 +9,7 @@
             <div class="companies-list">
 				<div class="row">
 
-                    {{-- Professional data --}}
+                    
                 @foreach($profs as $prof)     
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="company_profile_info">
@@ -25,6 +25,7 @@
                         </div>
                     </div>
                 @endforeach
+                
                 
                 </div>
             </div>

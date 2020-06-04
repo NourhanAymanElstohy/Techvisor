@@ -6,7 +6,7 @@
     <div class="container">
         <div class="search-box">
             <form>
-                <input type="text" name="search" placeholder="Search keywords">
+                <input type="text" name="search" class="text-dark" placeholder="Search keywords">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -23,6 +23,16 @@
                     
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
+                            <div class="post-topbar">
+                                <div class="user-picy">
+                                    {{-- <img src="images/resources/user-pic.png" alt=""> --}}
+                                </div>
+                                <div class="post-st">
+                                    <ul>
+                                        <li><a class="post-jb active" href="#" title="">Post a Public Question</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="posts-section">
                                 <div class="top-profiles">
                                     <div class="pf-hd">
@@ -64,10 +74,6 @@
                                                     class="la la-ellipsis-v"></i></a>
                                             <ul class="ed-options">
                                                 <li><a href="#" title="">Edit Post</a></li>
-                                                {{-- <li><a href="#" title="">Unsaved</a></li>
-                                                <li><a href="#" title="">Unbid</a></li>
-                                                <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
@@ -78,40 +84,20 @@
                                             <li><img src="{{ url('design/style') }}/images/icon9.png"
                                                     alt=""><span>Question</span></li>
                                         </ul>
-                                        {{-- <ul class="bk-links">
-                                            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                            <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul> --}}
+                                        
                                     </div>
                                     <div class="job_descp">
-                                        {{-- <h3>Senior Wordpress Developer</h3>
-                                        <ul class="job-dt">
-                                            <li><a href="#" title="">Full Time</a></li>
-                                            <li><span>$30 / hr</span></li>
-                                        </ul> --}}
+                                       
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
                                             hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
-                                            {{-- <a href="#" title="">view more</a></p> --}}
-                                        {{-- <ul class="skill-tags">
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                        </ul> --}}
+                                          
                                     </div>
                                     <div class="job-status-bar">
                                         <ul class="like-com">
-                                            {{-- <li>
-                                                <a href="#"><i class="fas fa-heart"></i> Like</a>
-                                                <img src="{{ url('design/style') }}/images/liked-img.png" alt="">
-                                                <span>25</span>
-                                            </li> --}}
+                                       
                                             <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Answers
                                                     </a></li>
                                         </ul>
-                                        {{-- <a href="#"><i class="fas fa-eye"></i>Views 50</a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -177,22 +163,8 @@
         <div class="post-project-fields">
             <form>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="price-br">
-                            <h1> Who Can See This ? </h1>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="inp-field">
-                            <select>
-                                <option>Public </option>
-                                <option>Private</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-lg-12">
-                        <textarea name="Question" placeholder="Question"></textarea>
+                        <textarea name="question" placeholder="Question"></textarea>
                     </div>
                     <div class="col-lg-12">
                         <ul>
