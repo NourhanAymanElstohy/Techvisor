@@ -80,5 +80,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # consulting-IT-app
 
+## Zoom
+
+Add this to your .env file
+
 -   ZOOM_CLIENT_KEY=8aXN_Pr2R9OOdr23rerOeQ
 -   ZOOM_CLIENT_SECRET=eWOGBQK61MiSpY4sEJzmdy3NNSq2toOShgTC
