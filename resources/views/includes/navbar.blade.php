@@ -13,7 +13,6 @@
 
                 <nav>
                     <ul>
-                        
                         <li>
                         <a href="{{route('home')}}" title="">
                                 <span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
@@ -107,7 +106,7 @@
                         </li>
                         @endauth
                         <li>
-                            <a href="/style/about" title="">
+                            <a href="{{route('about')}}" title="">
                                 <span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
                                 About Us
                             </a>

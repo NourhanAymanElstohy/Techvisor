@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
-
+Route::get('/about', function () {
+    return view('/about');
+})->name('about');
 //============== Admin =========================
 Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
 Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');
