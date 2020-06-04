@@ -110,8 +110,6 @@
                                 <span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
                                 About Us
                             </a>
-
-
                         </li>
                         @guest
                         <li>
