@@ -26,7 +26,7 @@
 							
 						@Auth
 						<li>
-						@role('user')
+						@hasanyrole('super-admin|user')
 								<a href="{{route('user.show', Auth::user()->id)}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
@@ -36,7 +36,7 @@
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@endrole
+								@endhasanyrole
 							</li>
 
 
@@ -159,7 +159,7 @@
 										<label for="c6">
 											<span></span>
 										</label> 
-										<small><a href="{{route('professionals.changestatus', $user->id)}}">Online</a></small>
+										<small><a href="{{route('professionals.changestatus', Auth::user()->id)}}">Online</a></small>
 									</div>
 								</li>
 								@endif
@@ -174,7 +174,6 @@
 							<li><a href="{{route('users.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
 							@endrole	
 								<li><a href="#" title="">Privacy</a></li>
-								<li><a href="#" title="">Terms & Conditions</a></li>
 							</ul>
 						
 
