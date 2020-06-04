@@ -18,16 +18,20 @@
         <div class="container">
             <div class="main-section-data">
                 <div class="row">
+
                     @include('categories.index')
+                    
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
                             <div class="posts-section">
                                 <div class="top-profiles">
                                     <div class="pf-hd">
-                                        <h3>Top Profiles</h3>
-                                        <i class="la la-ellipsis-v"></i>
+                                        <h3>Top Professionals Rates</h3>
+                                        <!--i class="la la-ellipsis-v"></i-->
                                     </div>
                                     <div class="profiles-slider">
+
+                                        <!--- top professionals by rate -->
                                         <div class="user-profy">
                                             <img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
                                             <h3>John Doe</h3>
@@ -39,71 +43,12 @@
                                             </ul>
                                             <a href="/style/profile" title="">View Profile</a>
                                         </div>
-
-                                        <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASk</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user3.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">Ask</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASk</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASK</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user3.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASK</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
+                                        
                                     </div>
                                     <!--profiles-slider end-->
                                 </div>
                                 <!--top-profiles end-->
+
                                 <div class="post-bar">
                                     <div class="post_topbar">
                                         <div class="usy-dt">
@@ -119,60 +64,60 @@
                                                     class="la la-ellipsis-v"></i></a>
                                             <ul class="ed-options">
                                                 <li><a href="#" title="">Edit Post</a></li>
-                                                <li><a href="#" title="">Unsaved</a></li>
+                                                {{-- <li><a href="#" title="">Unsaved</a></li>
                                                 <li><a href="#" title="">Unbid</a></li>
                                                 <li><a href="#" title="">Close</a></li>
-                                                <li><a href="#" title="">Hide</a></li>
+                                                <li><a href="#" title="">Hide</a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="epi-sec">
                                         <ul class="descp">
-                                            <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>Epic
-                                                    Coder</span></li>
+                                            <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>
+                                                    Category Name</span></li>
                                             <li><img src="{{ url('design/style') }}/images/icon9.png"
-                                                    alt=""><span>India</span></li>
+                                                    alt=""><span>Question</span></li>
                                         </ul>
-                                        <ul class="bk-links">
+                                        {{-- <ul class="bk-links">
                                             <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
                                             <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                             <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="job_descp">
-                                        <h3>Senior Wordpress Developer</h3>
+                                        {{-- <h3>Senior Wordpress Developer</h3>
                                         <ul class="job-dt">
                                             <li><a href="#" title="">Full Time</a></li>
                                             <li><span>$30 / hr</span></li>
-                                        </ul>
+                                        </ul> --}}
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
                                             hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
-                                            <a href="#" title="">view more</a></p>
-                                        <ul class="skill-tags">
+                                            {{-- <a href="#" title="">view more</a></p> --}}
+                                        {{-- <ul class="skill-tags">
                                             <li><a href="#" title="">HTML</a></li>
                                             <li><a href="#" title="">PHP</a></li>
                                             <li><a href="#" title="">CSS</a></li>
                                             <li><a href="#" title="">Javascript</a></li>
                                             <li><a href="#" title="">Wordpress</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="job-status-bar">
                                         <ul class="like-com">
-                                            <li>
+                                            {{-- <li>
                                                 <a href="#"><i class="fas fa-heart"></i> Like</a>
                                                 <img src="{{ url('design/style') }}/images/liked-img.png" alt="">
                                                 <span>25</span>
-                                            </li>
-                                            <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment
-                                                    15</a></li>
+                                            </li> --}}
+                                            <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Answers
+                                                    </a></li>
                                         </ul>
-                                        <a href="#"><i class="fas fa-eye"></i>Views 50</a>
+                                        {{-- <a href="#"><i class="fas fa-eye"></i>Views 50</a> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                     <div class="col-lg-3 pd-right-none no-pd">
                         <div class="right-sidebar">
 
@@ -182,7 +127,6 @@
                                 <h3>IT Workwise</h3>
                                 <div class="sign_link">
                                     <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
-                                    <a href="#" title="">Learn More</a>
                                 </div>
                             </div>
                             @endguest
@@ -190,8 +134,8 @@
                             <!--widget-about end-->
                             <div class="widget widget-jobs">
                                 <div class="sd-title">
-                                    <h3>Top Questions This Week</h3>
-                                    <i class="la la-ellipsis-v"></i>
+                                    <h3>Top Professionals With Rate</h3>
+                                    <!--i class="la la-ellipsis-v"></i-->
                                 </div>
                                 <div class="jobs-list">
                                     <div class="job-info">
@@ -203,47 +147,6 @@
                                             <span>$25/hr</span>
                                         </div>
                                     </div>
-                                    <!--job-info end-->
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            <h3>Senior UI / UX Designer</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            <span>$25/hr</span>
-                                        </div>
-                                    </div>
-                                    <!--job-info end-->
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            <h3>Junior Seo Designer</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            <span>$25/hr</span>
-                                        </div>
-                                    </div>
-                                    <!--job-info end-->
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            <h3>Senior PHP Designer</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            <span>$25/hr</span>
-                                        </div>
-                                    </div>
-                                    <!--job-info end-->
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            <h3>Senior Developer Designer</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            <span>$25/hr</span>
-                                        </div>
-                                    </div>
-                                    <!--job-info end-->
                                 </div>
                                 <!--jobs-list end-->
                             </div>
