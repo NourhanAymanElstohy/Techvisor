@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
+
 
 class LoginController extends Controller
 {
@@ -47,17 +49,14 @@ class LoginController extends Controller
         {
             
             if(auth()->user()->hasRole('super-admin'))
-            {
+            {  
                 return view('admin.index'); 
             }
 
-            if(auth()->user()->hasRole('user')){
-            $userId = Auth::id(); 
-            $user = User::find($userId);
-            //dd($user);
-            return view('home',[
-                'user' => $user
-            ]); 
+            else
+            {
+                return redirect()->route('home');  
+             
             }
         
     }

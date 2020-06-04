@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 
 
@@ -84,6 +85,7 @@ class UserController extends Controller
     public function show()
     {
         //all roles can view user profile, permissions in blade
+        $categories = Category::all();           
         $userId = request()->user;
         $user = User::find($userId);
 
@@ -94,6 +96,7 @@ class UserController extends Controller
         } else {
             return view('users/show', [
                 'user' => $user,
+                'categories' => $categories,
             ]);
         }
     }
@@ -181,4 +184,7 @@ class UserController extends Controller
                 'user' =>$user
             ]);
         }
+
+       
+ 
 }

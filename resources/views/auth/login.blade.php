@@ -4,6 +4,11 @@
 <div class="login-sec">
  
 <div class="card-header sign_in_sec current" id="tab-1"><h3>{{ __('Login') }}</h3></div>      
+<div class="main-section">
+
+<div class="container">
+    <div class="justify-content-center row">
+        <div class="col-md-8">
             <div class="card">
 
 
@@ -76,4 +81,9 @@
        
             </div><!--login-sec end-->
 
+
+        </div>
+    </div>
+</div>
+</div>
 @endsection

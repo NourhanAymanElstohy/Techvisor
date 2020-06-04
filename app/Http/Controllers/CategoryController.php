@@ -17,11 +17,14 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $request=request();
+        $userId = Auth::id();
+        $user = User::find($userId);
         $categories = Category::all();
-
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/categories/index', [
-                'categories' => $categories
+                'categories' => $categories,
+                'user' => $user
             ]);
         }
         return view('categories/index', [
@@ -50,6 +53,9 @@ class CategoryController extends Controller
 
     public function show(Request $request)
     {
+        $request=request();
+        $userId = Auth::id();
+        $user = User::find($userId);
         $categoryId = $request->category;
         $category = Category::find($categoryId);
         // find prof related to this category
@@ -61,7 +67,8 @@ class CategoryController extends Controller
 
         return view('categories/show', [
             'profs' => $profs,
-            'category' => $category
+            'category' => $category,
+                'user' => $user
         ]);
     }
 

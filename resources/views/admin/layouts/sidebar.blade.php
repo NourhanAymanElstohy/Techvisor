@@ -114,7 +114,7 @@
             <ul class="nav nav-treeview">
               
               <li class="nav-item">
-                <a href="/login" class="nav-link">
+                <a href="{{route('adminHome')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Home</p>
                 </a>

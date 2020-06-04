@@ -15,6 +15,11 @@
   <div class="container">
   <div class="p-3" style="text-align:center">
     <h1 style="color:#3cb371"><strong>Categories</strong></h1>
+    <div class="p-2">
+       <a href="{{route('categories.create')}}"><button type="button"
+        class="btn btn-success float-left">Create Categorie</button></a>
+        </div>
+        
 
 
     <table id="example" class="table table-striped table-bordered" style="width:80rem%">

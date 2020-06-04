@@ -14,17 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //========= Home ==============================
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('home');
-})->middleware('auth');
+})->middleware('auth'); */
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/style', function () {
-    return view('style.home');
-});
+Route::get('/', 'HomeController@home')->name('home')->middleware('auth');
+
 //============== Admin =========================
 Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
+Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');
 
 //================== Users ======================
 Route::group(['middleware' => 'auth'], function () {
@@ -46,8 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
     Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']); 
+    Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus')->middleware(['role:professional']); 
 
     });
+    
 
 //================= Categories =================
 Route::group(['middleware' => 'is-ban'], function () {
@@ -76,15 +77,14 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
 
 //////////////////////////////////////style//////////////////////////////
 
-Route::get('/style', function () {
-    return view('style.home');
-});
-Route::get('/style/profile', function () {
-    return view('style.profile');
-});
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/style', 'HomeController@home')->name('style.home');
+
+
 Route::get('/style/about', function () {
     return view('style.about');
 });
 Route::get('/style/categories', function () {
     return view('style.categories');
+});
 });
