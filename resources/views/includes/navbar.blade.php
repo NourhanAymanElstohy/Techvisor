@@ -6,7 +6,6 @@
 						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-								
 							</div><!--search-bar end-->
 
 					<nav>
@@ -85,47 +84,26 @@
 										@endif 
 
 									@endforeach
-						  				</div>
-										  </div>
+									</div>
+									
+						  				
 									
 						  				<div class="view-all-nots">
 						  					<a href="#" title="">View All Notification</a>
 						  				</div>
-
-									</div><!--nott-list end-->
-								</div><!--notification-box end-->
-							</li>
-							@endauth
-							<li>
-								<a href="/style/about" title="">
+										  </div>
+										  <li>
+										  <a href="/style/about" title="">
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
 									About Us
 								</a>
-								
-								
-							</li>
-						
-				
-							
-						
-						@guest
-							<li >
-								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
-							</li>
-								@if (Route::has('register'))
-								<li >
-									<a href="{{ route('register') }}">{{ __('Register') }}</a>
 								</li>
-								@endif
-								</ul>
-					<!--nav end--> </nav>	
-					<div class="menu-btn">
-						<a href="#" title=""><i class="fa fa-bars"></i></a>
-					</div><!--menu-btn end-->
 
-							@else
-							</ul>
-					<!--nav end--> </nav>
+									
+									</div><!--nott-list end-->
+								</div><!--notification-box end-->
+								</li>
+							
 							<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
@@ -205,11 +183,33 @@
 								</form>
 							</h3>
 						</div><!--user-account-settingss end-->
-						
-						@endguest
-						
+						</ul>
+					<!--nav end--> </nav>
+							@endauth
 					
-					</div>
+						@guest
+							<li >
+								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
+							</li>
+							
+								@if (Route::has('register'))
+								<li >
+									<a href="{{ route('register') }}">{{ __('Register') }}</a>
+								</li>
+								<li>
+								@endif
+								<a href="/style/about" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
+								</a>
+							</li>								
+					<div class="menu-btn">
+						<a href="#" title=""><i class="fa fa-bars"></i></a>
+					</div><!--menu-btn end-->							
+						@endguest
+						</ul>
+					<!--nav end--> </nav>	
 				</div><!--header-data end-->
 			</div>
 		</header><!--header end-->
+		</div>
