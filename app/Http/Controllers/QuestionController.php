@@ -62,7 +62,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } else {
-            return redirect()->route('users.show');
+            return redirect()->route('professionals.show');
         }
     }
 

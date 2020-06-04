@@ -19,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 })->middleware('auth'); */
 
 Auth::routes();
-Route::get('/', 'HomeController@home')->name('home')->middleware('auth');
-
+Route::get('/', 'HomeController@home')->name('home');
+Route::get('/about', function () {
+    return view('/about');
+})->name('about');
 //============== Admin =========================
 Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
 Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');
@@ -34,31 +36,30 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{user}', 'UserController@show')->name('user.show');
     Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit')->middleware(['role:super-admin|user']);
     Route::put('/users/{user}', 'UserController@update')->name('users.update')->middleware(['role:super-admin|user']);
-    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware(['role:super-admin|user']); 
-    Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']); 
+    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware(['role:super-admin|user']);
+    Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']);
 });
 
 //================= Professional ===============
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']); 
+    Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']);
     Route::get('/professionals/{professional}', 'ProfessionalController@show')->name('professional.show');
     Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
     Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
-    Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']); 
-    Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus')->middleware(['role:professional']); 
+    Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']);
+    Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus')->middleware(['role:professional']);
+});
 
-    });
-    
 
 //================= Categories =================
 Route::group(['middleware' => 'is-ban'], function () {
     Route::get('/categories', 'CategoryController@index')->name('categories.index');
-    Route::get('/categories/create', 'CategoryController@create')->name('categories.create')->middleware(['role:super-admin']); 
-    Route::post('/categories', 'CategoryController@store')->name('categories.store')->middleware(['role:super-admin']); 
+    Route::get('/categories/create', 'CategoryController@create')->name('categories.create')->middleware(['role:super-admin']);
+    Route::post('/categories', 'CategoryController@store')->name('categories.store')->middleware(['role:super-admin']);
     Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
-    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')->middleware(['role:super-admin']); 
-    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update')->middleware(['role:super-admin']); 
-    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy')->middleware(['role:super-admin']); 
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')->middleware(['role:super-admin']);
+    Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update')->middleware(['role:super-admin']);
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy')->middleware(['role:super-admin']);
 });
 
 
@@ -73,18 +74,4 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
-});
-
-//////////////////////////////////////style//////////////////////////////
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/style', 'HomeController@home')->name('style.home');
-
-
-Route::get('/style/about', function () {
-    return view('style.about');
-});
-Route::get('/style/categories', function () {
-    return view('style.categories');
-});
 });

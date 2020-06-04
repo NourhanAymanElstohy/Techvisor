@@ -9,7 +9,7 @@
             <div class="companies-list">
 				<div class="row">
 
-                    {{-- Professional data --}}
+                    
                 @foreach($profs as $prof)     
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="company_profile_info">
@@ -18,14 +18,17 @@
                                 <h3>{{$prof->name}}</h3>
                                 <ul>
                                     <li><a class="post-jb active follow" href="{{route('questions.create',['prof'=> $prof->id])}}" title="">ASK</a></li>  
-                                    <li><a href="#" title="" class="hire">Zoom</a></li>
+                                    <li><a href="#" title="" id="zoom" class="hire" onclick="return connectZoom();">Zoom</a></li>
+                                    <li id="demo"></li>
+                                    <input type="hidden" name="create" value="" id="create-zoom">
                                 </ul>
+                                
                             </div>
-                            <h1>hello</h1>
                             <a href="{{route('professional.show',['professional' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
                         </div>
                     </div>
                 @endforeach
+                
                 
                 </div>
             </div>
@@ -33,6 +36,12 @@
     </section><!--companies-info end-->
 
 	@include('questions.create')
-
+<script>
+    function connectZoom() {
+        document.getElementById("create-zoom").value = "{{ $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $category->name])}}";
+        document.getElementById("demo").innerHTML = "<a href=\"{{$meeting->join_url}}\" target=\"_blank\" class=\"stretched-link btn btn-primary\">Join Url</a>"
+        document.querySelector("#zoom").style.display ="none"
+    }
+</script>
 @endsection
 	
