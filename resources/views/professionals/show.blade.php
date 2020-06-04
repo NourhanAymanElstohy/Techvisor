@@ -8,7 +8,7 @@
           <img src="{{ url('design/style') }}/images/resources/cover-img.jpg" alt="">
       </section>
 
-
+ 
       <main>
           <div class="main-section">
               <div class="container">
@@ -23,19 +23,9 @@
                                       </div><!--user-pro-img end-->
                                       <div class="user_pro_status">
                                           <ul class="flw-hr">
-                                              <li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                              <li><a href="#" title="" class="hre">Hire</a></li>
+                                              <li><a href="{{route('professionals.edit', Auth::user()->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
-                                          <ul class="flw-status">
-                                              <li>
-                                                  <span>Following</span>
-                                                  <b>34</b>
-                                              </li>
-                                              <li>
-                                                  <span>Followers</span>
-                                                  <b>155</b>
-                                              </li>
-                                          </ul>
+                                        
                                       </div><!--user_pro_status end-->
                                       <ul class="social_links"> 										
                     <li><a href="#" title=""><i class="la la-envelope"></i>{{Auth::user()->email}}</a></li>
@@ -83,63 +73,50 @@
                                   </div><!--user-tab-sec end-->
                                   <div class="product-feed-tab current" id="feed-dd">
                                       <div class="posts-section">
-                                          <div class="post-bar">
-                                              <div class="post_topbar">
-                                                  <div class="usy-dt">
-                                                      <img src="{{ url('design/style') }}/images/resources/us-pic.png" alt="">
-                                                      <div class="usy-name">
-                                                          <h3>John Doe</h3>
-                                                          <span><img src="{{ url('design/style') }}/images/clock.png" alt="">3 min ago</span>
-                                                      </div>
-                                                  </div>
-                                                  <div class="ed-opts">
-                                                      <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                      <ul class="ed-options">
-                                                          <li><a href="#" title="">Edit Post</a></li>
-                                                          <li><a href="#" title="">Unsaved</a></li>
-                                                          <li><a href="#" title="">Unbid</a></li>
-                                                          <li><a href="#" title="">Close</a></li>
-                                                          <li><a href="#" title="">Hide</a></li>
-                                                      </ul>
-                                                  </div>
-                                              </div>
-                                              <div class="epi-sec">
-                                                  <ul class="descp">
-                                                      <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>Epic Coder</span></li>
-                                                      <li><img src="{{ url('design/style') }}/images/icon9.png" alt=""><span>India</span></li>
-                                                  </ul>
-                                                  <ul class="bk-links">
-                                                      <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                      <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                  </ul>
-                                              </div>
-                                              <div class="job_descp">
-                                                  <h3>Senior Wordpress Developer</h3>
-                                                  <ul class="job-dt">
-                                                      <li><a href="#" title="">Full Time</a></li>
-                                                      <li><span>$30 / hr</span></li>
-                                                  </ul>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-                                                  <ul class="skill-tags">
-                                                      <li><a href="#" title="">HTML</a></li>
-                                                      <li><a href="#" title="">PHP</a></li>
-                                                      <li><a href="#" title="">CSS</a></li>
-                                                      <li><a href="#" title="">Javascript</a></li>
-                                                      <li><a href="#" title="">Wordpress</a></li> 	
-                                                  </ul>
-                                              </div>
-                                              <div class="job-status-bar">
-                                                  <ul class="like-com">
-                                                      <li>
-                                                          <a href="#"><i class="fas fa-heart"></i> Like</a>
-                                                          <img src="{{ url('design/style') }}/images/liked-img.png" alt="">
-                                                          <span>25</span>
-                                                      </li>
-                                                      <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
-                                                  </ul>
-                                                  <a href="#"><i class="fas fa-eye"></i>Views 50</a>
-                                              </div>
-                                          </div><!--post-bar end-->
+                                           
+
+                                      <div class="post-bar"> 
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="{{ url('design/style') }}/images/resources/us-pic.png" alt="">
+                                            <div class="usy-name">
+                                                <h3>John Doe</h3>
+                                                <span><img src="{{ url('design/style') }}/images/clock.png" alt="">3 min
+                                                    ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="ed-opts">
+                                            <a href="#" title="" class="ed-opts-open"><i
+                                                    class="la la-ellipsis-v"></i></a>
+                                            <ul class="ed-options">
+                                                <li><a href="#" title="">Edit Post</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="epi-sec">
+                                        <ul class="descp">
+                                            <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>
+                                                    Category Name</span></li>
+                                            <li><img src="{{ url('design/style') }}/images/icon9.png"
+                                                    alt=""><span>Question</span></li>
+                                        </ul>
+                                        
+                                    </div>
+                                    <div class="job_descp">
+                                       
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
+                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
+                                          
+                                    </div>
+                                    <div class="job-status-bar">
+                                        <ul class="like-com">
+                                       
+                                            <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Answers
+                                                    </a></li>
+                                        </ul>
+                                        </div>
+                                        </div>
+                              
                                       
                                           <div class="process-comm">
                                               <div class="spinner">
