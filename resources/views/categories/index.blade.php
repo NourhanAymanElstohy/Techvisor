@@ -11,8 +11,13 @@
                             <div class="post-st">
                                 <ul>
                                     <li>
+                                    @hasanyrole('super-admin|user|professional')
                                         <a href="{{route('categories.show',['category' => $category->id])}}">
                                             {{$category->name}}</a>
+                                    @else
+                                        <a href="/">{{$category->name}}</a>
+                                    @endhasanyrole
+
                                     </li>
                                 </ul>
                             </div>
