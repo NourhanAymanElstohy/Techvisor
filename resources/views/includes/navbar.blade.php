@@ -6,10 +6,7 @@
 						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
-							<input type="text" name="search" placeholder="Search...">
-							<button type="submit"><i class="la la-search"></i></button>
-						</form>
+						
 					</div><!--search-bar end-->
 					<nav>
 						<ul>
