@@ -21,6 +21,7 @@
                                     <li><a href="#" title="" class="hire">Zoom</a></li>
                                 </ul>
                             </div>
+                            <h1>hello</h1>
                             <a href="{{route('professional.show',['professional' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
                         </div>
                     </div>
@@ -30,6 +31,7 @@
             </div>
         </div>
     </section><!--companies-info end-->
+
 	@include('questions.create')
 
 @endsection
