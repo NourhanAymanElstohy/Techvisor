@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 		
@@ -22,7 +21,8 @@
                                     <li><a href="#" title="" class="hire">Zoom</a></li>
                                 </ul>
                             </div>
-                            <a href="{{route('professional.show',['prof' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
+                            <h1>hello</h1>
+                            <a href="{{route('professional.show',['professional' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
                         </div>
                     </div>
                 @endforeach
@@ -31,6 +31,7 @@
             </div>
         </div>
     </section><!--companies-info end-->
+
 	@include('questions.create')
 
 @endsection
