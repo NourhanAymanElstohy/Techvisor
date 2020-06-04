@@ -131,14 +131,16 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = $request->password;
         }
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
         $user->syncRoles($request->role);
         $user->save();
-        if (auth()->user()->hasPermissionTo('adminpermission')) {
         return   redirect()->route('user.show',[
             'user' => $user
         ]);
          }
          elseif (auth()->user()->hasPermissionTo('userpermission')) {
+            $user->save();
+
             return redirect()->route('user.show',[
                 'user' => $user
             ]);

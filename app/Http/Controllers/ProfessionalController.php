@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Category;
+
 
 
 
@@ -28,6 +30,7 @@ class ProfessionalController extends Controller
         public function show()
         {       
             //all roles can view professional profile, permissions in blade
+            $categories = Category::all();           
             $userId = request()->prof;
             $user=User::find($userId);
             if (auth()->user()->hasPermissionTo('adminpermission')) {
@@ -37,6 +40,7 @@ class ProfessionalController extends Controller
             } else {
                 return view('professionals/show', [
                     'user' => $user,
+                    'categories' => $categories
                 ]);
         }    
     }
@@ -48,7 +52,7 @@ class ProfessionalController extends Controller
         $request = request();
         $professionalId = $request->professional;
         $professional=User::find($professionalId);
-        return view('professional/edit',[
+        return view('professionals/edit',[
             'professional'=>$professional
         ]);
         }
@@ -57,15 +61,18 @@ class ProfessionalController extends Controller
         public function update()
         {
             //admin and professionals can edit professional profile, permission in blade
+            $categories = Category::all();           
             if (auth()->user()->hasPermissionTo('professionalpermission')) {
                 $request=request();
-                $professional = User::find($request->id);
+                $professional = User::find($request->professional);
+                //dd($professional);
                 $professional->name = $request->name;
                 $professional->email = $request->email;
-                $professional->status = $professional->status;
                 $professional->save();
                  return redirect()->route('professional.show',[
-                  'professional' => $professional
+                  'professional' => $professional,
+                  'categories' => $categories
+
         ]);
         }
     }

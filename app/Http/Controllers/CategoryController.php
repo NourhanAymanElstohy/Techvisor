@@ -53,6 +53,8 @@ class CategoryController extends Controller
 
     public function show(Request $request)
     {
+        $categories = Category::all();
+        $request=request();
         $userId = Auth::id();
         $user = User::find($userId);
 
@@ -69,7 +71,8 @@ class CategoryController extends Controller
         return view('categories/show', [
             'profs' => $profs,
             'category' => $category,
-            'user' => $user
+                'user' => $user,
+                'categories' => $categories
         ]);
     }
 

@@ -1,24 +1,48 @@
 @extends('layouts.app')
 @section('content')
-<form method="POST" action="{{route('professionals.update',$user->id)}}">
-  @csrf
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">UPDATE YOUR status</label><br/>
-        <input type="hidden" class="form-control" name="id" value="{{$user->id}}">
-        <label for="exampleFormControlSelect1">user_name</label>
-        <input type="text" class="form-control" name="name" value="{{$user->name}}"><br/>
-        <div class="col-md-6">
-        <legend>{{$user->status}}</legend>
 
-                                <select class="custom-select" name="status">
-                                    <option value="offline">Offline</option>
-                                    <option value="online">Online</option>
-                                </select>
-                            </div>
-    </div>
-    
+<div class="wrapper">
+      
+      <section class="cover-sec">
+          <img src="{{ url('design/style') }}/images/resources/cover-img.jpg" alt="">
+      </section>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-  
-</form>  
-@endsection
+
+      <main>
+          <div class="main-section">
+              <div class="container">
+                  <div class="main-section-data">
+                     <div class="container col-6">
+    <form method="POST" action="{{route('professionals.update',$professional->id)}}" class="mb-4">
+        @csrf
+        @method('PUT')
+        <h1 class="mt-5 text-center">Edit Profile</h1>
+        <div class="form-group mt-5">
+            <label >Name</label>
+            <input name="name" type="text" required class="form-control" value="{{$professional->name}}">
+        </div>
+
+        <div class="form-group mt-5">
+            <label >Email</label>
+            <input name="email" type="text" required class="form-control" value="{{$professional->email}}">
+        </div>
+
+        <div class="form-group mt-5">
+            <label >Password</label>
+            <input name="password" type="password"  class="form-control">
+        </div>
+
+       
+        <div class="justify-content-end">
+           <input type="submit" value="Submit" class="btn btn-success">
+           </div>
+    </form>
+					</div>
+				</div> 
+			</div>
+      </div>
+      </main>
+
+
+	@endsection
+	
