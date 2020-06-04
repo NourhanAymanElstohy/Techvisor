@@ -17,6 +17,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "macsidigital/laravel-zoom": "^4.0",
         "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {
