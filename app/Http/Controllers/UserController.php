@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -32,10 +32,9 @@ class UserController extends Controller
         $users = User::whereHas("roles", function ($q) {
             $q->where("name", "user");
         })->get();
-          return view('admin/users/index', [
+        return view('admin/users/index', [
             'users' => $users
-        ]); 
-        
+        ]);
     }
     public function adminIndex()
     {
@@ -67,7 +66,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         // admin only create any userrole
         $user = new User;
@@ -85,7 +84,7 @@ class UserController extends Controller
     public function show()
     {
         //all roles can view user profile, permissions in blade
-        $categories = Category::all();           
+        $categories = Category::all();
         $userId = request()->user;
         $user = User::find($userId);
 
@@ -100,28 +99,27 @@ class UserController extends Controller
             ]);
         }
     }
-   
+
     public function edit($id)
-    {   
+    {
         //admin and users can edit user profile, permissions in blade
         $user = User::findOrFail($id);
         $roles = Role::all()->pluck('name', 'id');
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-        return view('admin.users.edit', [
-            'user' => $user,
-            'roles' => $roles
-        ]);
+            return view('admin.users.edit', [
+                'user' => $user,
+                'roles' => $roles
+            ]);
         } elseif (auth()->user()->hasPermissionTo('userpermission')) {
             return view('users/edit', [
                 'user' => $user,
             ]);
+        } else {
+            return view('home');
         }
-          else {
-                return view('home');
-            }
-        }
-    
-   
+    }
+
+
     public function update(Request $request, $id)
     {
         //admin can edit any userRole, user can edit his profile, permissions in blade
@@ -131,33 +129,40 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = $request->password;
         }
-        if (auth()->user()->hasPermissionTo('adminpermission')) {
-        $user->syncRoles($request->role);
-        $user->save();
-        return   redirect()->route('user.show',[
-            'user' => $user
-        ]);
-         }
-         elseif (auth()->user()->hasPermissionTo('userpermission')) {
-            $user->save();
+        // if ($request->hasFile('avatar')) {
+        //     $avatar = $request->file('avatar');
+        //     $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        //     Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
-            return redirect()->route('user.show',[
+        //     $user = Auth::user();
+        //     $user->avatar = $filename;
+        //     $user->save();
+        // }
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            $user->syncRoles($request->role);
+            $user->save();
+            return   redirect()->route('user.show', [
                 'user' => $user
             ]);
+        } elseif (auth()->user()->hasPermissionTo('userpermission')) {
+            $user->save();
+
+            return redirect()->route('user.show', [
+                'user' => $user
+            ]);
+        } else {
+            return view('home');
         }
-          else {
-                return view('home');
-               }
-        }
+    }
 
     public function destroy($id)
-      {
+    {
         //here admin can delete any userRole and user can delete here profile
         $user = User::findOrFail($id);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-        $user->removeRole($user->roles->implode('name', ', '));
-        if ($user->delete()) {
-        return redirect()->route('users.index');
+            $user->removeRole($user->roles->implode('name', ', '));
+            if ($user->delete()) {
+                return redirect()->route('users.index');
             } else {
                 return response()->json([
                     'error' =>  'error, canit delete user'
@@ -165,28 +170,25 @@ class UserController extends Controller
             }
         }
         if (auth()->user()->hasPermissionTo('userpermission')) {
-                $request = request();
-                $userlId = $request->user;
-                User::destroy($userlId);
-                return redirect()->route('home');
+            $request = request();
+            $userlId = $request->user;
+            User::destroy($userlId);
+            return redirect()->route('home');
         }
     }
-        
+
     public function banned()
-      {
+    {
         //here admin only can ban any user
         $userId = request()->user;
         $user = User::find($userId);
         if ($user->isNotBanned()) {
             $user->ban();
-            } else {
-                $user->unban();
-            }
-            return redirect()->route('user.show',[
-                'user' =>$user
-            ]);
+        } else {
+            $user->unban();
         }
-
-       
- 
+        return redirect()->route('user.show', [
+            'user' => $user
+        ]);
+    }
 }
