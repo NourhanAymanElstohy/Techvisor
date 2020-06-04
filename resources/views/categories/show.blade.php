@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('content')
-		
-    <section class="companies-info">
-        <div class="container">
+
+<div class="wrapper">
+      
+      <main>
+          <div class="main-section">
+              <div class="container">
+                  <div class="main-section-data">
+
             <div class="company-title">
                 <h3>All Professional On This Category</h3>
             </div>
+
             <div class="companies-list">
 				<div class="row">
 
@@ -32,8 +38,12 @@
                 
                 </div>
             </div>
-        </div>
-    </section><!--companies-info end-->
+
+
+    </div>
+    </div>
+    </div>
+    </main>
 
 	@include('questions.create')
 <script>
