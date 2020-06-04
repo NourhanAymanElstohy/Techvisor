@@ -17,7 +17,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $request=request();
+        $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
         $categories = Category::all();
@@ -57,8 +57,10 @@ class CategoryController extends Controller
         $request=request();
         $userId = Auth::id();
         $user = User::find($userId);
+
         $categoryId = $request->category;
         $category = Category::find($categoryId);
+
         // find prof related to this category
         $profs = User::all()->where('role', '=', '2');
         // dd(User::all()->where('role', '=', 'professional'));
