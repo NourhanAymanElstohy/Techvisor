@@ -6,8 +6,11 @@
 						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-							</div><!--search-bar end-->
-
+						<form>
+							<input type="text" name="search" placeholder="Search...">
+							<button type="submit"><i class="la la-search"></i></button>
+						</form>
+					</div><!--search-bar end-->
 					<nav>
 						<ul>
 							<li>
@@ -23,6 +26,13 @@
 								</a>
 								@endhasanyrole
 							</li>
+							<li>
+								<a href="/style/about" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
+								</a>
+								
+							</li>
 							
 						@Auth
 						<li>
@@ -31,12 +41,12 @@
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@else
+						@else
 								<a href="{{route('professional.show', Auth::user()->id)}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@endhasanyrole
+						@endhasanyrole
 							</li>
 
 
@@ -47,7 +57,6 @@
 								</a>
 
 								<div class="notification-box noti" id="notification">
-
 									<div class="nt-title">
 										<h4>Notification</h4>
 										<a href="#" title="">Clear all</a>
@@ -59,6 +68,7 @@
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
 									     </div>
+
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
 										@if($notification->unread())
@@ -89,34 +99,26 @@
 											</a>
 										@endif 
 										@endif 
-
-									@endforeach
+										</div>
 									</div>
-									
-						  				
-									
-						  				<div class="view-all-nots">
+									@endforeach
+									<div class="view-all-nots">
 						  					<a href="#" title="">View All Notification</a>
 						  				</div>
-										  </div>
-										  <li>
-										  <a href="/style/about" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									About Us
-								</a>
-								</li>
 
-									
 									</div><!--nott-list end-->
 								</div><!--notification-box end-->
-								</li>
-							
-							<div class="menu-btn">
+							</li>
+						</ul>
+					</nav><!--nav end-->
+
+									
+					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
+
 						<div class="user-account">
 							<div class="user-info">
-						
 								<img src="{{ url('design/style') }}/images/resources/user.png" alt="">
 								<i class="la la-sort-down"></i>
 							</div>
@@ -188,9 +190,11 @@
 										@csrf
 								</form>
 							</h3>
-						</div><!--user-account-settingss end-->
-						</ul>
-					<!--nav end--> </nav>
+
+							</div>
+							</div>
+							</div>
+							</div>
 							@endauth
 					
 						@guest
@@ -202,13 +206,8 @@
 								<li >
 									<a href="{{ route('register') }}">{{ __('Register') }}</a>
 								</li>
-								<li>
 								@endif
-								<a href="/style/about" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									About Us
-								</a>
-							</li>								
+								
 					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->							
