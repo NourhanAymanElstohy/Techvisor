@@ -11,7 +11,7 @@
 					<nav>
 						<ul>
 							<li>
-								<a href="/style" title="">
+								<a href="{{route('home')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
 									Home
 								</a>
