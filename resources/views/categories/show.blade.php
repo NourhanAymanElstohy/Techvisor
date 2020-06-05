@@ -14,9 +14,8 @@
 
             <div class="companies-list">
 				<div class="row">
-                @foreach($profs as $prof) 
-                {{-- {{dd($prof->category)}} --}}
-                    @if ($category == $prof->category)  
+            @if(count($category->profs) > 0)        
+                @foreach($category->profs as $prof) 
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="company_profile_info">
                             <div class="company-up-info">
@@ -33,8 +32,9 @@
                             <a href="{{route('professional.show',['professional' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
                         </div>
                     </div>
-                    @endif  
+ 
                 @endforeach
+            @endif
  
 	@include('questions.create')
      

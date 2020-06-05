@@ -8,8 +8,8 @@ class Category extends Model
 {
     protected $fillable = ['name'];
 
-    public function prof()
+    public function profs()
     {
-        return $this->belongsToMany('App\User', 'category_professional')->wherePivotwherePivot('role', '2');
+        return $this->belongsToMany('App\User', 'category_professional');
     }
 }

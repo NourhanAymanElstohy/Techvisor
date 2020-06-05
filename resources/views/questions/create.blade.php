@@ -5,17 +5,17 @@
                 <form method="POST" action="{{route('questions.store')}}">
                   @csrf
                 
-                @if ($prof)
-                  <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
+                @if ($category->prof)
+                  <input type="hidden" class="form-control" name="prof" value="{{$category->prof}}">
                 @else
-                  <div class="form-group mt-5">
+                  {{-- <div class="form-group mt-5">
                     <label for="exampleFormControlSelect1">Users</label>
                       <select name="prof" class="form-control ">
                         @foreach($users as $user)  
                           <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
                       </select> 
-                  </div>
+                  </div> --}}
                 @endif
                 
                     <div class="row">

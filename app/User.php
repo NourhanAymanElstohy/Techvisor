@@ -63,7 +63,7 @@ class User extends Authenticatable implements BannableContract
 
 
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany('App\Category', 'category_professional');
     }
