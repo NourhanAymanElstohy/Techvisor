@@ -16,9 +16,15 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('questions/index', [
-            'questions' => $questions
-        ]);
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/questions/index', [
+                'questions' => $questions
+            ]);
+        } else {
+            return view('questions/index', [
+                'questions' => $questions
+            ]);
+        }
     }
 
     public function show()
@@ -34,15 +40,17 @@ class QuestionController extends Controller
     public function create()
     {
         $prof = request()->prof;
-        if (!$prof) {
-            $users = User::where('role', 2)->get();
-            return view('questions/create', [
+        $users = User::where('role', '=', '2')->get();
+
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return view('admin/questions/create', [
                 'prof' => $prof,
                 'users' => $users
             ]);
         } else {
             return view('questions/create', [
-                'prof' => $prof
+                'prof' => $prof,
+                'users' => $users
             ]);
         }
     }
@@ -50,13 +58,12 @@ class QuestionController extends Controller
     {
         $request = request();
         $userId = Auth::id();
-        // $question = $request->question;
 
         Question::create([
             "question" => $request->question,
             "user_id" => $userId,
             "state" => "private",
-            // "prof_id" => $request->prof
+            "prof_id" => $request->prof
         ]);
 
         if (auth()->user()->hasPermissionTo('adminpermission')) {

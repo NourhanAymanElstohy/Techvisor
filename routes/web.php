@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
+Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', function () {
     return view('/about');
 })->name('about');
