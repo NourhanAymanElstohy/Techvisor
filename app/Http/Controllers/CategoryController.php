@@ -44,11 +44,11 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        // $validated = $request->validated();
+        $creator = auth()->user();
         Category::create([
             'name' => $request->validated()['name']
         ]);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index', ['creator'->$creator]);
     }
 
     public function show(Request $request)
@@ -64,7 +64,7 @@ class CategoryController extends Controller
         $profs = User::all()->where('role', '=', '2');
 
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('admin/categories/show');
+            return view('categories/show');
         } else {
             return view('categories/show', [
                 'profs' => $profs,

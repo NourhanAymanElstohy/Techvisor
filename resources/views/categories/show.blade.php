@@ -47,7 +47,7 @@
 <script>
     function connectZoom() {
         document.getElementById("create-zoom").value = "{{ $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $category->name])}}";
-        document.getElementById("demo").innerHTML = "<a href=\"{{$meeting->join_url}}\" target=\"_blank\" class=\"stretched-link btn btn-primary\">Join Url</a>"
+        document.getElementById("demo").innerHTML = "<a href=\"{{$meeting->join_url}}\" target=\"_blank\" class=\"btn btn-primary\">Join Url</a>"
         document.querySelector("#zoom").style.display ="none"
     }
 </script>

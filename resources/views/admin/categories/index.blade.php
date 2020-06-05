@@ -28,7 +28,7 @@
           <th>ID</th>
           <th>Name</th>
           <th>created At</th> 
-          {{-- <th>Created By</th> --}}
+          <th>Created By</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -37,8 +37,8 @@
       <tr>
         <th>{{$category->id}}</th>
         <td>{{$category->name}}</td>
-        <td>{{$category->created_at->format('d-m-Y')}}</td>  
-        {{-- <td>Admin: {{$category->user ? $category->user->role :'not exist!'}}</td> --}}
+        <td>{{$category->created_at ? $category->created_at->format('d-m-Y') : ''}}</td>  
+        <td>Admin: {{$user->name}}</td>
       
           <td> 
               <a href="{{route('categories.edit',['category' => $category->id])}}"

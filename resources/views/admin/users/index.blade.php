@@ -14,26 +14,23 @@
   <div class="content-wrapper">
   <div class="container">
   <div class="p-3" style="text-align:center">
-    @if ($users == App\User::all()->where('role', '=','3'))
+    {{-- {{App\User::all()->where('role', '=','3')}} --}}
+    @foreach ($users as $user)
+    @if ( $user->role == '3')
       <h1 style="color:#3cb371"><strong>Admins</strong></h1>  
-    @else
-      <h1 style="color:#3cb371"><strong>Users</strong></h1>
-    @endif
-   
-    @if ($users == App\User::all()->where('role', '=','3'))
       <div class="p-2">
         <a href="{{route('users.create')}}"><button type="button"
           class="btn btn-success float-left">Create Admin</button></a>
       </div>
-    @else
+    @elseif($user->role == '1')
+      <h1 style="color:#3cb371"><strong>Users</strong></h1>
       <div class="p-2">
           <a href="{{route('users.create')}}"><button type="button"
             class="btn btn-success float-left">Create User</button></a>
       </div> 
     @endif
+    @endforeach
     
-
-
     <table id="example" class="table table-striped table-bordered" style="width:80rem%">
     <thead>
       <tr>

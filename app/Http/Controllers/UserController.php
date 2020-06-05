@@ -76,7 +76,10 @@ class UserController extends Controller
 
         if ($user->save()) {
             $user->assignRole($request->role);
-
+        }
+        if ($request->role == 'super-admin') {
+            return redirect('/admins');
+        } else {
             return redirect()->route('users.index');
         }
     }
@@ -89,8 +92,9 @@ class UserController extends Controller
         // $user = User::find($userId);
         $users = User::all()->where('role', '=', '1');
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('admin.users.show', [
-                // 'user' => $user
+            return view('users.show', [
+                'users' => $users,
+                'categories' => $categories,
             ]);
         } else {
             return view('users/show', [
@@ -139,10 +143,13 @@ class UserController extends Controller
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->syncRoles($request->role);
+            // dd($user->role);
+            if ($user->role == '3') {
+                return redirect('/admins');
+            } else {
+                return redirect()->route('users.index');
+            }
             $user->save();
-            return redirect()->route('user.show', [
-                'user' => $user
-            ]);
         } elseif (auth()->user()->hasPermissionTo('userpermission')) {
             $user->save();
             return redirect()->route('user.show', [
@@ -160,7 +167,11 @@ class UserController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->removeRole($user->roles->implode('name', ', '));
             if ($user->delete()) {
-                return redirect()->route('users.index');
+                if ($user->role == '1') {
+                    return redirect()->route('users.index');
+                } else {
+                    return redirect()->route('users.adminIndex');
+                }
             } else {
                 return response()->json([
                     'error' =>  'error, canit delete user'

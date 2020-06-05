@@ -24,7 +24,7 @@ Route::get('/about', function () {
     return view('/about');
 })->name('about');
 //============== Admin =========================
-Route::get('/adminusers', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
+Route::get('/admins', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
 Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');
 
 //================== Users ======================
