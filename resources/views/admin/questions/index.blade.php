@@ -36,8 +36,6 @@
       <td>{{$question->prof->name}}</td>
       <td>{{$question->state}}</td>
       <td>{{$question?$question->created_at:""}}</td>
-     
-      
       <td>
         <a href="{{route('questions.show',['question'=> $question->id])}}"
          class="btn btn-info btn-sm float-left mr-2">Show</a>

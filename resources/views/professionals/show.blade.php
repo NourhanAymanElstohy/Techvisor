@@ -22,8 +22,7 @@
                                   <div class="user_profile">
                                       <div class="user-pro-img">
                                           <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
-                                          {{-- <img src="{{ url('design/style') }}/images/resources/user-pro-img.png" alt=""> --}}
-                                      </div><!--user-pro-img end-->
+                                      </div>
                                       <div class="user_pro_status">
                                           <ul class="flw-hr">
                                               <li><a href="{{route('professionals.edit', $prof->id)}}" title="" class="flww">Edit Profile</a></li>
@@ -82,53 +81,7 @@
                                       </div><!-- tab-feed end-->
                                   </div><!--user-tab-sec end-->
                                   <div class="product-feed-tab current" id="feed-dd">
-                                      <div class="posts-section">
-                                           
-
-                                      <div class="post-bar"> 
-                                    <div class="post_topbar">
-                                        <div class="usy-dt">
-                                            <img src="{{ url('design/style') }}/images/resources/us-pic.png" alt="">
-                                            <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="{{ url('design/style') }}/images/clock.png" alt="">3 min
-                                                    ago</span>
-                                            </div>
-                                        </div>
-                                        <div class="ed-opts">
-                                            <a href="#" title="" class="ed-opts-open"><i
-                                                    class="la la-ellipsis-v"></i></a>
-                                            <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="epi-sec">
-                                        <ul class="descp">
-                                            <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>
-                                                    Category Name</span></li>
-                                            <li><img src="{{ url('design/style') }}/images/icon9.png"
-                                                    alt=""><span>Question</span></li>
-                                        </ul>
-                                        
-                                    </div>
-                                    <div class="job_descp">
-                                       
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
-                                            hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet...
-                                          
-                                    </div>
-                                    <div class="job-status-bar">
-                                        <ul class="like-com">
-                                       
-                                            <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Answers
-                                                    </a></li>
-                                        </ul>
-                                        </div>
-                                        </div>
-                              
-                                      
-                                      </div><!--posts-section end-->
+                                      @include('questions.index')
                                   </div><!--product-feed-tab end-->
                                   <div class="product-feed-tab" id="info-dd">
                                       <div class="user-profile-ov">
@@ -172,9 +125,6 @@
                               
                               </div><!--main-ws-sec end-->
                           </div>
-                      
-                      
-                      
                           @include('categories.index')
                       </div>
                   </div><!-- main-section-data end-->

@@ -15,14 +15,17 @@ class QuestionController extends Controller
 
     public function index()
     {
+        $userId = Auth::id();
+        $user = User::find($userId);
         $questions = Question::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/index', [
-                'questions' => $questions
+                'questions' => $questions,
+                'user' => $user
             ]);
         } else {
             return view('questions/index', [
-                'questions' => $questions
+                'questions' => $questions,
             ]);
         }
     }
