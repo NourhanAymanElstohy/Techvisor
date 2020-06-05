@@ -40,26 +40,10 @@ class QuestionController extends Controller
         ]);
     }
 
-    // public function create()
-    // {
-    //     $prof = request()->prof;
-    //     $users = User::where('role', '=', '2')->get();
-
-    //     if (auth()->user()->hasPermissionTo('adminpermission')) {
-    //         return view('admin/questions/create', [
-    //             'prof' => $prof,
-    //             'users' => $users
-    //         ]);
-    //     } else {
-    //         return view('questions/create', [
-    //             'prof' => $prof
-    //         ]);
-    //     }
-    // }
     public function create(){
         $prof=request()->prof;
         $users;
-        if(!$prof){
+        if(!$prof && auth()->user()->hasPermissionTo('adminpermission')){
             $users=User::where('role',2)->get();
             return view('admin/questions/create',[
                 'prof'=>$prof,
