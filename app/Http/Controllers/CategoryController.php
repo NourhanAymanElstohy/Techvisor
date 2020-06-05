@@ -54,26 +54,25 @@ class CategoryController extends Controller
     public function show(Request $request)
     {
         $categories = Category::all();
-        $request=request();
+        $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
 
         $categoryId = $request->category;
         $category = Category::find($categoryId);
 
-        // find prof related to this category
         $profs = User::all()->where('role', '=', '2');
-        // dd(User::all()->where('role', '=', 'professional'));
+
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/categories/show');
-        }
-
-        return view('categories/show', [
-            'profs' => $profs,
-            'category' => $category,
+        } else {
+            return view('categories/show', [
+                'profs' => $profs,
+                'category' => $category,
                 'user' => $user,
                 'categories' => $categories
-        ]);
+            ]);
+        }
     }
 
     public function edit()

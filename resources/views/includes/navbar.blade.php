@@ -6,31 +6,44 @@
 						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-								
-							</div><!--search-bar end-->
-
+						
+					</div><!--search-bar end-->
 					<nav>
 						<ul>
 							<li>
-								<a href="/style" title="">
+							@hasanyrole('super-admin|user|professional')
+								<a href="{{route('home')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
 									Home
 								</a>
+								@else
+								<a href="/" title="">
+									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
+									Home
+								</a>
+								@endhasanyrole
+							</li>
+							<li>
+								<a href="/style/about" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
+								</a>
+								
 							</li>
 							
 						@Auth
 						<li>
-						@role('user')
+						@hasanyrole('super-admin|user')
 								<a href="{{route('user.show', Auth::user()->id)}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@else
+						@else
 								<a href="{{route('professional.show', Auth::user()->id)}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@endrole
+						@endhasanyrole
 							</li>
 
 
@@ -41,7 +54,6 @@
 								</a>
 
 								<div class="notification-box noti" id="notification">
-
 									<div class="nt-title">
 										<h4>Notification</h4>
 										<a href="#" title="">Clear all</a>
@@ -53,6 +65,7 @@
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
 									     </div>
+
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
 										@if($notification->unread())
@@ -83,55 +96,26 @@
 											</a>
 										@endif 
 										@endif 
-
+										</div>
+									</div>
 									@endforeach
-						  				</div>
-										  </div>
-									
-						  				<div class="view-all-nots">
+									<div class="view-all-nots">
 						  					<a href="#" title="">View All Notification</a>
 						  				</div>
 
 									</div><!--nott-list end-->
 								</div><!--notification-box end-->
 							</li>
-							@endauth
-							<li>
-								<a href="/style/about" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									About Us
-								</a>
-								
-								
-							</li>
-						
-				
-							
-						
-						@guest
-							<li >
-								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
-							</li>
-								@if (Route::has('register'))
-								<li >
-									<a href="{{ route('register') }}">{{ __('Register') }}</a>
-								</li>
-								@endif
-								</ul>
-					<!--nav end--> </nav>	
+						</ul>
+					</nav><!--nav end-->
+
+									
 					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
 
-							@else
-							</ul>
-					<!--nav end--> </nav>
-							<div class="menu-btn">
-						<a href="#" title=""><i class="fa fa-bars"></i></a>
-					</div><!--menu-btn end-->
 						<div class="user-account">
 							<div class="user-info">
-						
 								<img src="{{ url('design/style') }}/images/resources/user.png" alt="">
 								<i class="la la-sort-down"></i>
 							</div>
@@ -174,7 +158,7 @@
 										<label for="c6">
 											<span></span>
 										</label> 
-										<small><a href="{{route('professionals.changestatus', $user->id)}}">Online</a></small>
+										<small><a href="{{route('professionals.changestatus', Auth::user()->id)}}">Online</a></small>
 									</div>
 								</li>
 								@endif
@@ -189,7 +173,6 @@
 							<li><a href="{{route('users.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
 							@endrole	
 								<li><a href="#" title="">Privacy</a></li>
-								<li><a href="#" title="">Terms & Conditions</a></li>
 							</ul>
 						
 
@@ -204,12 +187,31 @@
 										@csrf
 								</form>
 							</h3>
-						</div><!--user-account-settingss end-->
-						
-						@endguest
-						
+
+							</div>
+							</div>
+							</div>
+							</div>
+							@endauth
 					
-					</div>
+						@guest
+							<li >
+								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
+							</li>
+							
+								@if (Route::has('register'))
+								<li >
+									<a href="{{ route('register') }}">{{ __('Register') }}</a>
+								</li>
+								@endif
+								
+					<div class="menu-btn">
+						<a href="#" title=""><i class="fa fa-bars"></i></a>
+					</div><!--menu-btn end-->							
+						@endguest
+						</ul>
+					<!--nav end--> </nav>	
 				</div><!--header-data end-->
 			</div>
 		</header><!--header end-->
+		</div>

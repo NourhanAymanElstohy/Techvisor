@@ -97,7 +97,7 @@ class ProfessionalController extends Controller
       //dd($user);
       $user->status =! $user->status;
       if ($user->save()){
-        return redirect()->route('style.home');
+        return redirect()->route('home');
     } else {
         return redirect()->route('professionals.changestatus');
       } 

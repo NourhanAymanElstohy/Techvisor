@@ -16,10 +16,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -27,7 +27,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {    
+    {
         $user = Auth::user();
 
         return view('home');
@@ -35,11 +35,11 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        $categories = Category::all();           
-        $request=request();
+        $categories = Category::all();
+        $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
-        return view('style/home', [
+        return view('home', [
             'user' => $user,
             'categories' => $categories
         ]);
@@ -48,8 +48,8 @@ class HomeController extends Controller
 
     public function home()
     {
-        $categories = Category::all();           
-        $request=request();
+        $categories = Category::all();
+
         $userId = Auth::id();
         $user = User::find($userId);
         return view('home', [
@@ -57,4 +57,4 @@ class HomeController extends Controller
             'categories' => $categories
         ]);
     }
-} 
+}
