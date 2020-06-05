@@ -12,6 +12,7 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
+// use Intervention\Image\Image;
 use Intervention\Image\Facades\Image;
 
 
@@ -85,17 +86,16 @@ class UserController extends Controller
     {
         //all roles can view user profile, permissions in blade
         $categories = Category::all();
-        // $userId = request()->user;
-        // $user = User::find($userId);
-        $users = User::all()->where('role', '=', '1');
+        $userId = request()->user;
+        $user = User::find($userId);
+
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('users/show', [
-                'users' => $users,
-                'categories' => $categories,
+            return view('admin.users.show', [
+                'user' => $user
             ]);
         } else {
             return view('users/show', [
-                'users' => $users,
+                'user' => $user,
                 'categories' => $categories,
             ]);
         }
@@ -135,7 +135,9 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
+            // $user = Auth::user();
             $user->avatar = $filename;
+            // dd($user->avatar);
             $user->save();
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {

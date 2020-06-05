@@ -13,12 +13,14 @@
             </div>
 
             <div class="companies-list">
-				<div class="row"> 
+				<div class="row">
+
+                    
                 @foreach($profs as $prof)     
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="company_profile_info">
                             <div class="company-up-info">
-                                <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
+                            <img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
                                 <h3>{{$prof->name}}</h3>
                                 <ul>
                                     <li><a class="post-jb active follow" href="{{route('questions.create',['prof'=> $prof->id])}}" title="">ASK</a></li>  
@@ -33,14 +35,15 @@
                     </div>
                 @endforeach
  
-	            @include('questions.create')
+	@include('questions.create')
      
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</main>
+            </div>
+
+    </div>
+    </div>
+    </div>
+    </main>
 <script>
     function connectZoom() {
         document.getElementById("create-zoom").value = "{{ $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $category->name])}}";

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-@foreach ($users as $user)
-
 <div class="wrapper">
 		
 		<section class="cover-sec">
@@ -23,18 +21,18 @@
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
-												<li><a href="{{route('users.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
+												<li><a href="{{route('users.edit', Auth::user()->id)}}" title="" class="flww">Edit Profile</a></li>
 											</ul>
 										</div><!--user_pro_status end-->
 					 					<ul class="social_links"> 										
 											<li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{Auth::user()->email}}</a></li>
-                                   @if ( $user->linkedin != null )
+                                   @if ( Auth::user()->linkedin != null )
                                             <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{Auth::user()->linkedin}}</a></li>
                                     @endif    
-                                    @if ($user->github != null)
+                                    @if (Auth::user()->github != null)
                                             <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{Auth::user()->github}}</a></li>
                                     @endif    
-                                    @if ($user->other != null)
+                                    @if (Auth::user()->other != null)
                                             <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{Auth::user()->other}}</a></li>
                                    @endif
                                            </ul>
@@ -208,8 +206,7 @@
 
 	</div><!--theme-layout end-->
 
-	
-	@endforeach
+
 @endsection
 
 

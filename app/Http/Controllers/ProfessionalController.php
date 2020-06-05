@@ -9,8 +9,6 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Category;
-use Intervention\Image\Facades\Image;
-
 
 
 
@@ -35,18 +33,15 @@ class ProfessionalController extends Controller
     {
         //all roles can view professional profile, permissions in blade
         $categories = Category::all();
-        // $userId = request()->prof;
-        // $user = User::find($userId);
-        $profs = User::all()->where('role', '=', '2');
+        $userId = request()->prof;
+        $user = User::find($userId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('professionals/show', [
-                'profs' => $profs,
-                'categories' => $categories
-                // 'user'->$user
+            return view('admin.professionals.show', [
+                'user' => $user
             ]);
         } else {
             return view('professionals/show', [
-                'profs' => $profs,
+                'user' => $user,
                 'categories' => $categories
             ]);
         }
@@ -75,19 +70,6 @@ class ProfessionalController extends Controller
             //dd($professional);
             $professional->name = $request->name;
             $professional->email = $request->email;
-
-            if ($request->password != null) {
-                $professional->password = bcrypt($request->password);
-            }
-            if ($request->hasFile('avatar')) {
-                $avatar = $request->file('avatar');
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
-
-                $professional->avatar = $filename;
-                $professional->save();
-            }
-
             $professional->save();
             return redirect()->route('professional.show', [
                 'professional' => $professional,
