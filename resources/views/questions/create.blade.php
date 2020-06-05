@@ -10,7 +10,7 @@
                 @else
                   {{-- <div class="form-group mt-5">
                     <label for="exampleFormControlSelect1">Users</label>
-                      <select name="prof" class="form-control ">
+                      <select name="prof" class="form-control" value="">
                         @foreach($users as $user)  
                           <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
@@ -24,8 +24,8 @@
                         </div>
                         <div class="col-lg-12">
                             <ul>
-                                <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="#" title="">Cancel</a></li>
+                                <li><button type="submit" class="btn btn-success">Post</button></li>
+                                <li><a href="/home" title="">Cancel</a></li>
                             </ul>
                         </div>
                     </div>

@@ -52,8 +52,7 @@ class QuestionController extends Controller
             ]);
         } else {
             return view('questions/create', [
-                'prof' => $prof,
-                'users' => $users
+                'prof' => $prof
             ]);
         }
     }
@@ -61,14 +60,22 @@ class QuestionController extends Controller
     {
         $request = request();
         $userId = Auth::id();
+        if($request->prof){
+            Question::create([
+                "question" => $request->question,
+                "user_id" => $userId,
+                "state" => "private",
+                "prof_id" => $request->prof
+            ]);
+        }else{
+            Question::create([
+                "question" => $request->question,
+                "user_id" => $userId,
+                "state" => "public",
+                
+            ]);
 
-        Question::create([
-            "question" => $request->question,
-            "user_id" => $userId,
-            "state" => "private",
-            "prof_id" => $request->prof
-        ]);
-
+        }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } elseif (auth()->user()->hasPermissionTo('professionalpermission')) {
