@@ -9,6 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Category;
+use App\Question;
 use Intervention\Image\Facades\Image;
 
 
@@ -38,6 +39,8 @@ class ProfessionalController extends Controller
         // $userId = request()->prof;
         // $user = User::find($userId);
         $profs = User::all()->where('role', '=', '2');
+        $users = User::all()->where('role', '=', '1');
+        $questions = Question::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin.professionals.show', [
                 // 'user' => $user
@@ -45,7 +48,9 @@ class ProfessionalController extends Controller
         } else {
             return view('professionals/show', [
                 'profs' => $profs,
-                'categories' => $categories
+                'users' => $users,
+                'categories' => $categories,
+                'questions' => $questions
             ]);
         }
     }

@@ -78,7 +78,9 @@
 										</div><!-- tab-feed end-->
 									</div><!--user-tab-sec end-->
 									<div class="product-feed-tab current" id="feed-dd">
+										
 										@include('questions.index')
+
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab" id="info-dd">
 										<div class="user-profile-ov">

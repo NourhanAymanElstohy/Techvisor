@@ -1,6 +1,6 @@
-@foreach ($users as $user)
+{{-- @foreach ($users as $user) --}}
      @foreach ($questions as $question)
-         @if($question->user->id == $user->id)
+         {{-- @if($question->user->id == $user->id) --}}
         <div class="posts-section">
             <div class="post-bar">
                 <div class="post_topbar">
@@ -38,8 +38,8 @@
                 </div>
             </div>
         </div>
-    @else
+    {{-- @else
     @endif
-    @endforeach
+    @endforeach --}}
 @endforeach
    
