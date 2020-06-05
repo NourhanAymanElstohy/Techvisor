@@ -122,4 +122,18 @@ class ProfessionalController extends Controller
             return redirect()->route('professionals.changestatus');
         }
     }
+    public function banned()
+    {
+        //here admin only can ban any prof
+        $profId = request()->professional;
+        $prof = User::find($profId);
+        if ($prof->isNotBanned()) {
+            $prof->ban();
+        } else {
+            $prof->unban();
+        }
+        return redirect()->route('professional.show', [
+            'prof' => $prof
+        ]);
+    }
 }

@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']);
     Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus')->middleware(['role:professional']);
+    Route::get('/professionals/{professional}/ban', 'ProfessionalController@banned')->name('profs.banned')->middleware(['role:super-admin']);
 });
 
 
