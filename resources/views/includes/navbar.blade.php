@@ -6,8 +6,8 @@
 						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-							</div><!--search-bar end-->
-
+						
+					</div><!--search-bar end-->
 					<nav>
 						<ul>
 							<li>
@@ -23,6 +23,13 @@
 								</a>
 								@endhasanyrole
 							</li>
+							<li>
+								<a href="{{route('about')}}" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									About Us
+								</a>
+								
+							</li>
 							
 						@Auth
 						<li>
@@ -31,12 +38,12 @@
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@else
+						@else
 								<a href="{{route('professional.show', Auth::user()->id)}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
-								@endhasanyrole
+						@endhasanyrole
 							</li>
 
 
@@ -47,7 +54,6 @@
 								</a>
 
 								<div class="notification-box noti" id="notification">
-
 									<div class="nt-title">
 										<h4>Notification</h4>
 										<a href="#" title="">Clear all</a>
@@ -59,6 +65,7 @@
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
 									     </div>
+
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
 										@if($notification->unread())
@@ -89,34 +96,26 @@
 											</a>
 										@endif 
 										@endif 
-
-									@endforeach
+										</div>
 									</div>
-									
-						  				
-									
-						  				<div class="view-all-nots">
+									@endforeach
+									<div class="view-all-nots">
 						  					<a href="#" title="">View All Notification</a>
 						  				</div>
-										  </div>
-										  <li>
-                                          <a href="{{route('about')}}" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									About Us
-								</a>
-								</li>
 
-									
 									</div><!--nott-list end-->
 								</div><!--notification-box end-->
-								</li>
-							
-							<div class="menu-btn">
+							</li>
+						</ul>
+					</nav><!--nav end-->
+
+									
+					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
+
 						<div class="user-account">
 							<div class="user-info">
-						
 							<img src="/uploads/avatars/{{Auth::user()->avatar}}" alt="" width="30px" height="30px">
 								<i class="la la-sort-down"></i>
 							</div>
@@ -182,46 +181,37 @@
 								<a href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </h3>
-            </div>
-        </ul>
-    </nav>
-    @endauth
+										{{ __('Logout') }} 
+								</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+								</form>
+							</h3>
 
-			@guest
-			<li>
-                
-			<a href="{{route('about')}}" title="">
-                    <span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-                    About Us
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-
-            @if (Route::has('register'))
-            <li>
-                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-			</li>
-			@endif
-            
-            <div class="menu-btn">
-                <a href="#" title=""><i class="fa fa-bars"></i></a>
-            </div>
-            <!--menu-btn end-->
-            @endguest
-            </ul>
-            <!--nav end-->
-            </nav>
-        </div>
-        <!--header-data end-->
-    </div>
-</header>
-<!--header end-->
-</div>
+							</div>
+							</div>
+							</div>
+							</div>
+							@endauth
+					
+						@guest
+							<li >
+								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
+							</li>
+							
+								@if (Route::has('register'))
+								<li >
+									<a href="{{ route('register') }}">{{ __('Register') }}</a>
+								</li>
+								@endif
+								
+					<div class="menu-btn">
+						<a href="#" title=""><i class="fa fa-bars"></i></a>
+					</div><!--menu-btn end-->							
+						@endguest
+						</ul>
+					<!--nav end--> </nav>	
+				</div><!--header-data end-->
+			</div>
+		</header><!--header end-->
+		</div>

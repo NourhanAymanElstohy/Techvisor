@@ -34,18 +34,16 @@
                         </div>
                     </div>
                 @endforeach
-                
-                
-                </div>
+ 
+	@include('questions.create')
+     
+    </div>
             </div>
-
 
     </div>
     </div>
     </div>
     </main>
-
-	@include('questions.create')
 <script>
     function connectZoom() {
         document.getElementById("create-zoom").value = "{{ $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $category->name])}}";

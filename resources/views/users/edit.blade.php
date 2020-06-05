@@ -3,10 +3,7 @@
 
 <div class="wrapper">
       
-      <section class="cover-sec">
-          <img src="{{ url('design/style') }}/images/resources/cover-img.jpg" alt="">
-      </section>
-
+   
 
       <main>
           <div class="main-section">
