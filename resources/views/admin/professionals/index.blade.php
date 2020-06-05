@@ -27,6 +27,7 @@
       <tr>
        <th>ID</th>
        <th>Name</th>
+       <th>Image</th> 
        <th>Email</th>
        <th>Roles</th>
        <th>Status</th>
@@ -39,6 +40,7 @@
     <tr>
     <th>{{$user->id}}</th>
     <td>{{$user->name}}</td>
+    <td><img src="/uploads/avatars/{{$user->avatar}}" class="mx-auto" style="width: 60px;"></td>
     <td>{{$user->email}}</td>
     <td>{{$user->roles->implode('name', ',')}}</td>
     @if($user->status=='0')
@@ -55,19 +57,22 @@
     class="btn btn-primary float-left mr-2  ">Edit</button></a>
                                              
     <form action="{{route('users.destroy', $user->id) }}" method="POST"
-    class="float-right">
+    class="float-left">
     @csrf
     {{ method_field('DELETE') }}
     <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
 
     </form>
+    </br>
+    </br>
                                             
-    @if ($user->isNotBanned())                
+    @if ($user->isNotBanned())  
+              
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-dark">Ban</a>
+     class="btn btn-dark float-center">Ban</a>
     @else
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-success ">Unban</a>
+     class="btn btn-success float-center ">Unban</a>
     @endif
     </td>
     </tr>

@@ -2,7 +2,6 @@
 @extends('layouts.app')
 @section('content')
 
-@foreach ($profs as $prof)
 
 <div class="wrapper">
       
@@ -21,25 +20,25 @@
                               <div class="main-left-sidebar">
                                   <div class="user_profile">
                                       <div class="user-pro-img">
-                                          <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
+                                          <img src="/uploads/avatars/{{$user->avatar}}" alt="">
                                       </div>
                                       <div class="user_pro_status">
                                           <ul class="flw-hr">
-                                              <li><a href="{{route('professionals.edit', $prof->id)}}" title="" class="flww">Edit Profile</a></li>
+                                              <li><a href="{{route('professionals.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
                                         
                                       </div><!--user_pro_status end-->
                                       <ul class="social_links"> 										
-                                         <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$prof->email}}</a></li>
+                                         <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$user->email}}</a></li>
 
-                                   @if ( $prof->linkedin != null )
-                                        <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{$prof->linkedin}}</a></li>
+                                   @if ( $user->linkedin != null )
+                                        <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{$user->linkedin}}</a></li>
                                     @endif    
-                                    @if ($prof->github != null)
-                                        <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{$prof->github}}</a></li>
+                                    @if ($user->github != null)
+                                        <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{$user->github}}</a></li>
                                     @endif    
-                                    @if ($prof->other != null)
-                                       <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{$prof->other}}</a></li>
+                                    @if ($user->other != null)
+                                       <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{$user->other}}</a></li>
                                    @endif
                                       </ul>
                                   </div><!--user_profile end-->
@@ -51,7 +50,7 @@
                           <div class="col-lg-6">
                               <div class="main-ws-sec">
                                   <div class="user-tab-sec">
-                                      <h3>{{$prof->name}}</h3>
+                                      <h3>{{$user->name}}</h3>
                                       <div class="star-descp">
                                           <span>Graphic Designer at Self Employed</span>
                                           <ul>
@@ -158,7 +157,6 @@
   </div><!--theme-layout end-->
 
     
-    @endforeach
 @endsection
 
 

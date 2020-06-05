@@ -35,22 +35,23 @@ class ProfessionalController extends Controller
     public function show()
     {
         //all roles can view professional profile, permissions in blade
+        $userId = request()->professional;
+        $user = User::find($userId);
         $categories = Category::all();
-        // $userId = request()->prof;
-        // $user = User::find($userId);
         $profs = User::all()->where('role', '=', '2');
         $users = User::all()->where('role', '=', '1');
         $questions = Question::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin.professionals.show', [
-                // 'user' => $user
+                 'user' => $user
             ]);
         } else {
-            return view('professionals/show', [
+            return view('professionals/show', [ 
                 'profs' => $profs,
                 'users' => $users,
                 'categories' => $categories,
-                'questions' => $questions
+                'questions' => $questions,
+                'user' => $user
             ]);
         }
     }
@@ -58,7 +59,7 @@ class ProfessionalController extends Controller
     public function edit()
     {
         //professional can edit his  profile
-        if (auth()->user()->hasPermissionTo('professionalpermission')) {
+        if (auth()->user()->role==2) {
             $request = request();
             $professionalId = $request->professional;
             $professional = User::find($professionalId);
@@ -72,7 +73,7 @@ class ProfessionalController extends Controller
     {
         //admin and professionals can edit professional profile, permission in blade
         $categories = Category::all();
-        if (auth()->user()->hasPermissionTo('professionalpermission')) {
+        if (auth()->user()->role==2) {
             $request = request();
             $professional = User::find($request->professional);
 
@@ -99,7 +100,7 @@ class ProfessionalController extends Controller
     public function destroy()
     {
         // here only professionals can delete profile             
-        if (auth()->user()->hasPermissionTo('professionalpermission')) {
+        if (auth()->user()->role==2) {
             $user = User::findOrFail($id);
             $request = request();
             $professionalId = $request->professional;

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-@foreach ($users as $user)
 
 <div class="wrapper">
 		
@@ -158,7 +157,6 @@
 	</div><!--theme-layout end-->
 
 	
-	@endforeach
 @endsection
 
 

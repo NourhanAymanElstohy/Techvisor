@@ -124,7 +124,7 @@
 										
 											
 			
-						@hasanyrole('professional|super-admin')
+						@if(Auth::user()->role==2) 
 							<h3>Online Status</h3>
 							<ul class="on-off-status">
 
@@ -163,15 +163,15 @@
 								</li>
 								@endif
 							</ul>
-							@endhasanyrole
+							@endif
 							
 							<h3>Setting</h3>
 							<ul class="us-links">
-							@role('professional')
+							@if(Auth::user()->role==2)
 							<li><a href="{{route('professionals.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
 							@else	
 							<li><a href="{{route('users.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
-							@endrole	
+							@endif
 								<li><a href="#" title="">Privacy</a></li>
 							</ul>
 						
