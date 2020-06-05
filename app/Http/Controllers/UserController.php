@@ -185,7 +185,7 @@ class UserController extends Controller
         } else {
             $user->unban();
         }
-        return redirect()->route('user.show', [
+        return redirect()->route('users.index', [
             'user' => $user
         ]);
     }

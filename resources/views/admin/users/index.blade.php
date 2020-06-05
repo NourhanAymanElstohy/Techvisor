@@ -14,11 +14,24 @@
   <div class="content-wrapper">
   <div class="container">
   <div class="p-3" style="text-align:center">
-    <h1 style="color:#3cb371"><strong>Users</strong></h1>
-    <div class="p-2">
-    <a href="{{route('users.create')}}"><button type="button"
-     class="btn btn-success float-left">Create User</button></a>
-     </div>
+    @if ($users == App\User::all()->where('role', '=','3'))
+      <h1 style="color:#3cb371"><strong>Admins</strong></h1>  
+    @else
+      <h1 style="color:#3cb371"><strong>Users</strong></h1>
+    @endif
+   
+    @if ($users == App\User::all()->where('role', '=','3'))
+      <div class="p-2">
+        <a href="{{route('users.create')}}"><button type="button"
+          class="btn btn-success float-left">Create Admin</button></a>
+      </div>
+    @else
+      <div class="p-2">
+          <a href="{{route('users.create')}}"><button type="button"
+            class="btn btn-success float-left">Create User</button></a>
+      </div> 
+    @endif
+    
 
 
     <table id="example" class="table table-striped table-bordered" style="width:80rem%">
@@ -29,7 +42,10 @@
        <th>Email</th>
        <th>Roles</th>
        <th>Status</th>
-       <th>Banned At</th>
+       @unless (Auth::user()->hasPermissionTo('adminpermission'))
+           <th>Banned At</th>
+       @endunless
+       
        <th>Actions</th>
      </tr>
      </thead>
@@ -40,12 +56,17 @@
     <td>{{$user->name}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->roles->implode('name', ',')}}</td>
+
     @if($user->status==1)
         <td>Active</td>
     @elseif($user->status==0)
         <td>Inactive</td>  
     @endif 
-    <td>{{ $user->banned_at }}</td>
+
+    @unless ($user->hasPermissionTo('adminpermission'))
+        <td>{{ $user->banned_at }}</td>
+    @endunless
+    
    <td>
     <a href="{{route('user.show', $user->id)}}"><button type="button"
     class="btn btn-info float-left mr-2">Show</button></a>
@@ -59,14 +80,17 @@
     {{ method_field('DELETE') }}
     <button type="submit" class="btn btn-danger   mr-2" onclick="return confirm ('are you sure?')">Delete</button>
     </form>
-                                            
-    @if ($user->isNotBanned())                
-    <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-dark float-right  mr-2">Ban</a>
-    @else
-    <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
-     class="btn btn-success float-right  mr-2">Unban</a>
-    @endif
+          
+    @unless (Auth::user()->hasPermissionTo('adminpermission'))
+        @if ($user->isNotBanned())                
+        <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
+        class="btn btn-dark float-right  mr-2">Ban</a>
+        @else
+        <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
+        class="btn btn-success float-right  mr-2">Unban</a>
+        @endif
+    @endunless
+    
     </td>
     </tr>
     @endforeach

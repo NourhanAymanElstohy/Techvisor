@@ -125,7 +125,7 @@ class ProfessionalController extends Controller
         } else {
             $prof->unban();
         }
-        return redirect()->route('professional.show', [
+        return redirect()->route('professionals.index', [
             'prof' => $prof
         ]);
     }

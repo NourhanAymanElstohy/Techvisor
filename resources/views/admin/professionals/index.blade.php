@@ -63,10 +63,10 @@
     </form>
                                             
     @if ($user->isNotBanned())                
-    <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
+    <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
      class="btn btn-dark">Ban</a>
     @else
-    <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
+    <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
      class="btn btn-success ">Unban</a>
     @endif
     </td>
