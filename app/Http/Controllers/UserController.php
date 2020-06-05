@@ -85,16 +85,16 @@ class UserController extends Controller
     {
         //all roles can view user profile, permissions in blade
         $categories = Category::all();
-        $userId = request()->user;
-        $user = User::find($userId);
-
+        // $userId = request()->user;
+        // $user = User::find($userId);
+        $users = User::all()->where('role', '=', '1');
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin.users.show', [
-                'user' => $user
+                // 'user' => $user
             ]);
         } else {
             return view('users/show', [
-                'user' => $user,
+                'users' => $users,
                 'categories' => $categories,
             ]);
         }
