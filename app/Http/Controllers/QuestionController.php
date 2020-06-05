@@ -35,9 +35,15 @@ class QuestionController extends Controller
         $request = request();
         $questionId = $request->question;
         $question = Question::find($questionId);
-        return view('questions/show', [
-            'question' => $question
-        ]);
+        if(auth()->user()->hasPermissionTo('adminpermission')){
+            return view('admin/questions/show', [
+                'question' => $question
+            ]);
+        }else{
+            return view('questions/show', [
+                'question' => $question
+            ]);
+        }
     }
 
     public function create(){
@@ -95,10 +101,16 @@ class QuestionController extends Controller
         $users = User::where('role', 2)->get();
         $questionId = $request->question;
         $question = Question::find($questionId);
-        return view('questions/edit', [
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+        return view('admin/questions/edit', [
             'question' => $question,
             'users' => $users
         ]);
+        }else{
+            return view('questions/edit', [
+                'question' => $question,
+                'users' => $users]);
+        }
     }
     public function update()
     {
@@ -107,7 +119,7 @@ class QuestionController extends Controller
         $question->question = $request->question;
         $question->state = $request->state;
         $question->save();
-        return redirect()->route('questions.index');
+        return redirect('/');
     }
 
     public function destroy()
@@ -125,5 +137,6 @@ class QuestionController extends Controller
         $userId = $request->zoom;
         $prof = User::find($userId);
         $prof->notify(new NewZoom($user));
+      
     }
 }

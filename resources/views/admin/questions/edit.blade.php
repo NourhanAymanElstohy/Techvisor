@@ -1,7 +1,17 @@
+@role('super-admin')
+@include('admin.layouts.header')
 
-@extends('layouts.app')
-@section('content')
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
+  <!-- Navbar -->
+  @include('admin.layouts.navbar')
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  
+  @include('admin.layouts.sidebar')
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <div class="container">
   <div class="p-3" style="text-align:center">
@@ -25,7 +35,7 @@
           </div>
           <div class="form-group">
           <label for="exampleFormControlSelect1">state</label>
-          <select name="state"  class="form-control " value="{{$question->state}}">
+          <select name="state" class="form-control " value="{{$question->state}}">
               
                 <option value="public">public</option>
                 <option value="private">private</option>
@@ -33,17 +43,16 @@
               </select>
         </div>
 
-        <button type="submit" class="btn btn-danger">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
         
       </form>  
 </div>  </div>
 </div>
   <!-- /.content-wrapper -->
 
-  @endsection
-
- 
+  @include('admin.layouts.footer')
 
 
 
   
+  @endrole

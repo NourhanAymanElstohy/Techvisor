@@ -13,7 +13,7 @@
                                             <a href="#" title="" class="ed-opts-open"><i
                                                     class="la la-ellipsis-v"></i></a>
                                             <ul class="ed-options">
-                                                <li><a href="#" title="">Edit Post</a></li>
+                                                <li><a href="questions/{{$question->id}}/edit" title="">Edit Post</a></li>
                                             </ul>
                                         </div>
                                     </div>

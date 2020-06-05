@@ -23,7 +23,7 @@
                                 <h3>{{$prof->name}}</h3>
                                 <ul>
                                     <li><a class="active follow" href="{{route('questions.create',['prof'=> $prof->id])}}" title="">ASK</a></li>  
-                                    <li><a href="#" title="" id="zoom" class="hire" onclick="return connectZoom();">Zoom</a></li>
+                                    <li><a href="/zoom/{{$prof->id}}" title="" id="zoom" class="hire" onclick="return connectZoom();">Zoom</a></li>
                                     <li id="demo"></li>
                                     <input type="hidden" name="create" value="" id="create-zoom">
                                 </ul>
