@@ -2,6 +2,8 @@
 @extends('layouts.app')
 @section('content')
 
+@foreach ($profs as $prof)
+
 <div class="wrapper">
       
       <section class="cover-sec">
@@ -19,26 +21,26 @@
                               <div class="main-left-sidebar">
                                   <div class="user_profile">
                                       <div class="user-pro-img">
-                                          <img src="/uploads/avatars/{{$user->avatar}}" alt="">
+                                          <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
                                           {{-- <img src="{{ url('design/style') }}/images/resources/user-pro-img.png" alt=""> --}}
                                       </div><!--user-pro-img end-->
                                       <div class="user_pro_status">
                                           <ul class="flw-hr">
-                                              <li><a href="{{route('professionals.edit', Auth::user()->id)}}" title="" class="flww">Edit Profile</a></li>
+                                              <li><a href="{{route('professionals.edit', $prof->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
                                         
                                       </div><!--user_pro_status end-->
                                       <ul class="social_links"> 										
-                                         <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{Auth::user()->email}}</a></li>
+                                         <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$prof->email}}</a></li>
 
-                                   @if ( Auth::user()->linkedin != null )
-                                        <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{Auth::user()->linkedin}}</a></li>
+                                   @if ( $prof->linkedin != null )
+                                        <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{$prof->linkedin}}</a></li>
                                     @endif    
-                                    @if (Auth::user()->github != null)
-                                        <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{Auth::user()->github}}</a></li>
+                                    @if ($prof->github != null)
+                                        <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{$prof->github}}</a></li>
                                     @endif    
-                                    @if (Auth::user()->other != null)
-                                       <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{Auth::user()->other}}</a></li>
+                                    @if ($prof->other != null)
+                                       <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{$prof->other}}</a></li>
                                    @endif
                                       </ul>
                                   </div><!--user_profile end-->
@@ -50,7 +52,7 @@
                           <div class="col-lg-6">
                               <div class="main-ws-sec">
                                   <div class="user-tab-sec">
-                                      <h3>{{Auth::user()->name}}</h3>
+                                      <h3>{{$prof->name}}</h3>
                                       <div class="star-descp">
                                           <span>Graphic Designer at Self Employed</span>
                                           <ul>
@@ -126,13 +128,6 @@
                                         </div>
                               
                                       
-                                          <div class="process-comm">
-                                              <div class="spinner">
-                                                  <div class="bounce1"></div>
-                                                  <div class="bounce2"></div>
-                                                  <div class="bounce3"></div>
-                                              </div>
-                                          </div><!--process-comm end-->
                                       </div><!--posts-section end-->
                                   </div><!--product-feed-tab end-->
                                   <div class="product-feed-tab" id="info-dd">
@@ -210,7 +205,8 @@
 
   </div><!--theme-layout end-->
 
-
+    
+    @endforeach
 @endsection
 
 

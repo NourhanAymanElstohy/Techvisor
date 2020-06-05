@@ -12,7 +12,6 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
-// use Intervention\Image\Image;
 use Intervention\Image\Facades\Image;
 
 
@@ -135,9 +134,7 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
-            // $user = Auth::user();
             $user->avatar = $filename;
-            // dd($user->avatar);
             $user->save();
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
