@@ -28,10 +28,17 @@
                                         
                                       </div><!--user_pro_status end-->
                                       <ul class="social_links"> 										
-                    <li><a href="#" title=""><i class="la la-envelope"></i>{{Auth::user()->email}}</a></li>
-                    <li><a href="#" title=""><i class="la la-globe"></i> www.example.com</a></li>
-                                          <li><a href="#" title=""><i class="fa fa-google-plus-square"></i> Http://www.googleplus.com/john...</a></li>
-                                          <li><a href="#" title=""><i class="fa fa-youtube"></i> Http://www.youtube.com/john...</a></li>
+                                         <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{Auth::user()->email}}</a></li>
+
+                                   @if ( Auth::user()->linkedin != null )
+                                        <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{Auth::user()->linkedin}}</a></li>
+                                    @endif    
+                                    @if (Auth::user()->github != null)
+                                        <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{Auth::user()->github}}</a></li>
+                                    @endif    
+                                    @if (Auth::user()->other != null)
+                                       <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{Auth::user()->other}}</a></li>
+                                   @endif
                                       </ul>
                                   </div><!--user_profile end-->
                                   
