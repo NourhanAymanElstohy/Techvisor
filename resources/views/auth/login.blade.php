@@ -1,15 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
+
+<body class="sign-in" oncontextmenu="return false;">
+<div class="wrapper">		
+
+<div class="sign-in-page">
+    <div class="signin-popup">
+        <div class="signin-pop">
+
+
+        <div class="row">
+                <div class="col-lg-6">
+                    <div class="cmp-info">
+                        <div class="cm-logo">
+                            <img src="{{ url('design/style') }}/images/cm-logo.png" alt="">
+                            <p>Workwise,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+                        </div><!--cm-logo end-->	
+                        <img src="{{ url('design/style') }}/images/cm-main-img.png" alt="">			
+                    </div><!--cmp-info end-->
+                </div>
+                
+
+
+
+
+
+                <div class="col-lg-6">
+                <div class="login-sec">
+
+
+
+
+
+
+
+
 <div class="login-sec">
  
 <div class="card-header sign_in_sec current" id="tab-1"><h3>{{ __('Login') }}</h3></div>      
 <div class="main-section">
 
-<div class="container">
-    <div class="justify-content-center row">
-        <div class="col-md-8">
-            <div class="card">
+
 
 
                 <div class="card-body">
@@ -85,5 +117,29 @@
         </div>
     </div>
 </div>
-</div>
+</div></div>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+						
+					</div>	
+
+
+
+
+						
+				</div><!--signin-pop end-->
+            </div><!--signin-popup end-->
+
+
+
 @endsection

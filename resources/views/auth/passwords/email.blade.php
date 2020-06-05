@@ -2,12 +2,45 @@
 
 @section('content')
 
-<div class="main-section">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
+<body class="sign-in" oncontextmenu="return false;">
+<div class="wrapper">		
+
+<div class="sign-in-page">
+    <div class="signin-popup">
+        <div class="signin-pop">
+
+
+        <div class="row">
+                <div class="col-lg-6">
+                    <div class="cmp-info">
+                        <div class="cm-logo">
+                            <img src="{{ url('design/style') }}/images/cm-logo.png" alt="">
+                            <p>Workwise,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+                        </div><!--cm-logo end-->	
+                        <img src="{{ url('design/style') }}/images/cm-main-img.png" alt="">			
+                    </div><!--cmp-info end-->
+                </div>
+                
+
+
+
+
+
+                <div class="col-lg-6">
+                <div class="login-sec">
+
+
+                <div class="login-sec">
+ 
+ <div class="card-header sign_in_sec current" id="tab-1"><h3>{{ __('Reset Password') }}</h3></div>  
+
+                
+
+
+
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+              
 
                 <div class="card-body">
                     @if (session('status'))
@@ -35,7 +68,13 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="    color: #ffffff;
+    font-size: 16px;
+    background-color: #e44d3a;
+    
+    border: 0;
+    font-weight: 500;
+   ">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
@@ -48,4 +87,31 @@
     </div>
 </div>
 </div>
+
+
+
+
+
+</div>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+						
+					</div>	
+
+
+
+
+						
+				</div><!--signin-pop end-->
+            </div><!--signin-popup end-->
 @endsection
