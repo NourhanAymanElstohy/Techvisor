@@ -91,8 +91,9 @@ class UserController extends Controller
         $categories = Category::all();
         // $userId = request()->user;
         // $user = User::find($userId);
+        $userId = Auth::id();
         $users = User::all()->where('role', '=', '1');
-        $questions = Question::all();
+        $questions=Question::where('user_id',$userId)->get();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('users.show', [
                 'users' => $users,
