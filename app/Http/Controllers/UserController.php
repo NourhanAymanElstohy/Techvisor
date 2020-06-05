@@ -11,6 +11,7 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
 use App\Category;
+use App\Question;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -91,14 +92,17 @@ class UserController extends Controller
         // $userId = request()->user;
         // $user = User::find($userId);
         $users = User::all()->where('role', '=', '1');
+        $questions = Question::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('users.show', [
                 'users' => $users,
                 'categories' => $categories,
+                'questions' => $questions
             ]);
         } else {
             return view('users/show', [
                 'users' => $users,
+                'questions' => $questions,
                 'categories' => $categories,
             ]);
         }

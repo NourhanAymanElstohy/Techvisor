@@ -17,7 +17,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
         $categories = Category::all();

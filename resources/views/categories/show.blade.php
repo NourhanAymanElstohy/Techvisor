@@ -14,13 +14,13 @@
 
             <div class="companies-list">
 				<div class="row">
-
-                    
-                @foreach($profs as $prof)     
+                @foreach($profs as $prof) 
+                {{-- {{dd($prof->category)}} --}}
+                    @if ($category == $prof->category)  
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="company_profile_info">
                             <div class="company-up-info">
-                            <img src="{{ url('design/style') }}/images/resources/user2.png" alt="">
+                            <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
                                 <h3>{{$prof->name}}</h3>
                                 <ul>
                                     <li><a class="post-jb active follow" href="{{route('questions.create',['prof'=> $prof->id])}}" title="">ASK</a></li>  
@@ -33,6 +33,7 @@
                             <a href="{{route('professional.show',['professional' => $prof->id])}}" title="" class="view-more-pro">View Profile</a>
                         </div>
                     </div>
+                    @endif  
                 @endforeach
  
 	@include('questions.create')
