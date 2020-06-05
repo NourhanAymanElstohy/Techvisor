@@ -41,8 +41,8 @@
       <td>{{$question->id}}</td>
       <td>{{$question->question}}</td>
       <td>{{ $question->answer ? $question->answer->answer : 'not exist'}}</td>
-      <td>{{$question->user->name}}</td>
-      <td>{{$question->prof->name}}</td>
+      <td>{{ $question->user ? $question->user->name : 'not exist'}}</td>
+      <td>{{ $question->prof ? $question->prof->name : 'not exist'}}</td>
       <td>{{$question->state}}</td>
       <td>{{$question?$question->created_at:""}}</td>
       <td>

@@ -19,7 +19,8 @@
         @else
         <div class="form-group mt-5">
     <label for="exampleFormControlSelect1">Users</label>
-    <select name="prof" class="form-control ">
+    <select name="prof" class="form-control" value="">
+    <option value=""></option>
         @foreach($users as $user)  
           <option value="{{$user->id}}">{{$user->name}}</option>
         @endforeach
@@ -30,15 +31,7 @@
             <label for="exampleFormControlTextarea1">Ask Your Question</label>
             <textarea class="form-control" name="question" rows="3"></textarea>
         </div>
-        <div class="form-group mt-5">
-        <label for="exampleFormControlSelect1">State</label>
-        <select name="state" class="form-control ">
-            
-              <option value="public">public</option>
-              <option value="private">private</option>
-          
-            </select>
-      </div>
+        
 
       <button type="submit" class="btn btn-success">Create</button>
       

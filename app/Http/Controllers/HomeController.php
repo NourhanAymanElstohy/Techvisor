@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
+use App\Question;
 use App\User;
 
 
@@ -49,12 +50,13 @@ class HomeController extends Controller
     public function home()
     {
         $categories = Category::all();
-
+        $questions=Question::where('state','=','public')->get();
         $userId = Auth::id();
         $user = User::find($userId);
         return view('home', [
             'user' => $user,
-            'categories' => $categories
+            'categories' => $categories,
+            'questions'=>$questions
         ]);
     }
 }
