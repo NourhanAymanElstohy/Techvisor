@@ -117,7 +117,7 @@
 						<div class="user-account">
 							<div class="user-info">
 						
-								<img src="{{ url('design/style') }}/images/resources/user.png" alt="">
+							<img src="/uploads/avatars/{{Auth::user()->avatar}}" alt="" width="30px" height="30px">
 								<i class="la la-sort-down"></i>
 							</div>
 						<div class="user-account-settingss" id="users">
@@ -193,7 +193,14 @@
     </nav>
     @endauth
 
-            @guest
+			@guest
+			<li>
+                
+			<a href="{{route('about')}}" title="">
+                    <span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+                    About Us
+                </a>
+            </li>
             <li>
                 <a href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
@@ -201,14 +208,9 @@
             @if (Route::has('register'))
             <li>
                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
-            </li>
-            <li>
-                @endif
-                <a href="/style/about" title="">
-                    <span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-                    About Us
-                </a>
-            </li>
+			</li>
+			@endif
+            
             <div class="menu-btn">
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div>

@@ -19,7 +19,8 @@
                               <div class="main-left-sidebar">
                                   <div class="user_profile">
                                       <div class="user-pro-img">
-                                          <img src="{{ url('design/style') }}/images/resources/user-pro-img.png" alt="">
+                                          <img src="/uploads/avatars/{{$user->avatar}}" alt="">
+                                          {{-- <img src="{{ url('design/style') }}/images/resources/user-pro-img.png" alt=""> --}}
                                       </div><!--user-pro-img end-->
                                       <div class="user_pro_status">
                                           <ul class="flw-hr">

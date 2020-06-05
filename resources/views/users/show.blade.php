@@ -1,6 +1,4 @@
-
-
-  @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
 
 <div class="wrapper">
@@ -8,8 +6,6 @@
 		<section class="cover-sec">
 			<img src="{{ url('design/style') }}/images/resources/cover-img.jpg" alt="">
 		</section>
-
-
 		<main>
 			<div class="main-section">
 				<div class="container">
@@ -20,12 +16,7 @@
 								<div class="main-left-sidebar">
 									<div class="user_profile">
 										<div class="user-pro-img">
-											<form enctype="multipart/form-data" action="/profile" method="POST">
-												<label>Update Profile Image</label>
-												<input type="file" name="avatar">
-												<input type="hidden" name="_token" value="{{ csrf_token() }}">
-												<input type="submit" class="pull-right btn btn-sm btn-primary">
-											</form>
+											<img src="/uploads/avatars/{{$user->avatar}}" alt="">
 											{{-- <img src="{{ url('design/style') }}/images/resources/user-pro-img.png" alt=""> --}}
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">

@@ -12,7 +12,8 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
-
+// use Intervention\Image\Image;
+use Intervention\Image\Facades\Image;
 
 
 class UserController extends Controller
@@ -127,26 +128,26 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->password != null) {
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
         }
-        // if ($request->hasFile('avatar')) {
-        //     $avatar = $request->file('avatar');
-        //     $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        //     Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
 
-        //     $user = Auth::user();
-        //     $user->avatar = $filename;
-        //     $user->save();
-        // }
+            // $user = Auth::user();
+            $user->avatar = $filename;
+            // dd($user->avatar);
+            $user->save();
+        }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->syncRoles($request->role);
             $user->save();
-            return   redirect()->route('user.show', [
+            return redirect()->route('user.show', [
                 'user' => $user
             ]);
         } elseif (auth()->user()->hasPermissionTo('userpermission')) {
             $user->save();
-
             return redirect()->route('user.show', [
                 'user' => $user
             ]);

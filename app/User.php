@@ -23,7 +23,7 @@ class User extends Authenticatable implements BannableContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role',
+        'name', 'email', 'password', 'role', 'avatar'
     ];
 
     /**
@@ -51,17 +51,17 @@ class User extends Authenticatable implements BannableContract
         }
     } */
 
-/*  this one
+    /*  this one
     public function setPasswordAttribute($password){
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     } */
 
-  /*   public function setPasswordAttribute($password)
+    /*   public function setPasswordAttribute($password)
 {
     $this->attributes['password'] = \Hash::make($password);
 } */
 
-  
+
 
     public function category()
     {
