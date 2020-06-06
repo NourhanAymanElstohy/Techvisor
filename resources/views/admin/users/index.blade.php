@@ -36,12 +36,11 @@
       <tr>
        <th>ID</th>
        <th>Name</th>
+       <th>Image</th>
        <th>Email</th>
        <th>Roles</th>
        <th>Status</th>
-       @unless (Auth::user()->hasPermissionTo('adminpermission'))
-           <th>Banned At</th>
-       @endunless
+       <th>Banned At</th>
        
        <th>Actions</th>
      </tr>
@@ -51,6 +50,7 @@
     <tr>
     <th>{{$user->id}}</th>
     <td>{{$user->name}}</td>
+    <td><img src="/uploads/avatars/{{$user->avatar}}" class="mx-auto" style="width: 60px;"></td>
     <td>{{$user->email}}</td>
     <td>{{$user->roles->implode('name', ',')}}</td>
 
@@ -60,9 +60,7 @@
         <td>Inactive</td>  
     @endif 
 
-    @unless ($user->hasPermissionTo('adminpermission'))
         <td>{{ $user->banned_at }}</td>
-    @endunless
     
    <td>
     <a href="{{route('user.show', $user->id)}}"><button type="button"
@@ -78,7 +76,6 @@
     <button type="submit" class="btn btn-danger   mr-2" onclick="return confirm ('are you sure?')">Delete</button>
     </form>
           
-    @unless (Auth::user()->hasPermissionTo('adminpermission'))
         @if ($user->isNotBanned())                
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
         class="btn btn-dark float-right  mr-2">Ban</a>
@@ -86,7 +83,6 @@
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
         class="btn btn-success float-right  mr-2">Unban</a>
         @endif
-    @endunless
     
     </td>
     </tr>

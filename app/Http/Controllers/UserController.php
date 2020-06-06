@@ -88,23 +88,26 @@ class UserController extends Controller
     public function show()
     {
         //all roles can view user profile, permissions in blade
+        $userId = request()->user;
+        $user = User::find($userId);
         $categories = Category::all();
-        // $userId = request()->user;
-        // $user = User::find($userId);
         $userId = Auth::id();
         $users = User::all()->where('role', '=', '1');
         $questions=Question::where('user_id',$userId)->get();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('users.show', [
+            return view('admin/users/show', [
                 'users' => $users,
                 'categories' => $categories,
-                'questions' => $questions
+                'questions' => $questions,
+                'user' => $user
             ]);
         } else {
             return view('users/show', [
                 'users' => $users,
                 'questions' => $questions,
                 'categories' => $categories,
+                'user' => $user
+
             ]);
         }
     }
@@ -114,17 +117,21 @@ class UserController extends Controller
         //admin and users can edit user profile, permissions in blade
         $user = User::findOrFail($id);
         $roles = Role::all()->pluck('name', 'id');
+        $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin.users.edit', [
                 'user' => $user,
                 'roles' => $roles
             ]);
-        } elseif (auth()->user()->hasPermissionTo('userpermission')) {
+        } elseif  (auth()->user()->role ==1) {
             return view('users/edit', [
                 'user' => $user,
+                'categories' => $categories
             ]);
         } else {
-            return view('home');
+            return view('home',[
+                'categories' => $categories
+            ]);
         }
     }
 
@@ -132,6 +139,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //admin can edit any userRole, user can edit his profile, permissions in blade
+        $categories = Category::all();
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -150,18 +158,25 @@ class UserController extends Controller
             $user->syncRoles($request->role);
             // dd($user->role);
             if ($user->role == '3') {
-                return redirect('/admins');
+                return redirect('/admins',[
+                    'categories' => $categories
+                ]);
             } else {
-                return redirect()->route('users.index');
+                return redirect()->route('users.index',[
+                    'categories' => $categories
+                ]);
             }
             $user->save();
-        } elseif (auth()->user()->hasPermissionTo('userpermission')) {
+        } elseif  (auth()->user()->role==3) {
             $user->save();
             return redirect()->route('user.show', [
-                'user' => $user
+                'user' => $user,
+                'categories' => $categories
             ]);
         } else {
-            return view('home');
+            return view('home',[
+                'categories' => $categories
+            ]);
         }
     }
 
@@ -183,7 +198,7 @@ class UserController extends Controller
                 ]);
             }
         }
-        if (auth()->user()->hasPermissionTo('userpermission')) {
+        if (auth()->user()->role==3) {
             $request = request();
             $userlId = $request->user;
             User::destroy($userlId);

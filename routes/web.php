@@ -35,9 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/create', 'UserController@create')->name('users.create')->middleware(['role:super-admin']);
     Route::post('/users', 'UserController@store')->name('users.store')->middleware(['role:super-admin']);
     Route::get('/users/{user}', 'UserController@show')->name('user.show');
-    Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit')->middleware(['role:super-admin|user']);
-    Route::put('/users/{user}', 'UserController@update')->name('users.update')->middleware(['role:super-admin|user']);
-    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware(['role:super-admin|user']);
+    Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+    Route::put('/users/{user}', 'UserController@update')->name('users.update');
+    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
     Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']);
 });
 
@@ -45,10 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/professionals', 'ProfessionalController@index')->name('professionals.index')->middleware(['role:super-admin']);
     Route::get('/professionals/{professional}', 'ProfessionalController@show')->name('professional.show');
-    Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit')->middleware(['role:super-admin|professional']);
-    Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update')->middleware(['role:super-admin|professional']);
-    Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy')->middleware(['role:super-admin']);
-    Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus')->middleware(['role:professional']);
+    Route::get('/professionals/{professional}/edit', 'ProfessionalController@edit')->name('professionals.edit');
+    Route::put('/professionals/{professional}', 'ProfessionalController@update')->name('professionals.update');
+    Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy');
+    Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus');
     Route::get('/professionals/{professional}/ban', 'ProfessionalController@banned')->name('profs.banned')->middleware(['role:super-admin']);
 });
 

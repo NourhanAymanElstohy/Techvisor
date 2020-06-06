@@ -2,8 +2,17 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-    @include('admin.layouts.navbar')
-    @include('admin.layouts.sidebar')
+
+  <!-- Navbar -->
+  @include('admin.layouts.navbar')
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+ 
+  @include('admin.layouts.sidebar')
+    <!-- Content Wrapper. Contains page content -->
+
+    
     <div class="content-wrapper">
   <div class="container">
   <div class="p-3" style="text-align:center">
@@ -13,7 +22,7 @@
      class="btn btn-success float-left">Create Question</button></a>
      </div>
 
-    <table id="example" class="table table-striped table-bordered" style="width:80rem%">
+     <table id="example" class="table table-striped table-bordered" style="width:80rem%">
     <thead>
     <tr>
       <th>ID</th>
@@ -23,7 +32,7 @@
       <th>Professional</th>
       <th>State</th>
       <th>Created_at</th>
-      <th colspan="3" scope="col-3">Actions</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -38,14 +47,12 @@
       <td>{{$question?$question->created_at:""}}</td>
       <td>
         <a href="{{route('questions.show',['question'=> $question->id])}}"
-         class="btn btn-info btn-sm float-left mr-2">Show</a>
-      </td>
-      <td>
+         class="btn btn-info  float-left mr-2">Show</a>
+
         <a href="{{route('questions.edit',['question'=> $question->id])}}"
-         class="btn btn-primary btn-sm float-left">Edit</a>
-     </td>
-     <td>
-        <a class="btn btn-danger btn-sm float-right " href="#" role="button" data-toggle="modal"
+         class="btn btn-primary  float-center">Edit</a>
+
+        <a class="btn btn-danger float-right " href="#" role="button" data-toggle="modal"
          data-target="#delete-modal-{{$question->id}}">Delete</a>
           
          <div class="modal fade" id="delete-modal-{{$question->id}}" tobindex="-1" role="dialog" aria-hidden="true">
