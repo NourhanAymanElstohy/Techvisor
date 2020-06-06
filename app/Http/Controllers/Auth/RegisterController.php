@@ -74,10 +74,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role'=>$data['role'],
         ]);
-
+        if($data['role']=='2'){
         $categories=$data['categories'];
-        $user->category()->attach($categories);
-
+        $user->categories()->attach($categories);
+            }
         $role =$data['role'];
         if ($role=='1'){
             $user->assignRole('user');
