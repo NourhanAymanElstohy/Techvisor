@@ -69,7 +69,7 @@
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
 										@if($notification->unread())
-											<h3><a  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+											<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
 											 {{$notification->markAsRead()}}
 											  <?php echo("</br>") ?>
