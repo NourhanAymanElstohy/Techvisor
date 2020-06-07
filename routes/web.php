@@ -50,6 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy');
     Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus');
     Route::get('/professionals/{professional}/ban', 'ProfessionalController@banned')->name('profs.banned')->middleware(['role:super-admin']);
+    Route::get('/try', 'ProfessionalController@try')->name('try');
+    Route::get('/try2/{cat}', 'ProfessionalController@try2')->name('try2');
+
+
 });
 
 

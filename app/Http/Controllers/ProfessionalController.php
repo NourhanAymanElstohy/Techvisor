@@ -137,4 +137,69 @@ class ProfessionalController extends Controller
             'prof' => $prof
         ]);
     }
+
+    public function try(Request $request)
+    {
+        $categories = Category::all();
+        $request = request();
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        return view('professionals/try', [
+            'categories' => $categories
+
+        ]);
+    }
+
+    /* 
+    public function try2(Request $request)
+    {
+        $categories = Category::all();
+        $request = request();
+        $catid  = request()->cat;
+        $cat = User::findOrFail($catid);
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        $prof->categories()->attach($cat); 
+/* 
+    return view('professionals/try', [
+        'categories' => $categories,
+        //'cats' =>$a */
+       /*  return redirect()->route('try', [
+            'categories' => $categories,
+
+
+
+    ]);
+
+ */
+
+
+   // } 
+
 }
+
+/* $cats = $prof->categories;
+$catss =$cats->toArray();
+//dd($catss);
+$a = [];
+foreach($catss as $catz) {
+    foreach ($catz as $cc=> $c) {
+        if ($cc=='id'){
+    //dd($c);//print (string)$c;}
+ array_push($a, $c );
+        }
+}
+}
+//dd($a); */
+
+
+ 
+/* @foreach ($categories as $cat)
+@if (in_array($cat->id , $cats ))
+<a href="{{route('try2', $cat->id)}}">
+<button type="button" id="active" class="btn btn-dark btn-lg btn-block" >{{$cat->name}}</button></a></br>
+@else 
+<a href="{{route('try2', $cat->id)}}">
+<button type="button" id="active" class="btn btn-info btn-lg btn-block" >{{$cat->name}}</button></a></br>
+ @endif
+@endforeach  */

@@ -30,6 +30,13 @@
 								</a>
 								
 							</li>
+							<li>
+								<a href="{{route('try')}}" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									try
+								</a>
+								
+							</li>
 							
 						@Auth
 						<li>
