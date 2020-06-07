@@ -68,28 +68,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user= User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role'=>$data['role'],
+            'role' => $data['role'],
         ]);
-        if($data['role']=='2'){
-        $categories=$data['categories'];
-        $user->categories()->attach($categories);
-            }
-        $role =$data['role'];
-        if ($role=='1'){
-            $user->assignRole('user');
+        if ($data['role'] == '2') {
+            $categories = $data['categories'];
+            $user->categories()->attach($categories);
+            $user->state = 'free';
+            $user->save();
         }
-        elseif ($role=='2'){
+        $role = $data['role'];
+        if ($role == '1') {
+            $user->assignRole('user');
+        } elseif ($role == '2') {
             $user->assignRole('professional');
         }
         return $user;
     }
     public  function  showRegistrationForm()
     {
-        $categories= Category::all();
+        $categories = Category::all();
         return view('auth.register', compact('categories'));
     }
 }
