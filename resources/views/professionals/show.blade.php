@@ -4,12 +4,12 @@
 
 
 <div class="wrapper">
-      
+
       <section class="cover-sec">
           <img src="{{ url('design/style') }}/images/resources/cover-img.jpg" alt="">
       </section>
 
- 
+
       <main>
           <div class="main-section">
               <div class="container">
@@ -26,26 +26,26 @@
                                           <ul class="flw-hr">
                                               <li><a href="{{route('professionals.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
-                                        
+
                                       </div><!--user_pro_status end-->
-                                      <ul class="social_links"> 										
+                                      <ul class="social_links">
                                          <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$user->email}}</a></li>
 
                                    @if ( $user->linkedin != null )
                                         <li><a href="#" title=""><i class="fa fa-linkedin" style="font-size:20px;color:#4d88ff"></i>{{$user->linkedin}}</a></li>
-                                    @endif    
+                                    @endif
                                     @if ($user->github != null)
                                         <li><a href="#" title=""><i class="fa fa-github" style="font-size:20px;color:red"></i>{{$user->github}}</a></li>
-                                    @endif    
+                                    @endif
                                     @if ($user->other != null)
                                        <li><a href="#" title=""><i class="la la-globe" style="font-size:20px;color:#004d99"></i>{{$user->other}}</a></li>
                                    @endif
                                       </ul>
                                   </div><!--user_profile end-->
-                                  
-                                  
+
+
                               </div><!--main-left-sidebar end-->
-                              
+
                           </div>
                           <div class="col-lg-6">
                               <div class="main-ws-sec">
@@ -53,13 +53,14 @@
                                       <h3>{{$user->name}}</h3>
                                       <div class="star-descp">
                                           <span>Graphic Designer at Self Employed</span>
-                                          <ul>
-                                              <li><i class="fa fa-star"></i></li>
-                                              <li><i class="fa fa-star"></i></li>
-                                              <li><i class="fa fa-star"></i></li>
-                                              <li><i class="fa fa-star"></i></li>
-                                              <li><i class="fa fa-star-half-o"></i></li>
-                                          </ul>
+{{--                                          <ul>--}}
+{{--                                              <li><i class="fa fa-star"></i></li>--}}
+{{--                                              <li><i class="fa fa-star"></i></li>--}}
+{{--                                              <li><i class="fa fa-star"></i></li>--}}
+{{--                                              <li><i class="fa fa-star"></i></li>--}}
+{{--                                              <li><i class="fa fa-star-half-o"></i></li>--}}
+{{--                                          </ul>--}}
+                                          <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->averageRating }}" data-size="xs" disabled="">
                                       </div><!--star-descp end-->
                                       <div class="tab-feed">
                                           <ul>
@@ -75,14 +76,14 @@
                                                       <span>Info</span>
                                                   </a>
                                               </li>
-                                          
+
                                           </ul>
                                       </div><!-- tab-feed end-->
                                   </div><!--user-tab-sec end-->
                                   <div class="product-feed-tab current" id="feed-dd">
 
                                       @include('questions.index')
-                                      
+
                                   </div><!--product-feed-tab end-->
                                   <div class="product-feed-tab" id="info-dd">
                                       <div class="user-profile-ov">
@@ -123,13 +124,13 @@
                                           </ul>
                                       </div><!--user-profile-ov end-->
                                   </div><!--product-feed-tab end-->
-                              
+
                               </div><!--main-ws-sec end-->
                           </div>
                           @include('categories.index')
                       </div>
                   </div><!-- main-section-data end-->
-              </div> 
+              </div>
           </div>
       </main>
 
@@ -156,7 +157,7 @@
 
   </div><!--theme-layout end-->
 
-    
+
 @endsection
 
 
