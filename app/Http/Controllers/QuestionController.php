@@ -57,11 +57,11 @@ class QuestionController extends Controller
             ]);
         }else{
             return view('questions/create',[
-                'prof'=>$prof   
+                'prof'=>$prof
             ]);
 
         }
-       
+
     }
     public function store()
     {
@@ -79,7 +79,7 @@ class QuestionController extends Controller
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "public",
-                
+
             ]);
 
         }
@@ -137,6 +137,7 @@ class QuestionController extends Controller
         $userId = $request->zoom;
         $prof = User::find($userId);
         $prof->notify(new NewZoom($user));
-      
+        return redirect('/rate/'.$userId);
+
     }
 }
