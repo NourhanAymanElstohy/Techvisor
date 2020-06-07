@@ -5,10 +5,10 @@
                                             <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                                             <div class="usy-name">
                                                 <h3>{{ $question->user ? $question->user->name : 'not exist'}}</h3>
-                                                <span><img src="{{ url('design/style') }}/images/clock.png" alt="">3 min
-                                                    ago</span>
+                                                <span><img src="{{ url('design/style') }}/images/clock.png" alt="">{{$question->created_at}}</span>
                                             </div>
                                         </div>
+                                        @if($question->user_id==auth()->id())
                                         <div class="ed-opts">
                                             <a href="#" title="" class="ed-opts-open"><i
                                                     class="la la-ellipsis-v"></i></a>
@@ -16,11 +16,12 @@
                                                 <li><a href="questions/{{$question->id}}/edit" title="">Edit Post</a></li>
                                             </ul>
                                         </div>
+                                        @endif
                                     </div>
                                     <div class="epi-sec">
                                         <ul class="descp">
                                             <li><img src="{{ url('design/style') }}/images/icon8.png" alt=""><span>
-                                                    Category Name</span></li>
+                                            {{ $question->category ? $question->category->name : 'not exist'}}</span></li>
                                             <li><img src="{{ url('design/style') }}/images/icon9.png"
                                                     alt=""><span>Question</span></li>
                                         </ul>

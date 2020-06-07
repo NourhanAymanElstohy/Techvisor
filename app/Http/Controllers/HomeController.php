@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function home()
     {
         $categories = Category::all();
-        $questions=Question::where('state','=','public')->get();
+        $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
         $userId = Auth::id();
         $user = User::find($userId);
         return view('home', [
