@@ -10,18 +10,19 @@ class Question extends Model
     protected $fillable = [
         'question',
         'user_id',
-        'answer_id',
         'state',
-        'prof_id'
+        'prof_id',
+        'category_id'
     ];
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    public function answer()
+    public function category()
     {
-        return $this->belongsTo('App\Answer');
+        return $this->belongsTo('App\Category');
     }
+   
     public function prof()
     {
         return $this->belongsTo('App\User', 'prof_id')->where('role', '2');
