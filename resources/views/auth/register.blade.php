@@ -16,7 +16,7 @@
                                 <div class="cm-logo">
                             <h1 class="font-weight-bold text-capitalize" style="font-family: 'Gochi Hand', cursive; font-size:50px">Techvisor</h1>
                                     {{-- <img src="{{ url('design/style') }}/images/cm-logo.png" alt=""> --}}
-                                    <p>Workwise, is a professional consulting web application specially in IT fields
+                                    <p>Techvisor, is a professional consulting web application specially in IT fields
                                         as it provides a rich community of professionals that can solve users’ problems
                                         or consulting them in many different IT fields</p>
                                 </div>
