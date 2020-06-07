@@ -49,7 +49,7 @@ class QuestionController extends Controller
     public function create(){
         $prof=request()->prof;
         $users;
-        if(!$prof && auth()->user()->hasPermissionTo('adminpermission')){
+        if(auth()->user()->hasPermissionTo('adminpermission')){
             $users=User::where('role',2)->get();
             return view('admin/questions/create',[
                 'prof'=>$prof,
@@ -86,7 +86,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } elseif (auth()->user()->hasPermissionTo('professionalpermission')) {
-            return redirect()->route('professional.show');
+            return redirect()->route('professional.show',['professional' => $userId]);
         } else {
             return redirect()->route(
                 'user.show',

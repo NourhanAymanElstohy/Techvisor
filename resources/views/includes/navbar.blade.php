@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="/style" title=""><img src="{{ url('design/style') }}/images/logo.png" alt=""></a>
+						<a href="/home" title=""><h1 class="font-weight-bold text-capitalize text-light mt-1" style="font-family: 'Gochi Hand', cursive; font-size:30px">Techvisor</h1></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						
@@ -76,7 +76,7 @@
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
 										@if($notification->unread())
-											<h3><a  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+											<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
 											 {{$notification->markAsRead()}}
 											  <?php echo("</br>") ?>
