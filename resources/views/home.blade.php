@@ -44,7 +44,7 @@
                                     <div class="profiles-slider">
 
                                         <!--- top professionals by rate -->
-                                        <div class="user-profy">
+                                        {{-- <div class="user-profy">
                                             <img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
                                             <h3>John Doe</h3>
                                             <span>Graphic Designer</span>
@@ -54,7 +54,7 @@
                                                 <li><a href="#" title="" class="hire">ZOOM</a></li>
                                             </ul>
                                             <a href="/style/profile" title="">View Profile</a>
-                                        </div>
+                                        </div> --}}
                                         
                                     </div>
                                     <!--profiles-slider end-->
@@ -71,8 +71,9 @@
 
                             @guest
                             <div class="widget widget-about">
-                                <img src="{{ url('design/style') }}/images/wd-logo.png" alt="">
-                                <h3>IT Workwise</h3>
+                            <h1 class="font-weight-bold text-capitalize mt-3" style="font-family: 'Gochi Hand', cursive; font-size:50px">Techvisor</h1>
+                                {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
+                                {{-- <h3>IT Workwise</h3> --}}
                                 <div class="sign_link">
                                     <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
                                 </div>
@@ -88,11 +89,11 @@
                                 <div class="jobs-list">
                                     <div class="job-info">
                                         <div class="job-details">
-                                            <h3>Senior Product Designer</h3>
+                                            {{-- <h3>Senior Product Designer</h3> --}}
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                         </div>
                                         <div class="hr-rate">
-                                            <span>$25/hr</span>
+                                            {{-- <span>$25/hr</span> --}}
                                         </div>
                                     </div>
                                 </div>
