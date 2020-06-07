@@ -1,4 +1,3 @@
-{{-- 
 @include('admin.layouts.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -33,4 +32,3 @@
   @include('admin.layouts.footer')
 
 
- --}}

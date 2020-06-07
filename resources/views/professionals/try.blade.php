@@ -15,11 +15,16 @@
 
                    
                      @foreach ($categories as $cat)
-                     <a href="{{route('try2', $cat->id)}}">
+                     @if (in_array($cat->id , $cats ))
+                     <a href="/">
                      <button type="button"  class="btn btn-dark btn-lg btn-block" >{{$cat->name}}</button></a></br>
-                   
+                     @else  
+                     <a href="{{route('yarab', $cat->id)}}">
+                     <button type="button"  class="btn btn-info btn-lg btn-block" >{{$cat->name}}</button></a></br>
+                     @endif 
                     @endforeach 
                     
+
       
                     </div>
                     </div>
@@ -30,9 +35,5 @@
 				
       </main>
 
- <script>
- let btnactive = document.querySelector('#active');
- btnactive.addEventlistener('click',() => btnactive.style.backgroundColor= '#8AF194')
- </script>
 
 @endsection

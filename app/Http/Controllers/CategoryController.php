@@ -62,10 +62,12 @@ class CategoryController extends Controller
         $profs = User::all()->where('role', '=', '2');
 
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('categories/show', [
+            return view('admin/categories/show', [
                 'categories' => $categories,
                 'profs' => $profs,
                 'category' => $category,
+                'user' => $user,
+
             ]);
         } else {
             return view('categories/show', [
