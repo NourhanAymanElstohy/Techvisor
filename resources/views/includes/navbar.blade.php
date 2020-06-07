@@ -16,7 +16,7 @@
 									Home
 								</a>
 							</li>
-							
+
 							<li>
 								<a href="{{route('about')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
@@ -42,9 +42,9 @@
 							</li>
 							@if(Auth::user()->role==2) 
 							<li>
-								<a href="{{route('try')}}" title="">
+								<a href="{{route('profcat')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									try
+									Categories
 								</a>
 							</li>
 							@endif

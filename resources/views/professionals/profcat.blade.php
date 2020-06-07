@@ -15,11 +15,11 @@
 
                    
                      @foreach ($categories as $cat)
-                     @if (in_array($cat->id , $cats ))
-                     <a href="/">
+                     @if (in_array($cat->id , $cats )) 
+                     <a href="{{route('detach', $cat->id)}}">
                      <button type="button"  class="btn btn-dark btn-lg btn-block" >{{$cat->name}}</button></a></br>
                      @else  
-                     <a href="{{route('yarab', $cat->id)}}">
+                     <a href="{{route('attach', $cat->id)}}">
                      <button type="button"  class="btn btn-info btn-lg btn-block" >{{$cat->name}}</button></a></br>
                      @endif 
                     @endforeach 

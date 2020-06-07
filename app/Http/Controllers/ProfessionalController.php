@@ -138,7 +138,7 @@ class ProfessionalController extends Controller
         ]);
     }
 
-    public function try(Request $request)
+    public function profcat(Request $request)
     {
         $categories = Category::all();
         $request = request();
@@ -154,49 +154,35 @@ class ProfessionalController extends Controller
                 }
         }
         }
-        return view('professionals/try', [
+        return view('professionals/profcat', [
             'categories' => $categories,
             'cats' => $cats
         ]);
     }
 
      
-    public function yarab(Request $request)
+    public function attach(Request $request)
     {
-        
         $request = request();
         $catid  = request()->cat;
         $cat = Category::findOrFail($catid);
         $profId = Auth::id();
         $prof = User::find($profId);
         $prof->categories()->attach($cat); 
-        return redirect()->route('try');
+        return redirect()->route('profcat');
 
-}
-}
-/* 
-/* $cats = $prof->categories;
-$catss =$cats->toArray();
-//dd($catss);
-$a = [];
-foreach($catss as $catz) {
-    foreach ($catz as $cc=> $c) {
-        if ($cc=='id'){
-    //dd($c);//print (string)$c;}
- array_push($a, $c );
-        }
-}
-}
-//dd($a); */
+    }
 
 
- 
-/* @foreach ($categories as $cat)
-@if (in_array($cat->id , $cats ))
-<a href="{{route('try2', $cat->id)}}">
-<button type="button" id="active" class="btn btn-dark btn-lg btn-block" >{{$cat->name}}</button></a></br>
-@else 
-<a href="{{route('try2', $cat->id)}}">
-<button type="button" id="active" class="btn btn-info btn-lg btn-block" >{{$cat->name}}</button></a></br>
- @endif
-//@endforeach  
+public function detach(Request $request)
+    {
+        $request = request();
+        $catid  = request()->cat;
+        $cat = Category::findOrFail($catid);
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        $prof->categories()->detach($cat); 
+        return redirect()->route('profcat');
+
+    }
+}
