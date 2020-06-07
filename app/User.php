@@ -10,12 +10,14 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use willvincent\Rateable\Rateable;
 
 
 class User extends Authenticatable implements BannableContract
 {
     use Notifiable, HasRoles;
     use Bannable;
+    use Rateable;
 
     /**
      * The attributes that are mass assignable.
