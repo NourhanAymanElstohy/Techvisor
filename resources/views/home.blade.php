@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="post-st">
                                     <ul>
-                                        <li><a class="post-jb active" href="#" title="">Post a Public Question</a></li>
+                                        <li><a class="active" href="{{route('questions.create')}}" title="">Post a Public Question</a></li>
                                     </ul>
                                 </div>
                             </div>

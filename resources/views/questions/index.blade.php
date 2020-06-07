@@ -2,7 +2,7 @@
 <div class="post-bar">
                                     <div class="post_topbar">
                                         <div class="usy-dt">
-                                            <img src="{{ url('design/style') }}/images/resources/us-pic.png" alt="">
+                                            <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                                             <div class="usy-name">
                                                 <h3>{{ $question->user ? $question->user->name : 'not exist'}}</h3>
                                                 <span><img src="{{ url('design/style') }}/images/clock.png" alt="">3 min

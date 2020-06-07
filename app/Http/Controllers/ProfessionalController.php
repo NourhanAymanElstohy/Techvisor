@@ -42,7 +42,7 @@ class ProfessionalController extends Controller
         $users = User::all()->where('role', '=', '1');
         $userId = Auth::id();
         $users = User::all()->where('role', '=', '1');
-        $questions=Question::where('prof_id',$userId)->get();
+        $questions=Question::where('prof_id','=',$userId)->orWhere('user_id','=',$userId)->get();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin.professionals.show', [
                  'user' => $user
