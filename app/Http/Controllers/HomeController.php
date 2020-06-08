@@ -58,7 +58,8 @@ class HomeController extends Controller
         return view('home', [
             'user' => $user,
             'categories' => $categories,
-            'questions'=>$questions
+            'questions'=>$questions,
+            
         ]);
     }
 }

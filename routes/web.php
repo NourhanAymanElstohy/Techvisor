@@ -84,3 +84,16 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
 });
+//Route::get('rate/{id}',function () {
+//return view('rate');
+//});
+Route::get('rate/{id}', 'RateController@createRate')->name('rate.create');
+Route::post('rate', 'RateController@postRate')->name('rate.post');
+//======================Answers===================
+Route::group(['middleware' => ['auth', 'is-ban']], function (){
+    Route::get('/answers/create/{question}', 'AnswerController@create')->name('answers.create');
+    Route::post('/answers', 'AnswerController@store')->name('answers.store');
+    Route::get('/answers/{answer}', 'AnswerController@show')->name('answers.show');
+
+
+});

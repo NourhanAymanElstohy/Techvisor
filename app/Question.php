@@ -18,6 +18,10 @@ class Question extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
     public function category()
     {
         return $this->belongsTo('App\Category');

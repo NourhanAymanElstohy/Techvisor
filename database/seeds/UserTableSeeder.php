@@ -28,7 +28,8 @@ class UserTableSeeder extends Seeder
             'name' => 'professional',
             'email' => 'professional@professional.com',
             'password' => bcrypt('12345678'),
-            'role' => '2'
+            'state' => 'free',
+            'role' => '2',
 
         ]);
         $professional->assignRole('professional');

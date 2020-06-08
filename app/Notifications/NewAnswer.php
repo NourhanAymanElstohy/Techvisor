@@ -7,21 +7,26 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\User;
-class NewZoom extends Notification
+use App\Answer;
+
+class NewAnswer extends Notification
 {
     use Queueable;
+    protected $answer;
     protected $user;
-    protected $join_url;
+  
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user,String $join_url)
+    public function __construct(User $user,Answer $answer)
     {
         $this->user = $user;
-        $this->join_url = $join_url;
+        $this->answer = $answer;
+      
+
 
       
     }
@@ -62,7 +67,8 @@ class NewZoom extends Notification
         return [
             'user_id' => $this->user->id,
             'user_name' => $this->user->name,
-            'join_url' => $this->join_url,
+            'answer_id' => $this->answer->id,
+            'answer'=>$this->answer->answer
 
         ];
     }
