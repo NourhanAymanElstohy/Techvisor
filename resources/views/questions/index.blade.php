@@ -34,8 +34,11 @@
                                     </div>
                                     <div class="job-status-bar">
                                         <ul class="like-com">
-                                       
-                                            <li>Answers:{{ $question->answer ? $question->answer->answer : ''}}</li>
+                                        @if($question->answers)
+                                         @foreach($question->answers as $answer)
+                                            <li>{{$answer->user->name}}:{{ $answer->answer}}</li>
+                                         @endforeach
+                                         @endif   
                                         </ul>
                                     </div>
                                 </div>
