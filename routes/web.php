@@ -82,3 +82,9 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
 //});
 Route::get('rate/{id}', 'RateController@createRate')->name('rate.create');
 Route::post('rate', 'RateController@postRate')->name('rate.post');
+//======================Answers===================
+Route::group(['middleware' => ['auth', 'is-ban']], function (){
+    Route::get('/answers/create/{question}', 'AnswerController@create')->name('answers.create');
+    Route::post('/answers', 'AnswerController@store')->name('answers.store');
+
+});
