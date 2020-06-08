@@ -17,7 +17,7 @@ class User extends Authenticatable implements BannableContract
 {
     use Notifiable, HasRoles;
     use Bannable;
-    use Rateable;
+    // use Rateable;
 
     /**
      * The attributes that are mass assignable.
