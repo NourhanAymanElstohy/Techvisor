@@ -138,7 +138,7 @@ class QuestionController extends Controller
         $prof = User::find($userId);
         $join_url="ff";
         $prof->notify(new NewZoom($user,$join_url));
-        // return redirect('/rate/'.$userId);
+         return redirect('/rate/'.$userId);
 
     }
 }
