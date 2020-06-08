@@ -11,18 +11,12 @@
 					<nav>
 						<ul>
 							<li>
-							@hasanyrole('super-admin|user|professional')
 								<a href="{{route('home')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
 									Home
 								</a>
-								@else
-								<a href="/" title="">
-									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
-									Home
-								</a>
-								@endhasanyrole
 							</li>
+
 							<li>
 								<a href="{{route('about')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
@@ -30,6 +24,7 @@
 								</a>
 								
 							</li>
+						
 							
 						@Auth
 						<li>
@@ -45,6 +40,14 @@
 								</a>
 						@endhasanyrole
 							</li>
+							@if(Auth::user()->role==2) 
+							<li>
+								<a href="{{route('profcat')}}" title="">
+									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
+									Categories
+								</a>
+							</li>
+							@endif
 
 
 							<li>

@@ -31,12 +31,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-   // protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return void 
      */
     
     public function __construct()
@@ -45,22 +45,23 @@ class LoginController extends Controller
     }
 
         
-        public function authenticated()
-        {
-            
-            if(auth()->user()->hasRole('super-admin'))
-            {  
-                return view('admin.index'); 
-            }
-
-            else
-            {
-                return redirect()->route('home');  
-             
-            }
+           
+    public function authenticated()
+    {
         
-    }
+        if(auth()->user()->hasRole('super-admin'))
+        {  
+            return view('admin.index'); 
+        }
 
+        else
+        {
+            return redirect()->route('home');  
+         
+        }
     
+}
+
+
 
 }

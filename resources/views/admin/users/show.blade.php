@@ -30,11 +30,15 @@
           Offline
         @endif  
         </strong></span></h5>  
+        @if ($user->role==1)               
         <h5 style="color:#3cb371"><strong>Banned At  : </strong><span  style="color:black"><strong>{{ $user->banned_at }}</strong></span></h5>  
+        @endif 
+        @if ($user->role==1)               
         @if ($user->isNotBanned())                
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-dark mr-2">Ban</a>
           @else
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-success mr-2">Unban</a>
+          @endif
           @endif
       </div>
     </div>

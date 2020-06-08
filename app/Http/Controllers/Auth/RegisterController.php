@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -34,6 +36,30 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+
+    protected function redirectTo()
+    {
+         if(auth()->user()->role==2)
+        {
+             
+                return '/professionalcategory';
+
+        }
+
+        else
+        {
+            return '/'; 
+        }
+    }   
+ 
+
+
+
+    
+
+
+   
 
     /**
      * Create a new controller instance.
@@ -68,29 +94,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            'role'=>$data['role'],
         ]);
-        if ($data['role'] == '2') {
-            $categories = $data['categories'];
-            $user->categories()->attach($categories);
-            $user->state = 'free';
-            $user->save();
+        $role =$data['role'];
+        if ($role=='1'){
+            $user->givePermissionTo('userpermission');
         }
-        $role = $data['role'];
-        if ($role == '1') {
-            $user->assignRole('user');
-        } elseif ($role == '2') {
-            $user->assignRole('professional');
+        elseif ($role=='2'){
+            $user->givePermissionTo(['professionalpermission', 'userpermission']);
         }
         return $user;
     }
-    public  function  showRegistrationForm()
-    {
-        $categories = Category::all();
-        return view('auth.register', compact('categories'));
-    }
+
+  
+
 }
