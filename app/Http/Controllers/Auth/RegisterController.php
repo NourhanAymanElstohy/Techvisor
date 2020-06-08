@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -34,6 +36,31 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    //protected $redirectTo = '/home';
+
+    protected function redirectTo()
+    {
+         if(auth()->user()->role==2)
+        {
+             
+                return '/professionalcategory';
+
+        }
+
+        else
+        {
+            return '/'; 
+        }
+    }   
+ 
+
+
+
+    
+
+
+   
 
     /**
      * Create a new controller instance.
@@ -74,22 +101,16 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role'=>$data['role'],
         ]);
-        if($data['role']=='2'){
-        $categories=$data['categories'];
-        $user->categories()->attach($categories);
-            }
         $role =$data['role'];
         if ($role=='1'){
-            $user->assignRole('user');
+            $user->givePermissionTo('userpermission');
         }
         elseif ($role=='2'){
-            $user->assignRole('professional');
+            $user->givePermissionTo(['professionalpermission', 'userpermission']);
         }
         return $user;
     }
-    public  function  showRegistrationForm()
-    {
-        $categories= Category::all();
-        return view('auth.register', compact('categories'));
-    }
+
+  
+
 }
