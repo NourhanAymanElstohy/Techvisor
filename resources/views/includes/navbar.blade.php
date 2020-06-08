@@ -11,12 +11,18 @@
 					<nav>
 						<ul>
 							<li>
+							@hasanyrole('super-admin|user|professional')
 								<a href="{{route('home')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
 									Home
 								</a>
+								@else
+								<a href="/" title="">
+									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
+									Home
+								</a>
+								@endhasanyrole
 							</li>
-
 							<li>
 								<a href="{{route('about')}}" title="">
 									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
@@ -24,7 +30,6 @@
 								</a>
 								
 							</li>
-						
 							
 						@Auth
 						<li>
@@ -40,14 +45,6 @@
 								</a>
 						@endhasanyrole
 							</li>
-							@if(Auth::user()->role==2) 
-							<li>
-								<a href="{{route('profcat')}}" title="">
-									<span><img src="{{ url('design/style') }}/images/icon2.png" alt=""></span>
-									Categories
-								</a>
-							</li>
-							@endif
 
 
 							<li>
@@ -73,13 +70,13 @@
 									@if($notification->type=='App\Notifications\NewQuestion')
 												@if($notification->unread())
 													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p >{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p width: 10em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else
 													<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p width: 10em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
