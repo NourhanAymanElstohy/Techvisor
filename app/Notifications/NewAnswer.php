@@ -14,6 +14,7 @@ class NewAnswer extends Notification
     use Queueable;
     protected $answer;
     protected $user;
+  
 
     /**
      * Create a new notification instance.
@@ -24,6 +25,8 @@ class NewAnswer extends Notification
     {
         $this->user = $user;
         $this->answer = $answer;
+      
+
 
       
     }
@@ -65,7 +68,7 @@ class NewAnswer extends Notification
             'user_id' => $this->user->id,
             'user_name' => $this->user->name,
             'answer_id' => $this->answer->id,
-            'answer'=>$this->answer->ansewer
+            'answer'=>$this->answer->answer
 
         ];
     }

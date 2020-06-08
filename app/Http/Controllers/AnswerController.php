@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewAnswer;
 
 use App\Answer;
 
@@ -19,11 +20,14 @@ class AnswerController extends Controller
         $request = request();
         $userId = Auth::id();
         
-            Answer::create([
+            $answer=Answer::create([
                 "answer" => $request->answer,
                 "user_id" => $userId,
                 "question_id" => $request->question_id
             ]);
+            $logged=Auth::user();
+            $user= $answer->question->user;
+            $user->notify(new NewAnswer($logged, $answer));
           return redirect('home' );
         
     }

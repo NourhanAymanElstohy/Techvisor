@@ -68,33 +68,47 @@
 
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
-										@if($notification->unread())
-											<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-											 {{$notification->markAsRead()}}
-											  <?php echo("</br>") ?>
-											</a></h3>
-										@else
-											<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-											 {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a></h3>
-										@endif 
-										@else
-											@if($notification->unread())
-											 <h3><a class="dropdown-item bg-secondary" href="#">
-											  {{$notification->data['user_name'] }} want to zoom meeting
-											  {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a></h3>
-										@else 
-											<a class="dropdown-item " href="#">
-											  {{$notification->data['user_name'] }} want to zoom meeting
-											  {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a>
-										@endif 
+												@if($notification->unread())
+													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													{{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else
+													<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													{{$notification->data['user_name'] }} ask {{$notification->data['question']}}
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewZoom')
+													@if($notification->unread())
+													<h3><a class="dropdown-item bg-secondary" href="#">
+													{{$notification->data['user_name'] }} want to zoom meeting
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else 
+													<a class="dropdown-item " href="#">
+													{{$notification->data['user_name'] }} want to zoom meeting
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewAnswer')		
+														@if($notification->unread())
+															<h3><a  class="dropdown-item bg-secondary" href="#">
+															{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></h3>
+														@else
+															<h3><a class="dropdown-item" href="#">
+															{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></h3>
+														@endif 
 										@endif 
 										</div>
 									</div>
