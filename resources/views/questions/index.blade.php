@@ -41,7 +41,9 @@
                                          @endif   
                                          
                                         </ul>
-                                        <ul class="like-com"></br>
+                                        </div>
+                                        <div class="job-status-bar">
+                                        <ul class="like-com">
                                         <li>
                                         <form method="POST" action="{{route('answers.store')}}">   
                                         @csrf
@@ -53,6 +55,7 @@
                                         </form>
                                         <li>
                                         </ul>
-                                    </div>
+                                        </div>
+                                    
                                 </div>
 @endforeach                                

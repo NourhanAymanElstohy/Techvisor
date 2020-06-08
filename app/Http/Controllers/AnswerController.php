@@ -24,7 +24,7 @@ class AnswerController extends Controller
                 "user_id" => $userId,
                 "question_id" => $request->question_id
             ]);
-          return Redirect::back('home' );
+          return redirect('home' );
         
     }
 
