@@ -97,13 +97,13 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewAnswer')		
 														@if($notification->unread())
-															<h3><a  class="dropdown-item bg-secondary" href="#">
+															<h3><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
 															</a></h3>
 														@else
-															<h3><a class="dropdown-item" href="#">
+															<h3><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>

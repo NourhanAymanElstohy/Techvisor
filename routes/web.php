@@ -86,7 +86,7 @@ Route::post('rate', 'RateController@postRate')->name('rate.post');
 Route::group(['middleware' => ['auth', 'is-ban']], function (){
     Route::get('/answers/create/{question}', 'AnswerController@create')->name('answers.create');
     Route::post('/answers', 'AnswerController@store')->name('answers.store');
-    Route::get('/answers/{answer}', 'AnswerController@show')->name('answer.show');
+    Route::get('/answers/{answer}', 'AnswerController@show')->name('answers.show');
 
 
 });
