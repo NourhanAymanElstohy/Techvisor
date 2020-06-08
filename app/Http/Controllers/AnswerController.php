@@ -31,5 +31,16 @@ class AnswerController extends Controller
           return redirect('home' );
         
     }
+    public function show()
+    {
+        $request = request();
+        $answerId = $request->answer;
+        $answer = Answer::find($answerId);
+     
+            return view('answers/show', [
+                'answer' => $answer
+            ]);
+        
+    }
 
 }
