@@ -30,6 +30,9 @@
 <script type="text/javascript" src="{{ url('design/style') }}/js/scrollbar.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/script.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
 </body>
 
 <!-- Mirrored from gambolthemes.net/workwise-new/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 May 2020 18:26:55 GMT -->

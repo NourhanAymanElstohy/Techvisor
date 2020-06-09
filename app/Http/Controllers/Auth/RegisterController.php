@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-         if(auth()->user()->role==2)
+         if(auth()->user()->role==2) 
         {
              
                 return '/professionalcategory';
