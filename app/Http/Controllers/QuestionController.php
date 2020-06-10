@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Notifications\NewZoom;
 use App\Question;
+use App\Category;
 use App\User;
 
 class QuestionController extends Controller
@@ -48,16 +49,23 @@ class QuestionController extends Controller
 
     public function create(){
         $prof=request()->prof;
+        $cat=request()->cat;
         $users;
+        $cats=Category::all();
         if(auth()->user()->hasPermissionTo('adminpermission')){
             $users=User::where('role',2)->get();
+            
             return view('admin/questions/create',[
                 'prof'=>$prof,
-                'users'=>$users
+                'cat'=>$cat,
+                'users'=>$users,
+                'cats'=>$cats
             ]);
         }else{
             return view('questions/create',[
-                'prof'=>$prof
+                'prof'=>$prof,
+                'cat'=>$cat,
+                'cats'=>$cats
             ]);
 
         }
@@ -72,13 +80,15 @@ class QuestionController extends Controller
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "private",
-                "prof_id" => $request->prof
+                "prof_id" => $request->prof,
+                "category_id" => $request->cat
             ]);
         }else{
             Question::create([
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "public",
+                "category_id" => $request->cat
 
             ]);
 
@@ -139,6 +149,17 @@ class QuestionController extends Controller
         $join_url="ff";
         $prof->notify(new NewZoom($user,$join_url));
          return redirect('/rate/'.$userId);
+
+    }
+    public function search()
+    { $request = request();
+       $search = $request->search;
+       $categories = Category::all();
+      $questions = Question::search($search)->get();
+      return view('home', [
+        'questions' => $questions,
+        'categories' => $categories,
+    ]);
 
     }
 }

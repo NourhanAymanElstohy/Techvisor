@@ -76,13 +76,14 @@ Route::group(['middleware' => 'is-ban'], function () {
 Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions', 'QuestionController@index')->name('questions.index');
     Route::get('/questions/create', 'QuestionController@create')->name('questions.create');
-    Route::get('/questions/create/{prof}', 'QuestionController@create')->name('questions.createprof');
+    Route::get('/questions/create/{prof}/{cat}', 'QuestionController@create')->name('questions.createprof');
     Route::post('/questions', 'QuestionController@store')->name('questions.store');
     Route::delete('/questions/{question}/destroy', 'QuestionController@destroy')->name('questions.destroy');
     Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
+    Route::get('/search', 'QuestionController@search');
 });
 //Route::get('rate/{id}',function () {
 //return view('rate');
