@@ -51,16 +51,16 @@
     <td>{{ $user->banned_at }}</td>
    <td>
     <a href="{{route('professional.show', $user->id)}}"><button type="button"
-    class="btn btn-info float-left mr-2">Show</button></a>
+    class="btn btn-info float-left btn-sm">Show</button></a>
                                             
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
-    class="btn btn-primary float-left mr-2  ">Edit</button></a>
+    class="btn btn-primary float-left btn-sm  ">Edit</button></a>
                                              
     <form action="{{route('users.destroy', $user->id) }}" method="POST"
-    class="float-left">
+    class=" btn-sm">
     @csrf
     {{ method_field('DELETE') }}
-    <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
+    <button type="submit" class="btn btn-danger float-left  btn-sm" onclick="return confirm ('are you sure?')">Delete</button>
 
     </form>
     </br>
@@ -69,10 +69,10 @@
     @if ($user->isNotBanned())  
               
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-dark float-center">Ban</a>
+     class="btn btn-dark float-left btn-sm">Ban</a>
     @else
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-success float-center ">Unban</a>
+     class="btn btn-success float-right btn-sm ">Unban</a>
     @endif
     </td>
     </tr>

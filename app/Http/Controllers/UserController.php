@@ -33,18 +33,25 @@ class UserController extends Controller
         $users = User::whereHas("roles", function ($q) {
             $q->where("name", "user");
         })->get();
+        $role=1;
+      
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
         ]);
     }
     public function adminIndex()
     {
-        // admin only view all have adminspermission             
+        // admin only view all have adminspermission  
+
         $users = User::whereHas("roles", function ($q) {
             $q->where("name", "super-admin");
         })->get();
+        $role=3;
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
+
         ]);
     }
 
@@ -52,8 +59,10 @@ class UserController extends Controller
     {
         // admin only view all have adminspermission             
         $users = User::all();
+        $role=0;
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
         ]);
     }
 
@@ -79,11 +88,13 @@ class UserController extends Controller
         if ($user->save()) {
             $user->assignRole($request->role);
         }
-        if ($user->assignRole($request->role)==user)
-        {$user->role == '1';}
-        elseif ($user->assignRole($request->role)==professional)
-        {$user->role == '2';}
-        else {$user->role == '3';}
+        //dd($request->role);
+        if ($request->role == 'user')
+        {$user->role = 1;}
+        elseif ($request->role == 'professional')
+        {$user->role = 2;}
+        else {$user->role = 3;}
+        $user->save();
         
     
         if ($request->role == 'super-admin') {
