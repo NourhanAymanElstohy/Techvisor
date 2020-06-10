@@ -51,17 +51,21 @@ class QuestionController extends Controller
         $prof=request()->prof;
         $cat=request()->cat;
         $users;
+        $cats=Category::all();
         if(auth()->user()->hasPermissionTo('adminpermission')){
             $users=User::where('role',2)->get();
+            
             return view('admin/questions/create',[
                 'prof'=>$prof,
                 'cat'=>$cat,
-                'users'=>$users
+                'users'=>$users,
+                'cats'=>$cats
             ]);
         }else{
             return view('questions/create',[
                 'prof'=>$prof,
                 'cat'=>$cat,
+                'cats'=>$cats
             ]);
 
         }
@@ -84,6 +88,7 @@ class QuestionController extends Controller
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "public",
+                "category_id" => $request->cat
 
             ]);
 

@@ -27,6 +27,16 @@
         @endforeach
         </select> 
       </div>
+      <div class="form-group mt-5">
+    <label for="exampleFormControlSelect1">categories</label>
+    <select name="cat" class="form-control" value="">
+    <option value=""></option>
+        @foreach($cats as $cat)  
+          <option value="{{$cat->id}}">{{$cat->name}}</option>
+        @endforeach
+        </select> 
+      </div>
+
 
         @endif
             <label for="exampleFormControlTextarea1">Ask Your Question</label>
