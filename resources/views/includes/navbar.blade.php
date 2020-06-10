@@ -236,7 +236,8 @@
 							</li>
 							
 								@if (Route::has('register'))
-								<li >
+								<li > 
+								<span><img src="{{ url('design/style') }}/images/add-user-xxl.png"  width="15" height="15"alt=""></span>
 									<a href="{{ route('register') }}">{{ __('Register') }}</a>
 								</li>
 								@endif
