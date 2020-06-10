@@ -35,58 +35,56 @@ class QuestionController extends Controller
         $request = request();
         $questionId = $request->question;
         $question = Question::find($questionId);
-        if(auth()->user()->hasPermissionTo('adminpermission')){
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/show', [
                 'question' => $question
             ]);
-        }else{
+        } else {
             return view('questions/show', [
                 'question' => $question
             ]);
         }
     }
 
-    public function create(){
-        $prof=request()->prof;
+    public function create()
+    {
+        $prof = request()->prof;
         $users;
-        if(auth()->user()->hasPermissionTo('adminpermission')){
-            $users=User::where('role',2)->get();
-            return view('admin/questions/create',[
-                'prof'=>$prof,
-                'users'=>$users
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            $users = User::where('role', 2)->get();
+            return view('admin/questions/create', [
+                'prof' => $prof,
+                'users' => $users
             ]);
-        }else{
-            return view('questions/create',[
-                'prof'=>$prof   
+        } else {
+            return view('questions/create', [
+                'prof' => $prof
             ]);
-
         }
-       
     }
     public function store()
     {
         $request = request();
         $userId = Auth::id();
-        if($request->prof){
+        if ($request->prof) {
             Question::create([
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "private",
                 "prof_id" => $request->prof
             ]);
-        }else{
+        } else {
             Question::create([
                 "question" => $request->question,
                 "user_id" => $userId,
                 "state" => "public",
-                
-            ]);
 
+            ]);
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } elseif (auth()->user()->hasPermissionTo('professionalpermission')) {
-            return redirect()->route('professional.show',['professional' => $userId]);
+            return redirect()->route('professional.show', ['professional' => $userId]);
         } else {
             return redirect()->route(
                 'user.show',
@@ -102,14 +100,15 @@ class QuestionController extends Controller
         $questionId = $request->question;
         $question = Question::find($questionId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-        return view('admin/questions/edit', [
-            'question' => $question,
-            'users' => $users
-        ]);
-        }else{
+            return view('admin/questions/edit', [
+                'question' => $question,
+                'users' => $users
+            ]);
+        } else {
             return view('questions/edit', [
                 'question' => $question,
-                'users' => $users]);
+                'users' => $users
+            ]);
         }
     }
     public function update()
@@ -137,6 +136,5 @@ class QuestionController extends Controller
         $userId = $request->zoom;
         $prof = User::find($userId);
         $prof->notify(new NewZoom($user));
-      
     }
 }
