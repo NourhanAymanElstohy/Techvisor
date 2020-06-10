@@ -36,7 +36,7 @@
                                         <ul class="like-com">
                                         @if($question->answers)
                                          @foreach($question->answers as $answer)
-                                            <li>{{$answer->user->name}}:{{ $answer->answer}}</li></br>
+                                            <li> <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt=""><h3 style="display:inline">{{$answer->user->name}}</h3>:{{ $answer->answer}}</li></br>
                                          @endforeach
                                          @endif   
                                          
@@ -50,8 +50,8 @@
                                         
                                         <input type="hidden" class="form-control" name="question_id" value="{{$question->id}}">
                                         <input type="text" class="form-control" name="answer">
-
-                                        <button type="submit" class="btn btn-success">Create</button>
+                                        <br/>
+                                        <button type="submit" class="btn text-light" style="background-color: #e44d3a;">Create</button>
                                         </form>
                                         <li>
                                         </ul>

@@ -9,12 +9,24 @@
       <div class="form-group mt-5">
         @if ($prof)
             <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
-
+            <input type="hidden" class="form-control" name="cat" value="{{$cat}}">
+        @else
+        <label for="exampleFormControlSelect1">categories</label>
+            <select name="cat" class="form-control" value="">
+            <option value=""></option>
+            @foreach($cats as $cat)  
+            <option value="{{$cat->id}}">{{$cat->name}}</option>
+            @endforeach
+            </select> 
+          </div>
         @endif
+
             <label for="exampleFormControlTextarea1" style="color:red">Ask Your Question</label>
             <textarea class="form-control" name="question" rows="3"></textarea>
-        </div>
-        
+            <div class="form-group mt-5">
+            
+            </div>
+            
 
       <button type="submit" class="btn " style="background-color:red">Create</button>
       

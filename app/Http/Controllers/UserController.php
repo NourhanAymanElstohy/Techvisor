@@ -73,11 +73,19 @@ class UserController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+
         $user->password =  Hash::make($request->password);
 
         if ($user->save()) {
             $user->assignRole($request->role);
         }
+        if ($user->assignRole($request->role)==user)
+        {$user->role == '1';}
+        elseif ($user->assignRole($request->role)==professional)
+        {$user->role == '2';}
+        else {$user->role == '3';}
+        
+    
         if ($request->role == 'super-admin') {
             return redirect('/admins');
         } else {

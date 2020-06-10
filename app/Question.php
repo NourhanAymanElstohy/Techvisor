@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Question extends Model
 {
+    use Searchable;
     //
     protected $fillable = [
         'question',
@@ -30,5 +32,9 @@ class Question extends Model
     public function prof()
     {
         return $this->belongsTo('App\User', 'prof_id')->where('role', '2');
+    }
+    public function searchableAs()
+    {
+        return 'question';
     }
 }

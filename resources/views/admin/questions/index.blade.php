@@ -30,6 +30,7 @@
       <th>Answer</th>
       <th>User</th>
       <th>Professional</th>
+      <th>category</th>
       <th>State</th>
       <th>Created_at</th>
       <th>Actions</th>
@@ -43,6 +44,7 @@
       <td>{{ $question->answer ? $question->answer->answer : 'not exist'}}</td>
       <td>{{ $question->user ? $question->user->name : 'not exist'}}</td>
       <td>{{ $question->prof ? $question->prof->name : 'not exist'}}</td>
+      <td>{{ $question->category ? $question->category->name : 'not exist'}}</td>
       <td>{{$question->state}}</td>
       <td>{{$question?$question->created_at:""}}</td>
       <td>
