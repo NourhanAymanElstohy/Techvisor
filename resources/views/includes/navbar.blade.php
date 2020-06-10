@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="/home" title=""><h1 class="font-weight-bold text-capitalize text-light mt-1" style="font-family: 'Gochi Hand', cursive; font-size:30px">Techvisor</h1></a>
+						<a href="/home" title=""><h1 class="font-weight-bold text-capitalize text-light mt-1" style="font-family: 'Serif', cursive; font-size:30px">Techvisor</h1></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						
