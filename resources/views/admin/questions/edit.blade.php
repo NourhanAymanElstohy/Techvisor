@@ -27,7 +27,7 @@
         @endforeach
         </select>
       </div>
-          <div class="form-group">
+          <div class="form-group"> 
               <label for="exampleFormControlTextarea1">Ask Your Question</label>
               <input type="hidden" class="form-control" name="id" value="{{$question->id}}">
 

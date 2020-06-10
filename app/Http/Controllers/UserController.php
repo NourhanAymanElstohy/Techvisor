@@ -164,7 +164,7 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) { 
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
@@ -174,29 +174,34 @@ class UserController extends Controller
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->syncRoles($request->role);
-            // dd($user->role);
-            if ($user->role == '3') {
-                return redirect('/admins',[
-                    'categories' => $categories
-                ]);
-            } else {
-                return redirect()->route('users.index',[
-                    'categories' => $categories
-                ]);
-            }
             $user->save();
-        } elseif  (auth()->user()->role==3) {
+             if ($user->role == '3') {
+                return redirect()->route('users.adminIndex', [
+                    'categories' => $categories
+                ]); }
+                elseif ($user->role == '1') {
+                    return redirect()->route('users.index');
+
+                } elseif  ($user->role == '2') {
+                    return redirect()->route('professionals.index');
+                }
+
+            } 
+        
+         elseif  (auth()->user()->role==1) {
             $user->save();
             return redirect()->route('user.show', [
                 'user' => $user,
                 'categories' => $categories
             ]);
-        } else {
-            return view('home',[
+        }  elseif  (auth()->user()->role==2) {
+            return redirect()->route('professional.show', [
+                'user' => $user,
                 'categories' => $categories
-            ]);
+                ]);
         }
     }
+    
 
     public function destroy($id)
     {
@@ -219,12 +224,7 @@ class UserController extends Controller
                 ]);
             }
         }
-        if (auth()->user()->role==3) {
-            $request = request();
-            $userlId = $request->user;
-            User::destroy($userlId);
-            return redirect()->route('home');
-        }
+        
     }
 
     public function banned()

@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', function () {
-    return view('/about');
+    return view('/about'); 
 })->name('about');
 //============== Admin =========================
 Route::get('/admins', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
