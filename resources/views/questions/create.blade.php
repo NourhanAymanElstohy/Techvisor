@@ -9,7 +9,7 @@
       <div class="form-group mt-5">
         @if ($prof)
             <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
-
+            <input type="hidden" class="form-control" name="cat" value="{{$cat}}">
         @endif
             <label for="exampleFormControlTextarea1" style="color:red">Ask Your Question</label>
             <textarea class="form-control" name="question" rows="3"></textarea>

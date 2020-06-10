@@ -16,6 +16,7 @@
       <div class="form-group mt-5">
         @if ($prof)
             <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
+            <input type="hidden" class="form-control" name="cat" value="{{$cat}}">
         @else
         <div class="form-group mt-5">
     <label for="exampleFormControlSelect1">Users</label>
