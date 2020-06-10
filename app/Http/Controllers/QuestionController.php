@@ -21,7 +21,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/index', [
                 'questions' => $questions,
-                'user' => $user
+                
             ]);
         } else {
             return view('questions/index', [
@@ -37,7 +37,7 @@ class QuestionController extends Controller
         $question = Question::find($questionId);
         if(auth()->user()->hasPermissionTo('adminpermission')){
             return view('admin/questions/show', [
-                'question' => $question
+                'question' => $question,
             ]);
         }else{
             return view('questions/show', [
