@@ -11,6 +11,8 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use willvincent\Rateable\Rateable;
+//use Illuminate\Contracts\Auth\Authenticatable;
+
 
 
 class User extends Authenticatable implements BannableContract
