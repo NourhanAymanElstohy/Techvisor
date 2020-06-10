@@ -50,21 +50,21 @@
          class="btn btn-info  float-left mr-2">Show</a>
 
         <a href="{{route('questions.edit',['question'=> $question->id])}}"
-         class="btn btn-primary  float-center">Edit</a>
+         class="btn btn-primary  float-left mr-2">Edit</a>
 
-        <a class="btn btn-danger float-right " href="#" role="button" data-toggle="modal"
-         data-target="#delete-modal-{{$question->id}}">Delete</a>
+        <a class="btn btn-danger float-left " href="#" role="button" data-toggle="modal"
+         data-target="#delete-modal-{{$question->id}}"  class="float-left mr-2">Delete</a>
           
          <div class="modal fade" id="delete-modal-{{$question->id}}" tobindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document" >
               <div class="modal-content">
                 <form method="POST"  action="{{route('questions.destroy',$question->id)}}"
-                class="float-right">
+                class="float-left mr-2">
                   @csrf
                   @method('DELETE')
                   <div class="modal-header">
                     <h5 class="modal-title">Delete question #{{$question->id}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
@@ -74,7 +74,7 @@
                   </div>
                   <div class="modal-body">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger float-right mr-2">Delete</button>
+                    <button type="submit" class="btn btn-danger  mr-2">Delete</button>
                   </div>
                 </form>
             </td>

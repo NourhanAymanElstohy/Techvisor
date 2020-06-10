@@ -40,6 +40,7 @@
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-success mr-2">Unban</a>
           @endif
           @endif
+         
       </div>
     </div>
   </div>

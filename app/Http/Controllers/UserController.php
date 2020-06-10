@@ -34,7 +34,6 @@ class UserController extends Controller
             $q->where("name", "user");
         })->get();
         $role=1;
-      
         return view('admin/users/index', [
             'users' => $users,
             'role' => $role
@@ -208,7 +207,10 @@ class UserController extends Controller
             if ($user->delete()) {
                 if ($user->role == '1') {
                     return redirect()->route('users.index');
-                } else {
+                } elseif  ($user->role == '2') {
+                    return redirect()->route('professionals.index');
+                }
+                elseif  ($user->role == '3') {
                     return redirect()->route('users.adminIndex');
                 }
             } else {
