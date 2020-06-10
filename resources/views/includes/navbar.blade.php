@@ -35,7 +35,7 @@
 						<li>
 						@hasanyrole('super-admin|user')
 								<a href="{{route('user.show', Auth::user()->id)}}" title="">
-									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
+									<span><img src="{{ url('design/style') }}/images/icon4.png"  alt=""></span>
 									{{ Auth::user()->name }}
 								</a>
 						@else
@@ -230,7 +230,8 @@
 							@endauth
 					
 						@guest
-							<li >
+							<li > 
+							<span><img src="{{ url('design/style') }}/images/login-xxl.png"  width="15" height="15"alt=""></span>
 								<a  href="{{ route('login') }}">{{ __('Login') }}</a>
 							</li>
 							
