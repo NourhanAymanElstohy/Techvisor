@@ -46,6 +46,17 @@
 						@endhasanyrole
 							</li>
 
+							@if(Auth::user()->role==2) 
+							<li>
+								<a href="{{route('profcat')}}" title="">
+									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
+									Categories
+								</a>
+							</li>
+							@endif
+
+
+
 
 							<li>
 								<a href="#" title="" class="not-box-open">
@@ -68,33 +79,47 @@
 
 									     <div class="notification-info">
 									@if($notification->type=='App\Notifications\NewQuestion')
-										@if($notification->unread())
-											<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-											 {{$notification->markAsRead()}}
-											  <?php echo("</br>") ?>
-											</a></h3>
-										@else
-											<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-											 {{$notification->data['user_name'] }} ask {{$notification->data['question']}}
-											 {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a></h3>
-										@endif 
-										@else
-											@if($notification->unread())
-											 <h3><a class="dropdown-item bg-secondary" href="#">
-											  {{$notification->data['user_name'] }} want to zoom meeting
-											  {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a></h3>
-										@else 
-											<a class="dropdown-item " href="#">
-											  {{$notification->data['user_name'] }} want to zoom meeting
-											  {{$notification->markAsRead()}}
-											<?php echo("</br>") ?>
-											</a>
-										@endif 
+												@if($notification->unread())
+													<span><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></span>
+												@else
+													<span><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p width: 5em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></span>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewZoom')
+													@if($notification->unread())
+													<h3><a class="dropdown-item bg-secondary" href="#">
+													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else 
+													<a class="dropdown-item " href="#">
+													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewAnswer')		
+														@if($notification->unread())
+															<p style="text-align:justify"><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></p>
+														@else
+															<p style="text-align:justify"><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></p>
+														@endif 
 										@endif 
 										</div>
 									</div>

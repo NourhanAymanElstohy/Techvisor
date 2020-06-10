@@ -50,6 +50,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/professionals/{professional}/destroy', 'ProfessionalController@destroy')->name('professionals.destroy');
     Route::get('/professionals/{professional}/changestatus', 'ProfessionalController@changeStatus')->name('professionals.changestatus');
     Route::get('/professionals/{professional}/ban', 'ProfessionalController@banned')->name('profs.banned')->middleware(['role:super-admin']);
+    Route::get('/professionalcategory', 'ProfessionalController@profcat')->name('profcat');
+    Route::get('/attach/{cat}', 'ProfessionalController@attach')->name('attach');
+    Route::get('/detach/{cat}', 'ProfessionalController@detach')->name('detach');
+
+
+
+
 });
 
 
@@ -76,4 +83,17 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
+});
+//Route::get('rate/{id}',function () {
+//return view('rate');
+//});
+Route::get('rate/{id}', 'RateController@createRate')->name('rate.create');
+Route::post('rate', 'RateController@postRate')->name('rate.post');
+//======================Answers===================
+Route::group(['middleware' => ['auth', 'is-ban']], function (){
+    Route::get('/answers/create/{question}', 'AnswerController@create')->name('answers.create');
+    Route::post('/answers', 'AnswerController@store')->name('answers.store');
+    Route::get('/answers/{answer}', 'AnswerController@show')->name('answers.show');
+
+
 });

@@ -34,9 +34,28 @@
                                     </div>
                                     <div class="job-status-bar">
                                         <ul class="like-com">
-                                       
-                                            <li>Answers:{{ $question->answer ? $question->answer->answer : ''}}</li>
+                                        @if($question->answers)
+                                         @foreach($question->answers as $answer)
+                                            <li>{{$answer->user->name}}:{{ $answer->answer}}</li></br>
+                                         @endforeach
+                                         @endif   
+                                         
                                         </ul>
-                                    </div>
+                                        </div>
+                                        <div class="job-status-bar">
+                                        <ul class="like-com">
+                                        <li>
+                                        <form method="POST" action="{{route('answers.store')}}">   
+                                        @csrf
+                                        
+                                        <input type="hidden" class="form-control" name="question_id" value="{{$question->id}}">
+                                        <input type="text" class="form-control" name="answer">
+
+                                        <button type="submit" class="btn btn-success">Create</button>
+                                        </form>
+                                        <li>
+                                        </ul>
+                                        </div>
+                                    
                                 </div>
 @endforeach                                

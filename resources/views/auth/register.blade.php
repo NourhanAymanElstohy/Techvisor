@@ -105,18 +105,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row mr-5" id="cat-section">
-                                                    <label for="password-confirm"
-                                                        class="col-md-4 col-form-label text-md-right">{{ __('Categories') }}</label>
-
-                                                    <div class="col-md-8">
-                                                        <select class="custom-select" name="categories[]" multiple>
-                                                            @foreach($categories as $cat)
-                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                               
                                                 <div class="form-group row mb-0">
                                                     <div class="col-md-6 offset-md-4">
                                                         <button type="submit" class="btn btn-primary"

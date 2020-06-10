@@ -37,12 +37,14 @@ class HomeController extends Controller
     public function adminHome()
     {
         $categories = Category::all();
+        $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
         $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
         return view('home', [
             'user' => $user,
-            'categories' => $categories
+            'categories' => $categories,
+            'questions'=>$questions
         ]);
     }
 
@@ -56,7 +58,8 @@ class HomeController extends Controller
         return view('home', [
             'user' => $user,
             'categories' => $categories,
-            'questions'=>$questions
+            'questions'=>$questions,
+            
         ]);
     }
 }

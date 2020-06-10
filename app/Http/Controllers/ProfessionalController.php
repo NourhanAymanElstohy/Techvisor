@@ -137,4 +137,52 @@ class ProfessionalController extends Controller
             'prof' => $prof
         ]);
     }
+
+    public function profcat(Request $request)
+    {
+        $categories = Category::all();
+        $request = request();
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        $profcat = $prof->categories;
+        $Aprofcat =$profcat->toArray();
+        $cats = [];
+        foreach($Aprofcat as $catz) {
+            foreach ($catz as $cc=> $c) {
+                if ($cc=='id'){
+             array_push($cats, $c );
+                }
+        }
+        }
+        return view('professionals/profcat', [
+            'categories' => $categories,
+            'cats' => $cats
+        ]);
+    }
+
+     
+    public function attach(Request $request)
+    {
+        $request = request();
+        $catid  = request()->cat;
+        $cat = Category::findOrFail($catid);
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        $prof->categories()->attach($cat); 
+        return redirect()->route('profcat');
+
+    }
+
+
+public function detach(Request $request)
+    {
+        $request = request();
+        $catid  = request()->cat;
+        $cat = Category::findOrFail($catid);
+        $profId = Auth::id();
+        $prof = User::find($profId);
+        $prof->categories()->detach($cat); 
+        return redirect()->route('profcat');
+
+    }
 }

@@ -6,7 +6,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Observers\QuestionObserver;
+use App\Observers\AnswerObserver;
 use App\Question;
+use App\Answer;
 
 class AppServiceProvider extends ServiceProvider
 {

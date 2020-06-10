@@ -20,7 +20,7 @@
 		</footer>		
 
 	</div><!--theme-layout end-->
-
+	
 
 <script type="text/javascript" src="{{ url('design/style') }}/js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/popper.js"></script>
@@ -29,6 +29,9 @@
 <script type="text/javascript" src="{{ url('design/style') }}/lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/scrollbar.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 
 </body>
 
