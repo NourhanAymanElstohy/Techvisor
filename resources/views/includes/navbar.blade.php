@@ -59,24 +59,24 @@
 										<a href="#" title="">Clear all</a>
 									</div>
 
-									<div class="nott-list">
+									<div class="nott-list" >
 									@foreach((auth()->user())->notifications as $notification)
 									     <div class="notfication-details">
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
 									     </div>
 
-									     <div class="notification-info">
+									     <div class="notification-info ">
 									@if($notification->type=='App\Notifications\NewQuestion')
 												@if($notification->unread())
 													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p width: 10em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p >{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else
-													<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p width: 10em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<h3><a class="dropdown-item " href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p>{{$notification->data['user_name'] }} ask {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p> 
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
