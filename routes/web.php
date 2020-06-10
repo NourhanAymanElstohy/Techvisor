@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
+    Route::get('/search', 'QuestionController@search');
 });
 //Route::get('rate/{id}',function () {
 //return view('rate');
