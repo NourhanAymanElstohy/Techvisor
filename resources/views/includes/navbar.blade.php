@@ -82,10 +82,10 @@
 												@if($notification->unread())
 
 													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p >{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p >{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit ($notification->data['question'],4)}}</p>
 
 													<span><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p>{{$notification->data['user_name'] }} ask {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p>
 
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
@@ -96,7 +96,7 @@
 													<p>{{$notification->data['user_name'] }} ask {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p> 
 
 													<span><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
-													<p width: 5em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+													<p width: 5em>{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p>
 
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
@@ -119,13 +119,13 @@
 										@elseif($notification->type=='App\Notifications\NewAnswer')		
 														@if($notification->unread())
 															<p style="text-align:justify"><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
-															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
+															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
 															</a></p>
 														@else
 															<p style="text-align:justify"><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
-															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
+															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
 															</a></p>
