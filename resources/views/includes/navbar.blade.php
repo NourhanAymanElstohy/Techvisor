@@ -46,6 +46,17 @@
 						@endhasanyrole
 							</li>
 
+							@if(Auth::user()->role==2) 
+							<li>
+								<a href="{{route('profcat')}}" title="">
+									<span><img src="{{ url('design/style') }}/images/icon4.png" alt=""></span>
+									Categories
+								</a>
+							</li>
+							@endif
+
+
+
 
 							<li>
 								<a href="#" title="" class="not-box-open">
@@ -69,17 +80,27 @@
 									     <div class="notification-info ">
 									@if($notification->type=='App\Notifications\NewQuestion')
 												@if($notification->unread())
+
 													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 													<p >{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+
+													<span><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
-													</a></h3>
+													</a></span>
 												@else
+
 													<h3><a class="dropdown-item " href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 													<p>{{$notification->data['user_name'] }} ask {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p> 
+
+													<span><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p width: 5em>{{$notification->data['user_name'] }} ask {{$notification->data['question']}}</p>
+
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
-													</a></h3>
+													</a></span>
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
@@ -97,17 +118,17 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewAnswer')		
 														@if($notification->unread())
-															<h3><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p style="text-align:justify"><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
-															</a></h3>
+															</a></p>
 														@else
-															<h3><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p style="text-align:justify"><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															<p>{{$notification->data['user_name'] }} reply by {{$notification->data['answer']}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
-															</a></h3>
+															</a></p>
 														@endif 
 										@endif 
 										</div>

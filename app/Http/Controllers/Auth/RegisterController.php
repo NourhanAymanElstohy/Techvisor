@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Auth;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Http\Requests;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 
 class RegisterController extends Controller
@@ -38,9 +41,20 @@ class RegisterController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+
     protected function redirectTo()
     {
-         if(auth()->user()->role==2)
+         if(auth()->user()->role==2) 
         {
              
                 return '/professionalcategory';
@@ -51,7 +65,7 @@ class RegisterController extends Controller
         {
             return '/'; 
         }
-    }   
+    }    
  
 
 
@@ -60,16 +74,6 @@ class RegisterController extends Controller
 
 
    
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -102,14 +106,15 @@ class RegisterController extends Controller
         ]);
         $role =$data['role'];
         if ($role=='1'){
-            $user->givePermissionTo('userpermission');
+            $user->assignRole('user');
+            return $user;
         }
         elseif ($role=='2'){
-            $user->givePermissionTo(['professionalpermission', 'userpermission']);
-        }
+            $user->assignRole('professional');
         return $user;
     }
 
   
 
+}
 }
