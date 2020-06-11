@@ -46,7 +46,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('guest');
     }
@@ -54,26 +54,21 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-         if(auth()->user()->role==2) 
-        {
-             
-                return '/professionalcategory';
+        if (auth()->user()->role == 2) {
 
+            return '/professionalcategory';
+        } else {
+            return '/';
         }
-
-        else
-        {
-            return '/'; 
-        }
-    }    
- 
+    }
 
 
 
-    
 
 
-   
+
+
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -98,23 +93,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user= User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role'=>$data['role'],
+            'role' => $data['role'],
         ]);
-        $role =$data['role'];
-        if ($role=='1'){
+        $role = $data['role'];
+        if ($role == '1') {
             $user->assignRole('user');
             return $user;
-        }
-        elseif ($role=='2'){
+        } elseif ($role == '2') {
             $user->assignRole('professional');
-        return $user;
+            $user->state = 'free';
+            $user->save();
+            return $user;
+        }
     }
-
-  
-
-}
 }

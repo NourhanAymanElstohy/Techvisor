@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', function () {
-    return view('/about'); 
+    return view('/about');
 })->name('about');
 //============== Admin =========================
 Route::get('/admins', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
@@ -53,10 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/professionalcategory', 'ProfessionalController@profcat')->name('profcat');
     Route::get('/attach/{cat}', 'ProfessionalController@attach')->name('attach');
     Route::get('/detach/{cat}', 'ProfessionalController@detach')->name('detach');
-
-
-
-
 });
 
 
@@ -85,16 +81,12 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/zoom/{zoom}', 'QuestionController@zoom');
     Route::get('/search', 'QuestionController@search');
 });
-//Route::get('rate/{id}',function () {
-//return view('rate');
-//});
+
 Route::get('rate/{id}', 'RateController@createRate')->name('rate.create');
 Route::post('rate', 'RateController@postRate')->name('rate.post');
 //======================Answers===================
-Route::group(['middleware' => ['auth', 'is-ban']], function (){
+Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/answers/create/{question}', 'AnswerController@create')->name('answers.create');
     Route::post('/answers', 'AnswerController@store')->name('answers.store');
     Route::get('/answers/{answer}', 'AnswerController@show')->name('answers.show');
-
-
 });

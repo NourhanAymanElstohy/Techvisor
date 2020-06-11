@@ -10,6 +10,7 @@ use App\Notifications\NewZoom;
 use App\Question;
 use App\Category;
 use App\User;
+use MacsiDigital\Zoom\Facades\Zoom;
 
 class QuestionController extends Controller
 {
@@ -22,7 +23,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/index', [
                 'questions' => $questions,
-                
+
             ]);
         } else {
             return view('questions/index', [
@@ -35,24 +36,30 @@ class QuestionController extends Controller
     {
         $request = request();
         $questionId = $request->question;
-        $question = Question::find($questionId);
+        $questions = Question::where('id',$questionId)->get();
+        $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/show', [
                 'question' => $question,
             ]);
         } else {
-            return view('questions/show', [
-                'question' => $question
+            return view('home', [
+                'questions' => $questions,
+                'categories' => $categories,
+        
             ]);
         }
     }
+
 
     public function create()
     {
         $prof = request()->prof;
         $cat = request()->cat;
-        $users;
+        $flag='create';
+        
         $cats = Category::all();
+        $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $users = User::where('role', 2)->get();
 
@@ -61,18 +68,23 @@ class QuestionController extends Controller
                 'cat' => $cat,
                 'users' => $users,
                 'cats' => $cats
+
             ]);
         } else {
-            return view('questions/create', [
+            return view('home2', [
+                'flag'=>$flag,
                 'prof' => $prof,
                 'cat' => $cat,
-                'cats' => $cats
+                'cats' => $cats,
+                'categories'=>$categories,
+               
             ]);
         }
     }
     public function store()
     {
         $request = request();
+        
         $userId = Auth::id();
         if ($request->prof) {
             Question::create([
@@ -106,18 +118,26 @@ class QuestionController extends Controller
     public function edit()
     {
         $request = request();
+        $flag='edit';
         $users = User::where('role', 2)->get();
+        $cats = Category::all();
+        $categories = Category::all();
+        
         $questionId = $request->question;
         $question = Question::find($questionId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/edit', [
                 'question' => $question,
-                'users' => $users
+                'users' => $users,
+                'cats'=>$cats
             ]);
         } else {
-            return view('questions/edit', [
+            return view('home2', [
+                'flag'=>$flag,
                 'question' => $question,
-                'users' => $users
+                'users' => $users,
+                'cats'=>$cats,
+                'categories'=>$categories
             ]);
         }
     }
@@ -127,8 +147,15 @@ class QuestionController extends Controller
         $question = Question::find($request->id);
         $question->question = $request->question;
         $question->state = $request->state;
+        $question->prof_id = $request->prof;
+        $question->category_id = $request->cat;
         $question->save();
-        return redirect('/');
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return redirect()->route('questions.index');
+        }else {
+            return redirect('/');
+        }
+       
     }
 
     public function destroy()
@@ -145,9 +172,18 @@ class QuestionController extends Controller
         $user = Auth::user();
         $userId = $request->zoom;
         $prof = User::find($userId);
-        $join_url = "ff";
+
+        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'cat']);
+        // dd($meeting);
+        $join_url = $meeting->join_url;
+        // dd($join_url);
         $prof->notify(new NewZoom($user, $join_url));
-        return redirect('/rate/' . $userId);
+
+        if ($meeting->endMeeting()) {
+            return redirect('/rate' . $userId);
+        } else {
+            return redirect()->back();
+        }
     }
     public function search()
     {

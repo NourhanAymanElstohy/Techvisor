@@ -32,7 +32,6 @@
         <div class="form-group mt-5">
                 <label>Profile Image </label>
         <input type="file" name="avatar" value="{{$user->avatar}}"> 
-        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
         </div> 
         
         <div class="justify-content-end">

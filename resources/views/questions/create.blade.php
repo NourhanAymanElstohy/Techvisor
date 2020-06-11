@@ -1,12 +1,13 @@
-@extends('layouts.app')
-@section('content')
+<div class="post-bar">
+<div class="post_topbar">
+<div class="job_descp">
 <div class="main-section" style="z-index:1">
-<div class="container" style="margin-bottom :500px">
+<div class="container">
   <div class="p-3" style="text-align:center" >
     <form method="POST" action="{{route('questions.store')}}">
       @csrf
       <h1 style="color:red"><strong>Create New Question</strong></h1>
-      <div class="form-group mt-5">
+      <div class="form-group mt-5 ">
         @if ($prof)
             <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
             <input type="hidden" class="form-control" name="cat" value="{{$cat}}">
@@ -28,12 +29,14 @@
             </div>
             
 
-      <button type="submit" class="btn " style="background-color:red">Create</button>
+      <button type="submit" class="btn " style="background-color: #e44d3a;">Create</button>
       
     </form>  
 </div>
 </div>
-    @endsection
+</div>
+</div>
+</div>
 
 
 
