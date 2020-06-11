@@ -8,6 +8,8 @@ use App\Notifications\NewAnswer;
 
 use App\Answer;
 
+use App\Category;
+
 class AnswerController extends Controller
 {
     public function create(){
@@ -38,9 +40,14 @@ class AnswerController extends Controller
     {
         $request = request();
         $answerId = $request->answer;
+        $flag='answer';
+        
+        $categories = Category::all();
         $answer = Answer::find($answerId);
      
-            return view('answers/show', [
+            return view('home2', [
+                'flag'=>$flag,
+                'categories'=>$categories,
                 'answer' => $answer
             ]);
         

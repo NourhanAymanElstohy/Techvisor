@@ -51,8 +51,10 @@
                                 <!--top-profiles end-->
                                     @if($flag=='create')
                                         @include('questions.create')  
-                                    @else    
+                                    @elseif($flag =='edit')   
                                         @include('questions.edit')
+                                    @else
+                                       @include('answers.show')    
                                     @endif            
                                
                             </div>
