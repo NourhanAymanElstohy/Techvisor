@@ -10,6 +10,7 @@ use App\Notifications\NewZoom;
 use App\Question;
 use App\Category;
 use App\User;
+use MacsiDigital\Zoom\Facades\Zoom;
 
 class QuestionController extends Controller
 {
@@ -22,7 +23,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/index', [
                 'questions' => $questions,
-                
+
             ]);
         } else {
             return view('questions/index', [
@@ -171,9 +172,18 @@ class QuestionController extends Controller
         $user = Auth::user();
         $userId = $request->zoom;
         $prof = User::find($userId);
-        $join_url = "ff";
+
+        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'cat']);
+        // dd($meeting);
+        $join_url = $meeting->join_url;
+        // dd($join_url);
         $prof->notify(new NewZoom($user, $join_url));
-        return redirect('/rate/' . $userId);
+
+        if ($meeting->endMeeting()) {
+            return redirect('/rate' . $userId);
+        } else {
+            return redirect()->back();
+        }
     }
     public function search()
     {
