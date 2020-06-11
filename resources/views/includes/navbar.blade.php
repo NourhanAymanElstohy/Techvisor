@@ -104,8 +104,8 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item bg-secondary" href="#">
-													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
+													<h3><a class="dropdown-item bg-secondary " href="#">
+													<p class="text-light">{{$notification->data['user_name'] }} want to zoom meeting</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
