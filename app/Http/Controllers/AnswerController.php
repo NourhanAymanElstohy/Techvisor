@@ -28,7 +28,10 @@ class AnswerController extends Controller
             $logged=Auth::user();
             $user= $answer->question->user;
             $user->notify(new NewAnswer($logged, $answer));
-          return redirect('home' );
+            return redirect()->route(
+                'questions.show',
+                ['question' => $request->question_id]
+            );
         
     }
     public function show()
