@@ -19,7 +19,7 @@ class AnswerController extends Controller
     {
         $request = request();
         $userId = Auth::id();
-        
+
             $answer=Answer::create([
                 "answer" => $request->answer,
                 "user_id" => $userId,
@@ -28,19 +28,22 @@ class AnswerController extends Controller
             $logged=Auth::user();
             $user= $answer->question->user;
             $user->notify(new NewAnswer($logged, $answer));
-          return redirect('home' );
-        
+//          return redirect('home' );
+        return redirect()->route(
+            'questions.show',
+            ['question' => $request->question_id]
+        );
     }
     public function show()
     {
         $request = request();
         $answerId = $request->answer;
         $answer = Answer::find($answerId);
-     
+
             return view('answers/show', [
                 'answer' => $answer
             ]);
-        
+
     }
 
 }
