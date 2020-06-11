@@ -1,3 +1,4 @@
+<div class="post-bar">
 <div class="post_topbar">
 <div class="job_descp">
 <div class="main-section" style="z-index:1">
@@ -31,6 +32,7 @@
       <button type="submit" class="btn " style="background-color: #e44d3a;">Create</button>
       
     </form>  
+</div>
 </div>
 </div>
 </div>
