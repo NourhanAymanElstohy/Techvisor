@@ -36,7 +36,7 @@
                                         <ul class="like-com">
                                         @if($question->answers)
                                          @foreach($question->answers as $answer)
-                                            <li> <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt=""><h3 style="display:inline">{{$answer->user->name}}</h3>:{{ $answer->answer}}</li></br>
+                                            <li> <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt=""><h3 style="display:inline">{{$answer->user->name}}</h3> :{{ $answer->answer}}</li></br>
                                          @endforeach
                                          @endif   
                                          
