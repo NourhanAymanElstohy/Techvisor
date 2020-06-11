@@ -55,6 +55,7 @@ class QuestionController extends Controller
     {
         $prof = request()->prof;
         $cat = request()->cat;
+        $flag='create';
         
         $cats = Category::all();
         $categories = Category::all();
@@ -70,6 +71,7 @@ class QuestionController extends Controller
             ]);
         } else {
             return view('home2', [
+                'flag'=>$flag,
                 'prof' => $prof,
                 'cat' => $cat,
                 'cats' => $cats,
@@ -81,6 +83,7 @@ class QuestionController extends Controller
     public function store()
     {
         $request = request();
+        
         $userId = Auth::id();
         if ($request->prof) {
             Question::create([
@@ -114,18 +117,26 @@ class QuestionController extends Controller
     public function edit()
     {
         $request = request();
+        $flag='edit';
         $users = User::where('role', 2)->get();
+        $cats = Category::all();
+        $categories = Category::all();
+        
         $questionId = $request->question;
         $question = Question::find($questionId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/edit', [
                 'question' => $question,
-                'users' => $users
+                'users' => $users,
+                'cats'=>$cats
             ]);
         } else {
-            return view('questions/edit', [
+            return view('home2', [
+                'flag'=>$flag,
                 'question' => $question,
-                'users' => $users
+                'users' => $users,
+                'cats'=>$cats,
+                'categories'=>$categories
             ]);
         }
     }
@@ -135,6 +146,8 @@ class QuestionController extends Controller
         $question = Question::find($request->id);
         $question->question = $request->question;
         $question->state = $request->state;
+        $question->prof_id = $request->prof;
+        $question->category_id = $request->cat;
         $question->save();
         return redirect('/');
     }

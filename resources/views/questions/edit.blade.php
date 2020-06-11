@@ -1,11 +1,11 @@
 
-@extends('layouts.app')
-@section('content')
-
+<div class="post-bar">
+<div class="post_topbar">
+<div class="job_descp">
   <div class="content-wrapper">
   <div class="container">
   <div class="p-3" style="text-align:center">
-  <h1 style="color:#3cb371"><strong>Edit Qestion</strong></h1>
+  <h1 style="color: #e44d3a;"><strong>Edit Qestion</strong></h1>
 
       <form method="POST" action="{{route('questions.update',['question'=>$question->id])}}">
         @csrf
@@ -17,6 +17,15 @@
         @endforeach
         </select>
       </div>
+      <div class="form-group mt-5 ">
+      <label for="exampleFormControlSelect1">categories</label>
+            <select name="cat" class="form-control" value="{{ $question->category ? $question->category->name : 'not exist'}}">
+            
+            @foreach($cats as $cat)  
+            <option value="{{$cat->id}}">{{$cat->name}}</option>
+            @endforeach
+            </select> 
+          </div>
           <div class="form-group">
               <label for="exampleFormControlTextarea1">Ask Your Question</label>
               <input type="hidden" class="form-control" name="id" value="{{$question->id}}">
@@ -33,15 +42,15 @@
               </select>
         </div>
 
-        <button type="submit" class="btn btn-danger">Submit</button>
+        <button type="submit" class="btn" style="background-color: #e44d3a;">Submit</button>
         
       </form>  
 </div>  </div>
 </div>
-  <!-- /.content-wrapper -->
-
-  @endsection
-
+</div>
+</div>
+</div>
+ 
  
 
 

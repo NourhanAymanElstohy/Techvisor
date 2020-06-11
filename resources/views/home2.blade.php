@@ -49,8 +49,11 @@
                                     <!--profiles-slider end-->
                                 </div>
                                 <!--top-profiles end-->
-                           
-                                        @include('questions.create')        
+                                    @if($flag=='create')
+                                        @include('questions.create')  
+                                    @else    
+                                        @include('questions.edit')
+                                    @endif            
                                
                             </div>
                         </div>

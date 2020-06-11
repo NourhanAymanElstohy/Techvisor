@@ -2,7 +2,7 @@
 <div class="post_topbar">
 <div class="job_descp">
 <div class="main-section" style="z-index:1">
-<div class="container" style="margin-bottom :500px">
+<div class="container">
   <div class="p-3" style="text-align:center" >
     <form method="POST" action="{{route('questions.store')}}">
       @csrf
