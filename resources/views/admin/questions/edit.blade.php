@@ -27,6 +27,15 @@
         @endforeach
         </select>
       </div>
+      <div class="form-group mt-5 ">
+      <label for="exampleFormControlSelect1">categories</label>
+            <select name="cat" class="form-control" value="{{ $question->category ? $question->category->name : 'not exist'}}">
+            
+            @foreach($cats as $cat)  
+            <option value="{{$cat->id}}">{{$cat->name}}</option>
+            @endforeach
+            </select> 
+          </div>
           <div class="form-group"> 
               <label for="exampleFormControlTextarea1">Ask Your Question</label>
               <input type="hidden" class="form-control" name="id" value="{{$question->id}}">

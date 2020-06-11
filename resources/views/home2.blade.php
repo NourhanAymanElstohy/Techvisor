@@ -23,18 +23,7 @@
                     
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
-                            @auth
-                            <div class="post-topbar">
-                                <div class="user-picy">
-                                    {{-- <img src="images/resources/user-pic.png" alt=""> --}}
-                                </div>
-                                <div class="post-st">
-                                    <ul>
-                                        <li><a class="active" href="{{route('questions.create')}}" title="">Post a Public Question</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            @endauth
+                           
                             <div class="posts-section">
                                 <div class="top-profiles">
                                     <div class="pf-hd">
@@ -60,11 +49,14 @@
                                     <!--profiles-slider end-->
                                 </div>
                                 <!--top-profiles end-->
-                            
-
-                                        @include('questions.index')
-                                
-                                
+                                    @if($flag=='create')
+                                        @include('questions.create')  
+                                    @elseif($flag =='edit')   
+                                        @include('questions.edit')
+                                    @else
+                                       @include('answers.show')    
+                                    @endif            
+                               
                             </div>
                         </div>
                     </div>
@@ -84,24 +76,7 @@
                             @endguest
                             
                             <!--widget-about end-->
-                            <div class="widget widget-jobs">
-                                <div class="sd-title">
-                                    <h3>Top Professionals With Rate</h3>
-                                    <!--i class="la la-ellipsis-v"></i-->
-                                </div>
-                                <div class="jobs-list">
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            {{-- <h3>Senior Product Designer</h3> --}}
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            {{-- <span>$25/hr</span> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--jobs-list end-->
-                            </div>
+                            
                             <!--widget-jobs end-->
 
 

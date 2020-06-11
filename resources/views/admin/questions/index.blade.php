@@ -27,7 +27,6 @@
     <tr>
       <th>ID</th>
       <th>Question</th>
-      <th>Answer</th>
       <th>User</th>
       <th>Professional</th>
       <th>category</th>
@@ -41,7 +40,6 @@
     <tr>
       <td>{{$question->id}}</td>
       <td>{{$question->question}}</td>
-      <td>{{ $question->answer ? $question->answer->answer : 'not exist'}}</td>
       <td>{{ $question->user ? $question->user->name : 'not exist'}}</td>
       <td>{{ $question->prof ? $question->prof->name : 'not exist'}}</td>
       <td>{{ $question->category ? $question->category->name : 'not exist'}}</td>

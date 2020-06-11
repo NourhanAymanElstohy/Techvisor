@@ -8,6 +8,8 @@ use App\Notifications\NewAnswer;
 
 use App\Answer;
 
+use App\Category;
+
 class AnswerController extends Controller
 {
     public function create(){
@@ -28,16 +30,24 @@ class AnswerController extends Controller
             $logged=Auth::user();
             $user= $answer->question->user;
             $user->notify(new NewAnswer($logged, $answer));
-          return redirect('home' );
+            return redirect()->route(
+                'questions.show',
+                ['question' => $request->question_id]
+            );
         
     }
     public function show()
     {
         $request = request();
         $answerId = $request->answer;
+        $flag='answer';
+        
+        $categories = Category::all();
         $answer = Answer::find($answerId);
      
-            return view('answers/show', [
+            return view('home2', [
+                'flag'=>$flag,
+                'categories'=>$categories,
                 'answer' => $answer
             ]);
         
