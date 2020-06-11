@@ -10,7 +10,7 @@
               <div class="container">
                   <div class="main-section-data">
                      <div class="container col-6">
-    <form method="POST" action="{{route('professionals.update',$professional->id)}}" class="mb-4">
+    <form method="POST" action="{{route('professionals.update',$professional->id)}}" class="mb-4" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <h1 class="mt-5 text-center">Edit Profile</h1>
@@ -28,7 +28,10 @@
             <label >Password</label>
             <input name="password" type="password"  class="form-control">
         </div>
-
+        <div class="form-group mt-5">
+                <label>Profile Image </label>
+        <input type="file" name="avatar" value="{{$professional->avatar}}"> 
+        </div> 
        
         <div class="justify-content-end">
            <input type="submit" value="Submit" class="btn btn-success">
