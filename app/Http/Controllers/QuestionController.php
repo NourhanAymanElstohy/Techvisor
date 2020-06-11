@@ -50,7 +50,6 @@ class QuestionController extends Controller
     public function create(){
         $prof=request()->prof;
         $cat=request()->cat;
-        $users;
         $cats=Category::all();
         if(auth()->user()->hasPermissionTo('adminpermission')){
             $users=User::where('role',2)->get();
