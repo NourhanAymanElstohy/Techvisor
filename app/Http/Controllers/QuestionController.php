@@ -146,15 +146,17 @@ class QuestionController extends Controller
         $user = Auth::user();
         $userId = $request->zoom;
         $prof = User::find($userId);
-        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $prof . 'cat']);
+
+        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'cat']);
+        // dd($meeting);
         $join_url = $meeting->join_url;
+        // dd($join_url);
         $prof->notify(new NewZoom($user, $join_url));
+
         if ($meeting->endMeeting()) {
             return redirect('/rate' . $userId);
         } else {
-            return view('categories/show', [
-                'meeting' => $meeting
-            ]);
+            return redirect()->back();
         }
     }
     public function search()

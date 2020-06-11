@@ -15,38 +15,42 @@
                     <div class="companies-list">
                         <div class="row">
                             @if(count($category->profs) > 0)
-                            @foreach($category->profs as $prof)
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="company_profile_info">
-                                    <div class="company-up-info">
-                                        <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
-                                        <h3>{{$prof->name}}</h3>
-                                        @if($prof->status == 1)
-                                        <h3 class="d-inline">Status: </h3><h3 class="text-secondary d-inline">Offline</h3>
-                                        @else 
-                                            <h3 class="d-inline">Status: </h3><h3 class="text-success d-inline">Online</h3>
-                                        @endif
-                                        
-                                        <h3 class="text-capitalize text-info mt-2">{{$prof->state}}</h3>
-                                        @if ($prof->id != Auth::user()->id)
-                                                <ul>
+                                @foreach($category->profs as $prof)
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="company_profile_info">
+                                        <div class="company-up-info">
+                                            <img src="/uploads/avatars/{{$prof->avatar}}" alt="">
+                                            <h3>{{$prof->name}}</h3>
                                             @if($prof->status == 1)
-                                                
-                                                    <li><a class="active follow"
-                                                            href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
-                                                            title="">ASK</a></li>
-                                            @else
-                                                    <li><a class="active follow"
-                                                            href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
-                                                            title="">ASK</a></li>
-
-                                                    <li><a href="/zoom/{{$prof->id}}" title="" id="zoom" class="hire"
-                                                            onclick="return connectZoom();">Zoom</a></li>
-                                                    <li id="demo"></li>
-                                                    <input type="hidden" name="create" value="" id="create-zoom">
+                                                <h3 class="d-inline">Status: </h3><h3 class="text-secondary d-inline">Offline</h3>
+                                            @else 
+                                                <h3 class="d-inline">Status: </h3><h3 class="text-success d-inline">Online</h3>
                                             @endif
-                                                </ul>
                                             
+                                            <h3 class="text-capitalize text-info mt-2">{{$prof->state}}</h3>
+                                            @if ($prof->id != Auth::user()->id)
+                                                    <ul>
+                                                @if($prof->status == 1)
+                                                    
+                                                        <li><a class="active follow"
+                                                                href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
+                                                                title="">ASK</a></li>
+                                                @else
+                                                        <li><a class="active follow"
+                                                                href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
+                                                                title="">ASK</a></li>            
+                                                    @if ($meeting!= "non")
+                                                        <li><a href="{{$meeting->join_url}}" target="_blank" class="hire">Zoom</a></li>                                                  
+                                                    @else
+                                                        <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>                       
+                                                    @endif
+                                                        {{-- <li><a href="/zoom/{{$prof->id}}" title="" id="zoom" class="hire"
+                                                                onclick="return connectZoom();">Zoom</a></li> --}}
+                                                        <li id="demo"></li>
+                                                        <input type="hidden" name="create" value="" id="create-zoom">
+                                                @endif
+                                                    </ul>
+                                                
                                         @endif
 
                                     </div>
@@ -66,14 +70,5 @@
             </div>
         </div>
     </main>
-    <script>
-        function connectZoom() {
-            // document.getElementById("create-zoom").value =
-            //     "{{ $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => $category->name])}}";
-            document.getElementById("demo").innerHTML =
-                "<a href=\"{{$meeting->join_url}}\" target=\"_blank\" class=\"btn btn-primary\">Join Url</a>"
-            document.querySelector("#zoom").style.display = "none"
-        }
 
-    </script>
     @endsection
