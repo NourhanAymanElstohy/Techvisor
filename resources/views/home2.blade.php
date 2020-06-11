@@ -23,18 +23,7 @@
                     
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
-                            @auth
-                            <div class="post-topbar">
-                                <div class="user-picy">
-                                    {{-- <img src="images/resources/user-pic.png" alt=""> --}}
-                                </div>
-                                <div class="post-st">
-                                    <ul>
-                                        <li><a class="active" href="{{route('questions.create')}}" title="">Post a Public Question</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            @endauth
+                           
                             <div class="posts-section">
                                 <div class="top-profiles">
                                     <div class="pf-hd">
@@ -60,11 +49,9 @@
                                     <!--profiles-slider end-->
                                 </div>
                                 <!--top-profiles end-->
-                            
-
-                                        @include('questions.index')
-                                
-                                
+                           
+                                        @include('questions.create')        
+                               
                             </div>
                         </div>
                     </div>

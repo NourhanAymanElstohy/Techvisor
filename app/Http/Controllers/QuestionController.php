@@ -55,7 +55,9 @@ class QuestionController extends Controller
     {
         $prof = request()->prof;
         $cat = request()->cat;
+        
         $cats = Category::all();
+        $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $users = User::where('role', 2)->get();
 
@@ -67,10 +69,12 @@ class QuestionController extends Controller
 
             ]);
         } else {
-            return view('questions/create', [
+            return view('home2', [
                 'prof' => $prof,
                 'cat' => $cat,
-                'cats' => $cats
+                'cats' => $cats,
+                'categories'=>$categories,
+               
             ]);
         }
     }
