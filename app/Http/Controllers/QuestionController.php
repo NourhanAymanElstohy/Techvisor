@@ -149,7 +149,12 @@ class QuestionController extends Controller
         $question->prof_id = $request->prof;
         $question->category_id = $request->cat;
         $question->save();
-        return redirect('/');
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return redirect()->route('questions.index');
+        }else {
+            return redirect('/');
+        }
+       
     }
 
     public function destroy()
