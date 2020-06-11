@@ -29,7 +29,7 @@
        <th>Name</th>
        <th>Image</th> 
        <th>Email</th>
-       <th>Roles</th>
+       <th>Role</th>
        <th>Status</th>
        <th>Banned At</th>
        <th>Actions</th>
@@ -51,28 +51,28 @@
     <td>{{ $user->banned_at }}</td>
    <td>
     <a href="{{route('professional.show', $user->id)}}"><button type="button"
-    class="btn btn-info float-left mr-2">Show</button></a>
+    class="btn btn-info float-left  mr-2">Show</button></a>
+    
                                             
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
-    class="btn btn-primary float-left mr-2  ">Edit</button></a>
+    class="btn btn-primary float-center  mr-2 ">Edit</button></a>
+
                                              
     <form action="{{route('users.destroy', $user->id) }}" method="POST"
-    class="float-left">
+    class=" float-right mr-2">
     @csrf
     {{ method_field('DELETE') }}
-    <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
-
+    <button type="submit" class="btn btn-danger   mr-2  " onclick="return confirm ('are you sure?')">Delete</button>
     </form>
-    </br>
-    </br>
+  
                                             
     @if ($user->isNotBanned())  
               
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-dark float-center">Ban</a>
+     class="btn btn-dark float-left  mr-2">Ban</a>
     @else
     <a  href="{{ route('profs.banned',['professional'=>$user->id]) }}"
-     class="btn btn-success float-center ">Unban</a>
+     class="btn btn-success float-left  mr-2">Unban</a>
     @endif
     </td>
     </tr>

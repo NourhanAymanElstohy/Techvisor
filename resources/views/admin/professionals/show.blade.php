@@ -36,6 +36,9 @@
           @else
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-success mr-2">Unban</a>
           @endif
+
+          <a href="{{route('professionals.index')}}"><button type="button"
+            class="btn btn-success float-left">Back</button></a>
       </div>
     </div>
   </div>

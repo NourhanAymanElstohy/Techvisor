@@ -22,7 +22,7 @@ class QuestionController extends Controller
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/index', [
                 'questions' => $questions,
-                'user' => $user
+                
             ]);
         } else {
             return view('questions/index', [
@@ -36,45 +36,46 @@ class QuestionController extends Controller
         $request = request();
         $questionId = $request->question;
         $question = Question::find($questionId);
-        if(auth()->user()->hasPermissionTo('adminpermission')){
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/show', [
-                'question' => $question
+                'question' => $question,
             ]);
-        }else{
+        } else {
             return view('questions/show', [
                 'question' => $question
             ]);
         }
     }
 
-    public function create(){
-        $prof=request()->prof;
-        $cat=request()->cat;
-        $cats=Category::all();
-        if(auth()->user()->hasPermissionTo('adminpermission')){
-            $users=User::where('role',2)->get();
-            
-            return view('admin/questions/create',[
-                'prof'=>$prof,
-                'cat'=>$cat,
-                'users'=>$users,
-                'cats'=>$cats
-            ]);
-        }else{
-            return view('questions/create',[
-                'prof'=>$prof,
-                'cat'=>$cat,
-                'cats'=>$cats
-            ]);
 
+    public function create()
+    {
+        $prof = request()->prof;
+        $cat = request()->cat;
+        $cats = Category::all();
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            $users = User::where('role', 2)->get();
+
+            return view('admin/questions/create', [
+                'prof' => $prof,
+                'cat' => $cat,
+                'users' => $users,
+                'cats' => $cats
+
+            ]);
+        } else {
+            return view('questions/create', [
+                'prof' => $prof,
+                'cat' => $cat,
+                'cats' => $cats
+            ]);
         }
-
     }
     public function store()
     {
         $request = request();
         $userId = Auth::id();
-        if($request->prof){
+        if ($request->prof) {
             Question::create([
                 "question" => $request->question,
                 "user_id" => $userId,
@@ -82,7 +83,7 @@ class QuestionController extends Controller
                 "prof_id" => $request->prof,
                 "category_id" => $request->cat
             ]);
-        }else{
+        } else {
             Question::create([
                 "question" => $request->question,
                 "user_id" => $userId,
@@ -90,12 +91,11 @@ class QuestionController extends Controller
                 "category_id" => $request->cat
 
             ]);
-
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } elseif (auth()->user()->hasPermissionTo('professionalpermission')) {
-            return redirect()->route('professional.show',['professional' => $userId]);
+            return redirect()->route('professional.show', ['professional' => $userId]);
         } else {
             return redirect()->route(
                 'user.show',
@@ -111,14 +111,15 @@ class QuestionController extends Controller
         $questionId = $request->question;
         $question = Question::find($questionId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
-        return view('admin/questions/edit', [
-            'question' => $question,
-            'users' => $users
-        ]);
-        }else{
+            return view('admin/questions/edit', [
+                'question' => $question,
+                'users' => $users
+            ]);
+        } else {
             return view('questions/edit', [
                 'question' => $question,
-                'users' => $users]);
+                'users' => $users
+            ]);
         }
     }
     public function update()
@@ -145,20 +146,19 @@ class QuestionController extends Controller
         $user = Auth::user();
         $userId = $request->zoom;
         $prof = User::find($userId);
-        $join_url="ff";
-        $prof->notify(new NewZoom($user,$join_url));
-         return redirect('/rate/'.$userId);
-
+        $join_url = "ff";
+        $prof->notify(new NewZoom($user, $join_url));
+        return redirect('/rate/' . $userId);
     }
     public function search()
-    { $request = request();
-       $search = $request->search;
-       $categories = Category::all();
-      $questions = Question::search($search)->get();
-      return view('home', [
-        'questions' => $questions,
-        'categories' => $categories,
-    ]);
-
+    {
+        $request = request();
+        $search = $request->search;
+        $categories = Category::all();
+        $questions = Question::search($search)->get();
+        return view('home', [
+            'questions' => $questions,
+            'categories' => $categories,
+        ]);
     }
 }

@@ -89,6 +89,9 @@ class ProfessionalController extends Controller
             }
             $professional->name = $request->name;
             $professional->email = $request->email;
+            if ($request->password != null) {
+                $user->password = bcrypt($request->password);
+            }
             $professional->save();
             return redirect()->route('professional.show', [
                 'professional' => $professional,

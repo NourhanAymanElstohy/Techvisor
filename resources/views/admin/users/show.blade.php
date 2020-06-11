@@ -40,6 +40,17 @@
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}" class="btn btn-success mr-2">Unban</a>
           @endif
           @endif
+
+          <div class="p-2">
+          @if ($user->role==1)  
+          <a href="{{route('users.index')}}"><button type="button"
+            class="btn btn-success float-left">Back</button></a>
+          @elseif  ($user->role==3)  
+          <a href="{{route('users.adminIndex')}}"><button type="button"
+            class="btn btn-success float-left">Back</button></a>
+          @endif  
+      </div>
+         
       </div>
     </div>
   </div>
