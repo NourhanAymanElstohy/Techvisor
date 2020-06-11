@@ -33,18 +33,24 @@ class UserController extends Controller
         $users = User::whereHas("roles", function ($q) {
             $q->where("name", "user");
         })->get();
+        $role=1;
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
         ]);
     }
     public function adminIndex()
     {
-        // admin only view all have adminspermission             
+        // admin only view all have adminspermission  
+
         $users = User::whereHas("roles", function ($q) {
             $q->where("name", "super-admin");
         })->get();
+        $role=3;
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
+
         ]);
     }
 
@@ -52,8 +58,10 @@ class UserController extends Controller
     {
         // admin only view all have adminspermission             
         $users = User::all();
+        $role=0;
         return view('admin/users/index', [
-            'users' => $users
+            'users' => $users,
+            'role' => $role
         ]);
     }
 
@@ -79,11 +87,13 @@ class UserController extends Controller
         if ($user->save()) {
             $user->assignRole($request->role);
         }
-        if ($user->assignRole($request->role)==user)
-        {$user->role == '1';}
-        elseif ($user->assignRole($request->role)==professional)
-        {$user->role == '2';}
-        else {$user->role == '3';}
+        //dd($request->role);
+        if ($request->role == 'user')
+        {$user->role = 1;}
+        elseif ($request->role == 'professional')
+        {$user->role = 2;}
+        else {$user->role = 3;}
+        $user->save();
         
     
         if ($request->role == 'super-admin') {
@@ -154,7 +164,7 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) { 
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
@@ -164,29 +174,34 @@ class UserController extends Controller
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->syncRoles($request->role);
-            // dd($user->role);
-            if ($user->role == '3') {
-                return redirect('/admins',[
-                    'categories' => $categories
-                ]);
-            } else {
-                return redirect()->route('users.index',[
-                    'categories' => $categories
-                ]);
-            }
             $user->save();
-        } elseif  (auth()->user()->role==3) {
+             if ($user->role == '3') {
+                return redirect()->route('users.adminIndex', [
+                    'categories' => $categories
+                ]); }
+                elseif ($user->role == '1') {
+                    return redirect()->route('users.index');
+
+                } elseif  ($user->role == '2') {
+                    return redirect()->route('professionals.index');
+                }
+
+            } 
+        
+         elseif  (auth()->user()->role==1) {
             $user->save();
             return redirect()->route('user.show', [
                 'user' => $user,
                 'categories' => $categories
             ]);
-        } else {
-            return view('home',[
+        }  elseif  (auth()->user()->role==2) {
+            return redirect()->route('professional.show', [
+                'user' => $user,
                 'categories' => $categories
-            ]);
+                ]);
         }
     }
+    
 
     public function destroy($id)
     {
@@ -197,7 +212,10 @@ class UserController extends Controller
             if ($user->delete()) {
                 if ($user->role == '1') {
                     return redirect()->route('users.index');
-                } else {
+                } elseif  ($user->role == '2') {
+                    return redirect()->route('professionals.index');
+                }
+                elseif  ($user->role == '3') {
                     return redirect()->route('users.adminIndex');
                 }
             } else {
@@ -206,12 +224,7 @@ class UserController extends Controller
                 ]);
             }
         }
-        if (auth()->user()->role==3) {
-            $request = request();
-            $userlId = $request->user;
-            User::destroy($userlId);
-            return redirect()->route('home');
-        }
+        
     }
 
     public function banned()
