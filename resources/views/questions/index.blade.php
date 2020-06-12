@@ -67,7 +67,7 @@
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script>
+{{-- <script>
 const createBtn=document.getElementById("create-btn");
 const answer=document.getElementById("ans-input");
 const question=document.getElementById("q-input");
@@ -88,7 +88,7 @@ const postDate=async ()=> {
         <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
         <h3 style="display:inline">{{$answer->user->name}}</h3>:{{ $answer->answer}}
         </li></br>--}}
-    const li = document.createElement('li');
+    {{-- const li = document.createElement('li');
     const img =document.createElement('img')
     const br=document.createElement('br');
     const hr=document.createElement('hr');
@@ -112,4 +112,4 @@ const postDate=async ()=> {
 }
     createBtn.addEventListener('click', postDate);
 
-</script>
+</script> --}} --}}
