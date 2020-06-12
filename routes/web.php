@@ -90,3 +90,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::post('/answers', 'AnswerController@store')->name('answers.store');
     Route::get('/answers/{answer}', 'AnswerController@show')->name('answers.show');
 });
+
+Route::get('/try', function () {
+    return view('/try');
+});
