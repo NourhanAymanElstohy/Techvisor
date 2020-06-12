@@ -14,6 +14,7 @@ use App\Category;
 use App\Question;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 
 class UserController extends Controller
@@ -81,8 +82,9 @@ class UserController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password= Hash::make(Str::random(8));
 
-        $user->password =  Hash::make($request->password);
+        //$user->password =  Hash::make($request->password);
 
         if ($user->save()) {
             $user->assignRole($request->role);
@@ -94,7 +96,9 @@ class UserController extends Controller
         {$user->role = 2;}
         else {$user->role = 3;}
         $user->save();
-        
+
+        $token=app('auth.password.broker')->createToken($user);
+        $user->sendPasswordResetNotification($token);
     
         if ($request->role == 'super-admin') {
             return redirect('/admins');

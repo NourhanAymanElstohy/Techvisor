@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,8 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', function () {
     return view('/about');
 })->name('about');
+
+
 //============== Admin =========================
 Route::get('/admins', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
 Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');

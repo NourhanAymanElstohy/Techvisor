@@ -28,10 +28,7 @@
             <input name="email" type="text" required class="form-control">
         </div>
 
-        <div class="form-group mt-5">
-            <label >Password</label>
-            <input name="password" type="password" required class="form-control">
-        </div>
+       
 
         <div class="form-group mt-5">
             <label >Role</label>
