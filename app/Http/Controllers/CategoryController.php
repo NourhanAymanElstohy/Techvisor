@@ -55,6 +55,7 @@ class CategoryController extends Controller
         $request = request();
         $userId = Auth::id();
         $user = User::find($userId);
+        $meeting="non";
 
         $categoryId = $request->category;
         $category = Category::find($categoryId);
@@ -67,6 +68,7 @@ class CategoryController extends Controller
                 'profs' => $profs,
                 'category' => $category,
                 'user' => $user,
+                
 
             ]);
         } else {
@@ -74,7 +76,9 @@ class CategoryController extends Controller
                 'profs' => $profs,
                 'category' => $category,
                 'user' => $user,
-                'categories' => $categories
+                'categories' => $categories,
+                'meeting'=>$meeting
+        
             ]);
         }
     }
