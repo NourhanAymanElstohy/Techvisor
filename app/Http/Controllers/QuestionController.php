@@ -36,7 +36,7 @@ class QuestionController extends Controller
     {
         $request = request();
         $questionId = $request->question;
-        $questions = Question::where('id',$questionId)->get();
+        $questions = Question::where('id', $questionId)->get();
         $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/show', [
@@ -46,7 +46,7 @@ class QuestionController extends Controller
             return view('home', [
                 'questions' => $questions,
                 'categories' => $categories,
-        
+
             ]);
         }
     }
@@ -56,8 +56,8 @@ class QuestionController extends Controller
     {
         $prof = request()->prof;
         $cat = request()->cat;
-        $flag='create';
-        
+        $flag = 'create';
+
         $cats = Category::all();
         $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
@@ -72,19 +72,19 @@ class QuestionController extends Controller
             ]);
         } else {
             return view('home2', [
-                'flag'=>$flag,
+                'flag' => $flag,
                 'prof' => $prof,
                 'cat' => $cat,
                 'cats' => $cats,
-                'categories'=>$categories,
-               
+                'categories' => $categories,
+
             ]);
         }
     }
     public function store()
     {
         $request = request();
-        
+
         $userId = Auth::id();
         if ($request->prof) {
             Question::create([
@@ -118,26 +118,26 @@ class QuestionController extends Controller
     public function edit()
     {
         $request = request();
-        $flag='edit';
+        $flag = 'edit';
         $users = User::where('role', 2)->get();
         $cats = Category::all();
         $categories = Category::all();
-        
+
         $questionId = $request->question;
         $question = Question::find($questionId);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/edit', [
                 'question' => $question,
                 'users' => $users,
-                'cats'=>$cats
+                'cats' => $cats
             ]);
         } else {
             return view('home2', [
-                'flag'=>$flag,
+                'flag' => $flag,
                 'question' => $question,
                 'users' => $users,
-                'cats'=>$cats,
-                'categories'=>$categories
+                'cats' => $cats,
+                'categories' => $categories
             ]);
         }
     }
@@ -152,10 +152,9 @@ class QuestionController extends Controller
         $question->save();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
-        }else {
+        } else {
             return redirect('/');
         }
-       
     }
 
     public function destroy()
@@ -173,17 +172,15 @@ class QuestionController extends Controller
         $userId = $request->zoom;
         $prof = User::find($userId);
 
-        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'cat']);
-        // dd($meeting);
+        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
         $join_url = $meeting->join_url;
-        // dd($join_url);
-        $prof->notify(new NewZoom($user, $join_url));
 
-        if ($meeting->endMeeting()) {
-            return redirect('/rate' . $userId);
-        } else {
-            return redirect()->back();
-        }
+        $prof->notify(new NewZoom($user, $join_url));
+        return view('/zoom_url', [
+            'meeting' => $meeting
+        ]);
+
+        // }
     }
     public function search()
     {

@@ -39,15 +39,11 @@
                                                         <li><a class="active follow"
                                                                 href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
                                                                 title="">ASK</a></li>            
-                                                    @if ($meeting!= "non")
-                                                        <li><a href="{{$meeting->join_url}}" target="_blank" class="hire">Zoom</a></li>                                                  
-                                                    @else
-                                                        <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>                       
-                                                    @endif
-                                                        {{-- <li><a href="/zoom/{{$prof->id}}" title="" id="zoom" class="hire"
-                                                                onclick="return connectZoom();">Zoom</a></li> --}}
-                                                        <li id="demo"></li>
-                                                        <input type="hidden" name="create" value="" id="create-zoom">
+                                                        
+                                                        <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>
+
+                                                        {{-- <li id="demo"></li>
+                                                        <input type="hidden" name="create" value="" id="create-zoom"> --}}
                                                 @endif
                                                     </ul>
                                                 
