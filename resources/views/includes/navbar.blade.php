@@ -71,7 +71,7 @@
 									</div>
 
 									<div class="nott-list" >
-									@foreach((auth()->user())->notifications->take(8) as $notification)
+									@foreach((auth()->user())->notifications->take(5) as $notification)
 									     <div class="notfication-details">
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
@@ -127,8 +127,9 @@
 										</div>
 									</div>
 									@endforeach
+
 									<div class="view-all-nots">
-						  					<a href="#" title="">View All Notification</a>
+									<a  data-toggle="modal" data-target="#exampleModal" title="">View All Notification</a>
 						  				</div>
 
 									</div><!--nott-list end-->
@@ -137,6 +138,81 @@
 						</ul>
 					</nav><!--nav end-->
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">All Notifications</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <div class="nott-list" >
+									@foreach((auth()->user())->notifications as $notification)
+									     <div class="notfication-details">
+									     <div class="noty-user-img">
+								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
+									     </div>
+
+									     <div class="notification-info ">
+									@if($notification->type=='App\Notifications\NewQuestion')
+												@if($notification->unread())
+
+													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p >{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit ($notification->data['question'],4)}}</p
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else
+													<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<p>{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p>
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewZoom')
+													@if($notification->unread())
+													<h3><a class="dropdown-item bg-secondary " href="{{$notification->data['join_url']}}">
+													<p class="text-light">{{$notification->data['user_name'] }} connect {{$notification->data['join_url'] }}</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else 
+												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}">
+													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a><h3>
+												@endif 
+										@elseif($notification->type=='App\Notifications\NewAnswer')		
+														@if($notification->unread())
+															<h3><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></h3>
+														@else
+															<h3 ><a class="dropdown-item" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
+															{{$notification->markAsRead()}}
+															<?php echo("</br>") ?>
+															</a></h3>
+														@endif 
+										@endif 
+										</div>
+									</div>
+									@endforeach
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn " data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 									
 					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
