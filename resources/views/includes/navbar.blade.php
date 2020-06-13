@@ -71,7 +71,7 @@
 									</div>
 
 									<div class="nott-list" >
-									@foreach((auth()->user())->notifications as $notification)
+									@foreach((auth()->user())->notifications->take(8) as $notification)
 									     <div class="notfication-details">
 									     <div class="noty-user-img">
 								            	<img src="{{ url('design/style') }}/images/resources/circle-cropped.png" alt="">
@@ -97,13 +97,13 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item bg-secondary " href="#">
+													<h3><a class="dropdown-item bg-secondary " href="{{$notification->data['join_url']}}">
 													<p class="text-light">{{$notification->data['user_name'] }} connect {{$notification->data['join_url'] }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else 
-												<h3><a class="dropdown-item " href="#">
+												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}">
 													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
