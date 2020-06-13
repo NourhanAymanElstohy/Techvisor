@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
-    Route::get('/zoom/{zoom}', 'QuestionController@zoom');
+    Route::get('/zoom/{zoom}', 'QuestionController@zoom')->name('zooms.zoom');
     Route::get('/search', 'QuestionController@search');
 });
 
@@ -99,3 +99,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
 Route::get('/try', function () {
     return view('/try');
 });
+
+Route::post('pay','PaymentController@payWithpaypal')->name('pay');
+Route::get('status','PaymentController@status')->name('status');
+Route::get('canceled','PaymentController@canceled')->name('canceled');

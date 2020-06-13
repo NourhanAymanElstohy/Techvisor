@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "macsidigital/laravel-zoom": "^4.0",
+        "paypal/rest-api-sdk-php": "*",
         "spatie/laravel-permission": "^3.13",
         "willvincent/laravel-rateable": "^2.1"
     },
