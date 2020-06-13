@@ -13,7 +13,9 @@
 							<li>
 							@hasanyrole('super-admin|user|professional')
 								<a href="{{route('home')}}" title="">
-									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
+									<span>
+									<img src="{{ url('design/style') }}/images/icon1.png" alt="">
+									</span>
 									Home
 								</a>
 								@else
@@ -60,7 +62,10 @@
 
 							<li>
 								<a href="#" title="" class="not-box-open">
-									<span><img src="{{ url('design/style') }}/images/icon7.png" alt=""></span>
+									<span>
+									<img src="{{ url('design/style') }}/images/icon7.png" alt="">
+									<img src="{{ url('design/style') }}/images/icons8-notification-64.png" width="22" height="22" style="float:right">
+									</span>
 									Notification
 								</a>
 
