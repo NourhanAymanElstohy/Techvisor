@@ -22,7 +22,11 @@
     <form method="POST" action="{{route('professionals.update',$professional->id)}}" class="mb-4" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <h1 class="mt-5 text-center">Edit Profile</h1>
+        <div style="text-align:center">
+                    <h1 style="color:#E44D3A; font-size:50px;"><strong>Edit Profile</strong></h1> 
+                </div>
+
+        
         <div class="form-group mt-5">
             <label >Name</label>
             <input name="name" type="text"  class="form-control" value="{{$professional->name}}">
