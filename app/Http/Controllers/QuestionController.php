@@ -35,18 +35,19 @@ class QuestionController extends Controller
     public function show()
     {
         $request = request();
+        $flag="show";
         $questionId = $request->question;
-        $questions = Question::where('id', $questionId)->get();
+        $question = Question::find($questionId);
         $categories = Category::all();
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('admin/questions/show', [
                 'question' => $question,
             ]);
         } else {
-            return view('home', [
-                'questions' => $questions,
+            return view('home2', [
+                'question' => $question,
                 'categories' => $categories,
-
+                'flag'=>$flag
             ]);
         }
     }

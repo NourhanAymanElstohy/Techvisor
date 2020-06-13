@@ -45,7 +45,7 @@
     @endif
             <ul class="like-com">
          
-                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment <?php echo $count ?></a></li>
+                <li><a href="{{route('questions.show',['question'=> $question->id])}}" class="com"><i class="fas fa-comment-alt"></i> Comment <?php echo $count ?></a></li>
             </ul>
         </div>
     <!--post-bar end-->
