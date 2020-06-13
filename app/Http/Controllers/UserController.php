@@ -167,6 +167,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->linkedin = $request->linkedin;
+        $user->github = $request->github;
+        $user->other = $request->other;
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
@@ -246,6 +249,16 @@ class UserController extends Controller
             $user->unban();
         }
         return redirect()->route('users.index', [
+            'user' => $user
+        ]);
+    }
+
+    public function privacy()
+    {
+        $request = request();
+        $userId = Auth::id();
+        $user = User::find($userId);
+        return view('privacy',[
             'user' => $user
         ]);
     }

@@ -91,6 +91,9 @@ class ProfessionalController extends Controller
             }
             $professional->name = $request->name;
             $professional->email = $request->email;
+            $professional->linkedin = $request->linkedin;
+            $professional->github = $request->github;
+            $professional->other = $request->other;
             if ($request->password != null) {
                 $professional->password = bcrypt($request->password);
             }
@@ -148,7 +151,7 @@ class ProfessionalController extends Controller
         $categories = Category::all();
         $request = request();
         $profId = Auth::id();
-        $prof = User::find($profId);
+        $prof = User::find($profId); 
         $profcat = $prof->categories;
         $Aprofcat =$profcat->toArray();
         $cats = [];

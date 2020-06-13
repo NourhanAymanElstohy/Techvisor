@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
     Route::put('/users/{user}', 'UserController@update')->name('users.update');
     Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+    Route::get('/privacy', 'UserController@privacy')->name('users.privacy');
     Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']);
 });
 
