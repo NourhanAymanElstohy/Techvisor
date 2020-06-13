@@ -82,7 +82,7 @@
         <div class="post-comment">
             <div class="usy-dt">
             
-                <img src="#"  width="35" height="35" alt="">
+                <img src="/uploads/avatars/{{auth()->user() ? auth()->user()->avatar : ''}}"  width="35" height="35" alt="">
             </div>
             <div class="comment_box">
                 <form  method="POST" action="{{route('answers.store')}}">
