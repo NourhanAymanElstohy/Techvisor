@@ -252,4 +252,14 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function privacy()
+    {
+        $request = request();
+        $userId = Auth::id();
+        $user = User::find($userId);
+        return view('privacy',[
+            'user' => $user
+        ]);
+    }
 }

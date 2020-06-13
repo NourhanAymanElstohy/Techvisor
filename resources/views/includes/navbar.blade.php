@@ -201,8 +201,8 @@
 							<li><a href="{{route('professionals.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
 							@else	
 							<li><a href="{{route('users.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
-							@endif
-								<li><a href="#" title="">Privacy</a></li>
+							@endif 
+								<li><a href="{{route('users.privacy')}}" title="">Privacy</a></li>
 							</ul>
 						
 
