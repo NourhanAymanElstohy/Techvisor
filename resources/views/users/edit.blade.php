@@ -10,6 +10,15 @@
               <div class="container">
                   <div class="main-section-data">
                      <div class="container col-6">
+                     @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
         <form method="POST" action="{{route('users.update',$user->id)}}" class="mb-4" enctype="multipart/form-data" >
             @csrf 
             @method('PUT')
@@ -17,12 +26,12 @@
                
         <div class="form-group mt-5">
             <label >Name</label>
-            <input name="name" type="text" required class="form-control" value="{{$user->name}}">
+            <input name="name" type="text"  class="form-control" value="{{$user->name}}">
         </div>
 
         <div class="form-group mt-5">
             <label >Email</label>
-            <input name="email" type="text" required class="form-control" value="{{$user->email}}">
+            <input name="email" type="text"  class="form-control" value="{{$user->email}}">
         </div>
 
         <div class="form-group mt-5">

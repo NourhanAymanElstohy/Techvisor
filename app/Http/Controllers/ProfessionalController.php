@@ -11,6 +11,8 @@ use App\User;
 use App\Category;
 use App\Question;
 use Intervention\Image\Facades\Image;
+use App\Http\Requests\UpdateUserRequest;
+
 
 
 
@@ -71,12 +73,12 @@ class ProfessionalController extends Controller
         }
     }
 
-    public function update()
+    public function update(UpdateUserRequest $request)
     {
         //admin and professionals can edit professional profile, permission in blade
         $categories = Category::all();
         if (auth()->user()->role==2) {
-            $request = request();
+           
             $professional = User::find($request->professional);
 
             if ($request->hasFile('avatar')) {

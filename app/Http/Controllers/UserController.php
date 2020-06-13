@@ -14,7 +14,9 @@ use App\Question;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\StoreUserRequest; 
+use App\Http\Requests\UpdateUserRequest;
+
 
 
 class UserController extends Controller
@@ -158,7 +160,7 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         //admin can edit any userRole, user can edit his profile, permissions in blade
         $categories = Category::all();

@@ -36,7 +36,7 @@ class StoreUserRequest extends FormRequest
 {
     return [
         'name.required' => 'Please enter the name',
-        'title.min' => 'The name has minimum of 3 character ',
+        'name.min' => 'The name has minimum of 3 character ',
         'email.required' => 'Please enter the email field',
         'role.required' => 'Please choose a role !',
     ];
