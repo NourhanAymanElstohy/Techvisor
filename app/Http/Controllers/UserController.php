@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
-//use Illuminate\Http\Client\Request;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
@@ -15,6 +14,7 @@ use App\Question;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use App\Http\Requests\StoreUserRequest;
 
 
 class UserController extends Controller
@@ -76,7 +76,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         // admin only create any userrole
         $user = new User;

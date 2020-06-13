@@ -27,7 +27,7 @@ class User extends Authenticatable implements BannableContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'avatar', 'state'
+        'name', 'email', 'password', 'role', 'avatar', 'state', 'linkedin', 'github', 'other'
     ];
 
     /**
