@@ -38,11 +38,29 @@
         </div>
 
         <div class="form-group mt-5">
-                <label>Profile Image </label>
-        <input type="file" name="avatar" value="{{$professional->avatar}}"> 
-        </div> 
+            <label style="color: #E44E3A"><strong>Linkedin</strong></label>
+            <input name="linkedin" type="text"  class="form-control" value="{{$professional->linkedin}}">
+        </div>
+
+        <div class="form-group mt-5">
+            <label style="color: #E44E3A"><strong>Github</strong></label>
+            <input name="github" type="text"  class="form-control" value="{{$professional->github}}">
+        </div>
+
+        <div class="form-group mt-5">
+            <label style="color: #E44E3A"><strong>Add Other Website</strong></label>
+            <input name="other" type="text"  class="form-control" value="{{$professional->other}}">
+        </div>
+
+        <div class="form-group mt-5">
+   <h6 style="color: #E44E3A"><strong>Profile Image</strong></h6>
+  <div class="custom-file ">
+  <input type="file"  id="customFileLangHTML" value="{{$professional->avatar}}"  name="avatar">
+  <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen">Upload Image</label>
+</div>
+</div>
        
-        <div class="justify-content-end">
+        <div class="justify-content-end mt-5">
            <input type="submit" value="Submit" class="btn btn-success">
            </div>
     </form>

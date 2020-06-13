@@ -91,6 +91,9 @@ class ProfessionalController extends Controller
             }
             $professional->name = $request->name;
             $professional->email = $request->email;
+            $user->linkedin = $request->linkedin;
+            $user->github = $request->github;
+            $user->other = $request->other;
             if ($request->password != null) {
                 $professional->password = bcrypt($request->password);
             }
