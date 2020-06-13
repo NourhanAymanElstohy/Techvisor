@@ -48,16 +48,6 @@
 								<div class="main-ws-sec">
 									<div class="user-tab-sec">
 										<h3>{{$user->name}}</h3>
-										<div class="star-descp">
-											<span>Graphic Designer at Self Employed</span>
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-											</ul>
-										</div><!--star-descp end-->
 										<div class="tab-feed">
 											<ul>
 												<li data-tab="feed-dd" class="active">
@@ -66,13 +56,6 @@
 														<span>Feed</span>
 													</a>
 												</li>
-												<li data-tab="info-dd">
-													<a href="#" title="">
-														<img src="{{ url('design/style') }}/images/ic2.png" alt="">
-														<span>Info</span>
-													</a>
-												</li>
-											
 											</ul>
 										</div><!-- tab-feed end-->
 									</div><!--user-tab-sec end-->
