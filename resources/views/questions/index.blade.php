@@ -19,7 +19,7 @@
                 </ul>
             </div>
             @endif
-        </div>
+        
         <div class="epi-sec">
             <ul class="descp">
                 <li><img src="workwise-new/images/icon8.png" alt=""><span>
@@ -32,15 +32,22 @@
         </div>
         
         <div class="job-status-bar">
+        @if($question->answers)
+        <?php $count=0 ; ?>
+    @foreach($question->answers as $answer)
+    
+    <?php  $count = $count+1 ?>
+    @endforeach
+    @endif
             <ul class="like-com">
          
-                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment</a></li>
+                <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment <?php echo $count ?></a></li>
             </ul>
         </div>
     <!--post-bar end-->
     @if($question->answers)
 
-    @foreach($question->answers as $answer)
+    
     <div class="comment-section">
         <div class="comment-sec">
             <ul>
@@ -55,7 +62,7 @@
                             <img src="/uploads/avatars/{{$answer->user->avatar}}" width="30" height="30" alt="" >
                         </div>    
                             <h3>{{$answer->user->name}}</h3>
-                            <span><img src="workwise-new/images/clock.png" alt=""> {{$question->created_at}}</span>
+                            <span><img src="workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
                             <p>{{ $answer->answer}}</p>
                         </div>
                     </div>
@@ -63,7 +70,7 @@
             </ul>
         </div>
     </div> 
-    @endforeach 
+  
     @endif
     <div class="comment-section">  
         
@@ -86,7 +93,7 @@
       
     </div>
    
-    
+    </div>
     </div>
 </div>
 
