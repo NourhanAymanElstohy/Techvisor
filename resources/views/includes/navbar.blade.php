@@ -64,7 +64,7 @@
 								<a href="#" title="" class="not-box-open">
 									<span>
 									<img src="{{ url('design/style') }}/images/icon7.png" alt="">
-									<img src="{{ url('design/style') }}/images/icons8-notification-64.png" width="22" height="22" style="float:right">
+									<img src="{{ url('design/style') }}/images/icons8-notification-64.png" width="23" height="23" style="float:right">
 									</span>
 									Notification
 								</a>
