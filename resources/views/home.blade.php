@@ -62,8 +62,8 @@
                                 <!--top-profiles end-->
                             
 
-                                        {{-- @include('questions.index') --}}
-                                        @include('try')
+                                         @include('questions.index')
+                                       
                                 
                                 
                             </div>

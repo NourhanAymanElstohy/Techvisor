@@ -61,8 +61,7 @@ class CategoryController extends Controller
         $category = Category::find($categoryId);
 
         $profs = User::all()->where('role', '=', '2');
-        // $meeting = "non";
-
+     
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return view('categories/show', [
                 'categories' => $categories,
@@ -78,7 +77,7 @@ class CategoryController extends Controller
                 'category' => $category,
                 'user' => $user,
                 'categories' => $categories,
-                'meeting'=>$meeting
+
         
             ]);
         }

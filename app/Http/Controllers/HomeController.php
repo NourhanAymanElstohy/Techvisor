@@ -55,6 +55,7 @@ class HomeController extends Controller
         $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
         $userId = Auth::id();
         $user = User::find($userId);
+        
         return view('home', [
             'user' => $user,
             'categories' => $categories,
