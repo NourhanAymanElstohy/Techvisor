@@ -3,18 +3,12 @@
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
-						<li><a href="help-center.html" title="">Help Center</a></li>
+						<li><a href="{{route('users.privacy')}}" title="">Help Center</a></li>
 						<li><a href="{{route('about')}}" title="">About</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
-						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="#" title="">Forum</a></li>
-						<li><a href="#" title="">Language</a></li>
-						<li><a href="#" title="">Copyright Policy</a></li>
+						<li><a href="{{route('users.privacy')}}" title="">Privacy Policy</a></li>
 					</ul>
-					<p><img src="images/copy-icon2.png" alt="">Copyright 2019</p>
-					<img class="fl-rgt" src="images/logo2.png" alt="">
+					<p style="color: #E44E3A">Techvisor Team</p>
+					<p><img src="images/copy-icon2.png" alt="">Copyright 2020</p>
 				</div>
 			</div>
 		</footer>		

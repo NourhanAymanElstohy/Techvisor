@@ -16,6 +16,15 @@
   <div class="container">
   <div class="p-3" style="text-align:center">
   <h1 style="color:#3cb371"><strong>{{$user->name}}</strong></h1>
+  @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
 
     <form method="POST" action="{{route('users.update',$user->id)}}" class="mb-4">
         @csrf
@@ -23,18 +32,14 @@
         <h1 class="mt-5 text-center">Edit {{$user->name}}</h1>
         <div class="form-group mt-5">
             <label >Name</label>
-            <input name="name" type="text" required class="form-control" value="{{$user->name}}">
+            <input name="name" type="text"  class="form-control" value="{{$user->name}}">
         </div>
 
         <div class="form-group mt-5">
             <label >Email</label>
-            <input name="email" type="text" required class="form-control" value="{{$user->email}}">
+            <input name="email" type="text"  class="form-control" value="{{$user->email}}">
         </div>
-
-        <div class="form-group mt-5">
-            <label >Password</label>
-            <input name="password" type="password" required class="form-control" value="{{$user->email}}">
-        </div>
+      
 
         <div class="form-group mt-5">
             <label >Role</label>

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
-//use Illuminate\Http\Client\Request;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
@@ -14,6 +13,10 @@ use App\Category;
 use App\Question;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
+use App\Http\Requests\StoreUserRequest; 
+use App\Http\Requests\UpdateUserRequest;
+
 
 
 class UserController extends Controller
@@ -75,14 +78,15 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         // admin only create any userrole
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password= Hash::make(Str::random(8));
 
-        $user->password =  Hash::make($request->password);
+        //$user->password =  Hash::make($request->password);
 
         if ($user->save()) {
             $user->assignRole($request->role);
@@ -94,7 +98,9 @@ class UserController extends Controller
         {$user->role = 2;}
         else {$user->role = 3;}
         $user->save();
-        
+
+        $token=app('auth.password.broker')->createToken($user);
+        $user->sendPasswordResetNotification($token);
     
         if ($request->role == 'super-admin') {
             return redirect('/admins');
@@ -154,16 +160,21 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         //admin can edit any userRole, user can edit his profile, permissions in blade
         $categories = Category::all();
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->linkedin = $request->linkedin;
+        $user->github = $request->github;
+        $user->other = $request->other;
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
+        
+            
         if ($request->hasFile('avatar')) { 
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
@@ -238,6 +249,16 @@ class UserController extends Controller
             $user->unban();
         }
         return redirect()->route('users.index', [
+            'user' => $user
+        ]);
+    }
+
+    public function privacy()
+    {
+        $request = request();
+        $userId = Auth::id();
+        $user = User::find($userId);
+        return view('privacy',[
             'user' => $user
         ]);
     }
