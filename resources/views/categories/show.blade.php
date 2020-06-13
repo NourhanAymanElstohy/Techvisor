@@ -39,11 +39,21 @@
                                                         <li><a class="active follow"
                                                                 href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
                                                                 title="">ASK</a></li>            
-                                                        
+                                                        @if ($prof->state == 'premium')
+
+                                                        <form method="POST" action="{{ route('pay')}}" >
+                                                       {{ csrf_field() }}
+                                                        <input   type="hidden" name="title" value='55'/>
+                                                      <input type="hidden" name="name" value="{{$prof->name}}" />
+                                                      <input type="hidden" name="id" value="{{$prof->id}}" />
+                                                     <button class="btn btn-success" type="submit">Zoom</button>
+                                                      </form>
+                                                        <!-- <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li> -->
+                                                @else
                                                         <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>
 
-                                                        {{-- <li id="demo"></li>
-                                                        <input type="hidden" name="create" value="" id="create-zoom"> --}}
+                                                @endif
+            
                                                 @endif
                                                     </ul>
                                                 
