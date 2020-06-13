@@ -1,9 +1,12 @@
 
-@foreach($questions as $question)
 
-<div class="posty">
-    <div class="post-bar no-margin">
-        <div class="post_topbar">
+@foreach($questions as $question)
+<div class="post-bar">
+<div class="post_topbar">
+
+    
+        
+       
             <div class="usy-dt">
                 <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                 <div class="usy-name">
@@ -19,7 +22,7 @@
                 </ul>
             </div>
             @endif
-        
+       
         <div class="epi-sec">
             <ul class="descp">
                 <li><img src="workwise-new/images/icon8.png" alt=""><span>
@@ -32,7 +35,8 @@
         </div>
         
         <div class="job-status-bar">
-        @if($question->answers)
+        
+     @if($question->answers)
         <?php $count=0 ; ?>
     @foreach($question->answers as $answer)
     
@@ -45,9 +49,9 @@
             </ul>
         </div>
     <!--post-bar end-->
-    @if($question->answers)
-
-    
+    @if($question->answers ) 
+    @foreach($question->answers as $answer)
+    @if($loop->last)
     <div class="comment-section">
         <div class="comment-sec">
             <ul>
@@ -70,14 +74,15 @@
             </ul>
         </div>
     </div> 
-  
+    @endif
+    @endforeach
     @endif
     <div class="comment-section">  
         
         <div class="post-comment">
             <div class="usy-dt">
             
-                <img src="/uploads/avatars/{{auth()->user()->avatar}}"  width="35" height="35" alt="">
+                <img src="#"  width="35" height="35" alt="">
             </div>
             <div class="comment_box">
                 <form  method="POST" action="{{route('answers.store')}}">
@@ -90,14 +95,20 @@
             
         
         </div>
-      
-    </div>
+        
    
+   
+        
+     
     </div>
+    </div>  
     </div>
-</div>
 
-@endforeach
+    @endforeach
+
+ 
+
+
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
