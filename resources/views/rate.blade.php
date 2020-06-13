@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
                                         <div class="details col-md-6">
-                                            <h3 class="product-title">Rate Professional {{$user->name}}</h3>
+                                            <h3 class="product-title" style="color: #E44E3A">Rate Professional {{$user->name}}</h3>
                                             <div class="rating">
                                                 <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $user->userAverageRating }}" data-size="xs">
                                                 <input type="hidden" name="id" required="" value="{{ $user->id }}">
