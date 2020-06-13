@@ -76,7 +76,7 @@
                 <form  method="POST" action="{{route('answers.store')}}">
                 @csrf
                 <input id="q-input" type="hidden" class="form-control" name="question_id" value="{{$question->id}}">
-                    <input type="text" placeholder="Post a comment" name="answer">
+                    <input type="text" placeholder="Post a comment" name="answer" required>
                     <button type="submit">Comment</button>
                 </form>
             </div>
