@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="job_descp">
-            <p> hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+            <p> hhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
         </div>
         <div class="job-status-bar">
             <ul class="like-com">
