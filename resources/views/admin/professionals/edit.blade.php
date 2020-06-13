@@ -39,12 +39,6 @@
             <input name="email" type="text"  class="form-control" value="{{$user->email}}">
         </div>
 
-        @role('super-admin')
-        <div class="form-group mt-5">
-            <label >Password</label>
-            <input name="password" type="password"  class="form-control" value="{{$user->Password}}">
-        </div>
-        @endrole
 
        
 

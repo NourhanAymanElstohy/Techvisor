@@ -170,6 +170,8 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
+        
+            
         if ($request->hasFile('avatar')) { 
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();

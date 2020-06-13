@@ -40,12 +40,6 @@
             <input name="email" type="text"  class="form-control" value="{{$user->email}}">
         </div>
       
-        @unlessrole('super-admin')
-        <div class="form-group mt-5">
-            <label >Password</label>
-            <input name="password" type="password"  class="form-control" value="{{$user->Password}}">
-        </div>
-        @endrole
 
         <div class="form-group mt-5">
             <label >Role</label>

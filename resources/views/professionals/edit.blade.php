@@ -32,11 +32,11 @@
             <label >Email</label>
             <input name="email" type="text"  class="form-control" value="{{$professional->email}}">
         </div>
-
         <div class="form-group mt-5">
             <label >Password</label>
-            <input name="password" type="password"  class="form-control">
+            <input name="password" type="password"  class="form-control" value="{{$professional->password}}">
         </div>
+
         <div class="form-group mt-5">
                 <label>Profile Image </label>
         <input type="file" name="avatar" value="{{$professional->avatar}}"> 

@@ -36,7 +36,7 @@
 
         <div class="form-group mt-5">
             <label >Password</label>
-            <input name="password" type="password"  class="form-control">
+            <input name="password" type="password"  class="form-control" value="{{$user->password}}">
         </div>
         <div class="form-group mt-5">
                 <label>Profile Image </label>
