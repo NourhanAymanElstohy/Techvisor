@@ -14,7 +14,6 @@
         @else
         <label for="exampleFormControlSelect1">categories</label>
             <select name="cat" class="form-control" value="">
-            <option value=""></option>
             @foreach($cats as $cat)  
             <option value="{{$cat->id}}">{{$cat->name}}</option>
             @endforeach
@@ -23,7 +22,7 @@
         @endif
 
             <label for="exampleFormControlTextarea1" style="color:red">Ask Your Question</label>
-            <textarea class="form-control" name="question" rows="3"></textarea>
+            <textarea class="form-control" name="question" rows="3" required></textarea>
             <div class="form-group mt-5">
             
             </div>

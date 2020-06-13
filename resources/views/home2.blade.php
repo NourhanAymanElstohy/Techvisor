@@ -53,6 +53,8 @@
                                         @include('questions.create')  
                                     @elseif($flag =='edit')   
                                         @include('questions.edit')
+                                    @elseif($flag =='show')   
+                                       @include('questions.show')  
                                     @else
                                        @include('answers.show')    
                                     @endif            
