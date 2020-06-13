@@ -5,7 +5,7 @@
 <div class="wrapper">
 
       <section class="cover-sec">
-          <img src="{{ url('design/style') }}/images/resources/download.jpeg" alt="">
+          <img src="{{ url('design/style') }}/images/resources/code-wallpaper-10.jpg" style="height: 500px;" alt="">
       </section>
 
 
