@@ -98,13 +98,13 @@
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
 													<h3><a class="dropdown-item bg-secondary " href="{{$notification->data['join_url']}}">
-													<p class="text-light">{{$notification->data['user_name'] }} connect {{$notification->data['join_url'] }}</p>
+													<p class="text-light">{{$notification->data['user_name'] }} connect {{ Illuminate\Support\Str::limit($notification->data['join_url'],4) }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else 
 												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}">
-													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
+													<p>{{$notification->data['user_name'] }}connect {{Illuminate\Support\Str::limit($notification->data['join_url'],4)}}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a><h3>
