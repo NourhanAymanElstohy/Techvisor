@@ -229,14 +229,17 @@ class UserController extends Controller
                 elseif  ($user->role == '3') {
                     return redirect()->route('users.adminIndex');
                 }
-            } else {
-                return response()->json([
-                    'error' =>  'error, canit delete user'
-                ]);
+            }
+         }
+          else {
+            $user->removeRole($user->roles->implode('name', ', '));
+            if ($user->delete())
+            return redirect()->route('home');
+                
             }
         }
         
-    }
+    
 
     public function banned()
     {
