@@ -1,13 +1,7 @@
-
-
 @foreach($questions as $question)
-<div class="post-bar">
-
-<div class="post_topbar">
-
-    
-        
-       
+<div class="posty">
+    <div class="post-bar">
+        <div class="post_topbar">
             <div class="usy-dt">
                 <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                 <div class="usy-name">
@@ -23,7 +17,7 @@
                 </ul>
             </div>
             @endif
-       
+        </div>
         <div class="epi-sec">
             <ul class="descp">
                 <li><img src="workwise-new/images/icon8.png" alt=""><span>
@@ -34,82 +28,112 @@
         <div class="job_descp">
             <p>{{$question->question}}</p>
         </div>
-        
+            
         <div class="job-status-bar">
-        
-     @if($question->answers)
-        <?php $count=0 ; ?>
-    @foreach($question->answers as $answer)
-    
-    <?php  $count = $count+1 ?>
-    @endforeach
-    @endif
+            @if($question->answers)
+                <?php $count=0 ; ?>
+                @foreach($question->answers as $answer)
+                    <?php  $count = $count+1 ?>
+                @endforeach
+            @endif
             <ul class="like-com">
-         
+            
                 <li><a href="{{route('questions.show',['question'=> $question->id])}}" class="com"><i class="fas fa-comment-alt"></i> Comment <?php echo $count ?></a></li>
             </ul>
             
         </div>
-        
-     <!--post-bar end-->
-    </div>
-    @if($question->answers ) 
-    @foreach($question->answers as $answer)
-    @if($loop->last)
-    <div class="comment-section">
-        <div class="comment-sec">
-            <ul>
-                <li>
-                    <div class="comment-list">
-                        <div class="bg-img">
-                            <img src="workwise-new/images/resources/bg-img1.png" alt="">
+        <!--post-bar end-->
+        @if($question->answers ) 
+            @foreach($question->answers as $answer)
+                @if($loop->last)
+                    <div class="comment-section">
+                        <div class="comment-sec">
+                            <ul>
+                                <li>
+                                    <div class="comment-list">
+                                        <div class="bg-img">
+                                            <img src="workwise-new/images/resources/bg-img1.png" alt="">
+                                        </div>
+                                        
+                                        <div class="comment">
+                                        <div class="usy-dt">
+                                            <img src="/uploads/avatars/{{$answer->user->avatar}}" width="30" height="30" alt="" >
+                                        </div>    
+                                            <h3>{{$answer->user->name}}</h3>
+                                            <span><img src="workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
+                                            <p>{{ $answer->answer}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        
-                        <div class="comment">
-                        <div class="usy-dt">
-                            <img src="/uploads/avatars/{{$answer->user->avatar}}" width="30" height="30" alt="" >
-                        </div>    
-                            <h3>{{$answer->user->name}}</h3>
-                            <span><img src="workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
-                            <p>{{ $answer->answer}}</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div> 
-    @endif
-    @endforeach
-    @endif
-    <div class="comment-section">  
-        
-        <div class="post-comment">
-            <div class="usy-dt">
-            
+                    </div> 
+                @endif
+            @endforeach
+        @endif
+                            
+        <div class="post-comment mt-3">
+            <div class="usy-dt mr-2">
                 <img src="/uploads/avatars/{{auth()->user() ? auth()->user()->avatar : ''}}"  width="35" height="35" alt="">
             </div>
             <div class="comment_box">
-                <form  method="POST" action="{{route('answers.store')}}">
-                @csrf
-                <input id="q-input" type="hidden" class="form-control" name="question_id" value="{{$question->id}}">
+                <form  method="POST" action="{{route('answers.store')}}" class="d-inline">
+                    @csrf
+                    <input id="q-input" type="hidden" class="form-control" name="question_id" value="{{$question->id}}" width="10px">
                     <input type="text" placeholder="Post a comment" name="answer" required>
-                    <button type="submit">Comment</button>
+                    <button type="submit" class="m-0">Comment</button>
                 </form>
             </div>
-            
-        
         </div>
-        
-   
-   
-        
-    
     </div>
-    </div>
+</div>
+@endforeach
 
-    @endforeach
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
- 
+{{-- <script>
+const createBtn=document.getElementById("create-btn");
+const answer=document.getElementById("ans-input");
+const question=document.getElementById("q-input");
+const ul=document.getElementById("show-ul");
+const q=`\\App\\Question::find(${question.value})`
+//  $q=`\\App\\Question::find(${question.value})`
+
+const postDate=async ()=> {
+    await axios.post('/answers', {
+        answer: answer.value,
+        question_id: question.value
+    })
+
+//   const showQ=  await axios.get(`/questions/${question.value}`)
+// console.log(showQ)
+// }
+        {{--  <li>
+        <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
+        <h3 style="display:inline">{{$answer->user->name}}</h3>:{{ $answer->answer}}
+        </li></br>--}}
+    {{-- const li = document.createElement('li');
+    const img =document.createElement('img')
+    const br=document.createElement('br');
+    const hr=document.createElement('hr');
+    // img.src=`/uploads/avatars/\{\{${q}->user->avatar}}`;
+    img.setAttribute('src',`/uploads/avatars/{{Auth()->user()->avatar}}`);
+    img.setAttribute('width','30');
+    img.setAttribute('height','30');
+    img.setAttribute('alt','');
+    li.textContent=`{{Auth()->user()->name
+}} :${answer.value}`;
+    answer.value='';
+
+    li.append(img);
+
+    ul.append(li);
+    ul.append(br);
+    ul.append(hr);
 
 
 
+}
+    createBtn.addEventListener('click', postDate);
+
+</script> --}} 
