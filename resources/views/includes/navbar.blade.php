@@ -63,8 +63,18 @@
 							<li>
 								<a href="#" title="" class="not-box-open">
 									<span>
-									<img src="{{ url('design/style') }}/images/icon7.png"  alt="">
-									<img src="{{ url('design/style') }}/images/nav.png" width="9" height="9" style="float:right">
+									<img src="{{ url('design/style') }}/images/icon7.png" alt="">
+									@foreach((auth()->user())->notifications as $notification)
+										@if($notification->unread())
+											<img src="{{ url('design/style') }}/images/icons8-notification-64.png" width="23" height="23" style="float:right">
+											<img src="{{ url('design/style') }}/images/nav.png" width="9" height="9" style="float:right">
+
+											@break
+										
+										@endif
+
+
+									@endforeach	
 									</span>
 									Notification
 								</a>
@@ -86,7 +96,7 @@
 									@if($notification->type=='App\Notifications\NewQuestion')
 												@if($notification->unread())
 
-													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<h3><a  class="dropdown-item " style="background-color:#ff6e6b;" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 													<p >{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit ($notification->data['question'],4)}}</p
 
 													{{$notification->markAsRead()}}
@@ -102,7 +112,7 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item bg-secondary " href="{{$notification->data['join_url']}}">
+													<h3><a class="dropdown-item " style="background-color:#ff6e6b;" href="{{$notification->data['join_url']}}">
 													<p class="text-light">{{$notification->data['user_name'] }} connect {{ Illuminate\Support\Str::limit($notification->data['join_url'],4) }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
@@ -116,7 +126,7 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewAnswer')		
 														@if($notification->unread())
-															<h3><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<h3><a  class="dropdown-item" style="background-color:#ff6e6b;" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>
@@ -273,7 +283,7 @@
 									@if($notification->type=='App\Notifications\NewQuestion')
 												@if($notification->unread())
 
-													<h3><a  class="dropdown-item bg-secondary" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+													<h3><a  class="dropdown-item " style="background-color:#ff6e6b;"  href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 													<p >{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit ($notification->data['question'],4)}}</p
 
 													{{$notification->markAsRead()}}
@@ -289,7 +299,7 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item bg-secondary " href="{{$notification->data['join_url']}}">
+													<h3><a class="dropdown-item" style="background-color:#ff6e6b;"  href="{{$notification->data['join_url']}}">
 													<p class="text-light">{{$notification->data['user_name'] }} connect {{$notification->data['join_url'] }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
@@ -303,7 +313,7 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewAnswer')		
 														@if($notification->unread())
-															<h3><a  class="dropdown-item bg-secondary" href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
+															<h3><a  class="dropdown-item " style="background-color:#ff6e6b;"  href="{{route('answers.show',['answer'=> $notification->data['answer_id']])}}">
 															<p>{{$notification->data['user_name'] }} reply by {{ Illuminate\Support\Str::limit($notification->data['answer'],4)}}</p>
 															{{$notification->markAsRead()}}
 															<?php echo("</br>") ?>

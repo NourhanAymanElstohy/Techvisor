@@ -40,7 +40,7 @@
                                                                 href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
                                                                 title="">ASK</a></li>            
                                                         @if ($prof->state == 'premium')
-
+  
                                                             <form method="POST" action="{{ route('pay')}}" class="d-inline">
                                                                 {{ csrf_field() }}
                                                                 <input   type="hidden" name="title" value='55'/>

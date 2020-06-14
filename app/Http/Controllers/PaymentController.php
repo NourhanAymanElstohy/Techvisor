@@ -18,12 +18,15 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use URL;
 
+
 class PaymentController extends Controller
 {
     private $apiContext;
     private $secret;
     private $clientId;
-
+    public $id;
+    public $count=0;
+    
     public function __construct()
     {
         if (config('paypal.settings.mode') == 'live') {
@@ -33,7 +36,14 @@ class PaymentController extends Controller
             $this->clientId = config('paypal.sandbox_client_id');
             $this->secret = config('paypal.sandbox_secret');
         }
-
+       
+        // if($this->count==0){
+        //      $this->count=$this->count+1;
+        //       $id=request()->input('id');
+         
+        //      $this->id=(int)$id; 
+        // }
+     
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->clientId, $this->secret));
         $this->apiContext->setConfig(config('paypal.settings'));
     }
@@ -41,11 +51,11 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
-        $title = $request->input('title');
-        $description = $request->input('name');
-        // global $id ;
-        // $id=$request->input('id');
-        // dd($id);
+        $title =$request->input('title');
+        $description =$request->input('name');
+        //  global $id ;
+        //  $this->id=$request->input('id');
+        //  dd($this->id);
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
 
