@@ -38,5 +38,6 @@ class rate extends Command
     public function handle()
     {
         //logic
+        echo "hello" . "\n";
     }
 }
