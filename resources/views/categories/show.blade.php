@@ -12,7 +12,7 @@
                         <h3>All Professional On This Category</h3>
                     </div>
 
-                    <div class="companies-list">
+                    <div class="companies-list" style="margin-bottom: 318px">
                         <div class="row">
                             @if(count($category->profs) > 0)
                                 @foreach($category->profs as $prof)
