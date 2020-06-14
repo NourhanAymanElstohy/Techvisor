@@ -43,7 +43,7 @@
 
                                                         <form method="POST" action="{{ route('pay')}}" >
                                                        {{ csrf_field() }}
-                                                        <input   type="hidden" name="title" value='55'/>
+                                                        <input   type="hidden" name="title" value='1'/>
                                                       <input type="hidden" name="name" value="{{$prof->name}}" />
                                                       <input type="hidden" name="id" value="{{$prof->id}}" />
                                                      <button class="btn btn-success" type="submit">Zoom</button>

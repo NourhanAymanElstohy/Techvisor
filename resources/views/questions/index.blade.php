@@ -2,6 +2,7 @@
 
 @foreach($questions as $question)
 <div class="post-bar">
+
 <div class="post_topbar">
 
     
@@ -47,8 +48,11 @@
          
                 <li><a href="{{route('questions.show',['question'=> $question->id])}}" class="com"><i class="fas fa-comment-alt"></i> Comment <?php echo $count ?></a></li>
             </ul>
+            
         </div>
-    <!--post-bar end-->
+        
+     <!--post-bar end-->
+    </div>
     @if($question->answers ) 
     @foreach($question->answers as $answer)
     @if($loop->last)
@@ -99,9 +103,8 @@
    
    
         
-     
+    
     </div>
-    </div>  
     </div>
 
     @endforeach
@@ -110,51 +113,3 @@
 
 
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-{{-- <script>
-const createBtn=document.getElementById("create-btn");
-const answer=document.getElementById("ans-input");
-const question=document.getElementById("q-input");
-const ul=document.getElementById("show-ul");
-const q=`\\App\\Question::find(${question.value})`
-//  $q=`\\App\\Question::find(${question.value})`
-
-const postDate=async ()=> {
-    await axios.post('/answers', {
-        answer: answer.value,
-        question_id: question.value
-    })
-
-//   const showQ=  await axios.get(`/questions/${question.value}`)
-// console.log(showQ)
-// }
-        {{--  <li>
-        <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
-        <h3 style="display:inline">{{$answer->user->name}}</h3>:{{ $answer->answer}}
-        </li></br>--}}
-    {{-- const li = document.createElement('li');
-    const img =document.createElement('img')
-    const br=document.createElement('br');
-    const hr=document.createElement('hr');
-    // img.src=`/uploads/avatars/\{\{${q}->user->avatar}}`;
-    img.setAttribute('src',`/uploads/avatars/{{Auth()->user()->avatar}}`);
-    img.setAttribute('width','30');
-    img.setAttribute('height','30');
-    img.setAttribute('alt','');
-    li.textContent=`{{Auth()->user()->name
-}} :${answer.value}`;
-    answer.value='';
-
-    li.append(img);
-
-    ul.append(li);
-    ul.append(br);
-    ul.append(hr);
-
-
-
-}
-    createBtn.addEventListener('click', postDate);
-
-</script> --}} --}}

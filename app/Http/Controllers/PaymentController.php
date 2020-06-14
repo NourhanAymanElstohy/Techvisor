@@ -21,11 +21,14 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use URL;
 
+
 class PaymentController extends Controller
 {
     private $apiContext;
     private $secret;
     private $clientId;
+    public $id;
+    public $count=0;
     
     public function __construct()
     {
@@ -37,7 +40,14 @@ class PaymentController extends Controller
             $this->secret =config('paypal.sandbox_secret');
 
         }
-      
+       
+        // if($this->count==0){
+        //      $this->count=$this->count+1;
+        //       $id=request()->input('id');
+         
+        //      $this->id=(int)$id; 
+        // }
+     
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->clientId, $this->secret));
         $this->apiContext->setConfig(config('paypal.settings'));
 
@@ -49,9 +59,9 @@ class PaymentController extends Controller
     {
         $title =$request->input('title');
         $description =$request->input('name');
-        // global $id ;
-        // $id=$request->input('id');
-        // dd($id);
+        //  global $id ;
+        //  $this->id=$request->input('id');
+        //  dd($this->id);
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
 
@@ -102,13 +112,13 @@ class PaymentController extends Controller
     }
 
    public function status(Request $request){
-    //  dd($request);
-    // global $id;
-    // $id = $GLOBALS['id']; 
-    //   dd($id);
+   
+     
+   
       if (empty($request->input('PayerID') ) || empty($request->input('token') ) ){
           die('Payment Failed');
       }
+      dd($this->id);
       // $id =$request->input('id');
       // dd($request->id);
       // global $id;
@@ -124,7 +134,7 @@ class PaymentController extends Controller
           // echo "Thank You . Got your money bithc!!" ;
         //    return redirect()->route('/zoom/'.$id);
         
-        // return redirect()->route('zooms.zoom',['zoom' => $id]);
+        //  return redirect()->route('zooms.zoom',['zoom' => $this->id]);
         
       }
 
