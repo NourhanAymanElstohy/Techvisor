@@ -23,8 +23,9 @@
         <form method="POST" action="{{route('users.update',$user->id)}}" class="mb-4" enctype="multipart/form-data" >
             @csrf 
             @method('PUT')
-        <h1 class="text-center" style="color: #E44E3A; font-size:50px;"><strong>Edit Profile</strong></h1>      
-               
+            <div style="text-align:center">
+                    <h1 style="color:#E44D3A; font-size:50px;"><strong>Edit Profile</strong></h1> 
+                </div>               
         <div class="form-group mt-5">
             <label style="color: #E44E3A">  <strong> Name</strong></label>
             <input name="name" type="text"  class="form-control" value="{{$user->name}}">

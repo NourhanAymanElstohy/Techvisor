@@ -67,7 +67,9 @@
 									@foreach((auth()->user())->notifications as $notification)
 										@if($notification->unread())
 											<img src="{{ url('design/style') }}/images/icons8-notification-64.png" width="23" height="23" style="float:right">
-										    @break
+											<img src="{{ url('design/style') }}/images/nav.png" width="9" height="9" style="float:right">
+
+											@break
 										
 										@endif
 
