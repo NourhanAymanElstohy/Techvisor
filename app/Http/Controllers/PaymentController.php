@@ -54,7 +54,7 @@ class PaymentController extends Controller
         $title =$request->input('title');
         $description =$request->input('name');
         //  global $id ;
-        //   self::$id=$request->input('id');
+        $id=$request->input('id');
         
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
@@ -80,7 +80,7 @@ class PaymentController extends Controller
 
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(URL::to("status"))
+        $redirectUrls->setReturnUrl(route("status",['id'=>$id]))
             ->setCancelUrl(URL::to('canceled'));
 
 
@@ -102,11 +102,11 @@ class PaymentController extends Controller
         return redirect($paymentLink);
     }
 
-    public function status(Request $request)
+    public function status(Request $request, $id)
     {
-        //    dd($request);
+        // dd($request->id);
         // global $id;
-        // $id = $GLOBALS['id']; 
+        $id = $request->id; 
          
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
             die('Payment Failed');
@@ -126,7 +126,7 @@ class PaymentController extends Controller
             // echo "Thank You . Got your money bithc!!" ;
             //    return redirect()->route('/zoom/'.$id);
             // return redirect('/');
-            // return redirect()->route('zooms.zoom',['zoom' => self::$id]);
+             return redirect()->route('zooms.zoom',['zoom' => $id]);
 
         }
 
