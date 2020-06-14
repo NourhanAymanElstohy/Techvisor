@@ -27,7 +27,8 @@
                      </br>
                      </br>
                      </br>
-                     <h4 style="color: #E44E3A"><strong>You can countact with us for any help in this email :</strong></h4>
+                     <h4><strong>For any help you can contact us through this email : </strong></h4>
+                     <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" style="color: #E44E3A"><strong> techvisor.consulting@gmail.com</strong></a>
 
                      </br>
                      </br>

@@ -35,35 +35,8 @@
                                 </div>
                             </div>
                             @endauth
-                            <div class="posts-section">
-                                <div class="top-profiles">
-                                    <div class="pf-hd">
-                                        <h3>Top Professionals Rates</h3>
-                                        <!--i class="la la-ellipsis-v"></i-->
-                                    </div>
-                                    <div class="profiles-slider">
-
-                                        <!--- top professionals by rate -->
-                                        {{-- <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASK</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div> --}}
-                                        
-                                    </div>
-                                    <!--profiles-slider end-->
-                                </div>
-                                <!--top-profiles end-->
-                            
-                                   
-                                         @include('questions.index')
-                                
+                            <div class="posts-section">                       
+                                @include('questions.index')  
                             </div>
                         </div>
                     </div>
@@ -92,7 +65,7 @@
                                     <div class="job-info">
                                         <div class="job-details">
                                             {{-- <h3>Senior Product Designer</h3> --}}
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                            <p></p>
                                         </div>
                                         <div class="hr-rate">
                                             {{-- <span>$25/hr</span> --}}

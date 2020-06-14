@@ -37,10 +37,10 @@ composer install
 ```
 
 -   Generate a new file called .env then Copy .env.example to it
--   Generate your APP_Key by
+-   Generate your APP_Key by run:
 
 ```
-app generate
+php artisan key:generate
 ```
 
 -   Make a database on mysqldb then fill your .env with Database credentials then run
