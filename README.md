@@ -7,82 +7,61 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## About Techvisor
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Techvisor is a professional consulting web application specially in IT fields. We learned from laravel that development must be an enjoyable and creative experience to be truly fulfilling. Techvisor provides a rich community of professionals that can solve users’ problems or consulting them in many different IT fields and development technologies, such as:
 
--   [Simple, fast routing engine](https://laravel.com/docs/routing).
--   [Powerful dependency injection container](https://laravel.com/docs/container).
--   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
--   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
--   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
--   [Robust background job processing](https://laravel.com/docs/queues).
--   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   PHP.
+-   [Laravel](https://laravel.com/docs).
+-   Node.Js.
+-   DataBase.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Cubet Techno Labs](https://cubettech.com)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[British Software Development](https://www.britishsoftware.co)**
--   **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
--   **[DevSquad](https://devsquad.com)**
--   [UserInsights](https://userinsights.com)
--   [Fragrantica](https://www.fragrantica.com)
--   [SOFTonSOFA](https://softonsofa.com/)
--   [User10](https://user10.com)
--   [Soumettre.fr](https://soumettre.fr/)
--   [CodeBrisk](https://codebrisk.com)
--   [1Forge](https://1forge.com)
--   [TECPRESSO](https://tecpresso.co.jp/)
--   [Runtime Converter](http://runtimeconverter.com/)
--   [WebL'Agence](https://weblagence.com/)
--   [Invoice Ninja](https://www.invoiceninja.com)
--   [iMi digital](https://www.imi-digital.de/)
--   [Earthlink](https://www.earthlink.ro/)
--   [Steadfast Collective](https://steadfastcollective.com/)
--   [We Are The Robots Inc.](https://watr.mx/)
--   [Understand.io](https://www.understand.io/)
--   [Abdel Elrafa](https://abdelelrafa.com)
--   [Hyper Host](https://hyper.host)
--   [Appoly](https://www.appoly.co.uk)
--   [OP.GG](https://op.gg)
--   [云软科技](http://www.yunruan.ltd/)
+Techvisor is accessible, powerful and provides rapid connection with professionals through zoom meeting.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+We are an ITI graduation team.
 
-## Code of Conduct
+## Send Reviewe
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In order to ensure that we are welcoming to recieve any reviews, please send it to us on [Techvisor Email](techvisor.consulting@gmail.com).
 
-## Security Vulnerabilities
+## Usage
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You can install our project, and test it by:
 
-## License
+-   First run
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+composer install
+```
 
-# consulting-IT-app
+-   Generate a new file called .env then Copy .env.example to it
+-   Generate your APP_Key by
 
-## Zoom
+```
+app generate
+```
 
-Add this to your .env file
+-   Make a database on mysqldb then fill your .env with Database credentials then run
 
--   ZOOM_CLIENT_KEY=8aXN_Pr2R9OOdr23rerOeQ
--   ZOOM_CLIENT_SECRET=eWOGBQK61MiSpY4sEJzmdy3NNSq2toOShgTC
+```
+php artisan migrate:fresh --seed
+```
+
+-   Then finally add these env varables to your .env
+
+```
+-   ZOOM_CLIENT_KEY=7Fjee5qCR-qmS5UUSQWFWA
+-   ZOOM_CLIENT_SECRET=dy7dSQHJvb1z9YpNe5HYQ0A76uhF0008bHKF
+-   PAYPAL_SANDBOX_CLIENT_ID=Afj1767c5EBDnNKKMr0g36iX4TteG0YnrARwdsoDBIctrLjng0DcllcfuwZKrNxMB_VCVlp2Kmzm92b6
+-   PAYPAL_SANDBOX_SECRET=EMpKZOOG9CNwKiWtY8p-PBzXQOhn5EsdFuapx_JN7X8Op4r0kk5vEuoLXcz46HibCRMOyQoRC0A0D637
+-   PAYPAL_MODE=sandbox
+```
+
+-   You can check payment with paypal with this account
+
+```
+-  email: sb-yjgs472285024@personal.example.com
+-  pass: #}C9o_*3
+```
