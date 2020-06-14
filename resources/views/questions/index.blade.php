@@ -97,7 +97,8 @@
                                             <h3>{{$answer->user->name}}</h3>
                                             <span><img src="workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
                                             
-                                            <p >{{ $answer->answer}}</p>
+                                            <p style="max-width:200px;
+    word-wrap:break-word;">{{ $answer->answer}}</p>
                                         </div>
                                     </div>
                                 </li>
