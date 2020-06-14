@@ -289,7 +289,7 @@
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else
-													<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
+									 				<h3><a class="dropdown-item" href="{{route('questions.show',['question'=> $notification->data['question_id']])}}">
 													<p>{{$notification->data['user_name'] }} ask  {{ Illuminate\Support\Str::limit($notification->data['question'],4)}}</p>
 
 													{{$notification->markAsRead()}}

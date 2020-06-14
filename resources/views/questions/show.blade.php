@@ -24,7 +24,12 @@
                 <li><img src="/workwise-new/images/icon9.png" alt=""><span>Question</span></li>
             </ul>
         </div>
-        <div class="job_descp">
+        <div class="job_descp" style="   display: block;/* or inline-block */
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                overflow: hidden;
+                max-height: 10em;
+                line-height: 1.8em;">
             <p>{{$question->question}}</p>
         </div>
 
@@ -58,7 +63,8 @@
                                         </div>
                                         <h3>{{$answer->user->name}}</h3>
                                         <span><img src="/workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
-                                        <p >{{ $answer->answer}}</p>
+                                        <p style="max-width:200px;
+                                            word-wrap:break-word;" >{{ $answer->answer}}</p>
                                     </div>
                                 </div>
                             </li>

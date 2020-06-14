@@ -65,7 +65,7 @@
                                     <div class="job-info">
                                         <div class="job-details">
                                             {{-- <h3>Senior Product Designer</h3> --}}
-                                            <p></p>
+                                            <p>ssssssss</p>
                                         </div>
                                         <div class="hr-rate">
                                             {{-- <span>$25/hr</span> --}}
