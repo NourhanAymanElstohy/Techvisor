@@ -13,7 +13,9 @@
 							<li>
 							@hasanyrole('super-admin|user|professional')
 								<a href="{{route('home')}}" title="">
-									<span><img src="{{ url('design/style') }}/images/icon1.png" alt=""></span>
+									<span>
+									<img src="{{ url('design/style') }}/images/icon1.png" alt="">
+									</span>
 									Home
 								</a>
 								@else
@@ -60,7 +62,10 @@
 
 							<li>
 								<a href="#" title="" class="not-box-open">
-									<span><img src="{{ url('design/style') }}/images/icon7.png" alt=""></span>
+									<span>
+									<img src="{{ url('design/style') }}/images/icon7.png"  alt="">
+									<img src="{{ url('design/style') }}/images/nav.png" width="9" height="9" style="float:right">
+									</span>
 									Notification
 								</a>
 
@@ -201,8 +206,8 @@
 							<li><a href="{{route('professionals.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
 							@else	
 							<li><a href="{{route('users.edit', Auth::user()->id)}}" title="">Account Setting</a></li>
-							@endif
-								<li><a href="#" title="">Privacy</a></li>
+							@endif 
+								<li><a href="{{route('users.privacy')}}" title="">Privacy</a></li>
 							</ul>
 						
 

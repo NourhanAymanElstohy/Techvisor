@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,8 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', function () {
     return view('/about');
 })->name('about');
+
+
 //============== Admin =========================
 Route::get('/admins', 'UserController@adminIndex')->name('users.adminIndex')->middleware(['role:super-admin']);
 Route::get('/adminHome', 'HomeController@adminHome')->name('adminHome');
@@ -38,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
     Route::put('/users/{user}', 'UserController@update')->name('users.update');
     Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+    Route::get('/privacy', 'UserController@privacy')->name('users.privacy');
     Route::get('/users/{user}/ban', 'UserController@banned')->name('users.banned')->middleware(['role:super-admin']);
 });
 
@@ -78,7 +83,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
     Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('/questions/{question}/update', 'QuestionController@update')->name('questions.update');
     Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
-    Route::get('/zoom/{zoom}', 'QuestionController@zoom');
+    Route::get('/zoom/{zoom}', 'QuestionController@zoom')->name('zooms.zoom');
     Route::get('/search', 'QuestionController@search');
 });
 
@@ -94,3 +99,7 @@ Route::group(['middleware' => ['auth', 'is-ban']], function () {
 Route::get('/try', function () {
     return view('/try');
 });
+
+Route::post('pay','PaymentController@payWithpaypal')->name('pay');
+Route::get('status','PaymentController@status')->name('status');
+Route::get('canceled','PaymentController@canceled')->name('canceled');
