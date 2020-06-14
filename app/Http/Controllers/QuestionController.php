@@ -163,8 +163,11 @@ class QuestionController extends Controller
         $request = request();
         $questionId = $request->question;
         Question::destroy($questionId);
-
-        return redirect()->route('questions.index');
+        if (auth()->user()->hasPermissionTo('adminpermission')) {
+            return redirect()->route('questions.index');
+        } else {
+            return redirect('/');
+        }
     }
     public function zoom()
     {
