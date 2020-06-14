@@ -1,5 +1,3 @@
-
-
 @foreach($questions as $question)
 <div class="posty">
     <div class="post-bar">
@@ -75,7 +73,6 @@
                             
         <div class="post-comment mt-3">
             <div class="usy-dt mr-2">
-            
                 <img src="/uploads/avatars/{{auth()->user() ? auth()->user()->avatar : ''}}"  width="35" height="35" alt="">
             </div>
             <div class="comment_box">
