@@ -43,11 +43,12 @@
   
                                                             <form method="POST" action="{{ route('pay')}}" class="d-inline">
                                                                 {{ csrf_field() }}
-                                                                <input   type="hidden" name="title" value='55'/>
+                                                                <input   type="hidden" name="title" value='1'/>
                                                                 <input type="hidden" name="name" value="{{$prof->name}}" />
                                                                 <input type="hidden" name="id" value="{{$prof->id}}" />
-                                                                <button class="btn hire text-light" type="submit">Zoom</button>
-                                                            </form>
+                                                                <button class="btn hire text-light" type="submit">pay</button>
+                                                            </form><br/>
+                                                            <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>
                                                         @else
                                                             <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>
 

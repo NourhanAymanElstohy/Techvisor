@@ -24,8 +24,8 @@ class PaymentController extends Controller
     private $apiContext;
     private $secret;
     private $clientId;
-    public $id;
-    public $count=0;
+    static $id;
+    // public $count=0;
     
     public function __construct()
     {
@@ -39,9 +39,9 @@ class PaymentController extends Controller
        
         // if($this->count==0){
         //      $this->count=$this->count+1;
-        //       $id=request()->input('id');
+                $id=request()->input('id');
          
-        //      $this->id=(int)$id; 
+               self::$id =(int)$id; 
         // }
      
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->clientId, $this->secret));
@@ -54,8 +54,8 @@ class PaymentController extends Controller
         $title =$request->input('title');
         $description =$request->input('name');
         //  global $id ;
-        //  $this->id=$request->input('id');
-        //  dd($this->id);
+        //   self::$id=$request->input('id');
+        
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
 
@@ -80,7 +80,7 @@ class PaymentController extends Controller
 
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(URL::to('status'))
+        $redirectUrls->setReturnUrl(URL::to("status"))
             ->setCancelUrl(URL::to('canceled'));
 
 
@@ -104,14 +104,14 @@ class PaymentController extends Controller
 
     public function status(Request $request)
     {
-        //  dd($request);
+        //    dd($request);
         // global $id;
         // $id = $GLOBALS['id']; 
-        //   dd($id);
+         
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
             die('Payment Failed');
         }
-        // $id =$request->input('id');
+        //  $$id =$request->input('id');
         // dd($request->id);
         // global $id;
         // dd($id);
@@ -122,11 +122,11 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $this->apiContext);
 
         if ($result->getState() == 'approved') {
-            die('Thank You . Got your money bithc!!');
+            // die('Thank You . Got your money bithc!!');
             // echo "Thank You . Got your money bithc!!" ;
             //    return redirect()->route('/zoom/'.$id);
-
-            // return redirect()->route('zooms.zoom',['zoom' => $id]);
+            // return redirect('/');
+            // return redirect()->route('zooms.zoom',['zoom' => self::$id]);
 
         }
 
