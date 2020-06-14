@@ -112,13 +112,13 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item " style="background-color:#ff6e6b;" href="{{$notification->data['join_url']}}">
+													<h3><a class="dropdown-item " style="background-color:#ff6e6b;" target="_blank" href="{{$notification->data['join_url']}}">
 													<p class="text-light">{{$notification->data['user_name'] }} connect {{ Illuminate\Support\Str::limit($notification->data['join_url'],4) }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else 
-												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}">
+												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}" target="_blank">
 													<p>{{$notification->data['user_name'] }}connect {{Illuminate\Support\Str::limit($notification->data['join_url'],4)}}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
@@ -299,13 +299,13 @@
 												@endif 
 										@elseif($notification->type=='App\Notifications\NewZoom')
 													@if($notification->unread())
-													<h3><a class="dropdown-item" style="background-color:#ff6e6b;"  href="{{$notification->data['join_url']}}">
+													<h3><a class="dropdown-item" style="background-color:#ff6e6b;" target="_blank" href="{{$notification->data['join_url']}}">
 													<p class="text-light">{{$notification->data['user_name'] }} connect {{$notification->data['join_url'] }}</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
 													</a></h3>
 												@else 
-												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}">
+												<h3><a class="dropdown-item " href="{{$notification->data['join_url']}}" target="_blank">
 													<p>{{$notification->data['user_name'] }} want to zoom meeting</p>
 													{{$notification->markAsRead()}}
 													<?php echo("</br>") ?>
