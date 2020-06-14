@@ -101,5 +101,5 @@ Route::get('/try', function () {
 });
 
 Route::post('pay','PaymentController@payWithpaypal')->name('pay');
-Route::get('status','PaymentController@status')->name('status');
+Route::get('status/{id}','PaymentController@status')->name('status');
 Route::get('canceled','PaymentController@canceled')->name('canceled');

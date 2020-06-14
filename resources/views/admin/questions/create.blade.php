@@ -21,7 +21,7 @@
         <div class="form-group mt-5">
     <label for="exampleFormControlSelect1">Users</label>
     <select name="prof" class="form-control" value="">
-    <option value=""></option>
+    
         @foreach($users as $user)  
           <option value="{{$user->id}}">{{$user->name}}</option>
         @endforeach

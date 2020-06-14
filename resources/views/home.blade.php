@@ -23,7 +23,7 @@
                     
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
-                            @auth
+                            {{-- @auth --}}
                             <div class="post-topbar">
                                 <div class="user-picy">
                                     {{-- <img src="images/resources/user-pic.png" alt=""> --}}
@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            @endauth
+                            {{-- @endauth --}}
                             <div class="posts-section">                       
                                 @include('questions.index')  
                             </div>

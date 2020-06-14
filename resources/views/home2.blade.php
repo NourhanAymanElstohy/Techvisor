@@ -25,30 +25,6 @@
                         <div class="main-ws-sec">
                            
                             <div class="posts-section">
-                                <div class="top-profiles">
-                                    <div class="pf-hd">
-                                        <h3>Top Professionals Rates</h3>
-                                        <!--i class="la la-ellipsis-v"></i-->
-                                    </div>
-                                    <div class="profiles-slider">
-
-                                        <!--- top professionals by rate -->
-                                        {{-- <div class="user-profy">
-                                            <img src="{{ url('design/style') }}/images/resources/user1.png" alt="">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a href="#" title="" class="post-jb active follow">ASK</a></li>
-
-                                                <li><a href="#" title="" class="hire">ZOOM</a></li>
-                                            </ul>
-                                            <a href="/style/profile" title="">View Profile</a>
-                                        </div> --}}
-                                        
-                                    </div>
-                                    <!--profiles-slider end-->
-                                </div>
-                                <!--top-profiles end-->
                                     @if($flag=='create')
                                         @include('questions.create')  
                                     @elseif($flag =='edit')   
@@ -76,12 +52,6 @@
                                 </div>
                             </div>
                             @endguest
-                            
-                            <!--widget-about end-->
-                            
-                            <!--widget-jobs end-->
-
-
                         </div>
                         <!--right-sidebar end-->
                     </div>
@@ -91,14 +61,8 @@
     </div>
 </main>
 
-
-
-
-
-
 </div>
-<!--theme-layout end-->
-<!-- add the post Q -->
+
 
 <div class="post-popup job_post">
     <div class="post-project">

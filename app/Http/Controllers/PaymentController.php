@@ -24,9 +24,7 @@ class PaymentController extends Controller
     private $apiContext;
     private $secret;
     private $clientId;
-    public $id;
-    public $count=0;
-    
+
     public function __construct()
     {
         if (config('paypal.settings.mode') == 'live') {
@@ -36,14 +34,7 @@ class PaymentController extends Controller
             $this->clientId = config('paypal.sandbox_client_id');
             $this->secret = config('paypal.sandbox_secret');
         }
-       
-        // if($this->count==0){
-        //      $this->count=$this->count+1;
-        //       $id=request()->input('id');
-         
-        //      $this->id=(int)$id; 
-        // }
-     
+
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->clientId, $this->secret));
         $this->apiContext->setConfig(config('paypal.settings'));
     }
@@ -51,19 +42,19 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
-        $title =$request->input('title');
-        $description =$request->input('name');
-        //  global $id ;
-        //  $this->id=$request->input('id');
-        //  dd($this->id);
+        $price = $request->input('price');
+        $prof_name = $request->input('name');
+
+        $id = $request->input('id');
+
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
 
         $item = new Item();
-        $item->setName($description)
+        $item->setName($prof_name)
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($title);
+            ->setPrice($price);
 
 
         $itemList = new ItemList();
@@ -71,7 +62,7 @@ class PaymentController extends Controller
 
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal($title);
+            ->setTotal($price);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
@@ -80,7 +71,7 @@ class PaymentController extends Controller
 
 
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(URL::to('status'))
+        $redirectUrls->setReturnUrl(route("status", ['id' => $id]))
             ->setCancelUrl(URL::to('canceled'));
 
 
@@ -102,19 +93,11 @@ class PaymentController extends Controller
         return redirect($paymentLink);
     }
 
-    public function status(Request $request)
+    public function status(Request $request, $id)
     {
-        //  dd($request);
-        // global $id;
-        // $id = $GLOBALS['id']; 
-        //   dd($id);
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
             die('Payment Failed');
         }
-        // $id =$request->input('id');
-        // dd($request->id);
-        // global $id;
-        // dd($id);
         $paymentId = $request->get('paymentId');
         $payment = Payment::get($paymentId, $this->apiContext);
         $execution = new PaymentExecution();
@@ -122,12 +105,7 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $this->apiContext);
 
         if ($result->getState() == 'approved') {
-            die('Thank You . Got your money bithc!!');
-            // echo "Thank You . Got your money bithc!!" ;
-            //    return redirect()->route('/zoom/'.$id);
-
-            // return redirect()->route('zooms.zoom',['zoom' => $id]);
-
+            return redirect()->route('zooms.zoom', ['zoom' => $request->id]);
         }
 
         echo 'Payment Failed again';
@@ -135,7 +113,6 @@ class PaymentController extends Controller
     }
     public function canceled()
     {
-        //    return 'Payment Canceld . No worries';
         return redirect()->route('home');
     }
 }
