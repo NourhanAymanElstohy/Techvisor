@@ -11,7 +11,7 @@ class rate extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name'; //any name
+    protected $signature = 'prof:rate'; //any name
 
     /**
      * The console command description.
