@@ -58,7 +58,7 @@
                                         </div>
                                         <h3>{{$answer->user->name}}</h3>
                                         <span><img src="/workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
-                                        <p>{{ $answer->answer}}</p>
+                                        <p >{{ $answer->answer}}</p>
                                     </div>
                                 </div>
                             </li>
