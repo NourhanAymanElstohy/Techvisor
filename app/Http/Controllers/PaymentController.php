@@ -12,9 +12,6 @@ use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\PaymentExecution;
-
-
-
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 
@@ -26,29 +23,26 @@ class PaymentController extends Controller
     private $apiContext;
     private $secret;
     private $clientId;
-    
+
     public function __construct()
     {
-        if (config('paypal.settings.mode') == 'live'){
+        if (config('paypal.settings.mode') == 'live') {
             $this->clientId = config('paypal.live_client_id');
-            $this->secret =config('paypal.live_secret');
+            $this->secret = config('paypal.live_secret');
         } else {
-            $this->clientId =config('paypal.sandbox_client_id');
-            $this->secret =config('paypal.sandbox_secret');
-
+            $this->clientId = config('paypal.sandbox_client_id');
+            $this->secret = config('paypal.sandbox_secret');
         }
-      
+
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->clientId, $this->secret));
         $this->apiContext->setConfig(config('paypal.settings'));
-
-
     }
 
 
     public function payWithpaypal(Request $request)
     {
-        $title =$request->input('title');
-        $description =$request->input('name');
+        $title = $request->input('title');
+        $description = $request->input('name');
         // global $id ;
         // $id=$request->input('id');
         // dd($id);
@@ -57,89 +51,81 @@ class PaymentController extends Controller
 
         $item = new Item();
         $item->setName($description)
-         ->setCurrency('USD')
-         ->setQuantity(1)
-         ->setPrice($title);
-         
+            ->setCurrency('USD')
+            ->setQuantity(1)
+            ->setPrice($title);
 
-         $itemList = new ItemList();
-         $itemList->setItems(array($item));
 
-         $amount = new Amount();
-         $amount->setCurrency("USD")
-         ->setTotal($title);
+        $itemList = new ItemList();
+        $itemList->setItems(array($item));
 
-         $transaction = new Transaction();
-         $transaction->setAmount($amount)
-           ->setItemList($itemList)
-           ->setDescription("Payment description");
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal($title);
 
-          
-           $redirectUrls = new RedirectUrls();
-           $redirectUrls->setReturnUrl(URL::to('status'))
-           ->setCancelUrl(URL::to('canceled'));
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description");
 
-           
-           $payment = new Payment();
-            $payment->setIntent("sale")
-                ->setPayer($payer)
-                ->setRedirectUrls($redirectUrls)
-                ->setTransactions(array($transaction));
-               
-                try {
 
-                    $payment->create($this->apiContext);
-        
-                } catch (\PayPal\Exception\PPConnectionException $ex) {
-        
-                  die($ex);
-        
-                }
-                $paymentLink = $payment->getApprovalLink();
+        $redirectUrls = new RedirectUrls();
+        $redirectUrls->setReturnUrl(URL::to('status'))
+            ->setCancelUrl(URL::to('canceled'));
 
-                return redirect($paymentLink);
 
+        $payment = new Payment();
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions(array($transaction));
+
+        try {
+
+            $payment->create($this->apiContext);
+        } catch (\PayPal\Exception\PPConnectionException $ex) {
+
+            die($ex);
+        }
+        $paymentLink = $payment->getApprovalLink();
+
+        return redirect($paymentLink);
     }
 
-   public function status(Request $request){
-    //  dd($request);
-    // global $id;
-    // $id = $GLOBALS['id']; 
-    //   dd($id);
-      if (empty($request->input('PayerID') ) || empty($request->input('token') ) ){
-          die('Payment Failed');
-      }
-      // $id =$request->input('id');
-      // dd($request->id);
-      // global $id;
-      // dd($id);
-      $paymentId = $request->get('paymentId');
-      $payment = Payment::get($paymentId, $this->apiContext);
-      $execution =new PaymentExecution();
-      $execution->setPayerId($request->input('PayerID'));
-      $result = $payment->execute($execution, $this->apiContext);
+    public function status(Request $request)
+    {
+        //  dd($request);
+        // global $id;
+        // $id = $GLOBALS['id']; 
+        //   dd($id);
+        if (empty($request->input('PayerID')) || empty($request->input('token'))) {
+            die('Payment Failed');
+        }
+        // $id =$request->input('id');
+        // dd($request->id);
+        // global $id;
+        // dd($id);
+        $paymentId = $request->get('paymentId');
+        $payment = Payment::get($paymentId, $this->apiContext);
+        $execution = new PaymentExecution();
+        $execution->setPayerId($request->input('PayerID'));
+        $result = $payment->execute($execution, $this->apiContext);
 
-      if($result->getState() == 'approved'){
-          die('Thank You . Got your money bithc!!');
-          // echo "Thank You . Got your money bithc!!" ;
-        //    return redirect()->route('/zoom/'.$id);
-        
-        // return redirect()->route('zooms.zoom',['zoom' => $id]);
-        
-      }
+        if ($result->getState() == 'approved') {
+            die('Thank You . Got your money bithc!!');
+            // echo "Thank You . Got your money bithc!!" ;
+            //    return redirect()->route('/zoom/'.$id);
 
-      echo 'Payment Failed again';
-      die($result);
+            // return redirect()->route('zooms.zoom',['zoom' => $id]);
 
+        }
 
-
-
-   }
-   public function canceled(){
-    //    return 'Payment Canceld . No worries';
-    return redirect()->route('posts.index');
-   }
-
-
-
+        echo 'Payment Failed again';
+        die($result);
+    }
+    public function canceled()
+    {
+        //    return 'Payment Canceld . No worries';
+        return redirect()->route('home');
+    }
 }

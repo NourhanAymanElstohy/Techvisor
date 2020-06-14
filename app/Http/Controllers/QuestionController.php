@@ -35,7 +35,7 @@ class QuestionController extends Controller
     public function show()
     {
         $request = request();
-        $flag="show";
+        $flag = "show";
         $questionId = $request->question;
         $question = Question::find($questionId);
         $categories = Category::all();
@@ -47,7 +47,7 @@ class QuestionController extends Controller
             return view('home2', [
                 'question' => $question,
                 'categories' => $categories,
-                'flag'=>$flag
+                'flag' => $flag
             ]);
         }
     }
@@ -173,7 +173,7 @@ class QuestionController extends Controller
         $userId = $request->zoom;
         $prof = User::find($userId);
 
-        $meeting = Zoom::user()->find('nourhanelstohy@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
+        $meeting = Zoom::user()->find('techvisor.consulting@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
         $join_url = $meeting->join_url;
 
         $prof->notify(new NewZoom($user, $join_url));
