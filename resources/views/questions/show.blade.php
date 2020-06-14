@@ -57,7 +57,7 @@
                                             <img src="/uploads/avatars/{{$answer->user->avatar}}" width="30" height="30" alt="">
                                         </div>
                                         <h3>{{$answer->user->name}}</h3>
-                                        <span><img src="workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
+                                        <span><img src="/workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
                                         <p>{{ $answer->answer}}</p>
                                     </div>
                                 </div>
