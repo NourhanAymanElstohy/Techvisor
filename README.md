@@ -1,18 +1,11 @@
 <p align="center"> <img src="logo-bg.png"  width="400" height="270"alt=""></p>
 
-<p align="center">
-<a href="#" target="_blank"><i class="fa fa-facebook" style="color: #4267B2;"></i></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
 ## About Techvisor
 
 Techvisor is a professional consulting web application specially in IT fields. We learned from laravel that development must be an enjoyable and creative experience to be truly fulfilling. Techvisor provides a rich community of professionals that can solve users’ problems or consulting them in many different IT fields and development technologies, such as:
 
 -   PHP.
--   [Laravel](https://laravel.com/docs).
+-   Laravel.
 -   Node.Js.
 -   DataBase.
 
@@ -96,7 +89,19 @@ Start the local development server
 
 You can now access the server at http://localhost:8000
 
--   Then finally add these env varables to your .env
+**Command List**
+
+```
+    git clone https://github.com/NourhanAymanElstohy/Techvisor.git
+    cd Techvisor
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    php artisan migrate:fresh --seed
+    php artisan serve
+```
+
+Then finally add these env varables to your .env
 
 ```
 ZOOM_CLIENT_KEY=7Fjee5qCR-qmS5UUSQWFWA
@@ -106,7 +111,7 @@ PAYPAL_SANDBOX_SECRET=EMpKZOOG9CNwKiWtY8p-PBzXQOhn5EsdFuapx_JN7X8Op4r0kk5vEuoLXc
 PAYPAL_MODE=sandbox
 ```
 
--   You can check payment with paypal with this account
+You can check payment with paypal with this account
 
 ```
 email: sb-yjgs472285024@personal.example.com
