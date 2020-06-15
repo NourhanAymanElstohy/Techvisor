@@ -24,7 +24,7 @@
                                           <ul class="flw-hr">
                                               <li><a href="{{route('professionals.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
-                                          <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->averageRating }}" data-size="xs" disabled="">
+                                          <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->rating_average }}" data-size="xs" disabled="">
                                       </div>
                                       <ul class="social_links">
                                          <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$user->email}}</a></li>
@@ -59,13 +59,13 @@
 
                                           </ul>
                                       </div>
-                                  </div>
+                                  </div>                               
                                   <div class="product-feed-tab current" id="feed-dd">
 
                                       @include('questions.index2')
 
                                   </div>
-                              </div>
+                                </div>
                           </div>
                           @include('categories.index')
                       </div>
