@@ -39,17 +39,26 @@ class QuestionController extends Controller
         $questionId = $request->question;
         $question = Question::find($questionId);
         $categories = Category::all();
-        if (auth()->user()->hasPermissionTo('adminpermission')) {
-            return view('admin/questions/show', [
-                'question' => $question,
-            ]);
-        } else {
+        if ($question){
+            if (auth()->user()->hasPermissionTo('adminpermission')) {
+                return view('admin/questions/show', [
+                    'question' => $question,
+                ]);
+            } else {
+                return view('home2', [
+                    'question' => $question,
+                    'categories' => $categories,
+                    'flag' => $flag
+                ]);
+            }
+        }else{
+            $flag="not_found";
             return view('home2', [
-                'question' => $question,
+                
                 'categories' => $categories,
-                'flag' => $flag
-            ]);
+                'flag' => $flag ]);
         }
+      
     }
 
 
@@ -179,7 +188,7 @@ class QuestionController extends Controller
         $meeting = Zoom::user()->find('techvisor.consulting@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
         $join_url = $meeting->join_url;
 
-        $prof->notify(new NewZoom($user, $join_url));
+        $prof->notify(new NewZoom($user, $join_url,$prof));
         return view('/zoom_url', [
             'meeting' => $meeting
         ]);

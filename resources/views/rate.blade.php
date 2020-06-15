@@ -7,16 +7,10 @@
      
 
 
-      <main>
-          <div class="main-section">
-              <div class="container">
-                  <div class="main-section-data">
-
-
-
-
-
-
+<main>
+<div class="main-section">
+    <div class="container">
+        <div class="main-section-data">
     <div class="container">
 
         <div class="row">

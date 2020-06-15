@@ -15,25 +15,25 @@
 
 
                      <h1 style="color: #E44E3A; font-size:50px;"><strong>Privacy Settings</strong></h1>
-                     </br>
-                     </br>
-                     </br>
+                     <br>
+                     <br>
+                     <br>
                      <h4 style="color: #E44E3A"><strong>Your Activity</strong></h4>
                      <p>You can ask a question public or to professional privatly</p>
                      <p>only other users can find your profile</p>
-                     </br>
-                     </br>
-                     </br>
-                     </br>
-                     </br>
-                     </br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
                      <h4><strong>For any help you can contact us through this email : </strong></h4>
                      <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" style="color: #E44E3A"><strong> techvisor.consulting@gmail.com</strong></a>
 
-                     </br>
-                     </br>
-                     </br>
-                     </br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
 
 
 

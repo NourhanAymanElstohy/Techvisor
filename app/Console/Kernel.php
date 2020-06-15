@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        commands\rate::class,
+        Commands\ProfRate::class,
 
     ];
 
@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('prof:rate')->cron('*****');
+        $schedule->command('prof:rate')->hourly();
     }
 
     /**

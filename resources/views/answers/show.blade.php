@@ -7,12 +7,15 @@
 
       <div class="card mt-5 " >
               <div class="card-body">
+              @if($answer->question)
               <h5 class="card-title">{{$answer->question->question}}</h5>
                 <p class="card-text">user name:{{ $answer->question->user ? $answer->question->user->name : 'not exist'}}</p>
                 <p class="card-text"><td>{{$answer->user->name }} answer by: {{$answer->answer}}</td></p>
+              @else
+              <h1 class="card-title">question not found</h1>
               </div>
-            </div>
-      </div> 
+      </div>
+  </div> 
       
 </div>
 </div>
