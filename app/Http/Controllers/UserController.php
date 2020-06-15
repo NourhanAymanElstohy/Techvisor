@@ -11,11 +11,13 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use App\User;
 use App\Category;
 use App\Question;
+use App\Answer;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreUserRequest; 
 use App\Http\Requests\UpdateUserRequest;
+
 
 
 
@@ -170,6 +172,7 @@ class UserController extends Controller
         $user->linkedin = $request->linkedin;
         $user->github = $request->github;
         $user->other = $request->other;
+       
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
@@ -179,13 +182,21 @@ class UserController extends Controller
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
-
             $user->avatar = $filename;
             $user->save();
         }
+
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->syncRoles($request->role);
             $user->save();
+
+            if ($request->role == 'user')
+            {$user->role = 1;}
+            elseif ($request->role == 'professional')
+            {$user->role = 2;}
+            else {$user->role = 3;}
+            $user->save();
+
              if ($user->role == '3') {
                 return redirect()->route('users.adminIndex', [
                     'categories' => $categories
@@ -218,10 +229,18 @@ class UserController extends Controller
     {
         //here admin can delete any userRole and user can delete here profile
         $user = User::findOrFail($id);
+        $questions = Question::where('user_id', $id)->get();
+        $answers = Answer::where('user_id', $id)->get();
+        //dd($answers);
+        Question::where('user_id', $id)->delete();
+        Answer::where('user_id', $id)->delete();
+        //Question::destroy::where('user_id', $id)->get();
+        //dd($questions);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             $user->removeRole($user->roles->implode('name', ', '));
             if ($user->delete()) {
                 if ($user->role == '1') {
+                
                     return redirect()->route('users.index');
                 } elseif  ($user->role == '2') {
                     return redirect()->route('professionals.index');

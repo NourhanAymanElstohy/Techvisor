@@ -5,7 +5,7 @@
 <div class="wrapper">
 
       <section class="cover-sec">
-          <img src="{{ url('design/style') }}/images/resources/code-wallpaper-10.jpg" style="height: 200px;" alt="">
+          <img src="{{ url('design/style') }}/images/resources/code-wallpaper-10.jpg" style="height: 500px;" alt="">
       </section>
 
       <main>
@@ -62,7 +62,7 @@
                                   </div>                               
                                   <div class="product-feed-tab current" id="feed-dd">
 
-                                      @include('questions.index')
+                                      @include('questions.index2')
 
                                   </div>
                                 </div>

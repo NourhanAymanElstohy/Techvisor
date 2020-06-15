@@ -26,13 +26,14 @@
                     in IT fields as it provides a rich community of professionals that can solve users’
                     problems or consulting them in many different IT fields at the available time of them. <br>
                     The application also can help any starter and student wants to learn and need help or guide 
-                    to tell them which way can take or how to solve errors.
-                </p>
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <img src="{{ url('design/style') }}/images/about3.png" alt="image">
-            </div>
-        </div>
-    </div>
-</section>
+                    to tell them which way can take or how to solve errors.		</p>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<img src="{{ url('design/style') }}/images/about3.png" alt="image">
+				</div>
+			</div>
+		</div>
+		</section>
+		
+
 @endsection
