@@ -44,7 +44,7 @@
 
                             @guest
                             <div class="widget widget-about"> 
-                            <h1 class="font-weight-bold text-capitalize mt-3"  style="font-family: 'Serif', cursive; font-size:40px; color: #E44E3A">Techvisor</h1>
+                            <img src="{{ url('design/style') }}/images/logo3.jpeg"  width="200" height="150"alt="">
                                 {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
                                 {{-- <h3>IT Workwise</h3> --}}
                                 <div class="sign_link">

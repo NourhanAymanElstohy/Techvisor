@@ -2,6 +2,7 @@
 		<header>
 			<div class="container">
 				<div class="header-data">
+
 					<div style="float: left;  margin-top: 10px; " >
 					<a href="{{route('home')}}"><img src="{{ url('design/style') }}/images/logo1.jpeg"  width="100px" height="30;"></a>
 					</div><!--logo end-->
@@ -149,6 +150,7 @@
 							</li>
 						</ul>
 					</nav><!--nav end-->
+
 
 						<div class="user-account">
 							<div class="user-info">
