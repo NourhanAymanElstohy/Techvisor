@@ -24,8 +24,9 @@
                                           <ul class="flw-hr">
                                               <li><a href="{{route('professionals.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
-                                          <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->averageRating }}" data-size="xs" disabled="">
-                                      </div>
+                                          <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->rating_average }}" data-size="xs" disabled="">
+{{--                                          <h3>Rated By: {{$rateCount ??''}} users</h3>--}}
+                                      </div><!--user_pro_status end-->
                                       <ul class="social_links">
                                          <li><a href="#" title=""><i class="la la-envelope" style="font-size:20px;color: #99ccff"></i>{{$user->email}}</a></li>
 

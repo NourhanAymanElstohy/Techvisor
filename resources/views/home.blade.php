@@ -34,8 +34,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="posts-section">                       
-                                @include('questions.index')  
+                            <div class="posts-section">
+                                @include('questions.index')
                             </div>
                         </div>
                     </div>
@@ -62,12 +62,12 @@
                                             <div class="usy-dt">
                                                 <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="" style="padding: 0px;">
                                             </div>
-                                            <div class="usy-name mt-1">    
+                                            <div class="usy-name mt-1">
                                                 <p ><a href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #e44d3a;"> {{$professional->name}}</a></p>
                                             </div>
                                         </div>
                                         <div class="hr-rate mt-2" >
-                                            <span style="color:#0e5b44;"> {{number_format($professional->averageRating,1)}}</span>
+                                            <span style="color:#0e5b44;"> {{number_format($professional->rating_average,1)}}</span>
                                         </div>
                                     </div>
                                 </div>

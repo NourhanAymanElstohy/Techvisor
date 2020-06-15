@@ -33,6 +33,22 @@ class RateController extends Controller
         $user = User::find($request->id);
         $currentUserID=auth()->user()->id;
         $currentRate=Rating::where([['user_id',$currentUserID],['rateable_id',$request->id]]);
+        $allProRate=Rating::where('rateable_id',$request->id);
+        $rateCount=$allProRate->count();
+//$allRates=Rating::all();
+//$sum=0.0;
+//$count=0;
+//foreach ($allRates as $rate){
+//    if($rate->rating){
+//        $sum=$sum+$rate->rating;
+//        $count++;
+//    }
+//}
+//$totalAverage=0.0;
+//    if($count!=0)
+//    {$totalAverage= $sum/$count;}
+        $WR = ($rateCount / ($rateCount+1)) * $user->averageRating + (1 / ($rateCount+1)) * 2.5;
+
         if($currentRate){
             $currentRate->delete();
         }
@@ -40,11 +56,11 @@ class RateController extends Controller
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
         $user->ratings()->save($rating);
-        $user->rating_average=$user->averageRating;
-        if($user->averageRating>=4){
+        $user->rating_average=$WR;
+        if($WR>=4){
             $user->state='premium';
         }
         $user->save();
-        return redirect()->route('professional.show',[$user->id,'user'=>$user]);
+        return redirect()->route('professional.show',[$user->id,'user'=>$user,'rateCount'=>$rateCount]);
     }
 }

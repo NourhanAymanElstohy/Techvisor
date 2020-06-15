@@ -77,7 +77,4 @@ class User extends Authenticatable implements BannableContract
     }
 
 
-    public function getRatingAverageAttribute() {
-        return $this->averageRating;
-    }
 }
