@@ -9,12 +9,42 @@
                 </div>
             </div>
             @if($question->user_id==auth()->id())
-                <div class="ed-opts">
-                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                    <ul class="ed-options">
-                        <li><a href="questions/{{$question->id}}/edit" title="">Edit Post</a></li>
-                    </ul>
-                </div>
+            <div class="ed-opts">
+                <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                <ul class="ed-options">
+                    <li><a href="/questions/{{$question->id}}/edit" title="">Edit Post</a></li>
+                    
+        <a class="float-left text-dark" href="#" role="button" data-toggle="modal"
+         data-target="#delete-modal-{{$question->id}}"  class="float-left mr-2">Delete</a>
+         </ul>
+            </div>
+         <div class="modal fade" id="delete-modal-{{$question->id}}" tobindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document" >
+              <div class="modal-content">
+                <form method="POST"  action="{{route('questions.destroy',$question->id)}}"
+                class="float-left">
+                  @csrf
+                  @method('DELETE')
+                  <div class="modal-header">
+                    <h5 class="modal-title text-light">Delete question #{{$question->id}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body mb-3 mt-3 ml-2">
+                    Click delete to delete the question!
+                    
+                  </div>
+                  <div class="modal-body mb-3" style="margin-left: 185px;">
+                    <button type="button" class="btn btn-secondary mr-3" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger  mr-2">Delete</button>
+                  </div>
+                </form>
+            
+          </div>
+        </div>
+      </div> 
+                
             @endif
         </div>
         <div class="epi-sec">
