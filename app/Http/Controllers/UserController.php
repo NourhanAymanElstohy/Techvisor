@@ -230,6 +230,13 @@ class UserController extends Controller
     {
         //here admin can delete any userRole and user can delete here profile
         $user = User::findOrFail($id);
+        if ($user->role == '1') {
+        DB::table('ratings')->where('user_id', $id)->delete();
+        }
+        if ($user->role == '2') {
+            DB::table('ratings')->where('rateable_id', $id)->delete();
+            }
+
         $questions = Question::where('user_id', $id)->get();
         $answers = Answer::where('user_id', $id)->get();
         //dd($answers);

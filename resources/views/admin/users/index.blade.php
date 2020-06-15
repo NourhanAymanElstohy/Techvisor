@@ -68,14 +68,28 @@
     @endif    
     
    <td>
-   @if ($role==3)
+   @if ($role==3 ||$role==0)
     <a href="{{route('user.show', $user->id)}}"><button type="button"
     class="btn btn-info float-center mr-2">Show</button></a>
    @else
    <a href="{{route('user.show', $user->id)}}"><button type="button"
     class="btn btn-info float-left mr-2">Show</button></a>
     @endif
-    @if ($role==1)
+
+    @if(Auth::user()->id==($user->id)) 
+    <a href="{{route('users.edit', $user->id)}}"><button type="button"
+    class="btn btn-primary float-left mr-2">Edit</button></a>
+
+    <form action="{{route('users.destroy', $user->id) }}" method="POST"
+    class="float-left mr-2"> 
+    @csrf
+    {{ method_field('DELETE') }}
+    <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
+    </form>
+    @endif
+
+
+    @if($role==1) 
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
     class="btn btn-primary float-left mr-2">Edit</button></a>
 
@@ -87,13 +101,15 @@
     </form>
     @endif
   
-    @if ($user->role==1 || $user->role==2)               
+    @if ($user->role==1 || $user->role==2)  
+    @if ($role==1)             
         @if ($user->isNotBanned())                
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
         class="btn btn-dark float-left mr-2">Ban</a>
         @else
         <a  href="{{ route('users.banned',['user'=>$user->id]) }}"
         class="btn btn-success float-left mr-2">Unban</a>
+        @endif
         @endif
         @endif
     

@@ -40,6 +40,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
+        $professionals=User::where('role','=','2')->take(5)->orderBy('rating_average', 'desc')->get();
 
         $request = request();
         $userId = Auth::id();
@@ -47,7 +48,9 @@ class HomeController extends Controller
         return view('home', [
             'user' => $user,
             'categories' => $categories,
-            'questions'=>$questions
+            'questions'=>$questions,
+            'professionals'=>$professionals,
+
         ]);
     }
 
