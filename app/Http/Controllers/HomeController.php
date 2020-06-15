@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Question;
 use App\User;
+use App\Notification;
 
 
 
@@ -50,7 +51,7 @@ class HomeController extends Controller
 
 
     public function home()
-    {
+    {   
         $categories = Category::all();
         $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
         $userId = Auth::id();

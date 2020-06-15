@@ -38,9 +38,17 @@ class rate extends Command
     public function handle()
     {
         //logic
-        // $notifications = Notification::where('type','=','App\Notifications\NewZoom');
-        // // dd($notifications);
-        // echo ("gggggg");
+        // $users = User::all();
+        // // $notifications = Notification::where('type','=','App\Notifications\NewZoom');
+        // foreach($users as $user){
+        //     foreach($user->notifications as $notification) {
+        //         if($notification->type=='App\Notifications\NewZoom'){
+        //             dd($notification->data['user_name']);
+        //         }
+
+        //     } 
+        // }        
+        echo ("gggggg");
         
     }
 }
