@@ -8,6 +8,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+
+	<link href="{{ asset('design/style/images/t-icon.png') }}" rel="shortcut icon" type="image/png">
+
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/line-awesome.css">

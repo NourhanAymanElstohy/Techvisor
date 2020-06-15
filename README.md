@@ -1,7 +1,7 @@
-<p align="center"> <img src="logo-bg.png"  width="300" height="170"alt=""></p>
+<p align="center"> <img src="logo-bg.png"  width="400" height="270"alt=""></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="#" target="_blank"><i class="fa fa-facebook" style="color: #4267B2;"></i></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
@@ -16,7 +16,29 @@ Techvisor is a professional consulting web application specially in IT fields. W
 -   Node.Js.
 -   DataBase.
 
-Techvisor is accessible, powerful and provides rapid connection with professionals through zoom meeting.
+## Tech/framework used
+
+<b>Built with</b>
+
+-   [Laravel](https://laravel.com)
+
+## Features
+
+For User:
+
+-   User can ask public question.
+-   User can answer to any public question.
+-   User can ask specific Professional.
+-   User can connect to Free Professional through Zoom.
+-   User can rate Professionals.
+-   User connect to premium Professional after payment through PayPal.
+
+For Professional:
+
+-   Professional has all user functionality.
+-   Professional can't ask himself or connect to himself through zoom.
+-   If Professional rate reach 5 stars it will promoted to premium.
+-   Premuim Professionals' money reach to Techvisor PayPal account.
 
 ## Contributing
 
@@ -26,28 +48,53 @@ We are an ITI graduation team.
 
 In order to ensure that we are welcoming to recieve any reviews, please send it to us on [Techvisor Email](techvisor.consulting@gmail.com).
 
-## Usage
+## Installation
 
-You can install our project, and test it by:
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/7.x/installation#installation)
 
--   First run
+Clone the repository
+
+```
+git clone https://github.com/NourhanAymanElstohy/Techvisor.git
+```
+
+Switch to the repo folder
+
+```
+cd Techvisor
+```
+
+Install all the dependencies using composer
 
 ```
 composer install
 ```
 
--   Generate a new file called .env then Copy .env.example to it
--   Generate your APP_Key by run:
+Copy the example env file and make the required configuration changes in the .env file
+
+```
+cp .env.example .env
+```
+
+Generate a new application key
 
 ```
 php artisan key:generate
 ```
 
--   Make a database on mysqldb then fill your .env with Database credentials then run
+Run the database migrations and seed (**Set the database credentials in .env before migrating**)
 
 ```
 php artisan migrate:fresh --seed
 ```
+
+Start the local development server
+
+```
+    php artisan serve
+```
+
+You can now access the server at http://localhost:8000
 
 -   Then finally add these env varables to your .env
 
