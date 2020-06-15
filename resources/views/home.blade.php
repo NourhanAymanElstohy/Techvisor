@@ -20,7 +20,7 @@
                 <div class="row">
 
                     @include('categories.index')
-                    
+
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
                             @auth
@@ -35,8 +35,8 @@
                                 </div>
                             </div>
                             @endauth
-                            <div class="posts-section">                       
-                                @include('questions.index')  
+                            <div class="posts-section">
+                                @include('questions.index')
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="right-sidebar">
 
                             @guest
-                            <div class="widget widget-about"> 
+                            <div class="widget widget-about">
                             <h1 class="font-weight-bold text-capitalize mt-3" style="font-family: 'Serif', cursive; font-size:40px; color: #E44E3A">Techvisor</h1>
                                 {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
                                 {{-- <h3>IT Workwise</h3> --}}
@@ -54,25 +54,37 @@
                                 </div>
                             </div>
                             @endguest
-                            
+
                             <!--widget-about end-->
                             <div class="widget widget-jobs">
                                 <div class="sd-title">
                                     <h3>Top Professionals With Rate</h3>
-                                    <!--i class="la la-ellipsis-v"></i-->
+                                    <i class="la la-ellipsis-v"></i>
+
                                 </div>
+                                @foreach($professionals as $professional)
                                 <div class="jobs-list">
                                     <div class="job-info">
                                         <div class="job-details">
-                                            {{-- <h3>Senior Product Designer</h3> --}}
+                                            <div class="usy-dt">
+                                                <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="">
+                                                <div class="usy-name">
+                                                      <a style="font-weight: bold;font-size: large;font-style: italic; color: #bd2e1c" href="professionals/{{$professional->id}}"> {{$professional->name}}</a>
+
+                                                </div>
+                                            </div>
+
                                             <p></p>
                                         </div>
                                         <div class="hr-rate">
-                                            {{-- <span>$25/hr</span> --}}
+                                            <span style="font-weight: bold;font-size: large;font-style: italic;color:#0e5b44 "> {{number_format($professional->averageRating,1)}}</span>
+
                                         </div>
                                     </div>
                                 </div>
-                                <!--jobs-list end-->
+                            @endforeach
+
+                            <!--jobs-list end-->
                             </div>
                             <!--widget-jobs end-->
 
@@ -91,7 +103,7 @@
 
 
 
-</div>
+{{--</div>--}}
 <!--theme-layout end-->
 <!-- add the post Q -->
 

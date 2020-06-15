@@ -75,4 +75,9 @@ class User extends Authenticatable implements BannableContract
     {
         return $this->hasMany('\App\Question');
     }
+
+
+    public function getRatingAverageAttribute() {
+        return $this->averageRating;
+    }
 }

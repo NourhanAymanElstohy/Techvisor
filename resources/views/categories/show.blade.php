@@ -23,24 +23,24 @@
                                             <h3>{{$prof->name}}</h3>
                                             @if($prof->status == 1)
                                                 <h3 class="d-inline">Status: </h3><h3 class="text-secondary d-inline">Offline</h3>
-                                            @else 
+                                            @else
                                                 <h3 class="d-inline">Status: </h3><h3 class="text-success d-inline">Online</h3>
                                             @endif
-                                            
+
                                             <h3 class="text-capitalize text-info mt-2">{{$prof->state}}</h3>
                                             @if ($prof->id != Auth::user()->id)
                                                     <ul>
                                                 @if($prof->status == 1)
-                                                    
+
                                                         <li><a class="active follow"
                                                                 href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
                                                                 title="">ASK</a></li>
                                                 @else
                                                         <li><a class="active follow"
                                                                 href="{{route('questions.create',['prof'=> $prof->id,'cat'=>$category->id])}}"
-                                                                title="">ASK</a></li>            
+                                                                title="">ASK</a></li>
                                                         @if ($prof->state == 'premium')
-  
+
                                                             <form method="POST" action="{{ route('pay')}}" class="d-inline">
                                                                 {{ csrf_field() }}
                                                                 <input   type="hidden" name="title" value='1'/>
@@ -53,10 +53,10 @@
                                                             <li><a href="/zoom/{{$prof->id}}" class="hire" >Zoom</a></li>
 
                                                         @endif
-            
+
                                                 @endif
                                                     </ul>
-                                                
+
                                         @endif
 
                                     </div>
