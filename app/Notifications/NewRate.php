@@ -12,15 +12,17 @@ class NewRate extends Notification
 {
     use Queueable;
     protected $user;
-   
+    protected $prof;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, User $prof)
     {
         $this->user = $user;
+        $this->prof = $prof;
+
     }
 
     /**
@@ -59,6 +61,8 @@ class NewRate extends Notification
         return [
             'user_id' => $this->user->id,
             'user_name' => $this->user->name,
+            'prof_id' => $this->prof->id,
+            'prof_name' => $this->prof->name,
          
 
         ];

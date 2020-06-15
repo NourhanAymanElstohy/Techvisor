@@ -188,7 +188,7 @@ class QuestionController extends Controller
         $meeting = Zoom::user()->find('techvisor.consulting@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
         $join_url = $meeting->join_url;
 
-        $prof->notify(new NewZoom($user, $join_url));
+        $prof->notify(new NewZoom($user, $join_url,$prof));
         return view('/zoom_url', [
             'meeting' => $meeting
         ]);

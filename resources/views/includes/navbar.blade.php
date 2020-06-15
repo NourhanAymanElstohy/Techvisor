@@ -137,6 +137,24 @@
 															<?php echo("</br>") ?>
 															</a></h3>
 														@endif 
+										@elseif($notification->type=='App\Notifications\NewRate')
+												@if($notification->unread())
+
+													<h3><a  class="dropdown-item " style="background-color:#ff6e6b;"  href="#">
+													<p >{{$notification->data['user_name'] }} you have made zoom with {{Illuminate\Support\Str::limit($notification->data['prof_name'],1 )}} </p
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else
+									 				<h3><a class="dropdown-item" href="#">
+													 <p >{{$notification->data['user_name'] }} you have made zoom with {{Illuminate\Support\Str::limit($notification->data['prof_name'],1)}} </p
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@endif 				
+														
 										@endif 
 										</div>
 									</div>
@@ -324,6 +342,23 @@
 															<?php echo("</br>") ?>
 															</a></h3>
 														@endif 
+										@elseif($notification->type=='App\Notifications\NewRate')
+												@if($notification->unread())
+
+													<h3><a  class="dropdown-item " style="background-color:#ff6e6b;"  href="#">
+													<p >{{$notification->data['user_name'] }} you have made zoom</p
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@else
+									 				<h3><a class="dropdown-item" href="#">
+													<p>{{$notification->data['user_name'] }} you have made zoom</p>
+
+													{{$notification->markAsRead()}}
+													<?php echo("</br>") ?>
+													</a></h3>
+												@endif 				
 										@endif 
 										</div>
 									</div>

@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\User;
+use App\Notifications\NewRate;
 
-class rate extends Command
+class ProfRate extends Command
 {
     /**
      * The name and signature of the console command.
@@ -38,17 +40,27 @@ class rate extends Command
     public function handle()
     {
         //logic
-        // $users = User::all();
-        // // $notifications = Notification::where('type','=','App\Notifications\NewZoom');
-        // foreach($users as $user){
-        //     foreach($user->notifications as $notification) {
-        //         if($notification->type=='App\Notifications\NewZoom'){
-        //             dd($notification->data['user_name']);
-        //         }
-
-        //     } 
-        // }        
-        echo ("gggggg");
+        $users = User::all();
+         
+        foreach($users as $user){
+             foreach($user->notifications as $notification) {
+                if($notification->type=='App\Notifications\NewZoom'){
+                    $notification->created_at;
+                       if(\Carbon\Carbon::now()>$notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subHours(2)){
+                        $userId=$notification->data["user_id"];
+                        $profId=$notification->data["prof_id"];
+                        $user=User::find($userId);
+                        $prof=User::find($profId);
+                        $user->notify(new NewRate($user,$prof));
+        
+                       }
+                    
+                   
+                     
+                }
+            }
+        }     
+       
         
     }
 }

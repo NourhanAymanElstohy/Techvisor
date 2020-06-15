@@ -12,16 +12,18 @@ class NewZoom extends Notification
     use Queueable;
     protected $user;
     protected $join_url;
+    protected $prof;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user,String $join_url)
+    public function __construct(User $user,String $join_url, User $prof)
     {
         $this->user = $user;
         $this->join_url = $join_url;
+        $this->prof = $prof;
 
       
     }
@@ -63,6 +65,8 @@ class NewZoom extends Notification
             'user_id' => $this->user->id,
             'user_name' => $this->user->name,
             'join_url' => $this->join_url,
+            'prof_id' => $this->prof->id,
+             'prof_name' => $this->prof->name,
 
         ];
     }
