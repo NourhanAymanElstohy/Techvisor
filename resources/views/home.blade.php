@@ -44,14 +44,12 @@
                         <div class="right-sidebar">
 
                             @guest
-                           
-                            
-                            <div class="widget widget-about"> 
-                            <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="200" height="80"alt="">
-                                <div class="sign_link">
-                                    <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
+                                <div class="widget widget-about"> 
+                                <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="200" height="80"alt="">
+                                    <div class="sign_link">
+                                        <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
+                                    </div>
                                 </div>
-                            </div>
                             @endguest
                             <div class="widget widget-jobs m-0">
                                 <div class="sd-title">

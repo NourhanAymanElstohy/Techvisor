@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
 <div class="search-sec">
     <div class="container">
         <div class="search-box">
@@ -34,7 +33,6 @@
                                     @else
                                        @include('answers.show')    
                                     @endif            
-                               
                             </div>
                         </div>
                     </div>
@@ -45,18 +43,15 @@
                             @guest
                             <div class="widget widget-about"> 
                             <img src="{{ url('design/style') }}/images/logo3.jpeg"  width="200" height="150"alt="">
-                                {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
-                                {{-- <h3>IT Workwise</h3> --}}
                                 <div class="sign_link">
                                     <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
                                 </div>
                             </div>
                             @endguest
                         </div>
-                        <!--right-sidebar end-->
                     </div>
                 </div>
-            </div><!-- main-section-data end-->
+            </div>
         </div>
     </div>
 </main>
@@ -82,11 +77,8 @@
                 </div>
             </form>
         </div>
-        <!--post-project-fields end-->
         <a href="#" title=""><i class="la la-times-circle-o"></i></a>
     </div>
-    <!--post-project end-->
 </div>
-<!--post-project-popup end-->
 
 @endsection

@@ -6,7 +6,9 @@
     </div>
     <div class="bennertext">
         <div class="innertitle">
-            <a href="/home"><h1 class="font-weight-bold text-capitalize text-light" style="font-family: 'Serif', cursive; font-size:40px; display:inline;">Techvisor </h1></a><h2 style="display:inline;">is a Consulting for IT Issues and programming<br>
+            {{-- <h1 class="font-weight-bold text-capitalize text-light" style="font-family: 'Serif', cursive; font-size:40px; display:inline;">Techvisor </h1> --}}
+    
+            <a href="/home"><img src="{{ url('design/style') }}/images/logo2.jpeg"  width="300" height="80"alt="" class="ml-4"></a><h2 style="display:inline;">is a Consulting for IT Issues and programming<br>
                 consults Made by ITI Students.</h2>
             <p>We connect users with professionals into one platform through asking 
                 questions or <br>Zoom meetings.</p>
