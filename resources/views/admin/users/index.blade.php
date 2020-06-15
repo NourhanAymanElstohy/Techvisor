@@ -75,7 +75,21 @@
    <a href="{{route('user.show', $user->id)}}"><button type="button"
     class="btn btn-info float-left mr-2">Show</button></a>
     @endif
-    @if ($role==1)
+
+    @if(Auth::user()->id==($user->id)) 
+    <a href="{{route('users.edit', $user->id)}}"><button type="button"
+    class="btn btn-primary float-left mr-2">Edit</button></a>
+
+    <form action="{{route('users.destroy', $user->id) }}" method="POST"
+    class="float-left mr-2"> 
+    @csrf
+    {{ method_field('DELETE') }}
+    <button type="submit" class="btn btn-danger mr-2" onclick="return confirm ('are you sure?')">Delete</button>
+    </form>
+    @endif
+
+
+    @if($role==1) 
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
     class="btn btn-primary float-left mr-2">Edit</button></a>
 
