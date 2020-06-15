@@ -8,6 +8,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/line-awesome.css">
@@ -22,8 +25,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
 
 </head>
 
