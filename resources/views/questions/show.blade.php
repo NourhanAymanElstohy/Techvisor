@@ -5,7 +5,7 @@
                 <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                 <div class="usy-name">
                     <h3>{{ $question->user ? $question->user->name : 'not exist'}}</h3>
-                    <span><img src="/workwise-new/images/clock.png" alt="">{{$question->created_at}}</span>
+                    <span><img src="/design/style/images/clock.png" alt="">{{$question->created_at}}</span>
                 </div>
             </div>
             @if($question->user_id==auth()->id())
@@ -19,12 +19,17 @@
         </div>
         <div class="epi-sec">
             <ul class="descp">
-                <li><img src="/workwise-new/images/icon8.png" alt=""><span>
+                <li><img src="/design/style/images/icon8.png" alt=""><span>
                         {{ $question->category ? $question->category->name : 'not exist'}}</span></li>
-                <li><img src="/workwise-new/images/icon9.png" alt=""><span>Question</span></li>
+                <li><img src="/design/style/images/icon9.png" alt=""><span>Question</span></li>
             </ul>
         </div>
-        <div class="job_descp">
+        <div class="job_descp" style="   display: block;/* or inline-block */
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                overflow: hidden;
+                max-height: 10em;
+                line-height: 1.8em;">
             <p>{{$question->question}}</p>
         </div>
 
@@ -49,7 +54,7 @@
                             <li>
                                 <div class="comment-list">
                                     <div class="bg-img">
-                                        <img src="/workwise-new/images/resources/bg-img1.png" alt="">
+                                        <img src="/design/style/images/resources/bg-img1.png" alt="">
                                     </div>
 
                                     <div class="comment">
@@ -57,8 +62,9 @@
                                             <img src="/uploads/avatars/{{$answer->user->avatar}}" width="30" height="30" alt="">
                                         </div>
                                         <h3>{{$answer->user->name}}</h3>
-                                        <span><img src="/workwise-new/images/clock.png" alt=""> {{$answer->created_at}}</span>
-                                        <p >{{ $answer->answer}}</p>
+                                        <span><img src="/design/style/images/clock.png" alt=""> {{$answer->created_at}}</span>
+                                        <p style="max-width:200px;
+                                            word-wrap:break-word;" >{{ $answer->answer}}</p>
                                     </div>
                                 </div>
                             </li>
@@ -67,7 +73,6 @@
                 
             @endforeach
         @endif
-        
                     <div class="post-comment mt-3">
                         <div class="usy-dt mr-2">
                             <img src="/uploads/avatars/{{auth()->user() ? auth()->user()->avatar : ''}}" width="35" height="35" alt="">
