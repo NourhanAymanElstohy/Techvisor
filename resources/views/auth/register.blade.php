@@ -14,12 +14,12 @@
                         <div class="col-lg-6">
                             <div class="cmp-info">
                             <div >
-                                    <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="400" height="100"alt="" style="text-center">
-                                    </br>
-                                    </br>
+                                    <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="300" height="80"alt="" class="ml-4">
+                                    <br>
+                                    <br>
                                     </div>
-                                    </br>
-                                    </br>
+                                    <br>
+                                    <br>
                                     <div class="p-5">
                                     <p>Techvisor, is a professional consulting web application specially in IT fields
                                         as it provides a rich community of professionals that can solve users’ problems
