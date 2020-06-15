@@ -62,7 +62,7 @@
                                   </div>                               
                                   <div class="product-feed-tab current" id="feed-dd">
 
-                                      @include('questions.index')
+                                      @include('questions.index2')
 
                                   </div>
                                 </div>

@@ -112,6 +112,8 @@ class QuestionController extends Controller
                 "category_id" => $request->cat
 
             ]);
+            return redirect('/');
+
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
