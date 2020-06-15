@@ -32,7 +32,7 @@
                                     @elseif($flag =='show')   
                                        @include('questions.show')  
                                     @elseif( $flag="not_found")
-                                       <p>question not found</p>
+                                       <h1>question not found</h1>
                                     @else
                                        @include('answers.show')    
                                     @endif            
