@@ -46,7 +46,7 @@ class ProfRate extends Command
              foreach($user->notifications as $notification) {
                 if($notification->type=='App\Notifications\NewZoom'){
                     $notification->created_at;
-                       if(\Carbon\Carbon::now()>$notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subHours(2)){
+                       if(\Carbon\Carbon::now()>$notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subHours(1)){
                         $userId=$notification->data["user_id"];
                         $profId=$notification->data["prof_id"];
                         $user=User::find($userId);
