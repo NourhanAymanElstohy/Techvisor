@@ -12,7 +12,7 @@
             <input type="hidden" class="form-control" name="prof" value="{{$prof}}">
             <input type="hidden" class="form-control" name="cat" value="{{$cat}}">
         @else
-        <label for="exampleFormControlSelect1">categories</label>
+        <label for="exampleFormControlSelect1" class="mb-3">Categories</label>
             <select name="cat" class="form-control" value="">
             @foreach($cats as $cat)  
             <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -21,14 +21,14 @@
           </div>
         @endif
 
-            <label for="exampleFormControlTextarea1" style="color: #E44E3A;">Ask a Question</label>
+            <label for="exampleFormControlTextarea1" class="mb-3">Ask a Question</label>
             <textarea class="form-control" name="question" rows="3" required></textarea>
             <div class="form-group mt-5">
             
             </div>
             
 
-      <button type="submit" class="btn " style="background-color: #E44E3A;">Create</button>
+      <button type="submit" class="btn text-light" style="background-color: #E44E3A;">Create</button>
       
     </form>  
 </div>

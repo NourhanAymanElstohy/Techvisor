@@ -10,12 +10,18 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="cmp-info">
-                                <div class="cm-logo">
-                                    {{-- <img src="{{ url('design/style') }}/images/cm-logo.png" alt=""> --}}
-                                    <h1 class="font-weight-bold text-capitalize" style="font-family: 'Serif', cursive; font-size:50px">Techvisor</h1>
+                                <div >
+                                    <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="300" height="80"alt="" class="ml-4">
+                                    <br>
+                                    <br>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="p-5">
                                     <p>Techvisor, is a professional consulting web application specially in IT fields
                                         as it provides a rich community of professionals that can solve users’ problems
-                                        or consulting them in many different IT fields</p>                                </div>
+                                        or consulting them in many different IT fields</p>
+                                        </div>
                                 <!--cm-logo end-->
                                 <img src="{{ url('design/style') }}/images/cm-main-img.png" alt="">
                             </div>

@@ -20,7 +20,7 @@
                 <div class="row">
 
                     @include('categories.index')
-                    
+
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
                             {{-- @auth --}}
@@ -34,7 +34,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            {{-- @endauth --}}
                             <div class="posts-section">                       
                                 @include('questions.index')  
                             </div>
@@ -45,55 +44,43 @@
                         <div class="right-sidebar">
 
                             @guest
-                            <div class="widget widget-about"> 
-                            <h1 class="font-weight-bold text-capitalize mt-3" style="font-family: 'Serif', cursive; font-size:40px; color: #E44E3A">Techvisor</h1>
-                                {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
-                                {{-- <h3>IT Workwise</h3> --}}
-                                <div class="sign_link">
-                                    <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
+                                <div class="widget widget-about"> 
+                                <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="200" height="80"alt="">
+                                    <div class="sign_link">
+                                        <h3><a href="{{ route('login') }}">{{ __('Login') }} </a></h3>
+                                    </div>
                                 </div>
-                            </div>
                             @endguest
-                            
-                            <!--widget-about end-->
-                            <div class="widget widget-jobs">
+                            <div class="widget widget-jobs m-0">
                                 <div class="sd-title">
-                                    <h3>Top Professionals With Rate</h3>
-                                    <!--i class="la la-ellipsis-v"></i-->
+                                    <h4>Top Professionals With Rate</h4>
                                 </div>
-                                <div class="jobs-list">
+                                @foreach($professionals as $professional)
+                                <div class="jobs-list ">
                                     <div class="job-info">
                                         <div class="job-details">
-                                            {{-- <h3>Senior Product Designer</h3> --}}
-                                            <p>ssssssss</p>
+                                            <div class="usy-dt">
+                                                <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="" style="padding: 0px;">
+                                            </div>
+                                            <div class="usy-name mt-1">    
+                                                <p ><a href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #e44d3a;"> {{$professional->name}}</a></p>
+                                            </div>
                                         </div>
-                                        <div class="hr-rate">
-                                            {{-- <span>$25/hr</span> --}}
+                                        <div class="hr-rate mt-2" >
+                                            <span style="color:#0e5b44;"> {{number_format($professional->averageRating,1)}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <!--jobs-list end-->
+                            @endforeach
                             </div>
-                            <!--widget-jobs end-->
-
-
                         </div>
-                        <!--right-sidebar end-->
                     </div>
                 </div>
-            </div><!-- main-section-data end-->
+            </div>
         </div>
     </div>
 </main>
 
-
-
-
-
-
-</div>
-<!--theme-layout end-->
-<!-- add the post Q -->
 
 <div class="post-popup job_post">
     <div class="post-project">
@@ -113,11 +100,8 @@
                 </div>
             </form>
         </div>
-        <!--post-project-fields end-->
         <a href="#" title=""><i class="la la-times-circle-o"></i></a>
     </div>
-    <!--post-project end-->
 </div>
-<!--post-project-popup end-->
 
 @endsection

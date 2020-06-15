@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from gambolthemes.net/workwise-new/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 May 2020 18:26:13 GMT -->
 <head>
 	<meta charset="UTF-8">
 	<title>Techvisor</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+
+	<link href="{{ asset('design/style/images/t-icon.png') }}" rel="shortcut icon" type="image/png">
+
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/line-awesome.css">
