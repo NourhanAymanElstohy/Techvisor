@@ -44,7 +44,7 @@
                         <div class="right-sidebar">
 
                             @guest
-                            <div class="widget widget-about">
+                           
                             
                             <div class="widget widget-about"> 
                             <img src="{{ url('design/style') }}/images/logo2.jpeg"  width="200" height="80"alt="">
@@ -64,8 +64,8 @@
                                             <div class="usy-dt">
                                                 <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="" style="padding: 0px;">
                                             </div>
-                                            <div class="usy-name">    
-                                                <p class="bg-light"><a  href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #e44d3a;"> {{$professional->name}}</a></p>
+                                            <div class="usy-name mt-1">    
+                                                <p ><a href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #e44d3a;"> {{$professional->name}}</a></p>
                                             </div>
                                         </div>
                                         <div class="hr-rate mt-2" >
