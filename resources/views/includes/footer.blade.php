@@ -7,7 +7,7 @@
 						<li><a href="{{route('about')}}" title="">About</a></li>
 						<li><a href="{{route('users.privacy')}}" title="">Privacy Policy</a></li>
 
-						<li><a href="#" target="_blank"><i class="fa fa-facebook" style="color: #4267B2;"></i></a></li>
+						<li><a href="https://www.facebook.com/techvisor.consulting/" target="_blank"><i class="fa fa-facebook" style="color: #4267B2;"></i></a></li>
               			<li><a href="#" target="_blank"><i class="fa fa-twitter" ></i></a></li>
 						  <li><a href="#" target="_blank"><i class="fa fa-instagram" ></i></a></li>
 						  
