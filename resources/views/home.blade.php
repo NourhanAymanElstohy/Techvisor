@@ -23,7 +23,7 @@
 
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
-                            @auth
+                            {{-- @auth --}}
                             <div class="post-topbar">
                                 <div class="user-picy">
                                     {{-- <img src="images/resources/user-pic.png" alt=""> --}}
@@ -34,9 +34,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            @endauth
-                            <div class="posts-section">
-                                @include('questions.index')
+                            {{-- @endauth --}}
+                            <div class="posts-section">                       
+                                @include('questions.index')  
                             </div>
                         </div>
                     </div>
@@ -47,6 +47,8 @@
                             @guest
                             <div class="widget widget-about">
                             <h1 class="font-weight-bold text-capitalize mt-3" style="font-family: 'Serif', cursive; font-size:40px; color: #E44E3A">Techvisor</h1>
+                            <div class="widget widget-about"> 
+                            <img src="{{ url('design/style') }}/images/logo3.jpeg"  width="200" height="150"alt="">
                                 {{-- <img src="{{ url('design/style') }}/images/wd-logo.png" alt=""> --}}
                                 {{-- <h3>IT Workwise</h3> --}}
                                 <div class="sign_link">
@@ -68,7 +70,7 @@
                                         <div class="job-details">
                                             <div class="usy-dt">
                                                 <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="">
-                                                <div class="usy-name">
+                                                                                                                                                                                                                                              <div class="usy-name">
                                                       <a style="font-weight: bold;font-size: large;font-style: italic; color: #bd2e1c" href="professionals/{{$professional->id}}"> {{$professional->name}}</a>
 
                                                 </div>

@@ -2,13 +2,12 @@
 		<header>
 			<div class="container">
 				<div class="header-data">
-					<div class="logo">
-						<a href="/home" title=""><h1 class="font-weight-bold text-capitalize text-light mt-1" style="font-family: 'Serif', cursive; font-size:30px">Techvisor</h1></a>
+
+  				<div style="float: left;  margin-top: 10px; " >
+					<a href="{{route('home')}}"><img src="{{ url('design/style') }}/images/logo1.jpeg"  width="100px" height="30;"></a>
 					</div><!--logo end-->
-					<div class="search-bar">
-						
-					</div><!--search-bar end-->
-					<nav>
+				
+					<nav style="float: center;">
 						<ul>
 							<li>
 							@hasanyrole('super-admin|user|professional')
@@ -153,17 +152,12 @@
 					</nav><!--nav end-->
 
 
-									
-					<div class="menu-btn">
-						<a href="#" title=""><i class="fa fa-bars"></i></a>
-					</div><!--menu-btn end-->
-
-						<div class="user-account">
+						<div class="user-account" style="float: right;">
 							<div class="user-info">
 							<img src="/uploads/avatars/{{Auth::user()->avatar}}" alt="" width="30px" height="30px">
 								<i class="la la-sort-down"></i>
 							</div>
-						<div class="user-account-settingss" id="users">
+						<div class="user-account-settingss" id="users" style="float: right;">
 
 										
 											
