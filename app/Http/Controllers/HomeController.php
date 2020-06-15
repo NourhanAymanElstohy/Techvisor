@@ -9,6 +9,7 @@ use App\Question;
 use App\User;
 use App\Notification;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\NewRate;
 
 
 
@@ -56,7 +57,7 @@ class HomeController extends Controller
 
 
     public function home()
-     {   
+     {  
         $categories = Category::all();
         $questions=Question::where('state','=','public')->orderBy('created_at', 'desc')->get();
         $userId = Auth::id();
