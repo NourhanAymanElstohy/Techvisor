@@ -20,7 +20,7 @@ class ProfRate extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'ask users to rate professionals who made meetings with them';
 
     /**
      * Create a new command instance.
@@ -41,26 +41,20 @@ class ProfRate extends Command
     {
         //logic
         $users = User::all();
-         
-        foreach($users as $user){
-             foreach($user->notifications as $notification) {
-                if($notification->type=='App\Notifications\NewZoom'){
+
+        foreach ($users as $user) {
+            foreach ($user->notifications as $notification) {
+                if ($notification->type == 'App\Notifications\NewZoom') {
                     $notification->created_at;
-                       if(\Carbon\Carbon::now()>$notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subHours(1)){
-                        $userId=$notification->data["user_id"];
-                        $profId=$notification->data["prof_id"];
-                        $user=User::find($userId);
-                        $prof=User::find($profId);
-                        $user->notify(new NewRate($user,$prof));
-        
-                       }
-                    
-                   
-                     
+                    if (\Carbon\Carbon::now() > $notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subHours(1)) {
+                        $userId = $notification->data["user_id"];
+                        $profId = $notification->data["prof_id"];
+                        $user = User::find($userId);
+                        $prof = User::find($profId);
+                        $user->notify(new NewRate($user, $prof));
+                    }
                 }
             }
-        }     
-       
-        
+        }
     }
 }
