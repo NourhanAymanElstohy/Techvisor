@@ -58,7 +58,7 @@
                                     <h4>Top Professionals With Rate</h4>
                                 </div>
                                 @foreach($professionals as $professional)
-                                <div class="jobs-list bg-light">
+                                <div class="jobs-list ">
                                     <div class="job-info">
                                         <div class="job-details">
                                             <div class="usy-dt">
