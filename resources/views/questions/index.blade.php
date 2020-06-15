@@ -13,7 +13,7 @@
             <div class="ed-opts">
                 <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                 <ul class="ed-options">
-                    <li><a href="questions/{{$question->id}}/edit" title="">Edit Post</a></li>
+                    <li><a href="/questions/{{$question->id}}/edit" title="">Edit Post</a></li>
                     
         <a class="float-left text-dark" href="#" role="button" data-toggle="modal"
          data-target="#delete-modal-{{$question->id}}"  class="float-left mr-2">Delete</a>
