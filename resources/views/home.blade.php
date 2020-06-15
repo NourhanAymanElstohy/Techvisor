@@ -64,8 +64,8 @@
                                             <div class="usy-dt">
                                                 <img src="/uploads/avatars/{{$professional->avatar}}" width="30" height="30" alt="" style="padding: 0px;">
                                             </div>
-                                            <div class="usy-name mt-2">    
-                                                <p class="bg-light"><a  href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #bd2e1c;"> {{$professional->name}}</a></p>
+                                            <div class="usy-name">    
+                                                <p class="bg-light"><a  href="professionals/{{$professional->id}}" class="text-capitalize" style="color: #e44d3a;"> {{$professional->name}}</a></p>
                                             </div>
                                         </div>
                                         <div class="hr-rate mt-2" >
