@@ -84,7 +84,7 @@ php artisan migrate:fresh --seed
 Start the local development server
 
 ```
-    php artisan serve
+php artisan serve
 ```
 
 You can now access the server at http://localhost:8000
@@ -92,13 +92,13 @@ You can now access the server at http://localhost:8000
 **Command List**
 
 ```
-    git clone https://github.com/NourhanAymanElstohy/Techvisor.git
-    cd Techvisor
-    composer install
-    cp .env.example .env
-    php artisan key:generate
-    php artisan migrate:fresh --seed
-    php artisan serve
+git clone https://github.com/NourhanAymanElstohy/Techvisor.git
+cd Techvisor
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate:fresh --seed
+php artisan serve
 ```
 
 Then finally add these env varables to your .env

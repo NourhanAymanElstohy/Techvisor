@@ -5,9 +5,7 @@
         <img src="{{ url('design/style') }}/images/about.png" alt="image">
     </div>
     <div class="bennertext">
-        <div class="innertitle">
-            {{-- <h1 class="font-weight-bold text-capitalize text-light" style="font-family: 'Serif', cursive; font-size:40px; display:inline;">Techvisor </h1> --}}
-    
+        <div class="innertitle">    
             <a href="/home"><img src="{{ url('design/style') }}/images/logo2.jpeg"  width="300" height="80"alt="" class="ml-4"></a><h2 style="display:inline;">is a Consulting for IT Issues and programming<br>
                 consults Made by ITI Students.</h2>
             <p>We connect users with professionals into one platform through asking 
@@ -21,7 +19,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <h2>
-                    Company Overview
+                    Application Overview
                 </h2>
                 <p>
                     This is a professional consulting web application specially 

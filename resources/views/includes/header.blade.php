@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from gambolthemes.net/workwise-new/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 May 2020 18:26:13 GMT -->
 <head>
 	<meta charset="UTF-8">
 	<title>Techvisor</title>
