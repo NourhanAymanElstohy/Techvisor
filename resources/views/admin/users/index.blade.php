@@ -42,7 +42,7 @@
        <th>Image</th>
        <th>Email</th>
        <th>Role</th>
-       <th>Status</th>
+       {{-- <th>Status</th> --}}
        @if ($role==1)
        <th>Banned At</th>
        @endif
@@ -58,11 +58,11 @@
     <td>{{$user->email}}</td>
     <td>{{$user->roles->implode('name', ',')}}</td>
 
-    @if($user->status==1)
+    {{-- @if($user->status==1)
         <td>Active</td>
     @elseif($user->status==0)
         <td>Inactive</td>  
-    @endif 
+    @endif  --}}
     @if ($role==1)
         <td>{{ $user->banned_at }}</td>
     @endif    
