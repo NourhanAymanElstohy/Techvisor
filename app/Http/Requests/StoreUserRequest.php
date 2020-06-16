@@ -24,21 +24,20 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            
-                'name' => 'required|min:3',
-                'email' => 'required|email:rfc,dns',
-                'role' => 'required',
 
-                    ];
-        
+            'name' => 'required|min:3',
+            'email' => 'required|email:rfc,dns|unique:users',
+            'role' => 'required',
+
+        ];
     }
     public function messages()
-{
-    return [
-        'name.required' => 'Please enter the name',
-        'name.min' => 'The name has minimum of 3 character ',
-        'email.required' => 'Please enter the email field',
-        'role.required' => 'Please choose a role !',
-    ];
-}
+    {
+        return [
+            'name.required' => 'Please enter the name',
+            'name.min' => 'The name has minimum of 3 character ',
+            'email.required' => 'Please enter the email field',
+            'role.required' => 'Please choose a role !',
+        ];
+    }
 }

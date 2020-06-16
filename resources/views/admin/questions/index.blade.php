@@ -47,10 +47,10 @@
       <td>{{$question?$question->created_at:""}}</td>
       <td>
         <a href="{{route('questions.show',['question'=> $question->id])}}"
-         class="btn btn-info  float-left mr-2">Show</a>
+         class="btn btn-info  float-left mb-2">Show</a>
 
         <a href="{{route('questions.edit',['question'=> $question->id])}}"
-         class="btn btn-primary  float-left mr-2">Edit</a>
+         class="btn btn-primary  float-left mb-2 mr-2">Edit</a>
 
         <a class="btn btn-danger float-left " href="#" role="button" data-toggle="modal"
          data-target="#delete-modal-{{$question->id}}"  class="float-left mr-2">Delete</a>

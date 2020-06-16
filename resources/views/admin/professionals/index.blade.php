@@ -55,7 +55,7 @@
     
                                             
     <a href="{{route('users.edit', $user->id)}}"><button type="button"
-    class="btn btn-primary float-center  mr-2 ">Edit</button></a>
+    class="btn btn-primary float-center  mb-2 mr-2 ">Edit</button></a>
 
                                              
     <form action="{{route('users.destroy', $user->id) }}" method="POST"

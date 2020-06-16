@@ -9,6 +9,8 @@
 	<meta name="keywords" content="" /> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	
+	<link href="{{ asset('design/style/images/t-icon.png') }}" rel="shortcut icon" type="image/png">
 
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="{{ url('design/style') }}/css/bootstrap.min.css">
