@@ -10,7 +10,10 @@ use App\Notifications\NewZoom;
 use App\Question;
 use App\Category;
 use App\User;
+use App\Answer;
 use MacsiDigital\Zoom\Facades\Zoom;
+use Illuminate\Support\Facades\DB;
+
 
 class QuestionController extends Controller
 {
@@ -174,13 +177,22 @@ class QuestionController extends Controller
         $request = request();
         $questionId = $request->question;
         Question::destroy($questionId);
+        Answer::where('question_id', $questionId)->delete();
+        $notifications = DB::table('notifications')->get();
+        foreach($notifications as $n){
+            if(property_exists(json_decode($n->data),'question_id')){
+            if(json_decode($n->data)->question_id==$questionId){
+                DB::table('notifications')->where('id',$n->id)->delete();
+            }
+        }
+        }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
         } else {
             return redirect('/');
         }
     }
-    public function zoom()
+    public function zoom() 
     {
         $request = request();
         $user = Auth::user();

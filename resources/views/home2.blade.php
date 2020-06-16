@@ -30,8 +30,7 @@
                                         @include('questions.edit')
                                     @elseif($flag =='show')   
                                        @include('questions.show')  
-                                    @elseif( $flag="not_found")
-                                       <h1>question not found</h1>
+                                   
                                     @else
                                        @include('answers.show')    
                                     @endif            

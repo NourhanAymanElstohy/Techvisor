@@ -14,6 +14,7 @@
               @else
               <h1 class="card-title">question not found</h1>
               </div>
+              @endif
       </div>
   </div> 
       

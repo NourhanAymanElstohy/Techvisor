@@ -240,13 +240,19 @@ class UserController extends Controller
         $questions = Question::where('user_id', $id)->get();
         $answers = Answer::where('user_id', $id)->get();
         //dd($answers);
-        Question::where('user_id', $id)->delete();
+        Question::where('user_id', $id)->delete(); 
         Answer::where('user_id', $id)->delete();
         $notifications = DB::table('notifications')->get();
         foreach($notifications as $n){
-            if(json_decode($n->data)->user_id==$id){
+            if(json_decode($n->data)->user_id==$id ){
                 DB::table('notifications')->where('id',$n->id)->delete();
             }
+            elseif(property_exists(json_decode($n->data),'prof_id')){
+                if(json_decode($n->data)->prof_id==$id){
+                    DB::table('notifications')->where('id',$n->id)->delete();
+                }
+            }
+             
         }
         
         //Question::destroy::where('user_id', $id)->get();
