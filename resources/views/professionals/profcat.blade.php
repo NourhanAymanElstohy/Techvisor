@@ -10,7 +10,7 @@
                 
             <div  style="text-align:left;">
                 <img  src="{{ url('design/style') }}/images/circle-cropped (2).png" width="15" height="15" class="mr-2">
-                <h5>Added To Your Categories, click to remove</h5></br>
+                <h5>Added To Your Categories, click to remove</h5><br>
                 <img  src="{{ url('design/style') }}/images/INFO.png" width="15" height="15" class="mr-2">
                 <h5>Click To Add To Your Categories</h5></br>
             </div>
