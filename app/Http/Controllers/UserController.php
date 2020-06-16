@@ -242,6 +242,13 @@ class UserController extends Controller
         //dd($answers);
         Question::where('user_id', $id)->delete();
         Answer::where('user_id', $id)->delete();
+        $notifications = DB::table('notifications')->get();
+        foreach($notifications as $n){
+            if(json_decode($n->data)->user_id==$id){
+                DB::table('notifications')->where('id',$n->id)->delete();
+            }
+        }
+        
         //Question::destroy::where('user_id', $id)->get();
         //dd($questions);
         if (auth()->user()->hasPermissionTo('adminpermission')) {
