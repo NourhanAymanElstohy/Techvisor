@@ -53,6 +53,15 @@
             @endforeach
             </select>
             </div>
+
+            <div class="form-group mt-5">
+   <h6 style="color: #E44E3A"><strong>Profile Image</strong></h6>
+  <div class="custom-file ">
+  <input type="file"  id="customFileLangHTML" value="{{$user->avatar}}"  name="avatar">
+  <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen">Upload Image</label>
+</div>
+</div>
+       
         <div class="justify-content-end">
            <input type="submit" value="Submit" class="btn btn-success">
            </div>
