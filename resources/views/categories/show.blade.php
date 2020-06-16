@@ -9,7 +9,7 @@
                 <div class="main-section-data">
 
                     <div class="company-title">
-                        <h3>All Professional On This Category</h3>
+                        <h3>All Professional In {{$category->name}} Category</h3>
                     </div>
 
                     <div class="companies-list" style="margin-bottom: 318px">
