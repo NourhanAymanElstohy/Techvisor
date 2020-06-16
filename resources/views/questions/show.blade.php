@@ -114,16 +114,6 @@
                                     value="{{$question->id}}">
                                 <input type="text" placeholder="Post a comment" name="answer" required>
                                 <button type="submit">Comment</button>
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
-            
                             </form>
                         </div>
                     </div>
