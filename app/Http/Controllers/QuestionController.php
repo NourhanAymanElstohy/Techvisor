@@ -214,9 +214,12 @@ class QuestionController extends Controller
         $search = $request->search;
         $categories = Category::all();
         $questions = Question::search($search)->get();
+        $professionals=User::where('role','=','2')->take(5)->orderBy('rating_average', 'desc')->get();
+
         return view('home', [
             'questions' => $questions,
             'categories' => $categories,
+            'professionals'=>$professionals,
         ]);
     }
 }
