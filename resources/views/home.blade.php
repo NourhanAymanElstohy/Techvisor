@@ -67,8 +67,8 @@
                                             </div>
                                         </div>
                                         <div class="hr-rate mt-2" >
-                                            <span style="color:#0e5b44;"> {{number_format($professional->rating_average,1)}}</span>
-                                        </div>
+<!--                                           <span style="color:#0e5b44;"> {{number_format($professional->rating_average,1)}}</span>
+ -->                                        </div>
                                     </div>
                                 </div>
                             @endforeach
