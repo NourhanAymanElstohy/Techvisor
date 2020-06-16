@@ -11,6 +11,8 @@ use App\Question;
 use App\Category;
 use App\User;
 use App\Answer;
+use App\Http\Requests\StoreQuestionRequest;
+use App\Http\Requests\UpdateQuestionRequest;
 use MacsiDigital\Zoom\Facades\Zoom;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +44,7 @@ class QuestionController extends Controller
         $questionId = $request->question;
         $question = Question::find($questionId);
         $categories = Category::all();
-        if ($question){
+        if ($question) {
             if (auth()->user()->hasPermissionTo('adminpermission')) {
                 return view('admin/questions/show', [
                     'question' => $question,
@@ -54,14 +56,14 @@ class QuestionController extends Controller
                     'flag' => $flag
                 ]);
             }
-        }else{
-            $flag="not_found";
+        } else {
+            $flag = "not_found";
             return view('home2', [
-                
+
                 'categories' => $categories,
-                'flag' => $flag ]);
+                'flag' => $flag
+            ]);
         }
-      
     }
 
 
@@ -94,9 +96,8 @@ class QuestionController extends Controller
             ]);
         }
     }
-    public function store()
+    public function store(StoreQuestionRequest $request)
     {
-        $request = request();
 
         $userId = Auth::id();
         if ($request->prof) {
@@ -116,7 +117,6 @@ class QuestionController extends Controller
 
             ]);
             return redirect('/');
-
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
@@ -156,9 +156,8 @@ class QuestionController extends Controller
             ]);
         }
     }
-    public function update()
+    public function update(UpdateQuestionRequest $request)
     {
-        $request = request();
         $question = Question::find($request->id);
         $question->question = $request->question;
         $question->state = $request->state;
@@ -179,12 +178,12 @@ class QuestionController extends Controller
         Question::destroy($questionId);
         Answer::where('question_id', $questionId)->delete();
         $notifications = DB::table('notifications')->get();
-        foreach($notifications as $n){
-            if(property_exists(json_decode($n->data),'question_id')){
-            if(json_decode($n->data)->question_id==$questionId){
-                DB::table('notifications')->where('id',$n->id)->delete();
+        foreach ($notifications as $n) {
+            if (property_exists(json_decode($n->data), 'question_id')) {
+                if (json_decode($n->data)->question_id == $questionId) {
+                    DB::table('notifications')->where('id', $n->id)->delete();
+                }
             }
-        }
         }
         if (auth()->user()->hasPermissionTo('adminpermission')) {
             return redirect()->route('questions.index');
@@ -192,7 +191,7 @@ class QuestionController extends Controller
             return redirect('/');
         }
     }
-    public function zoom() 
+    public function zoom()
     {
         $request = request();
         $user = Auth::user();
@@ -202,7 +201,7 @@ class QuestionController extends Controller
         $meeting = Zoom::user()->find('techvisor.consulting@gmail.com')->meetings()->create(['topic' => 'Meeting With ' . $prof->name]);
         $join_url = $meeting->join_url;
 
-        $prof->notify(new NewZoom($user, $join_url,$prof));
+        $prof->notify(new NewZoom($user, $join_url, $prof));
         return view('/zoom_url', [
             'meeting' => $meeting
         ]);
