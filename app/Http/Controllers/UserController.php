@@ -240,7 +240,7 @@ class UserController extends Controller
         $questions = Question::where('user_id', $id)->get();
         $answers = Answer::where('user_id', $id)->get();
         //dd($answers);
-        Question::where('user_id', $id)->delete(); 
+        Question::where('user_id', '=', $id)->orWhere('prof_id', '=', $id)->delete(); 
         Answer::where('user_id', $id)->delete();
         $notifications = DB::table('notifications')->get();
         foreach($notifications as $n){
