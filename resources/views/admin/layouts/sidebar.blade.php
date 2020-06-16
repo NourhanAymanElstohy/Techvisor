@@ -14,7 +14,7 @@
           <img src="/uploads/avatars/{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <h5 style="color:#3cb371"><strong>Admin</strong></h5>
+          <h5 style="color:#3cb371"><strong>{{ Auth::user()->name }}</strong></h5>
         </div>
       </div>
 
