@@ -6,7 +6,7 @@
                 <img src="/uploads/avatars/{{$question->user->avatar}}" width="30" height="30" alt="">
                 <div class="usy-name">
                     <h3>{{ $question->user ? $question->user->name : 'not exist'}}</h3>
-                    <span><img src="design/style/images/clock.png" alt="">{{$question->created_at}}</span>
+                    <span><img src="/design/style/images/clock.png" alt="">{{$question->created_at}}</span>
                 </div>
             </div>
             @if($question->user_id==auth()->id())
@@ -23,9 +23,9 @@
         </div>
         <div class="epi-sec">
             <ul class="descp">
-                <li><img src="design/style/images/icon8.png" alt=""><span>
+                <li><img src="/design/style/images/icon8.png" alt=""><span>
                 {{ $question->category ? $question->category->name : 'not exist'}}</span></li>
-                <li><img src="design/style/images/icon9.png" alt=""><span>Question</span></li>
+                <li><img src="/design/style/images/icon9.png" alt=""><span>Question</span></li>
             
         </div>
         <div class="job_descp" style="   display: block;/* or inline-block */
@@ -59,7 +59,7 @@
                                 <li>
                                     <div class="comment-list">
                                         <div class="bg-img">
-                                            <img src="design/style/images/resources/bg-img1.png" alt="">
+                                            <img src="/design/style/images/resources/bg-img1.png" alt="">
                                         </div>
                                         
                                         <div class="comment" >

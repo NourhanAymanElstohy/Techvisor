@@ -9,7 +9,7 @@
                 <div class="main-section-data">
 
                     <div class="company-title">
-                        <h3>All Professional On This Category</h3>
+                        <h3>All Professional In {{$category->name}} Category</h3>
                     </div>
 
                     <div class="companies-list" style="margin-bottom: 318px">
@@ -26,7 +26,7 @@
                                             @else
                                                 <h3 class="d-inline">Status: </h3><h3 class="text-success d-inline">Online</h3>
                                             @endif
-
+                                            <h3 class="mt-2">Rating is: {{$prof->rating_average}}</h3>
                                             <h3 class="text-capitalize text-info mt-2">{{$prof->state}}</h3>
                                             @if ($prof->id != Auth::user()->id)
                                                     <ul>
@@ -43,7 +43,7 @@
 
                                                             <form method="POST" action="{{ route('pay')}}" class="d-inline">
                                                                 {{ csrf_field() }}
-                                                                <input   type="hidden" name="price" value='1'/>
+                                                                <input   type="hidden" name="price" value='5'/>
                                                                 <input type="hidden" name="name" value="{{$prof->name}}" />
                                                                 <input type="hidden" name="id" value="{{$prof->id}}" />
                                                                 <button class="btn hire text-light" type="submit">Zoom</button>

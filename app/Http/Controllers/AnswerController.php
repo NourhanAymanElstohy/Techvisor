@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Category;
 use App\Http\Requests\StoreAnswerRequest;
+use App\Http\Requests\StoreQuestionRequest;
 use App\Notifications\NewAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class AnswerController extends Controller
         $question = request()->question;
         return view('create');
     }
-    public function store(StoreAnswerRequest $request)
+    public function store(Request $request)
     {
         $userId = Auth::id();
 
