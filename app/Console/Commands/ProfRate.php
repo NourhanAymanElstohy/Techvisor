@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\User;
 use App\Notifications\NewRate;
+use Illuminate\Support\Facades\DB;
 
 class ProfRate extends Command
 {
@@ -40,20 +41,19 @@ class ProfRate extends Command
     public function handle()
     {
         //logic
-        $users = User::all();
-
-        foreach ($users as $user) {
-            foreach ($user->notifications as $notification) {
-                if ($notification->type == 'App\Notifications\NewZoom') {
-                    $notification->created_at;
-                    if (\Carbon\Carbon::now() > $notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subMinutes(1)) {//->subHours(1)
-                        $userId = $notification->data["user_id"];
-                        $profId = $notification->data["prof_id"];
-                        $user = User::find($userId);
-                        $prof = User::find($profId);
-                        $user->notify(new NewRate($user, $prof));
-                    }
-                }
+      
+        $notifications = DB::table('notifications')->where('type','App\Notifications\NewZoom')->get();
+        foreach($notifications as $notification){
+            
+            if(\Carbon\Carbon::now() > $notification->created_at && $notification->created_at > \Carbon\Carbon::now()->subMinutes(1)){
+                // json_decode($n->data)->user_id==$id)
+                
+                $userId = json_decode($notification->data)->user_id ;
+                $profId = json_decode($notification->data)->prof_id ;
+                $user = User::find($userId);
+                $prof = User::find($profId);
+                $user->notify(new NewRate($user, $prof));
+              
             }
         }
     }

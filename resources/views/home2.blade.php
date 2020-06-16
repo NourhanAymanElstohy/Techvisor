@@ -18,7 +18,7 @@
             <div class="main-section-data">
                 <div class="row">
 
-                    @include('categories.index')
+                    @include('categories.index2')
                     
                     <div class="col-lg-6 col-md-8 no-pd">
                         <div class="main-ws-sec">
@@ -30,8 +30,7 @@
                                         @include('questions.edit')
                                     @elseif($flag =='show')   
                                        @include('questions.show')  
-                                    @elseif( $flag="not_found")
-                                       <h1>question not found</h1>
+                                   
                                     @else
                                        @include('answers.show')    
                                     @endif            
