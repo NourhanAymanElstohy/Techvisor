@@ -21,7 +21,7 @@
 	</div><!--theme-layout end-->
 	
 
-<script type="text/javascript" src="{{ url('design/style') }}/js/jquery.min.js"></script>
+<script type="text/javascript" src="/design/style/js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/popper.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ url('design/style') }}/js/jquery.mCustomScrollbar.js"></script>
