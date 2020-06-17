@@ -106,6 +106,7 @@ class RegisterController extends Controller
         } elseif ($role == '2') {
             $user->assignRole('professional');
             $user->state = 'free';
+            $user->status = 0;
             $user->save();
             return $user;
         }
