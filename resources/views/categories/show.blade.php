@@ -26,7 +26,6 @@
                                             @else
                                                 <h3 class="d-inline">Status: </h3><h3 class="text-success d-inline">Online</h3>
                                             @endif
-                                            <h3 class="mt-2">Rating is: {{$prof->rating_average}}</h3>
                                             <h3 class="text-capitalize text-info mt-2">{{$prof->state}}</h3>
                                             @if ($prof->id != Auth::user()->id)
                                                     <ul>

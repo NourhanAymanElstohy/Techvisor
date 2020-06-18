@@ -5,7 +5,7 @@
 <div class="wrapper">
 
       <section class="cover-sec">
-          <img src="{{ url('design/style') }}/images/cover.jpg" style="height: 300px;" alt="">
+          <img src="{{ url('design/style') }}/images/resources/code-wallpaper-10.jpg" style="height: 500px;" alt="">
       </section>
 
       <main>
@@ -21,9 +21,11 @@
                                           <img src="/uploads/avatars/{{$user->avatar}}" alt="">
                                       </div>
                                       <div class="user_pro_status">
+                                      @if(Auth::user()->id==($user->id)) 
                                           <ul class="flw-hr">
                                               <li><a href="{{route('professionals.edit', $user->id)}}" title="" class="flww">Edit Profile</a></li>
                                           </ul>
+                                          @endif
                                           <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $user->averageRating }}" data-size="xs" disabled="">
                                       </div>
                                       <ul class="social_links">
